@@ -1,0 +1,41 @@
+{
+    "name": "aria-live-capture",
+    "version": "0.0.1",
+    "description": "Capture announcements of ARIA-live regions",
+    "main": "dist/index.js",
+    "author": "Ari Perkkio <ari.perkkio@gmail.com>",
+    "license": "MIT",
+    "homepage": "https://github.com/AriPerkkio/aria-live-capture",
+    "bugs": "https://github.com/AriPerkkio/aria-live-capture",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/AriPerkkio/aria-live-capture"
+    },
+    "scripts": {
+        "prebuild": "rimraf dist",
+        "build": "tsc --project tsconfig.prod.json",
+        "test": "jest"
+    },
+    "devDependencies": {
+        "@testing-library/dom": "^7.31.2",
+        "@testing-library/jest-dom": "^5.14.1",
+        "@types/jest": "^26.0.23",
+        "@typescript-eslint/eslint-plugin": "^4.27.0",
+        "@typescript-eslint/parser": "^4.27.0",
+        "eslint": "^7.29.0",
+        "eslint-config-prettier": "^8.3.0",
+        "eslint-plugin-jest-dom": "^3.9.0",
+        "eslint-plugin-prettier": "^3.4.0",
+        "eslint-plugin-testing-library": "^4.6.0",
+        "jest": "^27.0.4",
+        "prettier": "2.2.0",
+        "ts-jest": "^27.0.3",
+        "typescript": "^4.3.4"
+    },
+    "keywords": [
+        "aria",
+        "aria-live",
+        "accessibility",
+        "a11y"
+    ]
+}
