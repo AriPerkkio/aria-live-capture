@@ -3,6 +3,9 @@
     "version": "0.0.1",
     "description": "Capture announcements of ARIA-live regions",
     "main": "dist/index.js",
+    "files": [
+        "dist"
+    ],
     "author": "Ari Perkkio <ari.perkkio@gmail.com>",
     "license": "MIT",
     "homepage": "https://github.com/AriPerkkio/aria-live-capture",
@@ -14,6 +17,7 @@
     "scripts": {
         "prebuild": "rimraf dist",
         "build": "tsc --project tsconfig.prod.json",
+        "lint": "eslint . --max-warnings 0 --ext .js,.ts,.tsx",
         "test": "jest"
     },
     "devDependencies": {
