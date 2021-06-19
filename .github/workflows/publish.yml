@@ -19,6 +19,5 @@ jobs:
             - run: yarn test
             - run: yarn lint
             - run: npm publish
-              working-directory: ./dist
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
