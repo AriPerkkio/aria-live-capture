@@ -5,12 +5,7 @@
         "target": "es6",
         "declaration": true,
         "declarationMap": true,
-        "outDir": "dist",
-        "moduleResolution": "node",
-        "esModuleInterop": true,
-        "allowSyntheticDefaultImports": true,
-        "jsx": "react",
-        "baseUrl": "."
+        "outDir": "dist"
     },
     "include": ["src", "test"]
 }
