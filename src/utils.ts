@@ -59,9 +59,7 @@ function isPolitenessSetting(
  * Resolve politeness setting of given node
  * - Recursively traverse tree up until live region is found
  */
-export function resolvePolitenessSetting(
-    node: Node | null
-): 'polite' | 'assertive' | 'off' {
+export function resolvePolitenessSetting(node: Node | null): PolitenessSetting {
     if (!node || !isElement(node)) return 'off';
 
     const ariaLive = node.getAttribute('aria-live');

@@ -11,10 +11,13 @@ import {
 import { interceptMethod, interceptSetter, Restore } from './interceptors';
 
 interface Options {
+    /** Callback invoked when announcement is captured */
     onCapture: (
         textContent: string,
         politenessSetting: Exclude<PolitenessSetting, 'off'>
     ) => void;
+
+    /** Callback invoked when incorrectly used status message is captured */
     onIncorrectStatusMessage?: (textContent: string) => void;
 }
 
