@@ -322,4 +322,46 @@ describe('common', () => {
             'First message here Second message here'
         );
     });
+
+    test('onCapture should not report when textContent is empty', () => {
+        element.setAttribute('role', 'status');
+        appendToRoot(element);
+
+        element.textContent = ' ';
+        element.textContent = '    ';
+
+        // prettier-ignore
+        element.textContent = `
+                                
+                                
+                                
+        `;
+
+        expect(onCapture).not.toHaveBeenCalled();
+    });
+
+    test('onIncorrectStatusMessage should not report when textContent is empty', () => {
+        const element2 = document.createElement('div');
+        const element3 = document.createElement('div');
+
+        element.setAttribute('role', 'status');
+        element2.setAttribute('role', 'status');
+        element3.setAttribute('role', 'status');
+
+        element.textContent = ' ';
+        element2.textContent = '    ';
+
+        // prettier-ignore
+        element3.textContent = `
+                                
+                                
+                                
+        `;
+
+        appendToRoot(element);
+        appendToRoot(element2);
+        appendToRoot(element3);
+
+        expect(onIncorrectStatusMessage).not.toHaveBeenCalled();
+    });
 });
