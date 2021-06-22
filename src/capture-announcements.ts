@@ -33,7 +33,9 @@ export default function CaptureAnnouncements(options: Options): Restore {
     ) => {
         const content = trimWhiteSpace(textContent);
 
-        options.onCapture(content, politenessSetting);
+        if (content) {
+            options.onCapture(content, politenessSetting);
+        }
     };
 
     const onIncorrectStatusMessage: NonNullable<
@@ -42,7 +44,9 @@ export default function CaptureAnnouncements(options: Options): Restore {
         if (options.onIncorrectStatusMessage) {
             const content = trimWhiteSpace(textContent);
 
-            options.onIncorrectStatusMessage(content);
+            if (content) {
+                options.onIncorrectStatusMessage(content);
+            }
         }
     };
 
@@ -208,6 +212,7 @@ function onRemoveAttribute(
     }
 }
 
-function trimWhiteSpace(text: string) {
-    return text.trim().replace(WHITE_SPACE_REGEXP, ' ');
+function trimWhiteSpace(text: string): string | null {
+    const trimmed = text.trim().replace(WHITE_SPACE_REGEXP, ' ');
+    return trimmed.length > 0 ? trimmed : null;
 }
