@@ -26,12 +26,25 @@ const WHITE_SPACE_REGEXP = /\s+/g;
 // Map of live regions to previous textContent
 const liveRegions = new Map<Node, string | null>();
 
-export default function CaptureAnnouncements({
-    onCapture: __onCapture,
-    onIncorrectStatusMessage,
-}: Options): Restore {
-    const onCapture: typeof __onCapture = (textContent, politenessSetting) =>
-        __onCapture(trimWhiteSpace(textContent), politenessSetting);
+export default function CaptureAnnouncements(options: Options): Restore {
+    const onCapture: Options['onCapture'] = (
+        textContent,
+        politenessSetting
+    ) => {
+        const content = trimWhiteSpace(textContent);
+
+        options.onCapture(content, politenessSetting);
+    };
+
+    const onIncorrectStatusMessage: NonNullable<
+        Options['onIncorrectStatusMessage']
+    > = textContent => {
+        if (options.onIncorrectStatusMessage) {
+            const content = trimWhiteSpace(textContent);
+
+            options.onIncorrectStatusMessage(content);
+        }
+    };
 
     /**
      * Check whether given node should trigger announcement
@@ -74,13 +87,8 @@ export default function CaptureAnnouncements({
         if (liveRegion.textContent) {
             if (politenessSetting === 'assertive') {
                 onCapture(liveRegion.textContent, politenessSetting);
-            } else if (
-                politenessSetting === 'polite' &&
-                onIncorrectStatusMessage
-            ) {
-                onIncorrectStatusMessage(
-                    trimWhiteSpace(liveRegion.textContent)
-                );
+            } else if (politenessSetting === 'polite') {
+                onIncorrectStatusMessage(liveRegion.textContent);
             }
         }
     }
