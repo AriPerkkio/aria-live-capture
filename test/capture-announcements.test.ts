@@ -261,58 +261,65 @@ ASSERTIVE_CASES.forEach(({ name, value }) => {
     });
 });
 
-test('onCapture should trim white-space', () => {
+describe('common', () => {
+    let element: HTMLElement;
+    let cleanup: undefined | ReturnType<typeof CaptureAnnouncements>;
     const onCapture = jest.fn();
-    const cleaup = CaptureAnnouncements({ onCapture });
-
-    const parent = document.createElement('div');
-    parent.setAttribute('role', 'status');
-    appendToRoot(parent);
-
-    const first = document.createElement('div');
-    first.textContent = '    First   message here';
-    const second = document.createElement('div');
-    second.textContent = '    Second   message   here ';
-
-    const child = document.createElement('div');
-    child.appendChild(first);
-    child.appendChild(second);
-    parent.appendChild(child);
-
-    expect(onCapture).toHaveBeenCalledWith(
-        'First message here Second message here',
-        'polite'
-    );
-
-    cleaup();
-});
-
-test('onIncorrectStatusMessage should trim white-space', () => {
     const onIncorrectStatusMessage = jest.fn();
-    const cleaup = CaptureAnnouncements({
-        onCapture: jest.fn(),
-        onIncorrectStatusMessage,
+
+    afterEach(() => {
+        cleanup?.();
+        onCapture.mockReset();
+        onIncorrectStatusMessage.mockReset();
     });
 
-    const parent = document.createElement('div');
-    parent.setAttribute('role', 'status');
+    beforeEach(() => {
+        cleanup = CaptureAnnouncements({
+            onCapture,
+            onIncorrectStatusMessage,
+        });
 
-    const first = document.createElement('div');
-    first.textContent = '    First   message here';
-    const second = document.createElement('div');
-    second.textContent = '    Second   message   here ';
+        element = document.createElement('div');
+    });
 
-    const child = document.createElement('div');
-    child.appendChild(first);
-    child.appendChild(second);
-    parent.appendChild(child);
+    test('onCapture should trim white-space', () => {
+        element.setAttribute('role', 'status');
+        appendToRoot(element);
 
-    // Parent is mounted with role="status" and textContent
-    appendToRoot(parent);
+        const first = document.createElement('div');
+        first.textContent = '    First   message here';
+        const second = document.createElement('div');
+        second.textContent = '    Second   message   here ';
 
-    expect(onIncorrectStatusMessage).toHaveBeenCalledWith(
-        'First message here Second message here'
-    );
+        const child = document.createElement('div');
+        child.appendChild(first);
+        child.appendChild(second);
+        element.appendChild(child);
 
-    cleaup();
+        expect(onCapture).toHaveBeenCalledWith(
+            'First message here Second message here',
+            'polite'
+        );
+    });
+
+    test('onIncorrectStatusMessage should trim white-space', () => {
+        element.setAttribute('role', 'status');
+
+        const first = document.createElement('div');
+        first.textContent = '    First   message here';
+        const second = document.createElement('div');
+        second.textContent = '    Second   message   here ';
+
+        const child = document.createElement('div');
+        child.appendChild(first);
+        child.appendChild(second);
+        element.appendChild(child);
+
+        // Parent is mounted with role="status" and textContent
+        appendToRoot(element);
+
+        expect(onIncorrectStatusMessage).toHaveBeenCalledWith(
+            'First message here Second message here'
+        );
+    });
 });
