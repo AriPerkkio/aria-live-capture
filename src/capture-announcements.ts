@@ -1,6 +1,6 @@
 import {
     getClosestElement,
-    getParentLiveRegion,
+    getClosestLiveRegion,
     isElement,
     isInDOM,
     isLiveRegionAttribute,
@@ -60,14 +60,14 @@ export default function CaptureAnnouncements(options: Options): Restore {
         const element = getClosestElement(node);
         if (!element) return;
 
-        const parentLiveRegion = getParentLiveRegion(element);
+        const closestLiveRegion = getClosestLiveRegion(element);
 
-        if (parentLiveRegion) {
+        if (closestLiveRegion) {
             const politenessSetting = resolvePolitenessSetting(
-                parentLiveRegion
+                closestLiveRegion
             );
 
-            if (politenessSetting !== 'off' && isInDOM(parentLiveRegion)) {
+            if (politenessSetting !== 'off' && isInDOM(closestLiveRegion)) {
                 const previousText = liveRegions.get(node);
                 const newText = node.textContent || '';
 

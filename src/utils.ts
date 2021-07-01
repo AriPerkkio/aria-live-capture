@@ -45,8 +45,8 @@ export function isInDOM(node: Node): boolean {
     return isElement(node) && node.closest('html') != null;
 }
 
-export function getParentLiveRegion(element: Element): Element | null {
-    return element.closest(LIVE_REGION_QUERY);
+export function getClosestLiveRegion(element: Element | null): Element | null {
+    return element ? element.closest(LIVE_REGION_QUERY) : null;
 }
 
 function isPolitenessSetting(
@@ -75,5 +75,14 @@ export function resolvePolitenessSetting(node: Node | null): PolitenessSetting {
         return 'polite';
     }
 
-    return resolvePolitenessSetting(getParentLiveRegion(node));
+    const closestLiveRegion = getClosestLiveRegion(node);
+
+    // Element.closest may return itself. Find the closest parent.
+    if (closestLiveRegion === node) {
+        return resolvePolitenessSetting(
+            getClosestLiveRegion(node.parentElement)
+        );
+    }
+
+    return resolvePolitenessSetting(closestLiveRegion);
 }
