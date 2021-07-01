@@ -68,7 +68,7 @@ export function resolvePolitenessSetting(node: Node | null): PolitenessSetting {
     if (isPolitenessSetting(ariaLive)) return ariaLive;
 
     const role = node.getAttribute('role');
-    if (role === 'status') return 'polite';
+    if (role === 'status' || role === 'log') return 'polite';
     if (role === 'alert') return 'assertive';
 
     if (node.tagName.toLowerCase() === 'output') {
