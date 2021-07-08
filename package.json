@@ -18,7 +18,8 @@
         "prebuild": "rimraf dist",
         "build": "tsc --project tsconfig.prod.json",
         "lint": "eslint . --max-warnings 0 --ext .js,.ts,.tsx",
-        "test": "jest"
+        "test": "jest",
+        "validate": "yarn build && yarn lint && yarn test"
     },
     "devDependencies": {
         "@testing-library/dom": "^7.31.2",
