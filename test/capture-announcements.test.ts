@@ -254,10 +254,17 @@ ASSERTIVE_CASES.forEach(({ name, value }) => {
             expect(onCapture).toHaveBeenCalledWith('Hello world', 'assertive');
         });
 
-        // Missing: replaceChildren, jsdom#3102
-        test.todo(
-            'should announce when content is added with `replaceChildren`'
-        );
+        test('should announce when content is added with `replaceChildren`', () => {
+            const parent = document.createElement('div');
+            const child = document.createElement('div');
+            parent.appendChild(child);
+            appendToRoot(parent);
+
+            element.textContent = 'Hello world';
+            parent.replaceChild(element, child);
+
+            expect(onCapture).toHaveBeenCalledWith('Hello world', 'assertive');
+        });
     });
 });
 
