@@ -1,5 +1,8 @@
 export type Restore = () => void;
 
+/** Indicates whether interception should happen before or after the original method calling */
+type ExecutionOrder = 'BEFORE' | 'AFTER';
+
 /**
  * Intercept objects setters of property
  * - Original setter is invoked first
@@ -36,12 +39,17 @@ export function interceptSetter<
 
 /**
  * Intercept method calls of given object
- * - Original method is invoked first
+ * - Original method is invoked first by default
  */
 export function interceptMethod<
     T extends Object = Object,
     P extends keyof T = keyof T
->(object: T, methodName: P, method: (...args: any[]) => void): Restore {
+>(
+    object: T,
+    methodName: P,
+    method: (...args: any[]) => void,
+    order: ExecutionOrder = 'AFTER'
+): Restore {
     const original = (object[methodName] as unknown) as Function;
 
     if (typeof original !== 'function') {
@@ -57,8 +65,15 @@ export function interceptMethod<
     }
 
     function interceptedMethod(this: T, ...args: any) {
+        if (order === 'BEFORE') {
+            method.call(this, ...args);
+        }
+
         const output = original.call(this, ...args);
-        method.call(this, ...args);
+
+        if (order === 'AFTER') {
+            method.call(this, ...args);
+        }
 
         return output;
     }

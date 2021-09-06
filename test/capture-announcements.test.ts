@@ -447,4 +447,19 @@ describe('element tracking', () => {
         expect(liveRegions.size).toBe(0);
         expect(liveRegions.has(element)).toBe(false);
     });
+
+    test('element is not removed from tracked nodes when unexisting role or aria-live is removed', () => {
+        element.setAttribute('aria-live', 'polite');
+        appendToRoot(element);
+        element.textContent = 'Hello world';
+
+        expect(liveRegions.size).toBe(1);
+        expect(liveRegions.has(element)).toBe(true);
+
+        // Element has no role set. This should not remove it from tracked nodes.
+        element.removeAttribute('role');
+
+        expect(liveRegions.size).toBe(1);
+        expect(liveRegions.has(element)).toBe(true);
+    });
 });
