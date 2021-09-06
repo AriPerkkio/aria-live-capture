@@ -179,7 +179,7 @@ export default function CaptureAnnouncements(options: Options): Restore {
     // prettier-ignore
     const cleanups: Restore[] = [
         interceptMethod(Element.prototype, 'setAttribute', onSetAttribute),
-        interceptMethod(Element.prototype, 'removeAttribute', onRemoveAttribute),
+        interceptMethod(Element.prototype, 'removeChild', onRemoveChild),
         interceptMethod(Element.prototype, 'insertAdjacentElement', onInsertAdjacent),
         interceptMethod(Element.prototype, 'insertAdjacentHTML', onInsertAdjacent),
         interceptMethod(Element.prototype, 'insertAdjacentText', onInsertAdjacent),
@@ -209,6 +209,25 @@ function onRemoveAttribute(
 
     if (liveRegions.has(this)) {
         liveRegions.delete(this);
+    }
+}
+
+function onRemoveChild(
+    this: Element,
+    ...args: Parameters<Element['removeChild']>
+) {
+    if (args[0] == null || !isElement(args[0])) return;
+
+    const elementAndItsLiveRegionChildren = [
+        args[0],
+        ...args[0].querySelectorAll(LIVE_REGION_QUERY),
+    ];
+
+    // Check whether removed element or any of its children were tracked
+    for (const element of elementAndItsLiveRegionChildren) {
+        if (liveRegions.has(element)) {
+            liveRegions.delete(element);
+        }
     }
 }
 

@@ -416,4 +416,35 @@ describe('element tracking', () => {
         expect(liveRegions.size).toBe(0);
         expect(liveRegions.has(element)).toBe(false);
     });
+
+    test('element is removed from tracked elements when unmounted', () => {
+        element.setAttribute('role', 'status');
+        appendToRoot(element);
+        element.textContent = 'Hello world';
+
+        expect(liveRegions.size).toBe(1);
+        expect(liveRegions.has(element)).toBe(true);
+
+        element.parentElement!.removeChild(element);
+
+        expect(liveRegions.size).toBe(0);
+        expect(liveRegions.has(element)).toBe(false);
+    });
+
+    test('element is removed from tracked elements when ancestor is unmounted', () => {
+        const child = document.createElement('div');
+        child.setAttribute('role', 'status');
+        element.appendChild(child);
+
+        appendToRoot(element);
+        child.textContent = 'Hello world';
+
+        expect(liveRegions.size).toBe(1);
+        expect(liveRegions.has(child)).toBe(true);
+
+        element.parentElement!.removeChild(element);
+
+        expect(liveRegions.size).toBe(0);
+        expect(liveRegions.has(element)).toBe(false);
+    });
 });
