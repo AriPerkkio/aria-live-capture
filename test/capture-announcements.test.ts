@@ -1,5 +1,8 @@
 import CaptureAnnouncements from '../src';
+import { __PrivateUnstableAPI } from '../src/capture-announcements';
 import { appendToRoot, POLITE_CASES, ASSERTIVE_CASES } from './utils';
+
+const { liveRegions } = __PrivateUnstableAPI;
 
 POLITE_CASES.forEach(({ name, value, tag }) => {
     const testName = name && value ? `[${name}="${value}"]` : `<${tag}>`;
@@ -370,5 +373,47 @@ describe('common', () => {
         appendToRoot(element3);
 
         expect(onIncorrectStatusMessage).not.toHaveBeenCalled();
+    });
+});
+
+describe('element tracking', () => {
+    let element: HTMLElement;
+    let cleanup: undefined | ReturnType<typeof CaptureAnnouncements>;
+
+    afterEach(() => {
+        cleanup?.();
+    });
+
+    beforeEach(() => {
+        cleanup = CaptureAnnouncements({ onCapture: jest.fn() });
+        element = document.createElement('div');
+    });
+
+    test('element is removed from tracked elements when aria-live is removed', () => {
+        element.setAttribute('aria-live', 'polite');
+        appendToRoot(element);
+        element.textContent = 'Hello world';
+
+        expect(liveRegions.size).toBe(1);
+        expect(liveRegions.has(element)).toBe(true);
+
+        element.removeAttribute('aria-live');
+
+        expect(liveRegions.size).toBe(0);
+        expect(liveRegions.has(element)).toBe(false);
+    });
+
+    test('element is removed from tracked elements when role is removed', () => {
+        element.setAttribute('role', 'status');
+        appendToRoot(element);
+        element.textContent = 'Hello world';
+
+        expect(liveRegions.size).toBe(1);
+        expect(liveRegions.has(element)).toBe(true);
+
+        element.removeAttribute('role');
+
+        expect(liveRegions.size).toBe(0);
+        expect(liveRegions.has(element)).toBe(false);
     });
 });

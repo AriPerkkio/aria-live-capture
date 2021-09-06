@@ -216,3 +216,8 @@ function trimWhiteSpace(text: string): string | null {
     const trimmed = text.trim().replace(WHITE_SPACE_REGEXP, ' ');
     return trimmed.length > 0 ? trimmed : null;
 }
+
+/** Not part of public API, do not use */
+export const __PrivateUnstableAPI = {
+    liveRegions,
+};
