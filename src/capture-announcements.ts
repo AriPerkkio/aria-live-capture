@@ -179,6 +179,7 @@ export default function CaptureAnnouncements(options: Options): Restore {
     // prettier-ignore
     const cleanups: Restore[] = [
         interceptMethod(Element.prototype, 'setAttribute', onSetAttribute),
+        interceptMethod(Element.prototype, 'removeAttribute', onRemoveAttribute, 'BEFORE'),
         interceptMethod(Element.prototype, 'removeChild', onRemoveChild),
         interceptMethod(Element.prototype, 'insertAdjacentElement', onInsertAdjacent),
         interceptMethod(Element.prototype, 'insertAdjacentHTML', onInsertAdjacent),
@@ -205,7 +206,12 @@ function onRemoveAttribute(
     ...args: Parameters<Element['removeAttribute']>
 ) {
     if (!isElement(this)) return;
+
+    // We are only interested in role and aria-live removals
     if (args[0] !== 'role' && args[0] !== 'aria-live') return;
+
+    // Element must have the attribute about to be removed
+    if (!this.hasAttribute(args[0])) return;
 
     if (liveRegions.has(this)) {
         liveRegions.delete(this);
