@@ -16,6 +16,8 @@ export const LIVE_REGION_QUERY = [
     // '[role="timer"]',
 ].join(', ');
 
+const HIDDEN_QUERY = '[aria-hidden="true"]';
+
 export function isElement(node: Node | null): node is Element {
     return node != null && node.nodeType === Node.ELEMENT_NODE;
 }
@@ -43,6 +45,19 @@ export function isLiveRegionAttribute(
 
 export function isInDOM(node: Node): boolean {
     return isElement(node) && node.closest('html') != null;
+}
+
+export function isHidden(node: Node): boolean {
+    if (!isElement(node)) return true;
+
+    if (
+        node.hasAttribute('aria-hidden') &&
+        node.getAttribute('aria-hidden') === 'true'
+    ) {
+        return true;
+    }
+
+    return node.closest(HIDDEN_QUERY) != null;
 }
 
 export function getClosestLiveRegion(element: Element | null): Element | null {

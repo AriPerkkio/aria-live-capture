@@ -292,6 +292,32 @@ describe('common', () => {
         element = document.createElement('div');
     });
 
+    test('onCapture should ignore elements with aria-hidden', () => {
+        element.setAttribute('role', 'status');
+        appendToRoot(element);
+
+        // Element with aria-hidden and text content
+        const immediateChild = document.createElement('div');
+        immediateChild.setAttribute('aria-hidden', 'true');
+        immediateChild.textContent = 'Hello world #1';
+
+        element.appendChild(immediateChild);
+
+        expect(onCapture).not.toHaveBeenCalled();
+
+        // Container with aria-hidden, children have text content
+        const container = document.createElement('div');
+        container.setAttribute('aria-hidden', 'true');
+
+        const deeplyNestedChild = document.createElement('div');
+        deeplyNestedChild.textContent = 'Hello world #2';
+        container.appendChild(deeplyNestedChild);
+
+        element.appendChild(container);
+
+        expect(onCapture).not.toHaveBeenCalled();
+    });
+
     test('onCapture should trim white-space', () => {
         element.setAttribute('role', 'status');
         appendToRoot(element);

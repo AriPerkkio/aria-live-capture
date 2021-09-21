@@ -2,6 +2,7 @@ import {
     getClosestElement,
     getClosestLiveRegion,
     isElement,
+    isHidden,
     isInDOM,
     isLiveRegionAttribute,
     LIVE_REGION_QUERY,
@@ -59,6 +60,7 @@ export default function CaptureAnnouncements(options: Options): Restore {
     function updateAnnouncements(node: Node) {
         const element = getClosestElement(node);
         if (!element) return;
+        if (isHidden(element)) return;
 
         const closestLiveRegion = getClosestLiveRegion(element);
 
