@@ -4,270 +4,259 @@ import { appendToRoot, POLITE_CASES, ASSERTIVE_CASES } from './utils';
 
 const { liveRegions } = __PrivateUnstableAPI;
 
-POLITE_CASES.forEach(({ name, value, tag }) => {
-    const testName = name && value ? `[${name}="${value}"]` : `<${tag}>`;
+describe.each(POLITE_CASES)('$testName', ({ name, value, tag }) => {
+    let element: HTMLElement;
+    let cleanup: undefined | ReturnType<typeof CaptureAnnouncements>;
+    const onCapture = jest.fn();
+    const onIncorrectStatusMessage = jest.fn();
 
-    describe(testName, () => {
-        let element: HTMLElement;
-        let cleanup: undefined | ReturnType<typeof CaptureAnnouncements>;
-        const onCapture = jest.fn();
-        const onIncorrectStatusMessage = jest.fn();
+    afterEach(() => {
+        cleanup?.();
+        onCapture.mockReset();
+        onIncorrectStatusMessage.mockReset();
+    });
 
-        afterEach(() => {
-            cleanup?.();
-            onCapture.mockReset();
-            onIncorrectStatusMessage.mockReset();
+    beforeEach(() => {
+        cleanup = CaptureAnnouncements({
+            onCapture,
+            onIncorrectStatusMessage,
         });
 
-        beforeEach(() => {
-            cleanup = CaptureAnnouncements({
-                onCapture,
-                onIncorrectStatusMessage,
-            });
+        const container = document.createElement(tag || 'div');
+        if (name && value) {
+            container.setAttribute(name, value);
+        }
 
-            const container = document.createElement(tag || 'div');
-            if (name && value) {
-                container.setAttribute(name, value);
-            }
+        element = container;
+    });
 
-            element = container;
-        });
+    test('should not announce when initially rendered with content', () => {
+        element.textContent = 'Hello world';
+        appendToRoot(element);
 
-        test('should not announce when initially rendered with content', () => {
-            element.textContent = 'Hello world';
-            appendToRoot(element);
+        expect(onCapture).not.toHaveBeenCalled();
+        expect(onIncorrectStatusMessage).toHaveBeenCalledWith('Hello world');
+    });
 
-            expect(onCapture).not.toHaveBeenCalled();
-            expect(onIncorrectStatusMessage).toHaveBeenCalledWith(
-                'Hello world'
-            );
-        });
+    test('should announce when dynamically rendered into container', () => {
+        appendToRoot(element);
 
-        test('should announce when dynamically rendered into container', () => {
-            appendToRoot(element);
+        element.textContent = 'Hello world';
 
-            element.textContent = 'Hello world';
+        expect(onCapture).toHaveBeenCalledWith('Hello world', 'polite');
+    });
 
-            expect(onCapture).toHaveBeenCalledWith('Hello world', 'polite');
-        });
+    test('should announce when content changes', () => {
+        appendToRoot(element);
 
-        test('should announce when content changes', () => {
-            appendToRoot(element);
+        element.textContent = 'First';
+        element.textContent = 'Second';
 
-            element.textContent = 'First';
-            element.textContent = 'Second';
+        expect(onCapture).toHaveBeenCalledWith('First', 'polite');
+        expect(onCapture).toHaveBeenCalledWith('Second', 'polite');
+    });
 
-            expect(onCapture).toHaveBeenCalledWith('First', 'polite');
-            expect(onCapture).toHaveBeenCalledWith('Second', 'polite');
-        });
+    test('should not announce when role is set after render', () => {
+        const container = document.createElement(tag || 'div');
+        container.textContent = 'Hello world';
+        appendToRoot(container);
 
-        test('should not announce when role is set after render', () => {
-            const container = document.createElement(tag || 'div');
-            container.textContent = 'Hello world';
-            appendToRoot(container);
+        if (name && value) {
+            container.setAttribute(name, value);
+        }
 
-            if (name && value) {
-                container.setAttribute(name, value);
-            }
+        expect(onCapture).not.toHaveBeenCalled();
+    });
 
-            expect(onCapture).not.toHaveBeenCalled();
-        });
+    test('should announce when role is set after render and content is updated', () => {
+        const container = document.createElement(tag || 'div');
+        container.textContent = 'First';
+        appendToRoot(container);
 
-        test('should announce when role is set after render and content is updated', () => {
-            const container = document.createElement(tag || 'div');
-            container.textContent = 'First';
-            appendToRoot(container);
+        if (name && value) {
+            container.setAttribute(name, value);
+        }
+        container.textContent = 'Second';
 
-            if (name && value) {
-                container.setAttribute(name, value);
-            }
-            container.textContent = 'Second';
+        expect(onCapture).not.toHaveBeenCalledWith('First', expect.anything());
+        expect(onCapture).toHaveBeenCalledWith('Second', 'polite');
+    });
 
-            expect(onCapture).not.toHaveBeenCalledWith(
-                'First',
-                expect.anything()
-            );
-            expect(onCapture).toHaveBeenCalledWith('Second', 'polite');
-        });
+    test('should announce when text node is appended into existing container', () => {
+        appendToRoot(element);
 
-        test('should announce when text node is appended into existing container', () => {
-            appendToRoot(element);
+        element.appendChild(document.createTextNode('Hello world'));
 
-            element.appendChild(document.createTextNode('Hello world'));
-
-            expect(onCapture).toHaveBeenCalledWith('Hello world', 'polite');
-        });
+        expect(onCapture).toHaveBeenCalledWith('Hello world', 'polite');
     });
 });
 
-ASSERTIVE_CASES.forEach(({ name, value }) => {
-    describe(`[${name}="${value}"]`, () => {
-        let element: HTMLElement;
-        let cleanup: undefined | ReturnType<typeof CaptureAnnouncements>;
-        const onCapture = jest.fn();
+describe.each(ASSERTIVE_CASES)('$testName', ({ name, value }) => {
+    let element: HTMLElement;
+    let cleanup: undefined | ReturnType<typeof CaptureAnnouncements>;
+    const onCapture = jest.fn();
 
-        afterEach(() => {
-            cleanup?.();
-            onCapture.mockReset();
-        });
+    afterEach(() => {
+        cleanup?.();
+        onCapture.mockReset();
+    });
 
-        beforeEach(() => {
-            cleanup = CaptureAnnouncements({ onCapture });
+    beforeEach(() => {
+        cleanup = CaptureAnnouncements({ onCapture });
 
-            const container = document.createElement('div');
-            if (name && value) {
-                container.setAttribute(name, value);
-            }
+        const container = document.createElement('div');
+        if (name && value) {
+            container.setAttribute(name, value);
+        }
 
-            element = container;
-        });
+        element = container;
+    });
 
-        test('should announce when dynamically rendered with initially content', () => {
-            element.textContent = 'Hello world';
-            appendToRoot(element);
+    test('should announce when dynamically rendered with initially content', () => {
+        element.textContent = 'Hello world';
+        appendToRoot(element);
 
-            expect(onCapture).toHaveBeenCalledWith('Hello world', 'assertive');
-        });
+        expect(onCapture).toHaveBeenCalledWith('Hello world', 'assertive');
+    });
 
-        test('should announce when dynamically rendered into container', () => {
-            appendToRoot(element);
-            element.textContent = 'Hello world';
+    test('should announce when dynamically rendered into container', () => {
+        appendToRoot(element);
+        element.textContent = 'Hello world';
 
-            expect(onCapture).toHaveBeenCalledWith('Hello world', 'assertive');
-        });
+        expect(onCapture).toHaveBeenCalledWith('Hello world', 'assertive');
+    });
 
-        test('should announce when content changes', () => {
-            appendToRoot(element);
-            element.textContent = 'Message #1';
-            element.textContent = 'Message #2';
+    test('should announce when content changes', () => {
+        appendToRoot(element);
+        element.textContent = 'Message #1';
+        element.textContent = 'Message #2';
 
-            expect(onCapture).toHaveBeenCalledWith('Message #1', 'assertive');
-            expect(onCapture).toHaveBeenCalledWith('Message #2', 'assertive');
-        });
+        expect(onCapture).toHaveBeenCalledWith('Message #1', 'assertive');
+        expect(onCapture).toHaveBeenCalledWith('Message #2', 'assertive');
+    });
 
-        test('should announce when role is set after render', () => {
-            const container = document.createElement('div');
-            container.textContent = 'Hello world';
-            appendToRoot(container);
+    test('should announce when role is set after render', () => {
+        const container = document.createElement('div');
+        container.textContent = 'Hello world';
+        appendToRoot(container);
 
-            if (name && value) {
-                container.setAttribute(name, value);
-            }
+        if (name && value) {
+            container.setAttribute(name, value);
+        }
 
-            expect(onCapture).toHaveBeenCalledWith('Hello world', 'assertive');
-        });
+        expect(onCapture).toHaveBeenCalledWith('Hello world', 'assertive');
+    });
 
-        test('should announce when role is set after render and content is updated', () => {
-            const container = document.createElement('div');
-            container.textContent = 'First';
-            appendToRoot(container);
+    test('should announce when role is set after render and content is updated', () => {
+        const container = document.createElement('div');
+        container.textContent = 'First';
+        appendToRoot(container);
 
-            if (name && value) {
-                container.setAttribute(name, value);
-            }
-            container.textContent = 'Second';
+        if (name && value) {
+            container.setAttribute(name, value);
+        }
+        container.textContent = 'Second';
 
-            expect(onCapture).toHaveBeenCalledWith('First', 'assertive');
-            expect(onCapture).toHaveBeenCalledWith('Second', 'assertive');
-        });
+        expect(onCapture).toHaveBeenCalledWith('First', 'assertive');
+        expect(onCapture).toHaveBeenCalledWith('Second', 'assertive');
+    });
 
-        test('should announce when content is added with `insertBefore`', async () => {
-            const parent = document.createElement('div');
-            const sibling = document.createElement('div');
-            parent.appendChild(sibling);
-            appendToRoot(parent);
+    test('should announce when content is added with `insertBefore`', async () => {
+        const parent = document.createElement('div');
+        const sibling = document.createElement('div');
+        parent.appendChild(sibling);
+        appendToRoot(parent);
 
-            element.textContent = 'Hello world';
-            parent.insertBefore(element, sibling);
+        element.textContent = 'Hello world';
+        parent.insertBefore(element, sibling);
 
-            expect(onCapture).toHaveBeenCalledWith('Hello world', 'assertive');
-        });
+        expect(onCapture).toHaveBeenCalledWith('Hello world', 'assertive');
+    });
 
-        test('should announce when content is added with `replaceChild`', async () => {
-            const parent = document.createElement('div');
-            const oldChild = document.createElement('div');
-            parent.appendChild(oldChild);
-            appendToRoot(parent);
+    test('should announce when content is added with `replaceChild`', async () => {
+        const parent = document.createElement('div');
+        const oldChild = document.createElement('div');
+        parent.appendChild(oldChild);
+        appendToRoot(parent);
 
-            element.textContent = 'Hello world';
-            parent.replaceChild(element, oldChild);
+        element.textContent = 'Hello world';
+        parent.replaceChild(element, oldChild);
 
-            expect(onCapture).toHaveBeenCalledWith('Hello world', 'assertive');
-        });
+        expect(onCapture).toHaveBeenCalledWith('Hello world', 'assertive');
+    });
 
-        test('should announce when content is added with `insertAdjacentElement`', async () => {
-            const parent = document.createElement('div');
-            const sibling = document.createElement('div');
-            parent.appendChild(sibling);
-            appendToRoot(parent);
+    test('should announce when content is added with `insertAdjacentElement`', async () => {
+        const parent = document.createElement('div');
+        const sibling = document.createElement('div');
+        parent.appendChild(sibling);
+        appendToRoot(parent);
 
-            element.textContent = 'Hello world';
-            sibling.insertAdjacentElement('afterbegin', element);
+        element.textContent = 'Hello world';
+        sibling.insertAdjacentElement('afterbegin', element);
 
-            expect(onCapture).toHaveBeenCalledWith('Hello world', 'assertive');
-        });
+        expect(onCapture).toHaveBeenCalledWith('Hello world', 'assertive');
+    });
 
-        test('should announce when content is added with `insertAdjacentText`', async () => {
-            const child = document.createElement('div');
-            element.appendChild(child);
-            appendToRoot(element);
+    test('should announce when content is added with `insertAdjacentText`', async () => {
+        const child = document.createElement('div');
+        element.appendChild(child);
+        appendToRoot(element);
 
-            child.insertAdjacentText('beforebegin', 'Hello world');
+        child.insertAdjacentText('beforebegin', 'Hello world');
 
-            expect(onCapture).toHaveBeenCalledWith('Hello world', 'assertive');
-        });
+        expect(onCapture).toHaveBeenCalledWith('Hello world', 'assertive');
+    });
 
-        test('should announce when content is added with `insertAdjacentHTML`', async () => {
-            const child = document.createElement('div');
-            element.appendChild(child);
-            appendToRoot(element);
+    test('should announce when content is added with `insertAdjacentHTML`', async () => {
+        const child = document.createElement('div');
+        element.appendChild(child);
+        appendToRoot(element);
 
-            child.insertAdjacentHTML('beforebegin', '<div>Hello world</div>');
+        child.insertAdjacentHTML('beforebegin', '<div>Hello world</div>');
 
-            expect(onCapture).toHaveBeenCalledWith('Hello world', 'assertive');
-        });
+        expect(onCapture).toHaveBeenCalledWith('Hello world', 'assertive');
+    });
 
-        test('should announce when content is added with `before`', async () => {
-            const sibling = document.createElement('div');
-            appendToRoot(sibling);
+    test('should announce when content is added with `before`', async () => {
+        const sibling = document.createElement('div');
+        appendToRoot(sibling);
 
-            element.textContent = 'Hello world';
-            sibling.before(element);
+        element.textContent = 'Hello world';
+        sibling.before(element);
 
-            expect(onCapture).toHaveBeenCalledWith('Hello world', 'assertive');
-        });
+        expect(onCapture).toHaveBeenCalledWith('Hello world', 'assertive');
+    });
 
-        test('should announce when content is added with `append`', async () => {
-            const parent = document.createElement('div');
-            appendToRoot(parent);
+    test('should announce when content is added with `append`', async () => {
+        const parent = document.createElement('div');
+        appendToRoot(parent);
 
-            element.textContent = 'Hello world';
-            parent.append(element);
+        element.textContent = 'Hello world';
+        parent.append(element);
 
-            expect(onCapture).toHaveBeenCalledWith('Hello world', 'assertive');
-        });
+        expect(onCapture).toHaveBeenCalledWith('Hello world', 'assertive');
+    });
 
-        test('should announce when content is added with `prepend`', async () => {
-            const parent = document.createElement('div');
-            appendToRoot(parent);
+    test('should announce when content is added with `prepend`', async () => {
+        const parent = document.createElement('div');
+        appendToRoot(parent);
 
-            element.textContent = 'Hello world';
-            parent.prepend(element);
+        element.textContent = 'Hello world';
+        parent.prepend(element);
 
-            expect(onCapture).toHaveBeenCalledWith('Hello world', 'assertive');
-        });
+        expect(onCapture).toHaveBeenCalledWith('Hello world', 'assertive');
+    });
 
-        test('should announce when content is added with `replaceChildren`', () => {
-            const parent = document.createElement('div');
-            const child = document.createElement('div');
-            parent.appendChild(child);
-            appendToRoot(parent);
+    test('should announce when content is added with `replaceChildren`', () => {
+        const parent = document.createElement('div');
+        const child = document.createElement('div');
+        parent.appendChild(child);
+        appendToRoot(parent);
 
-            element.textContent = 'Hello world';
-            parent.replaceChild(element, child);
+        element.textContent = 'Hello world';
+        parent.replaceChild(element, child);
 
-            expect(onCapture).toHaveBeenCalledWith('Hello world', 'assertive');
-        });
+        expect(onCapture).toHaveBeenCalledWith('Hello world', 'assertive');
     });
 });
 
@@ -366,11 +355,10 @@ describe('common', () => {
         element.textContent = ' ';
         element.textContent = '    ';
 
-        // prettier-ignore
         element.textContent = `
-                                
-                                
-                                
+${' '.repeat(32)}
+${' '.repeat(32)}
+${' '.repeat(32)}
         `;
 
         expect(onCapture).not.toHaveBeenCalled();
@@ -387,11 +375,10 @@ describe('common', () => {
         element.textContent = ' ';
         element2.textContent = '    ';
 
-        // prettier-ignore
         element3.textContent = `
-                                
-                                
-                                
+${' '.repeat(32)}
+${' '.repeat(32)}
+${' '.repeat(32)}
         `;
 
         appendToRoot(element);
