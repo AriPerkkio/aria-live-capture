@@ -89,6 +89,63 @@ describe.each(POLITE_CASES)('$testName', ({ name, value, tag }) => {
 
         expect(onCapture).toHaveBeenCalledWith('Hello world', 'polite');
     });
+
+    test('should not announce when live container is hidden', () => {
+        element.setAttribute('aria-hidden', 'true');
+        appendToRoot(element);
+
+        element.textContent = 'Hello world';
+
+        expect(onCapture).not.toHaveBeenCalled();
+    });
+
+    test('should not announce when content is hidden', () => {
+        appendToRoot(element);
+
+        const child = document.createElement('div');
+        child.textContent = 'Hello world';
+        child.setAttribute('aria-hidden', 'true');
+
+        element.appendChild(child);
+
+        expect(onCapture).not.toHaveBeenCalled();
+    });
+
+    test('should announce when hidden content appears by removeAttribute', () => {
+        appendToRoot(element);
+
+        const child = document.createElement('div');
+        child.textContent = 'Hello world';
+        child.setAttribute('aria-hidden', 'true');
+        element.appendChild(child);
+
+        child.removeAttribute('aria-hidden');
+
+        expect(onCapture).toHaveBeenCalledWith('Hello world', 'polite');
+    });
+
+    test('should announce when hidden content appears by setAttribute', () => {
+        appendToRoot(element);
+
+        const child = document.createElement('div');
+        child.textContent = 'Hello world';
+        child.setAttribute('aria-hidden', 'true');
+        element.appendChild(child);
+
+        child.setAttribute('aria-hidden', 'false');
+
+        expect(onCapture).toHaveBeenCalledWith('Hello world', 'polite');
+    });
+
+    test('should not announce when hidden live container appears', () => {
+        element.setAttribute('aria-hidden', 'true');
+        appendToRoot(element);
+
+        element.textContent = 'Hello world';
+        element.removeAttribute('aria-hidden');
+
+        expect(onCapture).not.toHaveBeenCalled();
+    });
 });
 
 describe.each(ASSERTIVE_CASES)('$testName', ({ name, value }) => {
@@ -255,6 +312,60 @@ describe.each(ASSERTIVE_CASES)('$testName', ({ name, value }) => {
 
         element.textContent = 'Hello world';
         parent.replaceChild(element, child);
+    });
+
+    test('should not announce when live region is hidden', () => {
+        element.setAttribute('aria-hidden', 'true');
+        element.textContent = 'Hello world';
+        appendToRoot(element);
+
+        expect(onCapture).not.toHaveBeenCalled();
+    });
+
+    test('should not announce when content is hidden', () => {
+        appendToRoot(element);
+
+        const child = document.createElement('div');
+        child.setAttribute('aria-hidden', 'true');
+        child.textContent = 'Hello world';
+
+        element.appendChild(child);
+
+        expect(onCapture).not.toHaveBeenCalled();
+    });
+
+    test('should announce when hidden live region appears', () => {
+        element.setAttribute('aria-hidden', 'true');
+        element.textContent = 'Hello world';
+        appendToRoot(element);
+
+        element.removeAttribute('aria-hidden');
+
+        expect(onCapture).toHaveBeenCalledWith('Hello world', 'assertive');
+    });
+
+    test('should announce when hidden content appears by removeAttribute', () => {
+        appendToRoot(element);
+
+        const child = document.createElement('div');
+        child.textContent = 'Hello world';
+        child.setAttribute('aria-hidden', 'true');
+        element.appendChild(child);
+
+        child.removeAttribute('aria-hidden');
+
+        expect(onCapture).toHaveBeenCalledWith('Hello world', 'assertive');
+    });
+
+    test('should announce when hidden content appears by setAttribute', () => {
+        appendToRoot(element);
+
+        const child = document.createElement('div');
+        child.textContent = 'Hello world';
+        child.setAttribute('aria-hidden', 'true');
+        element.appendChild(child);
+
+        child.setAttribute('aria-hidden', 'false');
 
         expect(onCapture).toHaveBeenCalledWith('Hello world', 'assertive');
     });
@@ -279,32 +390,6 @@ describe('common', () => {
         });
 
         element = document.createElement('div');
-    });
-
-    test('onCapture should ignore elements with aria-hidden', () => {
-        element.setAttribute('role', 'status');
-        appendToRoot(element);
-
-        // Element with aria-hidden and text content
-        const immediateChild = document.createElement('div');
-        immediateChild.setAttribute('aria-hidden', 'true');
-        immediateChild.textContent = 'Hello world #1';
-
-        element.appendChild(immediateChild);
-
-        expect(onCapture).not.toHaveBeenCalled();
-
-        // Container with aria-hidden, children have text content
-        const container = document.createElement('div');
-        container.setAttribute('aria-hidden', 'true');
-
-        const deeplyNestedChild = document.createElement('div');
-        deeplyNestedChild.textContent = 'Hello world #2';
-        container.appendChild(deeplyNestedChild);
-
-        element.appendChild(container);
-
-        expect(onCapture).not.toHaveBeenCalled();
     });
 
     test('onCapture should trim white-space', () => {
@@ -386,6 +471,41 @@ ${' '.repeat(32)}
         appendToRoot(element3);
 
         expect(onIncorrectStatusMessage).not.toHaveBeenCalled();
+    });
+
+    test('onIncorrectStatusMessage should ignore hidden live region', () => {
+        element.setAttribute('role', 'status');
+        element.setAttribute('aria-hidden', 'true');
+        element.textContent = 'Hello world';
+
+        // Hidden live region with textContent mounts
+        appendToRoot(element);
+
+        expect(onIncorrectStatusMessage).not.toHaveBeenCalled();
+    });
+
+    test('onIncorrectStatusMessage should ignore hidden content', () => {
+        element.setAttribute('role', 'status');
+
+        const child = document.createElement('div');
+        child.setAttribute('aria-hidden', 'true');
+        child.textContent = 'Hello world';
+
+        // Visible live region with hidden children mounts
+        element.appendChild(child);
+
+        expect(onIncorrectStatusMessage).not.toHaveBeenCalled();
+    });
+
+    test('onIncorrectStatusMessage should report when live region appears with initial text content', () => {
+        element.setAttribute('role', 'status');
+        element.setAttribute('aria-hidden', 'true');
+        element.textContent = 'Hello world';
+        appendToRoot(element);
+
+        element.removeAttribute('aria-hidden');
+
+        expect(onIncorrectStatusMessage).toHaveBeenCalledWith('Hello world');
     });
 });
 
@@ -471,6 +591,33 @@ describe('element tracking', () => {
 
         // Element has no role set. This should not remove it from tracked nodes.
         element.removeAttribute('role');
+
+        expect(liveRegions.size).toBe(1);
+        expect(liveRegions.has(element)).toBe(true);
+    });
+
+    test.todo(
+        'element is not removed from tracked nodes when if both role and aria-live exist and one is removed'
+    );
+
+    test('hidden elements are not tracked', () => {
+        element.setAttribute('aria-live', 'polite');
+        element.setAttribute('aria-hidden', 'true');
+        appendToRoot(element);
+
+        expect(liveRegions.size).toBe(0);
+        expect(liveRegions.has(element)).toBe(false);
+    });
+
+    test('existing element is tracked once it becomes visibile', () => {
+        element.setAttribute('aria-live', 'polite');
+        element.setAttribute('aria-hidden', 'true');
+        appendToRoot(element);
+
+        expect(liveRegions.size).toBe(0);
+        expect(liveRegions.has(element)).toBe(false);
+
+        element.removeAttribute('aria-hidden');
 
         expect(liveRegions.size).toBe(1);
         expect(liveRegions.has(element)).toBe(true);

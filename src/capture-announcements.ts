@@ -83,6 +83,7 @@ export default function CaptureAnnouncements(options: Options): Restore {
 
     function addLiveRegion(liveRegion: Element) {
         if (liveRegions.has(liveRegion)) return;
+        if (isHidden(liveRegion)) return;
 
         const politenessSetting = resolvePolitenessSetting(liveRegion);
         if (politenessSetting === 'off') return;
@@ -151,37 +152,71 @@ export default function CaptureAnnouncements(options: Options): Restore {
     ): void {
         if (!isElement(this)) return;
         if (!isInDOM(this)) return;
-        if (args[0] !== 'role' && args[0] !== 'aria-live') return;
+        if (!args[0]) return;
 
-        const isAlreadyTracked = liveRegions.has(this);
-        const liveRegionAttribute = isLiveRegionAttribute(args[1]);
+        const [attribute] = args;
 
-        // Attribute value was changed from live region attribute to something else.
-        // Stop tracking this element.
-        if (isAlreadyTracked && !liveRegionAttribute) {
-            liveRegions.delete(this);
-            return;
+        switch (attribute) {
+            case 'role':
+            case 'aria-live': {
+                const isAlreadyTracked = liveRegions.has(this);
+                const liveRegionAttribute = isLiveRegionAttribute(args[1]);
+
+                // Attribute value was changed from live region attribute to something else.
+                // Stop tracking this element.
+                if (isAlreadyTracked && !liveRegionAttribute) {
+                    liveRegions.delete(this);
+                    return;
+                }
+
+                // Previous value was not live region attribute value
+                if (!isAlreadyTracked && liveRegionAttribute) {
+                    return updateLiveRegions();
+                }
+
+                // Value was changed to assertive - announce content immediately
+                if (
+                    isAlreadyTracked &&
+                    liveRegionAttribute &&
+                    resolvePolitenessSetting(this) === 'assertive'
+                ) {
+                    return updateAnnouncements(this);
+                }
+                break;
+            }
+
+            case 'aria-hidden': {
+                updateLiveRegions();
+                return updateAnnouncements(this);
+            }
+
+            default:
+                return;
         }
+    }
 
-        // Previous value was not live region attribute value
-        if (!isAlreadyTracked && liveRegionAttribute) {
-            return updateLiveRegions();
-        }
+    function onRemoveAttributeAfter(
+        this: Element,
+        ...args: Parameters<Element['removeAttribute']>
+    ) {
+        if (!isElement(this)) return;
 
-        // Value was changed to assertive - announce content immediately
-        if (
-            isAlreadyTracked &&
-            liveRegionAttribute &&
-            resolvePolitenessSetting(this) === 'assertive'
-        ) {
-            return updateAnnouncements(this);
+        // Note that at this point we are not 100% sure the removed attribute
+        // actually existed on the node. Do not make assumptions based on that
+        // here, e.g. no blindly removing the node from tracked nodes.
+        const [attribute] = args;
+
+        if (attribute === 'aria-hidden') {
+            updateLiveRegions();
+            updateAnnouncements(this);
         }
     }
 
     // prettier-ignore
     const cleanups: Restore[] = [
         interceptMethod(Element.prototype, 'setAttribute', onSetAttribute),
-        interceptMethod(Element.prototype, 'removeAttribute', onRemoveAttribute, 'BEFORE'),
+        interceptMethod(Element.prototype, 'removeAttribute', onRemoveAttributeBefore, 'BEFORE'),
+        interceptMethod(Element.prototype, 'removeAttribute', onRemoveAttributeAfter, 'AFTER'),
         interceptMethod(Element.prototype, 'removeChild', onRemoveChild),
         interceptMethod(Element.prototype, 'insertAdjacentElement', onInsertAdjacent),
         interceptMethod(Element.prototype, 'insertAdjacentHTML', onInsertAdjacent),
@@ -203,20 +238,23 @@ export default function CaptureAnnouncements(options: Options): Restore {
     };
 }
 
-function onRemoveAttribute(
+function onRemoveAttributeBefore(
     this: Element,
     ...args: Parameters<Element['removeAttribute']>
 ) {
     if (!isElement(this)) return;
 
-    // We are only interested in role and aria-live removals
-    if (args[0] !== 'role' && args[0] !== 'aria-live') return;
+    const [attribute] = args;
 
     // Element must have the attribute about to be removed
-    if (!this.hasAttribute(args[0])) return;
+    if (!this.hasAttribute(attribute)) return;
 
-    if (liveRegions.has(this)) {
-        liveRegions.delete(this);
+    // TODO: Should detect if we have role AND aria-live, and one is removed.
+    if (attribute === 'role' || attribute === 'aria-live') {
+        // Live container attribute is removed -> Element is no longer a live container
+        if (liveRegions.has(this)) {
+            liveRegions.delete(this);
+        }
     }
 }
 
