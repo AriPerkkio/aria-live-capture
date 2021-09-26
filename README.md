@@ -56,7 +56,7 @@ CaptureAnnouncements({
 ### onIncorrectStatusMessage
 
 You can optionally inspect incorrectly used status messages.
-These are cases where contents of `aria-live="polite"|role="status"` regions are rendered immediately instead of updating an existing container.
+These are cases where contents of `aria-live="polite"|role="status"` regions are rendered immediately instead of updating an existing live region.
 
 <!-- prettier-ignore -->
 ```html
@@ -176,9 +176,6 @@ Render#2 | <div role="alert">Error</div>
 PASS ✅  | "Error" is announced
 ```
 
-<details>
-    <summary>Not yet supported, to do</summary>
-
 <!-- prettier-ignore -->
 ```html
 Render#1 | <div role="status">
@@ -198,8 +195,6 @@ Render#1 | <div role="status" aria-hidden="true">Loading</div>
 Render#2 | <div role="status" aria-hidden="false">Loading</div>
 FAIL ❌  | "Loading" is not announced
 ```
-
-</details>
 
 ## Support
 
