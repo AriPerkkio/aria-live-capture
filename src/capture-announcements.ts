@@ -165,7 +165,7 @@ export default function CaptureAnnouncements(options: Options): Restore {
 
         // Previous value was not live region attribute value
         if (!isAlreadyTracked && liveRegionAttribute) {
-            return addLiveRegion(this);
+            return updateLiveRegions();
         }
 
         // Value was changed to assertive - announce content immediately
