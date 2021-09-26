@@ -22,12 +22,12 @@ describe.each(POLITE_CASES)('$testName', ({ name, value, tag }) => {
             onIncorrectStatusMessage,
         });
 
-        const container = document.createElement(tag || 'div');
+        const liveRegion = document.createElement(tag || 'div');
         if (name && value) {
-            container.setAttribute(name, value);
+            liveRegion.setAttribute(name, value);
         }
 
-        element = container;
+        element = liveRegion;
     });
 
     test('should not announce when initially rendered with content', () => {
@@ -38,7 +38,7 @@ describe.each(POLITE_CASES)('$testName', ({ name, value, tag }) => {
         expect(onIncorrectStatusMessage).toHaveBeenCalledWith('Hello world');
     });
 
-    test('should announce when dynamically rendered into container', () => {
+    test('should announce when dynamically rendered into live region', () => {
         appendToRoot(element);
 
         element.textContent = 'Hello world';
@@ -57,32 +57,32 @@ describe.each(POLITE_CASES)('$testName', ({ name, value, tag }) => {
     });
 
     test('should not announce when role is set after render', () => {
-        const container = document.createElement(tag || 'div');
-        container.textContent = 'Hello world';
-        appendToRoot(container);
+        const liveRegion = document.createElement(tag || 'div');
+        liveRegion.textContent = 'Hello world';
+        appendToRoot(liveRegion);
 
         if (name && value) {
-            container.setAttribute(name, value);
+            liveRegion.setAttribute(name, value);
         }
 
         expect(onCapture).not.toHaveBeenCalled();
     });
 
     test('should announce when role is set after render and content is updated', () => {
-        const container = document.createElement(tag || 'div');
-        container.textContent = 'First';
-        appendToRoot(container);
+        const liveRegion = document.createElement(tag || 'div');
+        liveRegion.textContent = 'First';
+        appendToRoot(liveRegion);
 
         if (name && value) {
-            container.setAttribute(name, value);
+            liveRegion.setAttribute(name, value);
         }
-        container.textContent = 'Second';
+        liveRegion.textContent = 'Second';
 
         expect(onCapture).not.toHaveBeenCalledWith('First', expect.anything());
         expect(onCapture).toHaveBeenCalledWith('Second', 'polite');
     });
 
-    test('should announce when text node is appended into existing container', () => {
+    test('should announce when text node is appended into existing live region', () => {
         appendToRoot(element);
 
         element.appendChild(document.createTextNode('Hello world'));
@@ -90,7 +90,7 @@ describe.each(POLITE_CASES)('$testName', ({ name, value, tag }) => {
         expect(onCapture).toHaveBeenCalledWith('Hello world', 'polite');
     });
 
-    test('should not announce when live container is hidden', () => {
+    test('should not announce when live region is hidden', () => {
         element.setAttribute('aria-hidden', 'true');
         appendToRoot(element);
 
@@ -137,7 +137,7 @@ describe.each(POLITE_CASES)('$testName', ({ name, value, tag }) => {
         expect(onCapture).toHaveBeenCalledWith('Hello world', 'polite');
     });
 
-    test('should not announce when hidden live container appears', () => {
+    test('should not announce when hidden live region appears', () => {
         element.setAttribute('aria-hidden', 'true');
         appendToRoot(element);
 
@@ -161,12 +161,12 @@ describe.each(ASSERTIVE_CASES)('$testName', ({ name, value }) => {
     beforeEach(() => {
         cleanup = CaptureAnnouncements({ onCapture });
 
-        const container = document.createElement('div');
+        const liveRegion = document.createElement('div');
         if (name && value) {
-            container.setAttribute(name, value);
+            liveRegion.setAttribute(name, value);
         }
 
-        element = container;
+        element = liveRegion;
     });
 
     test('should announce when dynamically rendered with initially content', () => {
@@ -176,7 +176,7 @@ describe.each(ASSERTIVE_CASES)('$testName', ({ name, value }) => {
         expect(onCapture).toHaveBeenCalledWith('Hello world', 'assertive');
     });
 
-    test('should announce when dynamically rendered into container', () => {
+    test('should announce when dynamically rendered into live region', () => {
         appendToRoot(element);
         element.textContent = 'Hello world';
 
@@ -193,26 +193,26 @@ describe.each(ASSERTIVE_CASES)('$testName', ({ name, value }) => {
     });
 
     test('should announce when role is set after render', () => {
-        const container = document.createElement('div');
-        container.textContent = 'Hello world';
-        appendToRoot(container);
+        const liveRegion = document.createElement('div');
+        liveRegion.textContent = 'Hello world';
+        appendToRoot(liveRegion);
 
         if (name && value) {
-            container.setAttribute(name, value);
+            liveRegion.setAttribute(name, value);
         }
 
         expect(onCapture).toHaveBeenCalledWith('Hello world', 'assertive');
     });
 
     test('should announce when role is set after render and content is updated', () => {
-        const container = document.createElement('div');
-        container.textContent = 'First';
-        appendToRoot(container);
+        const liveRegion = document.createElement('div');
+        liveRegion.textContent = 'First';
+        appendToRoot(liveRegion);
 
         if (name && value) {
-            container.setAttribute(name, value);
+            liveRegion.setAttribute(name, value);
         }
-        container.textContent = 'Second';
+        liveRegion.textContent = 'Second';
 
         expect(onCapture).toHaveBeenCalledWith('First', 'assertive');
         expect(onCapture).toHaveBeenCalledWith('Second', 'assertive');

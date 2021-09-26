@@ -56,7 +56,7 @@ CaptureAnnouncements({
 ### onIncorrectStatusMessage
 
 You can optionally inspect incorrectly used status messages.
-These are cases where contents of `aria-live="polite"|role="status"` regions are rendered immediately instead of updating an existing container.
+These are cases where contents of `aria-live="polite"|role="status"` regions are rendered immediately instead of updating an existing live region.
 
 <!-- prettier-ignore -->
 ```html

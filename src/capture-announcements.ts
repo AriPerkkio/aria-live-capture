@@ -251,7 +251,7 @@ function onRemoveAttributeBefore(
 
     // TODO: Should detect if we have role AND aria-live, and one is removed.
     if (attribute === 'role' || attribute === 'aria-live') {
-        // Live container attribute is removed -> Element is no longer a live container
+        // Live region attribute is removed -> Element is no longer a live region
         if (liveRegions.has(this)) {
             liveRegions.delete(this);
         }
