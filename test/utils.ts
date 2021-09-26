@@ -5,21 +5,31 @@ interface TestAttributes {
     testName: string;
 }
 
-export const POLITE_CASES: TestAttributes[] = [
-    { name: 'role', value: 'status', testName: '[role="status"]' },
-    { name: 'role', value: 'log', testName: '[role="log"]' },
-    { name: 'aria-live', value: 'polite', testName: '[aria-live="polite"]' },
-    { tag: 'output', testName: '<output>' },
-];
+function addTestName(attr: Omit<TestAttributes, 'testName'>): TestAttributes {
+    if (attr.tag) {
+        return {
+            ...attr,
+            testName: `<${attr.tag}>`,
+        };
+    }
 
-export const ASSERTIVE_CASES: TestAttributes[] = [
-    { name: 'role', value: 'alert', testName: '[role="alert"]' },
-    {
-        name: 'aria-live',
-        value: 'assertive',
-        testName: '[aria-live="assertive"]',
-    },
-];
+    return {
+        ...attr,
+        testName: `[${attr.name}="${attr.value}"]`,
+    };
+}
+
+export const POLITE_CASES: TestAttributes[] = ([
+    { name: 'role', value: 'status' },
+    { name: 'role', value: 'log' },
+    { name: 'aria-live', value: 'polite' },
+    { tag: 'output' },
+] as const).map(addTestName);
+
+export const ASSERTIVE_CASES: TestAttributes[] = ([
+    { name: 'role', value: 'alert' },
+    { name: 'aria-live', value: 'assertive' },
+] as const).map(addTestName);
 
 export function appendToRoot(element: HTMLElement): void {
     const root = document.getElementById('root');
