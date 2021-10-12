@@ -1,3 +1,4 @@
+/** @type {import('eslint/lib/shared/types').ConfigData} */
 module.exports = {
     root: true,
     env: {
@@ -34,5 +35,13 @@ module.exports = {
                 '@typescript-eslint/no-non-null-assertion': 'off',
             },
         },
+        {
+            files: ['.storybook/**'],
+            rules: {
+                '@typescript-eslint/explicit-module-boundary-types': 'off',
+                '@typescript-eslint/ban-ts-comment': 'off',
+            },
+        },
     ],
+    ignorePatterns: ['dist', 'docs', '!.storybook'],
 };
