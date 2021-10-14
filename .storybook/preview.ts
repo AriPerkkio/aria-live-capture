@@ -1,15 +1,20 @@
 import { prettyDOM } from '@testing-library/dom';
 
-import { MountToggleEvents } from './utils';
+import CaptureAnnouncements from '../src';
+import { AnnouncementEvents, MountToggleEvents } from './utils';
 
 type StoryFn = () => HTMLElement;
+
+CaptureAnnouncements({
+    onCapture: (text, level) => AnnouncementEvents.emit({ text, level }),
+});
 
 export const decorators = [
     function withSourceCode(Story: StoryFn) {
         const html = Story();
         const sourceCodeFrame = document.createElement('div');
         const sourceCodeId = 'source-code-frame';
-        const storyTargetId = 'story-target';
+        const storyTargetId = 'story-target-source-code-frame';
 
         sourceCodeFrame.innerHTML = `
             <div style="display: flex; flex-direction: row; align-content: baseline;">
@@ -50,6 +55,37 @@ export const decorators = [
 
         return wrapper;
     },
+
+    function withAnnouncements(Story: StoryFn) {
+        const html = Story();
+        const announcementsFrame = document.createElement('div');
+        const announcementsId = 'announcements-frame';
+        const storyTargetId = 'story-target-announcement-frame';
+
+        announcementsFrame.innerHTML = `
+            <div style="display: flex; flex-direction: column; align-content: baseline;">
+                <div id="${storyTargetId}" style="flex-basis: 50%;"></div>
+
+                <div aria-live="off" aria-hidden="true" style="flex-basis: 50%; margin-top: 5rem; background-color: #eee; padding: 0 1rem">
+                    <h2>Captured announcements</h2>
+                    <ul id="${announcementsId}" style="padding-left: 0 1rem;"></ul>
+                </div>
+            </div>
+        `.trim();
+
+        AnnouncementEvents.on(({ text, level }) => {
+            const li = document.createElement('li');
+            li.textContent = `${level}: ${text}`;
+
+            announcementsFrame
+                .querySelector(`#${announcementsId}`)
+                .appendChild(li);
+        });
+
+        announcementsFrame.querySelector(`#${storyTargetId}`).appendChild(html);
+
+        return announcementsFrame;
+    },
 ];
 
 function escapeHTML(str) {
@@ -72,9 +108,6 @@ function formatSourceCode(str: string) {
             // Remove double line breaks
             .replace(/\n +\n/g, '\n')
 
-            // Align attributes to same level as tag when there is only a single attribute
-            .replace(/<(\w+)\n +((\w|=|"|-)+)\n +>/g, '<$1 $2>')
-
             // Remove parent div
             .replace(/(^<div>\n|\n<\/div>$)/g, '')
 
@@ -84,6 +117,15 @@ function formatSourceCode(str: string) {
 
             // Add newline between each root level element
             .replace(/(>\n)(<\w)/g, '$1\n$2')
+
+            // Replace self-ending tags with starting and ending tags
+            .replace(/<(\w+)((\w|\s|\n|=|"|-)+)\/>/g, '<$1 $2>\n</$1>')
+
+            // Align attributes to same level as tag when there is only a single attribute
+            .replace(/<(\w+) *\n +((\w|=|"|-)+)\n *>/g, '<$1 $2>')
+
+            // Remove spaces before end tag
+            .replace(/ +>/g, '>')
     );
 }
 
