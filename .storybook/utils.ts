@@ -1,3 +1,5 @@
+import { createElement, update } from './virtual-dom';
+
 const STATUS_TO_ICON = {
     PASS: '\u00A0✅',
     FAIL: '\u00A0❌',
@@ -20,25 +22,22 @@ export function createMountToggle(
     unmountedState: string,
     mountedState: string
 ) {
-    const wrapper = document.createElement('div');
-
     const button = document.createElement('button');
     button.textContent = 'Mount';
-    wrapper.appendChild(button);
 
-    const container = document.createElement('div');
-    wrapper.appendChild(container);
-    container.outerHTML = trimWhitespace(unmountedState);
+    const wrapper = document.createElement('div');
+    wrapper.appendChild(button);
+    wrapper.appendChild(createElement(unmountedState));
 
     let toggled = false;
     button.addEventListener('click', () => {
-        const lastChild = wrapper.lastChild as HTMLElement;
+        const lastChild = wrapper.lastChild;
 
-        if (toggled) {
-            lastChild.outerHTML = trimWhitespace(unmountedState);
-        } else {
-            lastChild.outerHTML = trimWhitespace(mountedState);
-        }
+        update(
+            lastChild,
+            createElement(toggled ? unmountedState : mountedState)
+        );
+
         toggled = !toggled;
         MountToggleEvents.emit();
     });
@@ -46,25 +45,26 @@ export function createMountToggle(
     return wrapper;
 }
 
-function trimWhitespace(text: string) {
-    return text.replace(/\s+/g, ' ').replace(/\n+/, '\n').trim();
-}
+type Subscriber<T> = (event: T) => void;
+class EventBus<EventType = undefined> {
+    subscribers: Subscriber<EventType>[] = [];
 
-type Subscriber = () => void;
-class EventBus {
-    subscribers: Subscriber[] = [];
-
-    on(subscriber: Subscriber) {
+    on(subscriber: Subscriber<EventType>) {
         this.subscribers.push(subscriber);
     }
 
-    off(subscriber: Subscriber) {
+    off(subscriber: Subscriber<EventType>) {
         this.subscribers = this.subscribers.filter(s => s !== subscriber);
     }
 
-    emit() {
-        this.subscribers.forEach(subscriber => subscriber());
+    emit(event?: EventType) {
+        this.subscribers.forEach(subscriber => subscriber(event));
     }
 }
 
 export const MountToggleEvents = new EventBus();
+
+export const AnnouncementEvents = new EventBus<{
+    text: string;
+    level: string;
+}>();
