@@ -1,6 +1,7 @@
 import {
     getClosestElement,
     getClosestLiveRegion,
+    getTextContent,
     isElement,
     isHidden,
     isInDOM,
@@ -8,6 +9,7 @@ import {
     LIVE_REGION_QUERY,
     PolitenessSetting,
     resolvePolitenessSetting,
+    trimWhiteSpace,
 } from './utils';
 import { interceptMethod, interceptSetter, Restore } from './interceptors';
 
@@ -21,8 +23,6 @@ interface Options {
     /** Callback invoked when incorrectly used status message is captured */
     onIncorrectStatusMessage?: (textContent: string) => void;
 }
-
-const WHITE_SPACE_REGEXP = /\s+/g;
 
 // Map of live regions to previous textContent
 const liveRegions = new Map<Node, string | null>();
@@ -70,12 +70,13 @@ export default function CaptureAnnouncements(options: Options): Restore {
             );
 
             if (politenessSetting !== 'off' && isInDOM(closestLiveRegion)) {
-                const previousText = liveRegions.get(node);
-                const newText = node.textContent || '';
+                // TODO: Use text content of live container, not the updated node's.
+                const previousText = liveRegions.get(element);
+                const newText = getTextContent(element) || '';
 
                 if (previousText !== newText) {
                     onCapture(newText, politenessSetting);
-                    liveRegions.set(node, newText);
+                    liveRegions.set(element, newText);
                 }
             }
         }
@@ -88,14 +89,16 @@ export default function CaptureAnnouncements(options: Options): Restore {
         const politenessSetting = resolvePolitenessSetting(liveRegion);
         if (politenessSetting === 'off') return;
 
-        liveRegions.set(liveRegion, liveRegion.textContent);
+        const textContent = getTextContent(liveRegion);
+        liveRegions.set(liveRegion, textContent);
 
+        // TODO: Only contents of `role="alert"` should be announced on initial mount. Not all assertives.
         // Content of assertive live regions is announced on initial mount
-        if (liveRegion.textContent) {
+        if (textContent) {
             if (politenessSetting === 'assertive') {
-                onCapture(liveRegion.textContent, politenessSetting);
+                onCapture(textContent, politenessSetting);
             } else if (politenessSetting === 'polite') {
-                onIncorrectStatusMessage(liveRegion.textContent);
+                onIncorrectStatusMessage(textContent);
             }
         }
     }
@@ -275,11 +278,6 @@ function onRemoveChild(
             liveRegions.delete(element);
         }
     }
-}
-
-function trimWhiteSpace(text: string): string | null {
-    const trimmed = text.trim().replace(WHITE_SPACE_REGEXP, ' ');
-    return trimmed.length > 0 ? trimmed : null;
 }
 
 /** Not part of public API, do not use */
