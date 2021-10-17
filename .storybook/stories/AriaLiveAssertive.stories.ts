@@ -104,3 +104,26 @@ export function ContentIsPartiallyHidden() {
         `
     );
 }
+
+addStoryName(PartOfContentChanges, 'PASS');
+export function PartOfContentChanges() {
+    return createMountToggle(
+        `
+        <div aria-live="assertive">
+            <span>
+                Hello
+            </span>
+        </div>
+        `,
+        `
+        <div aria-live="assertive">
+            <span>
+                Hello
+            </span>
+            <span>
+                world
+            </span>
+        </div>
+        `
+    );
+}

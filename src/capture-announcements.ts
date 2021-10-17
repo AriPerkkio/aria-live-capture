@@ -62,21 +62,18 @@ export default function CaptureAnnouncements(options: Options): Restore {
         if (!element) return;
         if (isHidden(element)) return;
 
-        const closestLiveRegion = getClosestLiveRegion(element);
+        const liveRegion = getClosestLiveRegion(element);
 
-        if (closestLiveRegion) {
-            const politenessSetting = resolvePolitenessSetting(
-                closestLiveRegion
-            );
+        if (liveRegion) {
+            const politenessSetting = resolvePolitenessSetting(liveRegion);
 
-            if (politenessSetting !== 'off' && isInDOM(closestLiveRegion)) {
-                // TODO: Use text content of live container, not the updated node's.
-                const previousText = liveRegions.get(element);
-                const newText = getTextContent(element) || '';
+            if (politenessSetting !== 'off' && isInDOM(liveRegion)) {
+                const previousText = liveRegions.get(liveRegion);
+                const newText = getTextContent(liveRegion) || '';
 
                 if (previousText !== newText) {
                     onCapture(newText, politenessSetting);
-                    liveRegions.set(element, newText);
+                    liveRegions.set(liveRegion, newText);
                 }
             }
         }
@@ -215,6 +212,31 @@ export default function CaptureAnnouncements(options: Options): Restore {
         }
     }
 
+    function onRemoveChild(
+        this: Element,
+        ...args: Parameters<Element['removeChild']>
+    ) {
+        const [node] = args;
+
+        if (node == null || !isElement(node)) {
+            return updateAnnouncements(this);
+        }
+
+        const elementAndItsLiveRegionChildren = [
+            node,
+            ...node.querySelectorAll(LIVE_REGION_QUERY),
+        ];
+
+        // Check whether removed element or any of its children were tracked
+        for (const element of elementAndItsLiveRegionChildren) {
+            if (liveRegions.has(element)) {
+                liveRegions.delete(element);
+            }
+        }
+
+        updateAnnouncements(this);
+    }
+
     // prettier-ignore
     const cleanups: Restore[] = [
         interceptMethod(Element.prototype, 'setAttribute', onSetAttribute),
@@ -257,25 +279,6 @@ function onRemoveAttributeBefore(
         // Live region attribute is removed -> Element is no longer a live region
         if (liveRegions.has(this)) {
             liveRegions.delete(this);
-        }
-    }
-}
-
-function onRemoveChild(
-    this: Element,
-    ...args: Parameters<Element['removeChild']>
-) {
-    if (args[0] == null || !isElement(args[0])) return;
-
-    const elementAndItsLiveRegionChildren = [
-        args[0],
-        ...args[0].querySelectorAll(LIVE_REGION_QUERY),
-    ];
-
-    // Check whether removed element or any of its children were tracked
-    for (const element of elementAndItsLiveRegionChildren) {
-        if (liveRegions.has(element)) {
-            liveRegions.delete(element);
         }
     }
 }
