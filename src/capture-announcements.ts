@@ -19,9 +19,6 @@ interface Options {
         textContent: string,
         politenessSetting: Exclude<PolitenessSetting, 'off'>
     ) => void;
-
-    /** Callback invoked when incorrectly used status message is captured */
-    onIncorrectStatusMessage?: (textContent: string) => void;
 }
 
 // Map of live regions to previous textContent
@@ -36,18 +33,6 @@ export default function CaptureAnnouncements(options: Options): Restore {
 
         if (content) {
             options.onCapture(content, politenessSetting);
-        }
-    };
-
-    const onIncorrectStatusMessage: NonNullable<
-        Options['onIncorrectStatusMessage']
-    > = textContent => {
-        if (options.onIncorrectStatusMessage) {
-            const content = trimWhiteSpace(textContent);
-
-            if (content) {
-                options.onIncorrectStatusMessage(content);
-            }
         }
     };
 
@@ -101,8 +86,6 @@ export default function CaptureAnnouncements(options: Options): Restore {
         if (textContent) {
             if (politenessSetting === 'assertive') {
                 onCapture(textContent, politenessSetting);
-            } else if (politenessSetting === 'polite') {
-                onIncorrectStatusMessage(textContent);
             }
         }
     }

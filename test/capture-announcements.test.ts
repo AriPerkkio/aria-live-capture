@@ -8,19 +8,14 @@ describe.each(POLITE_CASES)('$testName', ({ name, value, tag }) => {
     let element: HTMLElement;
     let cleanup: undefined | ReturnType<typeof CaptureAnnouncements>;
     const onCapture = jest.fn();
-    const onIncorrectStatusMessage = jest.fn();
 
     afterEach(() => {
         cleanup?.();
         onCapture.mockReset();
-        onIncorrectStatusMessage.mockReset();
     });
 
     beforeEach(() => {
-        cleanup = CaptureAnnouncements({
-            onCapture,
-            onIncorrectStatusMessage,
-        });
+        cleanup = CaptureAnnouncements({ onCapture });
 
         const liveRegion = document.createElement(tag || 'div');
         if (name && value) {
@@ -35,7 +30,6 @@ describe.each(POLITE_CASES)('$testName', ({ name, value, tag }) => {
         appendToRoot(element);
 
         expect(onCapture).not.toHaveBeenCalled();
-        expect(onIncorrectStatusMessage).toHaveBeenCalledWith('Hello world');
     });
 
     test('should announce when dynamically rendered into live region', () => {
@@ -396,19 +390,14 @@ describe('common', () => {
     let element: HTMLElement;
     let cleanup: undefined | ReturnType<typeof CaptureAnnouncements>;
     const onCapture = jest.fn();
-    const onIncorrectStatusMessage = jest.fn();
 
     afterEach(() => {
         cleanup?.();
         onCapture.mockReset();
-        onIncorrectStatusMessage.mockReset();
     });
 
     beforeEach(() => {
-        cleanup = CaptureAnnouncements({
-            onCapture,
-            onIncorrectStatusMessage,
-        });
+        cleanup = CaptureAnnouncements({ onCapture });
 
         element = document.createElement('div');
     });
@@ -433,27 +422,6 @@ describe('common', () => {
         );
     });
 
-    test('onIncorrectStatusMessage should trim white-space', () => {
-        element.setAttribute('role', 'status');
-
-        const first = document.createElement('div');
-        first.textContent = '    First   message here';
-        const second = document.createElement('div');
-        second.textContent = '    Second   message   here ';
-
-        const child = document.createElement('div');
-        child.appendChild(first);
-        child.appendChild(second);
-        element.appendChild(child);
-
-        // Parent is mounted with role="status" and textContent
-        appendToRoot(element);
-
-        expect(onIncorrectStatusMessage).toHaveBeenCalledWith(
-            'First message here Second message here'
-        );
-    });
-
     test('onCapture should not report when textContent is empty', () => {
         element.setAttribute('role', 'status');
         appendToRoot(element);
@@ -468,65 +436,6 @@ ${' '.repeat(32)}
         `;
 
         expect(onCapture).not.toHaveBeenCalled();
-    });
-
-    test('onIncorrectStatusMessage should not report when textContent is empty', () => {
-        const element2 = document.createElement('div');
-        const element3 = document.createElement('div');
-
-        element.setAttribute('role', 'status');
-        element2.setAttribute('role', 'status');
-        element3.setAttribute('role', 'status');
-
-        element.textContent = ' ';
-        element2.textContent = '    ';
-
-        element3.textContent = `
-${' '.repeat(32)}
-${' '.repeat(32)}
-${' '.repeat(32)}
-        `;
-
-        appendToRoot(element);
-        appendToRoot(element2);
-        appendToRoot(element3);
-
-        expect(onIncorrectStatusMessage).not.toHaveBeenCalled();
-    });
-
-    test('onIncorrectStatusMessage should ignore hidden live region', () => {
-        element.setAttribute('role', 'status');
-        element.setAttribute('aria-hidden', 'true');
-        element.textContent = 'Hello world';
-
-        // Hidden live region with textContent mounts
-        appendToRoot(element);
-
-        expect(onIncorrectStatusMessage).not.toHaveBeenCalled();
-    });
-
-    test('onIncorrectStatusMessage should ignore hidden content', () => {
-        element.setAttribute('role', 'status');
-
-        const child = document.createElement('div');
-        child.setAttribute('aria-hidden', 'true');
-        child.textContent = 'Hello world';
-
-        // Visible live region with hidden children mounts
-        element.appendChild(child);
-
-        expect(onIncorrectStatusMessage).not.toHaveBeenCalled();
-    });
-
-    test('onIncorrectStatusMessage should report when live region appears with initial text content', () => {
-        element.setAttribute('role', 'status');
-        element.setAttribute('aria-hidden', 'true');
-        element.textContent = 'Hello world';
-        appendToRoot(element);
-
-        element.removeAttribute('aria-hidden');
-
-        expect(onIncorrectStatusMessage).toHaveBeenCalledWith('Hello world');
     });
 });
 

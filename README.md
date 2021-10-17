@@ -53,50 +53,6 @@ CaptureAnnouncements({
 "Failed to load user details" was announced with politeness setting "assertive"
 ```
 
-### onIncorrectStatusMessage
-
-You can optionally inspect incorrectly used status messages.
-These are cases where contents of `aria-live="polite"|role="status"` regions are rendered immediately instead of updating an existing live region.
-
-<!-- prettier-ignore -->
-```html
-Render#1 | <div role="status"></div>
-Render#2 | <div role="status">Loading</div>
-PASS ✅  | "Loading" is announced
-```
-
-<!-- prettier-ignore -->
-```html
-Render#1 | <div role="status">Loading</div>
-FAIL ❌  | "Loading" is not announced
-```
-
-<!-- prettier-ignore -->
-```html
-Render#1 | <div></div>
-Render#2 | <div role="status">Loading</div>
-FAIL ❌  | "Loading" is not announced
-```
-
-| Callback argument |   type   | value                           |
-| :---------------: | :------: | ------------------------------- |
-|       text        | `string` | Text content of the live region |
-
-```ts
-CaptureAnnouncements({
-    onCapture: onCapture,
-    onIncorrectStatusMessage: text => {
-        console.log(
-            `"${text}" was rendered while mounting live region instead of updating an existing one.`
-        );
-    },
-});
-```
-
-```
-"Loading" was rendered while mounting live region instead of updating an existing one.
-```
-
 ### cleanup
 
 The `CaptureAnnouncements` method returns `cleanup` function for clearing DOM interceptors.
