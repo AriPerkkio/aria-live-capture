@@ -119,7 +119,7 @@ function formatSourceCode(str: string) {
             .replace(/(>\n)(<\w)/g, '$1\n$2')
 
             // Replace self-ending tags with starting and ending tags
-            .replace(/<(\w+)((\w|\s|\n|=|"|-)+)\/>/g, '<$1 $2>\n</$1>')
+            .replace(/( *)<(\w+)((\s|\w|=|"|-)*)\s*\/>/g, '$1<$2 $3>\n$1</$2>')
 
             // Align attributes to same level as tag when there is only a single attribute
             .replace(/<(\w+) *\n +((\w|=|"|-)+)\n *>/g, '<$1 $2>')

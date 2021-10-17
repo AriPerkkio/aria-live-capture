@@ -94,7 +94,6 @@ function trimWhitespace(text: string) {
     return text
         .replace(/\s+/g, ' ')
         .replace(/\n+/, '\n')
-        .replace(/> +/g, '>')
-        .replace(/ +</g, '<')
+        .replace(/> *(\w*) *</g, '>$1<')
         .trim();
 }

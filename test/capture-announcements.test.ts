@@ -146,6 +146,27 @@ describe.each(POLITE_CASES)('$testName', ({ name, value, tag }) => {
 
         expect(onCapture).not.toHaveBeenCalled();
     });
+
+    test('should announce whole content when a single child changes', () => {
+        appendToRoot(element);
+
+        const first = document.createElement('div');
+        first.textContent = 'Hello';
+        element.appendChild(first);
+
+        expect(onCapture).toHaveBeenCalledWith('Hello', 'polite');
+        onCapture.mockClear();
+
+        const second = document.createElement('div');
+        element.appendChild(second);
+
+        second.textContent = 'World';
+        expect(onCapture).toHaveBeenCalledWith('Hello World', 'polite');
+        onCapture.mockClear();
+
+        element.removeChild(second);
+        expect(onCapture).toHaveBeenCalledWith('Hello', 'polite');
+    });
 });
 
 describe.each(ASSERTIVE_CASES)('$testName', ({ name, value }) => {
