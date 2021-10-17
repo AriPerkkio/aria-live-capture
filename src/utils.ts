@@ -47,17 +47,21 @@ export function isInDOM(node: Node): boolean {
     return isElement(node) && node.closest('html') != null;
 }
 
+// TODO: Support `hidden` and CSS attributes:
+// https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-hidden_attribute#best_practices
 export function isHidden(node: Node): boolean {
-    if (!isElement(node)) return true;
+    const element = getClosestElement(node);
+
+    if (!element) return true;
 
     if (
-        node.hasAttribute('aria-hidden') &&
-        node.getAttribute('aria-hidden') === 'true'
+        element.hasAttribute('aria-hidden') &&
+        element.getAttribute('aria-hidden') === 'true'
     ) {
         return true;
     }
 
-    return node.closest(HIDDEN_QUERY) != null;
+    return element.closest(HIDDEN_QUERY) != null;
 }
 
 export function getClosestLiveRegion(element: Element | null): Element | null {
@@ -100,4 +104,32 @@ export function resolvePolitenessSetting(node: Node | null): PolitenessSetting {
     }
 
     return resolvePolitenessSetting(closestLiveRegion);
+}
+
+const WHITE_SPACE_REGEXP = /\s+/g;
+
+export function trimWhiteSpace(text: string): string | null {
+    const trimmed = text.trim().replace(WHITE_SPACE_REGEXP, ' ');
+    return trimmed.length > 0 ? trimmed : null;
+}
+
+/**
+ * Get text content of a `Node`
+ */
+export function getTextContent(node: Node | null): string | null {
+    if (!node) return null;
+    if (isHidden(node)) return null;
+
+    if (node.nodeType === Node.TEXT_NODE) {
+        return node.textContent ? trimWhiteSpace(node.textContent) : null;
+    }
+
+    if (!node.hasChildNodes()) return null;
+
+    return trimWhiteSpace(
+        Array.from(node.childNodes)
+            .map(getTextContent)
+            .filter(Boolean)
+            .join(' ')
+    );
 }
