@@ -1,7 +1,7 @@
 import { prettyDOM } from '@testing-library/dom';
 
 import CaptureAnnouncements from '../src';
-import { AnnouncementEvents, MountToggleEvents } from './utils';
+import { AnnouncementEvents, SourceCodeUpdateEvents } from './utils';
 
 type StoryFn = () => HTMLElement;
 
@@ -29,7 +29,7 @@ export const decorators = [
             sourceCodeFrame.querySelector(`#${sourceCodeId}`).innerHTML = code;
         }
 
-        MountToggleEvents.on(updateSourceCodeFrame);
+        SourceCodeUpdateEvents.on(updateSourceCodeFrame);
         updateSourceCodeFrame();
 
         sourceCodeFrame.querySelector(`#${storyTargetId}`).appendChild(html);

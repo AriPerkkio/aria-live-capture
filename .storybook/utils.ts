@@ -39,7 +39,42 @@ export function createMountToggle(
         );
 
         toggled = !toggled;
-        MountToggleEvents.emit();
+        SourceCodeUpdateEvents.emit();
+    });
+
+    return wrapper;
+}
+
+export function createButtonCycle(
+    ...onClicks: ((wrapper: HTMLElement) => void)[]
+) {
+    const button = document.createElement('button');
+    button.textContent = 'Next state';
+
+    const wrapper = document.createElement('div');
+    wrapper.appendChild(button);
+
+    function cleanWrapper() {
+        for (const child of wrapper.childNodes) {
+            if (child !== button) {
+                wrapper.removeChild(child);
+            }
+        }
+    }
+
+    const maxIndex = onClicks.length;
+    let index = 0;
+
+    button.addEventListener('click', () => {
+        if (index === maxIndex) {
+            cleanWrapper();
+            index = 0;
+        } else {
+            onClicks[index](wrapper);
+            index++;
+        }
+
+        SourceCodeUpdateEvents.emit();
     });
 
     return wrapper;
@@ -62,7 +97,7 @@ class EventBus<EventType = undefined> {
     }
 }
 
-export const MountToggleEvents = new EventBus();
+export const SourceCodeUpdateEvents = new EventBus();
 
 export const AnnouncementEvents = new EventBus<{
     text: string;
