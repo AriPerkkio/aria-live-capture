@@ -127,23 +127,8 @@ export default function CaptureAnnouncements(options: Options): Restore {
         updateAnnouncements(node);
     }
 
-    function onInsertAdjacent(
-        this: Node,
-        position: string,
-        elementOrText: Element | string
-    ) {
-        if (!this.parentNode) {
-            const log =
-                typeof elementOrText === 'string'
-                    ? elementOrText
-                    : elementOrText.outerHTML;
-
-            throw new Error(
-                `Unable to find parentNode for element/text ${log}`
-            );
-        }
-
-        onNodeMount(this.parentNode);
+    function onInsertAdjacent(this: Node) {
+        onNodeMount(this);
     }
 
     function onSetAttribute(
