@@ -126,3 +126,23 @@ export function PartOfContentChanges() {
         `
     );
 }
+
+addStoryName(AriaHiddenChanges, 'PASS');
+export function AriaHiddenChanges() {
+    return createMountToggle(
+        `
+        <div role="status">
+            <span aria-hidden="true">
+                Hello world
+            </span>
+        </div>
+        `,
+        `
+        <div role="status">
+            <span>
+                Hello world
+            </span>
+        </div>
+        `
+    );
+}

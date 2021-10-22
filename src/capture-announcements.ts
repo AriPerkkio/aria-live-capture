@@ -60,7 +60,6 @@ export default function CaptureAnnouncements(options: Options): Restore {
     function updateAnnouncements(node: Node) {
         const element = getClosestElement(node);
         if (!element) return;
-        if (isHidden(element)) return;
 
         const liveRegion = getClosestLiveRegion(element);
 
@@ -70,6 +69,14 @@ export default function CaptureAnnouncements(options: Options): Restore {
             if (politenessSetting !== 'off' && isInDOM(liveRegion)) {
                 const previousText = liveRegions.get(liveRegion);
                 const newText = getTextContent(liveRegion) || '';
+
+                // Update text content when element disappears inside live region
+                if (isHidden(element)) {
+                    if (previousText) {
+                        liveRegions.set(liveRegion, newText);
+                    }
+                    return;
+                }
 
                 if (previousText !== newText) {
                     onCapture(newText, politenessSetting);
