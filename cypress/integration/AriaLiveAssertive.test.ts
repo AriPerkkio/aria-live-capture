@@ -19,9 +19,7 @@ it('Live Region Unavailable Before Content', () => {
 
     cy.clickMountButton();
 
-    cy.getAnnouncements()
-        .should('have.length', 1)
-        .findByText('assertive: Hello world');
+    cy.getAnnouncements().should('not.exist');
 });
 
 it('Anchestor is hidden', () => {
@@ -67,22 +65,25 @@ it('Content is partially hidden', () => {
 it('Part of content changes', () => {
     cy.visit(`${BASE_URL}part-of-content-changes`);
     cy.waitForPageLoad();
-    cy.getAnnouncements()
-        .should('have.length', 1)
-        .findByText('assertive: Hello');
+    cy.getAnnouncements().should('not.exist');
+
+    cy.clickMountButton();
+
+    cy.getAnnouncements().should('have.length', 1);
+    cy.getAnnouncements(0).findByText('assertive: Hello world');
 
     cy.clickMountButton();
 
     cy.getAnnouncements().should('have.length', 2);
-    cy.getAnnouncements(0).findByText('assertive: Hello');
-    cy.getAnnouncements(1).findByText('assertive: Hello world');
+    cy.getAnnouncements(0).findByText('assertive: Hello world');
+    cy.getAnnouncements(1).findByText('assertive: Hello');
 
     cy.clickMountButton();
 
     cy.getAnnouncements().should('have.length', 3);
-    cy.getAnnouncements(0).findByText('assertive: Hello');
-    cy.getAnnouncements(1).findByText('assertive: Hello world');
-    cy.getAnnouncements(2).findByText('assertive: Hello');
+    cy.getAnnouncements(0).findByText('assertive: Hello world');
+    cy.getAnnouncements(1).findByText('assertive: Hello');
+    cy.getAnnouncements(2).findByText('assertive: Hello world');
 });
 
 export {};

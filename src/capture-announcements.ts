@@ -81,10 +81,9 @@ export default function CaptureAnnouncements(options: Options): Restore {
         const textContent = getTextContent(liveRegion);
         liveRegions.set(liveRegion, textContent);
 
-        // TODO: Only contents of `role="alert"` should be announced on initial mount. Not all assertives.
-        // Content of assertive live regions is announced on initial mount
+        // Content of role="alert" regions are announced on initial mount
         if (textContent) {
-            if (politenessSetting === 'assertive') {
+            if (liveRegion.getAttribute('role') === 'alert') {
                 onCapture(textContent, politenessSetting);
             }
         }

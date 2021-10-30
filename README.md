@@ -124,7 +124,7 @@ PASS ✅  | "Error" is announced
 <!-- prettier-ignore -->
 ```html
 Render#1 | <div aria-live="assertive">Error</div>
-PASS ✅  | "Error" is announced
+FAIL ❌  | "Error" is not announced
 ```
 
 <!-- prettier-ignore -->

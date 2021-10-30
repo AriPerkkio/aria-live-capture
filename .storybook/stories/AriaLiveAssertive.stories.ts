@@ -19,7 +19,7 @@ export function LiveRegionAvailableBeforeContent() {
     );
 }
 
-addStoryName(LiveRegionUnavailableBeforeContent, 'PASS');
+addStoryName(LiveRegionUnavailableBeforeContent, 'FAIL');
 export function LiveRegionUnavailableBeforeContent() {
     return createMountToggle(
         `

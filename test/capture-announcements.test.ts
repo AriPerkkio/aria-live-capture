@@ -184,12 +184,31 @@ describe.each(ASSERTIVE_CASES)('$testName', ({ name, value }) => {
         element = liveRegion;
     });
 
-    test('should announce when dynamically rendered with initially content', () => {
-        element.textContent = 'Hello world';
-        appendToRoot(element);
+    if (name === 'role' && value === 'alert') {
+        test('should announce when dynamically rendered with initial content', () => {
+            element.textContent = 'Hello world';
+            appendToRoot(element);
 
-        expect(onCapture).toHaveBeenCalledWith('Hello world', 'assertive');
-    });
+            expect(onCapture).toHaveBeenCalledWith('Hello world', 'assertive');
+        });
+
+        test('should announce when hidden live region appears', () => {
+            element.setAttribute('aria-hidden', 'true');
+            element.textContent = 'Hello world';
+            appendToRoot(element);
+
+            element.removeAttribute('aria-hidden');
+
+            expect(onCapture).toHaveBeenCalledWith('Hello world', 'assertive');
+        });
+    } else {
+        test('should not announce when dynamically rendered with initial content', () => {
+            element.textContent = 'Hello world';
+            appendToRoot(element);
+
+            expect(onCapture).not.toHaveBeenCalled();
+        });
+    }
 
     test('should announce when dynamically rendered into live region', () => {
         appendToRoot(element);
@@ -207,18 +226,6 @@ describe.each(ASSERTIVE_CASES)('$testName', ({ name, value }) => {
         expect(onCapture).toHaveBeenCalledWith('Message #2', 'assertive');
     });
 
-    test('should announce when role is set after render', () => {
-        const liveRegion = document.createElement('div');
-        liveRegion.textContent = 'Hello world';
-        appendToRoot(liveRegion);
-
-        if (name && value) {
-            liveRegion.setAttribute(name, value);
-        }
-
-        expect(onCapture).toHaveBeenCalledWith('Hello world', 'assertive');
-    });
-
     test('should announce when role is set after render and content is updated', () => {
         const liveRegion = document.createElement('div');
         liveRegion.textContent = 'First';
@@ -229,42 +236,44 @@ describe.each(ASSERTIVE_CASES)('$testName', ({ name, value }) => {
         }
         liveRegion.textContent = 'Second';
 
-        expect(onCapture).toHaveBeenCalledWith('First', 'assertive');
         expect(onCapture).toHaveBeenCalledWith('Second', 'assertive');
     });
 
     test('should announce when content is added with `insertBefore`', async () => {
-        const parent = document.createElement('div');
-        const sibling = document.createElement('div');
-        parent.appendChild(sibling);
-        appendToRoot(parent);
+        appendToRoot(element);
 
-        element.textContent = 'Hello world';
-        parent.insertBefore(element, sibling);
+        const child = document.createElement('div');
+        const sibling = document.createElement('div');
+        element.appendChild(child);
+
+        sibling.textContent = 'Hello world';
+        element.insertBefore(sibling, child);
 
         expect(onCapture).toHaveBeenCalledWith('Hello world', 'assertive');
     });
 
     test('should announce when content is added with `replaceChild`', async () => {
-        const parent = document.createElement('div');
-        const oldChild = document.createElement('div');
-        parent.appendChild(oldChild);
-        appendToRoot(parent);
+        appendToRoot(element);
 
-        element.textContent = 'Hello world';
-        parent.replaceChild(element, oldChild);
+        const oldChild = document.createElement('div');
+        const newChild = document.createElement('div');
+        element.appendChild(oldChild);
+
+        newChild.textContent = 'Hello world';
+        element.replaceChild(newChild, oldChild);
 
         expect(onCapture).toHaveBeenCalledWith('Hello world', 'assertive');
     });
 
     test('should announce when content is added with `insertAdjacentElement`', async () => {
-        const parent = document.createElement('div');
-        const sibling = document.createElement('div');
-        parent.appendChild(sibling);
-        appendToRoot(parent);
+        appendToRoot(element);
 
-        element.textContent = 'Hello world';
-        sibling.insertAdjacentElement('afterbegin', element);
+        const child = document.createElement('div');
+        const sibling = document.createElement('div');
+        element.appendChild(child);
+
+        sibling.textContent = 'Hello world';
+        child.insertAdjacentElement('afterbegin', sibling);
 
         expect(onCapture).toHaveBeenCalledWith('Hello world', 'assertive');
     });
@@ -290,31 +299,37 @@ describe.each(ASSERTIVE_CASES)('$testName', ({ name, value }) => {
     });
 
     test('should announce when content is added with `before`', async () => {
-        const sibling = document.createElement('div');
-        appendToRoot(sibling);
+        appendToRoot(element);
 
-        element.textContent = 'Hello world';
-        sibling.before(element);
+        const last = document.createElement('div');
+        last.textContent = 'world';
+        element.appendChild(last);
+
+        const first = document.createElement('div');
+        first.textContent = 'Hello';
+        last.before(first);
 
         expect(onCapture).toHaveBeenCalledWith('Hello world', 'assertive');
     });
 
     test('should announce when content is added with `append`', async () => {
-        const parent = document.createElement('div');
-        appendToRoot(parent);
+        appendToRoot(element);
 
-        element.textContent = 'Hello world';
-        parent.append(element);
+        const child = document.createElement('div');
+        child.textContent = 'Hello world';
+
+        element.append(child);
 
         expect(onCapture).toHaveBeenCalledWith('Hello world', 'assertive');
     });
 
     test('should announce when content is added with `prepend`', async () => {
-        const parent = document.createElement('div');
-        appendToRoot(parent);
+        appendToRoot(element);
 
-        element.textContent = 'Hello world';
-        parent.prepend(element);
+        const child = document.createElement('div');
+        child.textContent = 'Hello world';
+
+        element.prepend(child);
 
         expect(onCapture).toHaveBeenCalledWith('Hello world', 'assertive');
     });
@@ -347,16 +362,6 @@ describe.each(ASSERTIVE_CASES)('$testName', ({ name, value }) => {
         element.appendChild(child);
 
         expect(onCapture).not.toHaveBeenCalled();
-    });
-
-    test('should announce when hidden live region appears', () => {
-        element.setAttribute('aria-hidden', 'true');
-        element.textContent = 'Hello world';
-        appendToRoot(element);
-
-        element.removeAttribute('aria-hidden');
-
-        expect(onCapture).toHaveBeenCalledWith('Hello world', 'assertive');
     });
 
     test('should announce when hidden content appears by removeAttribute', () => {
