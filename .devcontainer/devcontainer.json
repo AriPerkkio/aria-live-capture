@@ -1,0 +1,11 @@
+{
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "development",
+    "postCreateCommand": "yarn install",
+    "forwardPorts": [8080],
+    "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "wesbos.theme-cobalt2"
+    ]
+}
