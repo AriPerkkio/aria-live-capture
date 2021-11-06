@@ -1,8 +1,8 @@
 {
     "dockerComposeFile": "docker-compose.yml",
     "service": "development",
-    "postCreateCommand": "yarn install",
-    "forwardPorts": [8080],
+    "postCreateCommand": "yarn install && ./node_modules/.bin/cypress install",
+    "forwardPorts": [6006, 8080],
     "extensions": [
         "dbaeumer.vscode-eslint",
         "esbenp.prettier-vscode",

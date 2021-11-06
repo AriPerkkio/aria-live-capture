@@ -12,12 +12,24 @@ jobs:
 
         steps:
             - uses: actions/checkout@v2
+
             - name: Use Node.js ${{ matrix.node-version }}
               uses: actions/setup-node@v1
               with:
                   node-version: ${{ matrix.node-version }}
-            - run: |
+
+            - name: Install & Build
+              run: |
                   yarn install
                   yarn build
-            - run: yarn lint
-            - run: yarn test
+
+            - name: Lint
+              run: yarn lint
+
+            - name: Unit Tests
+              run: yarn test
+
+            - name: Integration Tests
+              uses: cypress-io/github-action@v2
+              with:
+                  start: yarn test:integration
