@@ -53,8 +53,8 @@ export function AnchestorIsHidden() {
     );
 }
 
-addStoryName(LiveContainerIsHidden, 'FAIL');
-export function LiveContainerIsHidden() {
+addStoryName(LiveRegionIsHidden, 'FAIL');
+export function LiveRegionIsHidden() {
     return createMountToggle(
         `
         <div aria-hidden="true" aria-live="assertive">

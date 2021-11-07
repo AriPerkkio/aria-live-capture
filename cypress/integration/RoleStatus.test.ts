@@ -1,4 +1,4 @@
-const BASE_URL = 'iframe.html?id=aria-live-aria-live-assertive--';
+const BASE_URL = 'iframe.html?id=role-role-status--';
 
 it('Live Region Available Before Content', () => {
     cy.visit(`${BASE_URL}live-region-available-before-content`);
@@ -9,7 +9,7 @@ it('Live Region Available Before Content', () => {
 
     cy.getAnnouncements()
         .should('have.length', 1)
-        .findByText('assertive: Hello world');
+        .findByText('polite: Hello world');
 });
 
 it('Live Region Unavailable Before Content', () => {
@@ -19,9 +19,7 @@ it('Live Region Unavailable Before Content', () => {
 
     cy.clickMountButton();
 
-    cy.getAnnouncements()
-        .should('have.length', 1)
-        .findByText('assertive: Hello world');
+    cy.getAnnouncements().should('not.exist');
 });
 
 it('Anchestor is hidden', () => {
@@ -61,28 +59,31 @@ it('Content is partially hidden', () => {
 
     cy.clickMountButton();
 
-    cy.getAnnouncements().findByText('assertive: Hello');
+    cy.getAnnouncements().findByText('polite: Hello');
 });
 
 it('Part of content changes', () => {
     cy.visit(`${BASE_URL}part-of-content-changes`);
     cy.waitForPageLoad();
-    cy.getAnnouncements()
-        .should('have.length', 1)
-        .findByText('assertive: Hello');
+    cy.getAnnouncements().should('not.exist');
+
+    cy.clickMountButton();
+
+    cy.getAnnouncements().should('have.length', 1);
+    cy.getAnnouncements(0).findByText('polite: Hello world');
 
     cy.clickMountButton();
 
     cy.getAnnouncements().should('have.length', 2);
-    cy.getAnnouncements(0).findByText('assertive: Hello');
-    cy.getAnnouncements(1).findByText('assertive: Hello world');
+    cy.getAnnouncements(0).findByText('polite: Hello world');
+    cy.getAnnouncements(1).findByText('polite: Hello');
 
     cy.clickMountButton();
 
     cy.getAnnouncements().should('have.length', 3);
-    cy.getAnnouncements(0).findByText('assertive: Hello');
-    cy.getAnnouncements(1).findByText('assertive: Hello world');
-    cy.getAnnouncements(2).findByText('assertive: Hello');
+    cy.getAnnouncements(0).findByText('polite: Hello world');
+    cy.getAnnouncements(1).findByText('polite: Hello');
+    cy.getAnnouncements(2).findByText('polite: Hello world');
 });
 
 export {};

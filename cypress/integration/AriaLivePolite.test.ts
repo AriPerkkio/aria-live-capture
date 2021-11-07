@@ -5,7 +5,7 @@ it('Live Region Available Before Content', () => {
     cy.waitForPageLoad();
     cy.getAnnouncements().should('not.exist');
 
-    cy.findByRole('button', { name: 'Mount' }).click();
+    cy.clickMountButton();
 
     cy.getAnnouncements()
         .should('have.length', 1)
@@ -17,9 +17,9 @@ it('Live Region Unavailable Before Content', () => {
     cy.waitForPageLoad();
     cy.getAnnouncements().should('not.exist');
 
-    cy.findByRole('button', { name: 'Mount' }).click();
+    cy.clickMountButton().clickMountButton();
 
-    cy.getAnnouncements().should('have.length', 0);
+    cy.getAnnouncements().should('not.exist');
 });
 
 export {};

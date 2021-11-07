@@ -2,8 +2,14 @@
 
 import '@testing-library/cypress/add-commands';
 
-Cypress.Commands.add('getAnnouncements', () => {
-    return cy.get('#announcements-frame li');
+Cypress.Commands.add('getAnnouncements', (index?: number) => {
+    const listItems = cy.get('#announcements-frame li');
+
+    if (index !== undefined) {
+        return listItems.eq(index);
+    }
+
+    return listItems;
 });
 
 Cypress.Commands.add('waitForPageLoad', () => {
@@ -16,10 +22,17 @@ Cypress.Commands.add('waitForPageLoad', () => {
     return cy;
 });
 
+Cypress.Commands.add('clickMountButton', () => {
+    cy.findByRole('button', { name: 'Mount' }).click();
+
+    return cy;
+});
+
 declare global {
     namespace Cypress {
         interface Chainable {
-            getAnnouncements(): Chainable<Element | Element[]>;
+            clickMountButton(): Chainable;
+            getAnnouncements(index?: number): Chainable<Element | Element[]>;
             waitForPageLoad(): Chainable;
         }
     }
