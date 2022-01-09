@@ -1,6 +1,14 @@
 interface TestAttributes {
     name?: 'role' | 'aria-live';
-    value?: 'status' | 'alert' | 'log' | 'assertive' | 'polite';
+    value?:
+        | 'status'
+        | 'alert'
+        | 'log'
+        | 'timer'
+        | 'marquee'
+        | 'assertive'
+        | 'polite'
+        | 'off';
     tag?: 'div' | 'output';
     testName: string;
 }
@@ -29,6 +37,12 @@ export const POLITE_CASES: TestAttributes[] = ([
 export const ASSERTIVE_CASES: TestAttributes[] = ([
     { name: 'role', value: 'alert' },
     { name: 'aria-live', value: 'assertive' },
+] as const).map(addTestName);
+
+export const OFF_CASES: TestAttributes[] = ([
+    { name: 'role', value: 'marquee' },
+    { name: 'role', value: 'timer' },
+    { name: 'aria-live', value: 'off' },
 ] as const).map(addTestName);
 
 export function appendToRoot(element: HTMLElement): void {

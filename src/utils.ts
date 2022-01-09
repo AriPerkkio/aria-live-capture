@@ -61,6 +61,21 @@ export function isHidden(node: Node): boolean {
         return true;
     }
 
+    if (
+        element.hasAttribute('aria-live') &&
+        element.getAttribute('aria-live') === 'off'
+    ) {
+        return true;
+    }
+
+    if (element.hasAttribute('role')) {
+        const role = element.getAttribute('role');
+
+        if (role === 'marquee' || role === 'timer') {
+            return true;
+        }
+    }
+
     return element.closest(HIDDEN_QUERY) != null;
 }
 
@@ -82,11 +97,10 @@ export function resolvePolitenessSetting(node: Node | null): PolitenessSetting {
     if (!node || !isElement(node)) return 'off';
 
     const ariaLive = node.getAttribute('aria-live');
-
-    // TODO: Should "off" be ignored?
     if (isPolitenessSetting(ariaLive)) return ariaLive;
 
     const role = node.getAttribute('role');
+    if (role === 'marquee' || role === 'timer') return 'off';
     if (role === 'status' || role === 'log') return 'polite';
     if (role === 'alert') return 'assertive';
 
