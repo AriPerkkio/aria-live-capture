@@ -45,7 +45,8 @@
         "jest": "^27.0.4",
         "prettier": "2.2.0",
         "start-server-and-test": "^1.14.0",
-        "ts-jest": "^27.0.3",
+        "ts-jest": "^27.1.2",
+        "ts-node": "^10.4.0",
         "typescript": "^4.4.4"
     },
     "keywords": [
@@ -53,5 +54,13 @@
         "aria-live",
         "accessibility",
         "a11y"
-    ]
+    ],
+    "prettier": {
+        "arrowParens": "avoid",
+        "semi": true,
+        "trailingComma": "es5",
+        "singleQuote": true,
+        "tabWidth": 4,
+        "printWidth": 80
+    }
 }
