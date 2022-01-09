@@ -1,6 +1,11 @@
 import CaptureAnnouncements from '../src';
 import { __PrivateUnstableAPI } from '../src/capture-announcements';
-import { appendToRoot, POLITE_CASES, ASSERTIVE_CASES } from './utils';
+import {
+    appendToRoot,
+    POLITE_CASES,
+    ASSERTIVE_CASES,
+    OFF_CASES,
+} from './utils';
 
 const { liveRegions } = __PrivateUnstableAPI;
 
@@ -386,6 +391,56 @@ describe.each(ASSERTIVE_CASES)('$testName', ({ name, value }) => {
         element.appendChild(child);
 
         child.setAttribute('aria-hidden', 'false');
+
+        expect(onCapture).toHaveBeenCalledWith('Hello world', 'assertive');
+    });
+});
+
+describe.each(OFF_CASES)('$testName', ({ name, value }) => {
+    let element: HTMLElement;
+    let cleanup: undefined | ReturnType<typeof CaptureAnnouncements>;
+    const onCapture = jest.fn();
+
+    afterEach(() => {
+        cleanup?.();
+        onCapture.mockReset();
+    });
+
+    beforeEach(() => {
+        cleanup = CaptureAnnouncements({ onCapture });
+
+        element = document.createElement('div');
+        element.setAttribute(name!, value!);
+    });
+
+    test('should not announce when dynamically rendered into live region', () => {
+        appendToRoot(element);
+
+        element.textContent = 'Hello world';
+
+        expect(onCapture).not.toHaveBeenCalled();
+    });
+
+    test('should not announce when wrapped inside live region', () => {
+        const parent = document.createElement('div');
+        parent.setAttribute('role', 'alert');
+
+        appendToRoot(parent);
+
+        element.textContent = 'Hello world';
+        parent.appendChild(element);
+
+        expect(onCapture).not.toHaveBeenCalled();
+    });
+
+    test('should announce when wraps a live region', () => {
+        appendToRoot(element);
+
+        const child = document.createElement('div');
+        child.setAttribute('role', 'alert');
+        element.appendChild(child);
+
+        child.textContent = 'Hello world';
 
         expect(onCapture).toHaveBeenCalledWith('Hello world', 'assertive');
     });
