@@ -54,26 +54,17 @@ export function isHidden(node: Node): boolean {
 
     if (!element) return true;
 
-    if (
-        element.hasAttribute('aria-hidden') &&
-        element.getAttribute('aria-hidden') === 'true'
-    ) {
+    if (element.getAttribute('aria-hidden') === 'true') {
         return true;
     }
 
-    if (
-        element.hasAttribute('aria-live') &&
-        element.getAttribute('aria-live') === 'off'
-    ) {
+    if (element.getAttribute('aria-live') === 'off') {
         return true;
     }
 
-    if (element.hasAttribute('role')) {
-        const role = element.getAttribute('role');
-
-        if (role === 'marquee' || role === 'timer') {
-            return true;
-        }
+    const role = element.getAttribute('role');
+    if (role === 'marquee' || role === 'timer') {
+        return true;
     }
 
     return element.closest(HIDDEN_QUERY) != null;
