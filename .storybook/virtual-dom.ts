@@ -42,6 +42,12 @@ export function update(current: Node, next: Node) {
         if (currentChild.hasChildNodes() || nextChild.hasChildNodes()) {
             update(currentChild, nextChild);
         }
+
+        if (isTextNode(currentChild) && isTextNode(nextChild)) {
+            if (currentChild.textContent !== nextChild.textContent) {
+                currentChild.textContent = nextChild.textContent;
+            }
+        }
     });
 
     for (const child of childrenToRemove) {
@@ -74,6 +80,12 @@ export function update(current: Node, next: Node) {
             }
         }
     }
+}
+
+function isTextNode(
+    node: Node
+): node is Node & { type: typeof Node.TEXT_NODE } {
+    return node.nodeType === Node.TEXT_NODE;
 }
 
 function getAttributes(node: Node): Attribute[] {
