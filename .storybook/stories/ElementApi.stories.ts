@@ -1,10 +1,9 @@
 import { createButtonCycle } from '../utils';
 
 export default {
-    title: 'DOM API Support',
+    title: 'DOM API Support/Element',
 };
 
-setAttribute.storyName = 'Element.setAttribute';
 export function setAttribute() {
     let element: HTMLElement;
 
@@ -21,8 +20,8 @@ export function setAttribute() {
         }
     );
 }
+setAttribute.storyName = 'setAttribute';
 
-insertAdjacentElement.storyName = 'Element.insertAdjacentElement';
 export function insertAdjacentElement() {
     let element: HTMLElement;
 
@@ -39,8 +38,8 @@ export function insertAdjacentElement() {
         }
     );
 }
+insertAdjacentElement.storyName = 'insertAdjacentElement';
 
-insertAdjacentHTML.storyName = 'Element.insertAdjacentHTML';
 export function insertAdjacentHTML() {
     let element: HTMLElement;
 
@@ -58,8 +57,8 @@ export function insertAdjacentHTML() {
         }
     );
 }
+insertAdjacentHTML.storyName = 'insertAdjacentHTML';
 
-insertAdjacentText.storyName = 'Element.insertAdjacentText';
 export function insertAdjacentText() {
     let element: HTMLElement;
 
@@ -74,8 +73,8 @@ export function insertAdjacentText() {
         }
     );
 }
+insertAdjacentText.storyName = 'insertAdjacentText';
 
-before.storyName = 'Element.before';
 export function before() {
     let element: HTMLElement;
     let child: HTMLElement;
@@ -98,8 +97,8 @@ export function before() {
         }
     );
 }
+before.storyName = 'before';
 
-append.storyName = 'Element.append';
 export function append() {
     let element: HTMLElement;
 
@@ -121,8 +120,8 @@ export function append() {
         }
     );
 }
+append.storyName = 'append';
 
-prepend.storyName = 'Element.prepend';
 export function prepend() {
     let element: HTMLElement;
 
@@ -144,8 +143,8 @@ export function prepend() {
         }
     );
 }
+prepend.storyName = 'prepend';
 
-removeAttribute.storyName = 'Element.removeAttribute';
 export function removeAttribute() {
     let element: HTMLElement;
     let child: HTMLElement;
@@ -176,8 +175,8 @@ export function removeAttribute() {
         }
     );
 }
+removeAttribute.storyName = 'removeAttribute';
 
-removeChild.storyName = 'Element.removeChild';
 export function removeChild() {
     let element: HTMLElement;
     let sibling: HTMLElement;
@@ -202,115 +201,4 @@ export function removeChild() {
         }
     );
 }
-
-appendChild.storyName = 'Node.appendChild';
-export function appendChild() {
-    let element: HTMLElement;
-
-    return createButtonCycle(
-        parent => {
-            element = document.createElement('div');
-            element.setAttribute('aria-live', 'polite');
-            parent.appendChild(element);
-        },
-        () => {
-            const child = document.createElement('div');
-            child.textContent = 'Hello world';
-
-            element.appendChild(child);
-        }
-    );
-}
-
-insertBefore.storyName = 'Node.insertBefore';
-export function insertBefore() {
-    let element: HTMLElement;
-    let child: HTMLElement;
-
-    return createButtonCycle(
-        parent => {
-            element = document.createElement('div');
-            element.setAttribute('aria-live', 'polite');
-
-            child = document.createElement('div');
-            element.appendChild(child);
-
-            parent.appendChild(element);
-        },
-        () => {
-            const sibling = document.createElement('span');
-            sibling.textContent = 'Hello world';
-
-            element.insertBefore(sibling, child);
-        }
-    );
-}
-
-replaceChild.storyName = 'Node.replaceChild';
-export function replaceChild() {
-    let element: HTMLElement;
-    let child: HTMLElement;
-
-    return createButtonCycle(
-        parent => {
-            element = document.createElement('div');
-            element.setAttribute('aria-live', 'polite');
-
-            child = document.createElement('div');
-            element.appendChild(child);
-
-            parent.appendChild(element);
-        },
-        () => {
-            const newChild = document.createElement('span');
-            newChild.textContent = 'Hello world';
-
-            element.replaceChild(newChild, child);
-        }
-    );
-}
-
-textContent.storyName = 'Node.textContent';
-export function textContent() {
-    let element: HTMLElement;
-    let child: HTMLElement;
-
-    return createButtonCycle(
-        parent => {
-            element = document.createElement('div');
-            element.setAttribute('aria-live', 'polite');
-
-            parent.appendChild(element);
-        },
-        () => {
-            element.textContent = 'Hello world';
-
-            child = document.createElement('span');
-            element.appendChild(child);
-        },
-        () => {
-            child.textContent = 'from child';
-        }
-    );
-}
-
-nodeValue.storyName = 'Node.nodeValue';
-export function nodeValue() {
-    let element: HTMLElement;
-    let textNode: Node;
-
-    return createButtonCycle(
-        parent => {
-            element = document.createElement('div');
-            element.setAttribute('aria-live', 'polite');
-
-            textNode = document.createTextNode('');
-            element.appendChild(textNode);
-
-            parent.appendChild(element);
-        },
-        () => {
-            textNode.nodeValue = 'Hello world';
-        }
-    );
-}
+removeChild.storyName = 'removeChild';
