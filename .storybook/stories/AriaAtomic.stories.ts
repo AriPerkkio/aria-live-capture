@@ -1,7 +1,7 @@
 import { createMountToggle } from '../utils';
 
 export default {
-    title: 'aria-atomic (unsupported)',
+    title: 'Unsupported/aria-atomic',
 };
 
 export function True() {
@@ -19,6 +19,7 @@ export function True() {
         `
     );
 }
+True.storyName = 'true';
 
 export function False() {
     return createMountToggle(
@@ -35,3 +36,4 @@ export function False() {
         `
     );
 }
+False.storyName = 'false';

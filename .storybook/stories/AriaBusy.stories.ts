@@ -1,10 +1,10 @@
 import { createButtonCycle } from '../utils';
 
 export default {
-    title: 'aria-busy (unsupported)',
+    title: 'Unsupported/aria-busy',
 };
 
-export function Default() {
+export function AriaBusy() {
     let element: HTMLElement;
 
     return createButtonCycle(
@@ -31,3 +31,4 @@ export function Default() {
         }
     );
 }
+AriaBusy.storyName = 'true/false';
