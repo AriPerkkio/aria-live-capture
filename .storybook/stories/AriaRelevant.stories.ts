@@ -1,7 +1,7 @@
 import { createMountToggle } from '../utils';
 
 export default {
-    title: 'aria-relevant (unsupported)',
+    title: 'Unsupported/aria-relevant',
 };
 
 export function Additions() {
@@ -19,6 +19,7 @@ export function Additions() {
         `
     );
 }
+Additions.storyName = 'additions';
 
 export function Removals() {
     return createMountToggle(
@@ -35,6 +36,7 @@ export function Removals() {
         `
     );
 }
+Removals.storyName = 'removals';
 
 export function Text() {
     return createMountToggle(
@@ -50,6 +52,7 @@ export function Text() {
         `
     );
 }
+Text.storyName = 'text';
 
 export function All() {
     return createMountToggle(
@@ -69,3 +72,4 @@ export function All() {
         `
     );
 }
+All.storyName = 'all';
