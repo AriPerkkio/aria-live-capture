@@ -28,7 +28,7 @@
         "docs:deploy": "gh-pages -d docs"
     },
     "devDependencies": {
-        "@storybook/html": "^6.3.10",
+        "@storybook/html": "^6.4.12",
         "@testing-library/cypress": "^8.0.1",
         "@testing-library/dom": "^7.31.2",
         "@testing-library/jest-dom": "^5.14.1",
