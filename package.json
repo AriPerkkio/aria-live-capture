@@ -24,10 +24,11 @@
         "cy": "cypress",
         "validate": "yarn build && yarn lint && yarn test && yarn test:integration",
         "docs": "start-storybook -p 6006 --quiet --loglevel error",
-        "docs:build": "build-storybook --output-dir docs",
+        "docs:build": "build-storybook --quiet --loglevel error --output-dir docs",
         "docs:deploy": "gh-pages -d docs"
     },
     "devDependencies": {
+        "@storybook/addon-docs": "^6.4.12",
         "@storybook/html": "^6.4.12",
         "@testing-library/cypress": "^8.0.1",
         "@testing-library/dom": "^7.31.2",

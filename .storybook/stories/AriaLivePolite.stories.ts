@@ -4,7 +4,6 @@ export default {
     title: 'Aria-live/aria-live="polite"',
 };
 
-addStoryName(LiveRegionAvailableBeforeContent, 'PASS');
 export function LiveRegionAvailableBeforeContent() {
     return createMountToggle(
         `
@@ -18,8 +17,8 @@ export function LiveRegionAvailableBeforeContent() {
         `
     );
 }
+addStoryName(LiveRegionAvailableBeforeContent, 'PASS');
 
-addStoryName(LiveRegionUnavailableBeforeContent, 'FAIL');
 export function LiveRegionUnavailableBeforeContent() {
     return createMountToggle(
         `
@@ -32,3 +31,4 @@ export function LiveRegionUnavailableBeforeContent() {
         `
     );
 }
+addStoryName(LiveRegionUnavailableBeforeContent, 'FAIL');
