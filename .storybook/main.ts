@@ -1,4 +1,9 @@
 module.exports = {
-    stories: ['./**/*.stories.ts'],
-    addons: ['@storybook/addon-docs'],
+    stories: ['./README.stories.mdx', './**/*.stories.ts'],
+    addons: [
+        {
+            name: '@storybook/addon-docs',
+            options: { transcludeMarkdown: true },
+        },
+    ],
 };
