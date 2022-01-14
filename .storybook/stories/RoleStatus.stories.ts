@@ -4,7 +4,6 @@ export default {
     title: 'Role/role="status"',
 };
 
-addStoryName(LiveRegionAvailableBeforeContent, 'PASS');
 export function LiveRegionAvailableBeforeContent() {
     return createMountToggle(
         `
@@ -18,8 +17,8 @@ export function LiveRegionAvailableBeforeContent() {
         `
     );
 }
+addStoryName(LiveRegionAvailableBeforeContent, 'PASS');
 
-addStoryName(LiveRegionUnavailableBeforeContent, 'FAIL');
 export function LiveRegionUnavailableBeforeContent() {
     return createMountToggle(
         `
@@ -32,8 +31,8 @@ export function LiveRegionUnavailableBeforeContent() {
         `
     );
 }
+addStoryName(LiveRegionUnavailableBeforeContent, 'FAIL');
 
-addStoryName(AnchestorIsHidden, 'FAIL');
 export function AnchestorIsHidden() {
     return createMountToggle(
         `
@@ -51,8 +50,8 @@ export function AnchestorIsHidden() {
         `
     );
 }
+addStoryName(AnchestorIsHidden, 'FAIL');
 
-addStoryName(LiveRegionIsHidden, 'FAIL');
 export function LiveRegionIsHidden() {
     return createMountToggle(
         `
@@ -66,8 +65,8 @@ export function LiveRegionIsHidden() {
         `
     );
 }
+addStoryName(LiveRegionIsHidden, 'FAIL');
 
-addStoryName(ContentIsHidden, 'FAIL');
 export function ContentIsHidden() {
     return createMountToggle(
         `
@@ -83,8 +82,8 @@ export function ContentIsHidden() {
         `
     );
 }
+addStoryName(ContentIsHidden, 'FAIL');
 
-addStoryName(ContentIsPartiallyHidden, 'PARTIAL');
 export function ContentIsPartiallyHidden() {
     return createMountToggle(
         `
@@ -103,8 +102,8 @@ export function ContentIsPartiallyHidden() {
         `
     );
 }
+addStoryName(ContentIsPartiallyHidden, 'PARTIAL');
 
-addStoryName(PartOfContentChanges, 'PASS');
 export function PartOfContentChanges() {
     return createMountToggle(
         `
@@ -126,8 +125,8 @@ export function PartOfContentChanges() {
         `
     );
 }
+addStoryName(PartOfContentChanges, 'PASS');
 
-addStoryName(AriaHiddenChanges, 'PASS');
 export function AriaHiddenChanges() {
     return createMountToggle(
         `
@@ -146,3 +145,4 @@ export function AriaHiddenChanges() {
         `
     );
 }
+addStoryName(AriaHiddenChanges, 'PASS');

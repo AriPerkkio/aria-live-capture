@@ -4,7 +4,6 @@ export default {
     title: 'Aria-live/aria-live="off"',
 };
 
-addStoryName(WithTextContent, 'FAIL');
 export function WithTextContent() {
     return createMountToggle(
         `
@@ -18,8 +17,8 @@ export function WithTextContent() {
         `
     );
 }
+addStoryName(WithTextContent, 'FAIL');
 
-addStoryName(WrapsLiveRegion, 'PASS');
 export function WrapsLiveRegion() {
     return createMountToggle(
         `
@@ -37,8 +36,8 @@ export function WrapsLiveRegion() {
         `
     );
 }
+addStoryName(WrapsLiveRegion, 'PASS');
 
-addStoryName(WrappedInLiveRegion, 'FAIL');
 export function WrappedInLiveRegion() {
     return createMountToggle(
         `
@@ -56,8 +55,8 @@ export function WrappedInLiveRegion() {
         `
     );
 }
+addStoryName(WrappedInLiveRegion, 'FAIL');
 
-addStoryName(SiblingIsVisible, 'PARTIAL');
 export function SiblingIsVisible() {
     return createMountToggle(
         `
@@ -78,3 +77,4 @@ export function SiblingIsVisible() {
         `
     );
 }
+addStoryName(SiblingIsVisible, 'PARTIAL');
