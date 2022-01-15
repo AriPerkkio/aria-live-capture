@@ -6,4 +6,7 @@ module.exports = {
             options: { transcludeMarkdown: true },
         },
     ],
+    features: {
+        postcss: false,
+    },
 };
