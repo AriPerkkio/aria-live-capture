@@ -32,16 +32,8 @@ export function createElement(html: string): Element {
 
 export function update(current: Node, next: Node): void {
     if (shouldUpdateWholeNode(current, next)) {
-        const nextContent = isElement(next) ? next.outerHTML : next.textContent;
-
-        if (isElement(current)) {
-            current.outerHTML = nextContent || '';
-        } else {
-            current.textContent = nextContent;
-        }
-
         // No need to traverse children
-        return;
+        return updateWholeNode(current, next);
     }
 
     const childrenToAdd = Array.from(next.childNodes).slice(
@@ -129,6 +121,35 @@ function shouldUpdateWholeNode(current: Node, next: Node): boolean {
     }
 
     return current.textContent !== next.textContent;
+}
+
+function updateWholeNode(current: Node, next: Node): void {
+    // Previous element can be completely replaced with new node
+    if (isElement(current)) {
+        current.replaceWith(next);
+    }
+    // Previous text node can be replaced with new text
+    else if (isTextNode(current) && isTextNode(next)) {
+        current.textContent = next.textContent;
+    }
+    // Previous text node can be replaced with new node
+    else if (isTextNode(current) && isElement(next)) {
+        if (current.parentElement) {
+            current.parentElement.replaceChild(next, current);
+        } else {
+            console.warn(`Unexpected case, missing parentElement: ${current}`);
+        }
+    } else {
+        console.warn(
+            [
+                'Unexpected case:',
+                `isElement(current): ${isElement(current)}`,
+                `isTextNode(current): ${isTextNode(current)}`,
+                `isElement(next): ${isElement(next)}`,
+                `isTextNode(next): ${isTextNode(next)}`,
+            ].join(' ')
+        );
+    }
 }
 
 function trimWhitespace(text: string) {
