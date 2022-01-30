@@ -1,3 +1,7 @@
+/*
+ * TODO: This could be published as separate package as html-preview also relies on it
+ */
+
 import { isElement } from '../src/utils';
 
 interface Attribute {
@@ -26,11 +30,24 @@ export function createElement(html: string): Element {
     return element;
 }
 
-export function update(current: Node, next: Node) {
+export function update(current: Node, next: Node): void {
+    if (shouldUpdateWholeNode(current, next)) {
+        const nextContent = isElement(next) ? next.outerHTML : next.textContent;
+
+        if (isElement(current)) {
+            current.outerHTML = nextContent || '';
+        } else {
+            current.textContent = nextContent;
+        }
+
+        // No need to traverse children
+        return;
+    }
+
     const childrenToAdd = Array.from(next.childNodes).slice(
         current.childNodes.length
     );
-    const childrenToRemove: any[] = [];
+    const childrenToRemove: Node[] = [];
 
     current.childNodes.forEach((currentChild, index) => {
         const nextChild = next.childNodes[index];
@@ -100,6 +117,18 @@ function getAttributes(node: Node): Attribute[] {
             ],
             [] as Attribute[]
         );
+}
+
+function shouldUpdateWholeNode(current: Node, next: Node): boolean {
+    if (current.nodeType !== next.nodeType) {
+        return true;
+    }
+
+    if (isElement(current) && isElement(next)) {
+        return current.tagName !== next.tagName;
+    }
+
+    return current.textContent !== next.textContent;
 }
 
 function trimWhitespace(text: string) {
