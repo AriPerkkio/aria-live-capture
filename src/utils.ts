@@ -41,8 +41,10 @@ export function getClosestElement(node: Node): Element | null {
         return node;
     }
 
-    if (node.parentNode) {
-        return getClosestElement(node.parentNode);
+    const parentNode = queries.getParentNode(node);
+
+    if (parentNode) {
+        return getClosestElement(parentNode);
     }
 
     return null;

@@ -1,6 +1,57 @@
 import { configure } from '../src/config';
-import { getTextContent, isInDOM } from '../src/utils';
+import { getClosestElement, getTextContent, isInDOM } from '../src/utils';
 import { appendToRoot } from './utils';
+
+describe('getClosestElement', () => {
+    test('returns itself when element', () => {
+        const element = document.createElement('div');
+
+        expect(getClosestElement(element)).toBe(element);
+    });
+
+    test('returns parent element of text node', () => {
+        const element = document.createElement('div');
+        const text = document.createTextNode('Hello world');
+        element.appendChild(text);
+
+        expect(getClosestElement(text)).toBe(element);
+    });
+
+    test('returns null when node has no parent', () => {
+        const text = document.createTextNode('Hello world');
+
+        expect(getClosestElement(text)).toBe(null);
+    });
+
+    test('returns null when node has parentless node as parent', () => {
+        const parentNode = { parentNode: null } as Node;
+        const text = { parentNode } as Node;
+
+        expect(getClosestElement(text)).toBe(null);
+    });
+
+    test('returns parent of element inside shadow root', () => {
+        configure({ includeShadowDom: true });
+
+        const text = document.createTextNode('Hello world');
+        const root = document.createElement('div');
+
+        root.attachShadow({ mode: 'open' }).appendChild(text);
+
+        expect(getClosestElement(text)).toBe(root);
+    });
+
+    test('does not traverse shadow dom when config.includeShadowDom is false', () => {
+        configure({ includeShadowDom: false });
+
+        const text = document.createTextNode('Hello world');
+        const root = document.createElement('div');
+
+        root.attachShadow({ mode: 'open' }).appendChild(text);
+
+        expect(getClosestElement(text)).toBe(null);
+    });
+});
 
 describe('getTextContent', () => {
     let root: HTMLElement;

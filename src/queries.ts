@@ -22,3 +22,18 @@ export function closest(
 
     return null;
 }
+
+/**
+ * `Node.parentNode` as method which traverses tree up when `ShadowRoot` is encountered
+ */
+export function getParentNode(node: Node): Node['parentNode'] {
+    if (node.parentNode || !getConfig().includeShadowDom) {
+        return node.parentNode;
+    }
+
+    if (isShadowRoot(node)) {
+        return node.host;
+    }
+
+    return null;
+}
