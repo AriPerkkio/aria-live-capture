@@ -1,4 +1,5 @@
 import { isElement } from './dom-node-safe-guards';
+import * as queries from './queries';
 
 export type PolitenessSetting = 'polite' | 'assertive' | 'off';
 
@@ -57,7 +58,9 @@ export function isLiveRegionAttribute(
 }
 
 export function isInDOM(node: Node): boolean {
-    return isElement(node) && node.closest('html') != null;
+    const element = getClosestElement(node);
+
+    return element != null && queries.closest(element, 'html') != null;
 }
 
 // TODO: Support `hidden` and CSS attributes:

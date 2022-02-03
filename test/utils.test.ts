@@ -1,4 +1,6 @@
-import { getTextContent } from '../src/utils';
+import { configure } from '../src/config';
+import { getTextContent, isInDOM } from '../src/utils';
+import { appendToRoot } from './utils';
 
 describe('getTextContent', () => {
     let root: HTMLElement;
@@ -91,5 +93,123 @@ describe('getTextContent', () => {
         `);
 
         expect(getTextContent(document.getElementById('temp'))).toBe(null);
+    });
+});
+
+describe('isInDOM', () => {
+    test('mounted element is in DOM', () => {
+        const element = document.createElement('div');
+        appendToRoot(element);
+
+        expect(isInDOM(element)).toBe(true);
+    });
+
+    test('unmounted element is not in DOM', () => {
+        const element = document.createElement('div');
+
+        expect(isInDOM(element)).toBe(false);
+    });
+
+    test('document body is in DOM', () => {
+        expect(isInDOM(document.body)).toBe(true);
+    });
+
+    test('mounted text node is in DOM', () => {
+        const element = document.createElement('div');
+        const text = document.createTextNode('Hello world');
+        element.appendChild(text);
+        appendToRoot(element);
+
+        expect(isInDOM(text)).toBe(true);
+    });
+
+    test('unmounted text node is not in DOM', () => {
+        const text = document.createTextNode('Hello world');
+
+        expect(isInDOM(text)).toBe(false);
+    });
+
+    test('element inside mounted shadow root is in DOM', () => {
+        configure({ includeShadowDom: true });
+
+        const parent = document.createElement('div');
+        const shadowRoot = parent.attachShadow({ mode: 'open' });
+        appendToRoot(parent);
+
+        const element = document.createElement('div');
+        shadowRoot.appendChild(element);
+
+        expect(isInDOM(element)).toBe(true);
+    });
+
+    test('does not traverse shadow dom when config.includeShadowDom is false', () => {
+        configure({ includeShadowDom: false });
+
+        const parent = document.createElement('div');
+        const shadowRoot = parent.attachShadow({ mode: 'open' });
+        appendToRoot(parent);
+
+        const element = document.createElement('div');
+        shadowRoot.appendChild(element);
+
+        expect(isInDOM(element)).toBe(false);
+    });
+
+    test('element inside unmounted shadow root is not in DOM', () => {
+        configure({ includeShadowDom: true });
+
+        const parent = document.createElement('div');
+        const shadowRoot = parent.attachShadow({ mode: 'open' });
+
+        const element = document.createElement('div');
+        shadowRoot.appendChild(element);
+
+        expect(isInDOM(element)).toBe(false);
+    });
+
+    test('text node inside mounted shadow root is in DOM', () => {
+        configure({ includeShadowDom: true });
+
+        const parent = document.createElement('div');
+        const shadowRoot = parent.attachShadow({ mode: 'open' });
+        appendToRoot(parent);
+
+        const text = document.createTextNode('Hello world');
+        const element = document.createElement('div');
+        element.appendChild(text);
+        shadowRoot.appendChild(element);
+
+        expect(isInDOM(text)).toBe(true);
+    });
+
+    test('text node inside unmounted shadow root is not in DOM', () => {
+        configure({ includeShadowDom: true });
+
+        const parent = document.createElement('div');
+        const shadowRoot = parent.attachShadow({ mode: 'open' });
+
+        const text = document.createTextNode('Hello world');
+        const element = document.createElement('div');
+        element.appendChild(text);
+        shadowRoot.appendChild(element);
+
+        expect(isInDOM(text)).toBe(false);
+    });
+
+    test('element inside multiple nested mounted shadow roots is in DOM', () => {
+        configure({ includeShadowDom: true });
+
+        const firstParent = document.createElement('div');
+        firstParent.attachShadow({ mode: 'open' });
+        appendToRoot(firstParent);
+
+        const secondParent = document.createElement('div');
+        secondParent.attachShadow({ mode: 'open' });
+        firstParent.shadowRoot!.appendChild(secondParent);
+
+        const element = document.createElement('div');
+        secondParent.shadowRoot!.appendChild(element);
+
+        expect(isInDOM(element)).toBe(true);
     });
 });
