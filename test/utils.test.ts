@@ -3,6 +3,7 @@ import {
     getClosestElement,
     getClosestLiveRegion,
     getTextContent,
+    isHidden,
     isInDOM,
 } from '../src/utils';
 import { appendToRoot } from './utils';
@@ -203,6 +204,121 @@ describe('getTextContent', () => {
         `);
 
         expect(getTextContent(document.getElementById('temp'))).toBe(null);
+    });
+});
+
+describe('isHidden', () => {
+    test('node without parent is hidden', () => {
+        const text = document.createTextNode('Hello world');
+
+        expect(isHidden(text)).toBe(true);
+    });
+
+    test('element with aria-hidden="true" is hidden', () => {
+        const element = document.createElement('div');
+        element.setAttribute('aria-hidden', 'true');
+
+        expect(isHidden(element)).toBe(true);
+    });
+
+    test('element with aria-hidden="false" is visible', () => {
+        const element = document.createElement('div');
+        element.setAttribute('aria-hidden', 'false');
+
+        expect(isHidden(element)).toBe(false);
+    });
+
+    test('element with aria-live="off" is hidden', () => {
+        const element = document.createElement('div');
+        element.setAttribute('aria-live', 'off');
+
+        expect(isHidden(element)).toBe(true);
+    });
+
+    test('element with aria-live="polite" is visible', () => {
+        const element = document.createElement('div');
+        element.setAttribute('aria-live', 'polite');
+
+        expect(isHidden(element)).toBe(false);
+    });
+
+    test('element with aria-live="assertive" is visible', () => {
+        const element = document.createElement('div');
+        element.setAttribute('aria-live', 'assertive');
+
+        expect(isHidden(element)).toBe(false);
+    });
+
+    test('element with role="marquee" is hidden', () => {
+        const element = document.createElement('div');
+        element.setAttribute('role', 'marquee');
+
+        expect(isHidden(element)).toBe(true);
+    });
+
+    test('element with role="timer" is hidden', () => {
+        const element = document.createElement('div');
+        element.setAttribute('role', 'timer');
+
+        expect(isHidden(element)).toBe(true);
+    });
+
+    test('element with role="status" is visible', () => {
+        const element = document.createElement('div');
+        element.setAttribute('role', 'status');
+
+        expect(isHidden(element)).toBe(false);
+    });
+
+    test('element having parent with aria-hidden="true" is hidden', () => {
+        const element = document.createElement('div');
+        const parent = document.createElement('div');
+        parent.setAttribute('aria-hidden', 'true');
+        parent.appendChild(element);
+
+        expect(isHidden(element)).toBe(true);
+    });
+
+    test('element in shadow root having parent with aria-hidden="true" is hidden', () => {
+        configure({ includeShadowDom: true });
+
+        const element = document.createElement('div');
+        const parent = document.createElement('div');
+        const shadowRoot = parent.attachShadow({ mode: 'open' });
+
+        parent.setAttribute('aria-hidden', 'true');
+        shadowRoot.appendChild(element);
+
+        expect(isHidden(element)).toBe(true);
+    });
+
+    test('element deeply in shadow root having parent up in the tree with aria-hidden="true" is hidden', () => {
+        configure({ includeShadowDom: true });
+
+        const hiddenParent = document.createElement('div');
+        const parentWithShadowRoow = document.createElement('div');
+        hiddenParent.setAttribute('aria-hidden', 'true');
+        hiddenParent.appendChild(parentWithShadowRoow);
+
+        const element = document.createElement('div');
+        const shadowRoot = parentWithShadowRoow.attachShadow({ mode: 'open' });
+
+        shadowRoot.appendChild(element);
+
+        expect(isHidden(element)).toBe(true);
+    });
+
+    test('does not traverse shadow dom when config.includeShadowDom is false', () => {
+        configure({ includeShadowDom: false });
+
+        const element = document.createElement('div');
+        const parent = document.createElement('div');
+        const shadowRoot = parent.attachShadow({ mode: 'open' });
+
+        parent.setAttribute('aria-hidden', 'true');
+        shadowRoot.appendChild(element);
+
+        expect(isHidden(element)).toBe(false);
     });
 });
 
