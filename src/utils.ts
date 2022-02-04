@@ -85,7 +85,7 @@ export function isHidden(node: Node): boolean {
         return true;
     }
 
-    return element.closest(HIDDEN_QUERY) != null;
+    return queries.closest(element, HIDDEN_QUERY) != null;
 }
 
 export function getClosestLiveRegion(element: Element | null): Element | null {
