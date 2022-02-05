@@ -31,7 +31,7 @@
         "@storybook/addon-docs": "^6.4.12",
         "@storybook/html": "^6.4.12",
         "@testing-library/cypress": "^8.0.1",
-        "@testing-library/dom": "^7.31.2",
+        "@testing-library/dom": "^8.11.3",
         "@testing-library/jest-dom": "^5.14.1",
         "@types/jest": "^26.0.23",
         "@typescript-eslint/eslint-plugin": "^4.27.0",
