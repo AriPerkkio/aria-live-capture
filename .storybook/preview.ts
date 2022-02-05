@@ -1,6 +1,5 @@
-import { prettyDOM } from '@testing-library/dom';
-
 import CaptureAnnouncements from '../src';
+import prettyDOMWithShadowDOM from './pretty-dom-with-shadow-dom';
 import { AnnouncementEvents, SourceCodeUpdateEvents } from './utils';
 
 type StoryFn = () => HTMLElement;
@@ -24,7 +23,11 @@ export const decorators = [
         `.trim();
 
         function updateSourceCodeFrame() {
-            const code = compose(escapeHTML, formatSourceCode, prettyDOM)(html);
+            const code = compose(
+                escapeHTML,
+                formatSourceCode,
+                prettyDOMWithShadowDOM
+            )(html);
 
             sourceCodeFrame.querySelector(`#${sourceCodeId}`).innerHTML = code;
         }
