@@ -1,5 +1,5 @@
 import { getConfig } from './config';
-import { isShadowRoot } from './dom-node-safe-guards';
+import { isElement, isShadowRoot } from './dom-node-safe-guards';
 
 /**
  * `Element.closest` which traverses tree up when `ShadowRoot` is encountered
@@ -36,4 +36,15 @@ export function getParentNode(node: Node): Node['parentNode'] {
     }
 
     return null;
+}
+
+/**
+ * `Node.childNodes` as method which traverses tree down when `ShadowRoot` is encountered
+ */
+export function getChildNodes(node: Node): Node['childNodes'] {
+    if (getConfig().includeShadowDom && isElement(node) && node.shadowRoot) {
+        return getChildNodes(node.shadowRoot);
+    }
+
+    return node.childNodes;
 }
