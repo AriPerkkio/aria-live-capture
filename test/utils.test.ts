@@ -205,6 +205,62 @@ describe('getTextContent', () => {
 
         expect(getTextContent(document.getElementById('temp'))).toBe(null);
     });
+
+    test('returns text content from inside shadow dom', () => {
+        configure({ includeShadowDom: true });
+
+        html(`
+            <div>
+                <div id="host"></div>
+            </div>
+        `);
+
+        const host = document.getElementById('host')!;
+        const shadowRoot = host.attachShadow({ mode: 'open' });
+
+        const wrapper = document.createElement('div');
+        wrapper.appendChild(document.createTextNode('Hello world'));
+        shadowRoot.appendChild(wrapper);
+
+        expect(getTextContent(root)).toBe('Hello world');
+    });
+
+    test('returns text content from wrapped shadow dom', () => {
+        configure({ includeShadowDom: true });
+
+        html(`
+            <div>
+                <div id="host"></div>
+            </div>
+        `);
+
+        const shadowRoot = document
+            .getElementById('host')!
+            .attachShadow({ mode: 'open' });
+
+        shadowRoot.appendChild(document.createTextNode('Hello world'));
+
+        expect(getTextContent(root)).toBe('Hello world');
+    });
+
+    test('does not traverse shadow dom when config.includeShadowDom is false', () => {
+        configure({ includeShadowDom: false });
+
+        html(`
+            <div>
+                <div id="host"></div>
+            </div>
+        `);
+
+        const host = document.getElementById('host')!;
+        const shadowRoot = host.attachShadow({ mode: 'open' });
+
+        const wrapper = document.createElement('div');
+        wrapper.appendChild(document.createTextNode('Hello world'));
+        shadowRoot.appendChild(wrapper);
+
+        expect(getTextContent(root)).toBe(null);
+    });
 });
 
 describe('isHidden', () => {

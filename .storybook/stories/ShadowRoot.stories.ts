@@ -88,3 +88,30 @@ export function liveRegionDeeplyInShadowDOM() {
         }
     );
 }
+
+export function liveRegionWrappingElementAndShadowDOM() {
+    let shadowRoot: ShadowRoot;
+
+    return createButtonCycle(
+        parent => {
+            const region = document.createElement('div');
+            region.setAttribute('aria-live', 'polite');
+            parent.appendChild(region);
+
+            const host = document.createElement('div');
+            region.appendChild(host);
+
+            shadowRoot = host.attachShadow({ mode: 'open' });
+        },
+        () => {
+            const hello = document.createElement('div');
+            hello.textContent = 'Hello';
+
+            const world = document.createElement('div');
+            world.textContent = 'world';
+
+            shadowRoot.appendChild(hello);
+            shadowRoot.host.appendChild(world);
+        }
+    );
+}

@@ -147,14 +147,15 @@ export function getTextContent(node: Node | null): string | null {
         return node.textContent ? trimWhiteSpace(node.textContent) : null;
     }
 
-    if (!node.hasChildNodes()) return null;
+    const childNodes = queries.getChildNodes(node);
+    if (childNodes.length === 0) return null;
 
-    return trimWhiteSpace(
-        Array.from(node.childNodes)
-            .map(getTextContent)
-            .filter(Boolean)
-            .join(' ')
-    );
+    const textContent = Array.from(childNodes)
+        .map(getTextContent)
+        .filter(Boolean)
+        .join(' ');
+
+    return trimWhiteSpace(textContent);
 }
 
 function filterUnique<T>(item: T, index: number, array: T[]): boolean {
