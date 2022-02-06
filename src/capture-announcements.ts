@@ -1,4 +1,5 @@
 import {
+    getAllLiveRegions,
     getClosestElement,
     getClosestLiveRegion,
     getTextContent,
@@ -6,7 +7,6 @@ import {
     isHidden,
     isInDOM,
     isLiveRegionAttribute,
-    LIVE_REGION_QUERY,
     PolitenessSetting,
     resolvePolitenessSetting,
     trimWhiteSpace,
@@ -94,7 +94,7 @@ export default function CaptureAnnouncements(options: Options): Restore {
      * - TODO: Could be optimized based on appended/updated child
      */
     function updateLiveRegions() {
-        for (const liveRegion of document.querySelectorAll(LIVE_REGION_QUERY)) {
+        for (const liveRegion of getAllLiveRegions(document)) {
             addLiveRegion(liveRegion);
         }
     }
@@ -198,7 +198,7 @@ export default function CaptureAnnouncements(options: Options): Restore {
 
         const elementAndItsLiveRegionChildren = [
             node,
-            ...node.querySelectorAll(LIVE_REGION_QUERY),
+            ...getAllLiveRegions(node),
         ];
 
         // Check whether removed element or any of its children were tracked

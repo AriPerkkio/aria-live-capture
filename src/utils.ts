@@ -3,7 +3,7 @@ export type PolitenessSetting = 'polite' | 'assertive' | 'off';
 const LIVE_REGION_ROLES = ['status', 'log', 'alert'] as const;
 type LiveRegionRole = typeof LIVE_REGION_ROLES[number];
 
-export const LIVE_REGION_QUERY = [
+const LIVE_REGION_QUERY = [
     '[role="status"]',
     '[role="log"]',
     '[role="alert"]',
@@ -17,6 +17,12 @@ export const LIVE_REGION_QUERY = [
 ].join(', ');
 
 const HIDDEN_QUERY = '[aria-hidden="true"]';
+
+export function getAllLiveRegions(
+    context: Document | Element
+): ReturnType<typeof context['querySelectorAll']> {
+    return context.querySelectorAll(LIVE_REGION_QUERY);
+}
 
 export function isElement(node: Node | null): node is Element {
     return node != null && node.nodeType === Node.ELEMENT_NODE;
