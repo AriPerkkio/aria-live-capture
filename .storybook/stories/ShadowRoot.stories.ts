@@ -49,3 +49,42 @@ export function liveRegionWrappingShadowDOM() {
         }
     );
 }
+
+export function liveRegionDeeplyInShadowDOM() {
+    let third: HTMLElement;
+    let last: ShadowRoot;
+
+    return createButtonCycle(
+        parent => {
+            const first = document.createElement('div');
+            parent.appendChild(first);
+
+            const second = document.createElement('div');
+            first.attachShadow({ mode: 'open' }).appendChild(second);
+
+            third = document.createElement('div');
+            second.attachShadow({ mode: 'open' }).appendChild(third);
+
+            const fourth = document.createElement('div');
+            third.attachShadow({ mode: 'open' }).appendChild(fourth);
+
+            last = fourth.attachShadow({ mode: 'open' });
+        },
+        () => {
+            third.setAttribute('aria-live', 'polite');
+        },
+        () => {
+            const hello = document.createElement('span');
+            hello.textContent = 'Hello ';
+
+            const world = document.createElement('span');
+            world.textContent = 'world';
+
+            const element = document.createElement('div');
+            element.appendChild(hello);
+            element.appendChild(world);
+
+            last.append(element);
+        }
+    );
+}
