@@ -22,7 +22,7 @@ const LIVE_REGION_QUERY = [
 const HIDDEN_QUERY = '[aria-hidden="true"]';
 
 export function getAllLiveRegions(context: Document | Element): Element[] {
-    const liveRegions = Array.from(context.querySelectorAll(LIVE_REGION_QUERY));
+    const liveRegions = queries.querySelectorAll(context, LIVE_REGION_QUERY);
 
     // Check whether given `context` is also a live region
     if (

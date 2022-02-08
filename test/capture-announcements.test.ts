@@ -1,6 +1,6 @@
 import CaptureAnnouncements from '../src';
 import { __PrivateUnstableAPI } from '../src/capture-announcements';
-import { getConfig } from '../src/config';
+import { configure, getConfig } from '../src/config';
 import {
     appendToRoot,
     POLITE_CASES,
@@ -612,6 +612,34 @@ describe('element tracking', () => {
 
         expect(liveRegions.size).toBe(1);
         expect(liveRegions.has(element)).toBe(true);
+    });
+
+    test('element in shadow dom is tracked', () => {
+        configure({ includeShadowDom: true });
+
+        const region = document.createElement('div');
+        region.setAttribute('aria-live', 'polite');
+
+        element.attachShadow({ mode: 'open' });
+        element.shadowRoot!.appendChild(region);
+        appendToRoot(element);
+
+        expect(liveRegions.size).toBe(1);
+        expect(liveRegions.has(region)).toBe(true);
+    });
+
+    test('does not track shadow doms when config.includeShadowDom is false', () => {
+        configure({ includeShadowDom: false });
+
+        const region = document.createElement('div');
+        region.setAttribute('aria-live', 'polite');
+
+        element.attachShadow({ mode: 'open' });
+        element.shadowRoot!.appendChild(region);
+        appendToRoot(element);
+
+        expect(liveRegions.size).toBe(0);
+        expect(liveRegions.has(region)).toBe(false);
     });
 });
 
