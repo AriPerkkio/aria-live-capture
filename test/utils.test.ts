@@ -1,5 +1,6 @@
 import { configure } from '../src/config';
 import {
+    getAllLiveRegions,
     getClosestElement,
     getClosestLiveRegion,
     getTextContent,
@@ -7,6 +8,102 @@ import {
     isInDOM,
 } from '../src/utils';
 import { appendToRoot } from './utils';
+
+describe('getAllLiveRegions', () => {
+    let root: HTMLElement;
+    let element: HTMLElement;
+
+    beforeEach(() => {
+        element = document.createElement('div');
+        root = document.getElementById('root')!;
+
+        root.appendChild(element);
+    });
+
+    test.each(['status', 'log', 'alert'])(
+        'returns element with [role="%s"]',
+        role => {
+            element.setAttribute('role', role);
+
+            expect(getAllLiveRegions(root)).toContain(element);
+        }
+    );
+
+    test.each(['polite', 'assertive'])(
+        'returns element with [aria-live="%s"]',
+        ariaLive => {
+            element.setAttribute('aria-live', ariaLive);
+
+            expect(getAllLiveRegions(root)).toContain(element);
+        }
+    );
+
+    test('returns element with output', () => {
+        const output = document.createElement('output');
+        root.appendChild(output);
+
+        expect(getAllLiveRegions(root)).toContain(output);
+    });
+
+    test('ignores element with aria-live="off"', () => {
+        element.setAttribute('aria-live', 'off');
+
+        expect(getAllLiveRegions(root)).not.toContain(element);
+    });
+
+    test.each(['marquee', 'timer'])(
+        'ignores element with [role="%s"]',
+        role => {
+            element.setAttribute('role', role);
+
+            expect(getAllLiveRegions(root)).not.toContain(element);
+        }
+    );
+
+    test('returns live region from the shadow root', () => {
+        configure({ includeShadowDom: true });
+
+        const region = document.createElement('div');
+        region.setAttribute('aria-live', 'polite');
+
+        const shadowRoot = element.attachShadow({ mode: 'open' });
+        shadowRoot.appendChild(region);
+
+        expect(getAllLiveRegions(root)).toContain(region);
+    });
+
+    test('returns live region from nested the shadow roots', () => {
+        configure({ includeShadowDom: true });
+
+        const shadowRoot = element.attachShadow({ mode: 'open' });
+
+        const first = document.createElement('div');
+        const second = document.createElement('div');
+        const third = document.createElement('div');
+        const fourth = document.createElement('div');
+
+        shadowRoot.appendChild(first);
+        first.attachShadow({ mode: 'open' }).appendChild(second);
+        second.attachShadow({ mode: 'open' }).appendChild(third);
+        third.attachShadow({ mode: 'open' }).appendChild(fourth);
+        third.setAttribute('aria-live', 'polite');
+
+        expect(getAllLiveRegions(root)).toContain(third);
+    });
+
+    test('does not traverse shadow dom when config.includeShadowDom is false', () => {
+        configure({ includeShadowDom: false });
+
+        const region = document.createElement('div');
+        region.setAttribute('aria-live', 'polite');
+
+        const shadowRoot = element.attachShadow({ mode: 'open' });
+        shadowRoot.appendChild(region);
+
+        expect(getAllLiveRegions(root)).not.toContain(region);
+        expect(getAllLiveRegions(root)).toHaveLength(0);
+    });
+});
 
 describe('getClosestLiveRegion', () => {
     test('returns itself when live region', () => {
