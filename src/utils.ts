@@ -1,3 +1,5 @@
+import { isElement } from './dom-node-safe-guards';
+
 export type PolitenessSetting = 'polite' | 'assertive' | 'off';
 
 const LIVE_REGION_ROLES = ['status', 'log', 'alert'] as const;
@@ -22,10 +24,6 @@ export function getAllLiveRegions(
     context: Document | Element
 ): ReturnType<typeof context['querySelectorAll']> {
     return context.querySelectorAll(LIVE_REGION_QUERY);
-}
-
-export function isElement(node: Node | null): node is Element {
-    return node != null && node.nodeType === Node.ELEMENT_NODE;
 }
 
 export function getClosestElement(node: Node): Element | null {

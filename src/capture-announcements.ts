@@ -3,7 +3,6 @@ import {
     getClosestElement,
     getClosestLiveRegion,
     getTextContent,
-    isElement,
     isHidden,
     isInDOM,
     isLiveRegionAttribute,
@@ -12,6 +11,7 @@ import {
     trimWhiteSpace,
 } from './utils';
 import { interceptMethod, interceptSetter, Restore } from './interceptors';
+import { isElement } from './dom-node-safe-guards';
 
 interface Options {
     /** Callback invoked when announcement is captured */

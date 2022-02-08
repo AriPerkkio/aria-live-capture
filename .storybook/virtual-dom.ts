@@ -2,7 +2,7 @@
  * TODO: This could be published as separate package as html-preview also relies on it
  */
 
-import { isElement } from '../src/utils';
+import { isElement } from '../src/dom-node-safe-guards';
 
 interface Attribute {
     key: string;
