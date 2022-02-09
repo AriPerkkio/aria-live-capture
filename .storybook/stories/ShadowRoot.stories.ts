@@ -1,7 +1,7 @@
 import { createButtonCycle } from '../utils';
 
 export default {
-    title: 'Unsupported/ShadowRoot',
+    title: 'DOM API Support/ShadowRoot',
 };
 
 export function liveRegionInsideShadowDOM() {
