@@ -89,7 +89,7 @@ export function isHidden(node: Node): boolean {
 }
 
 export function getClosestLiveRegion(element: Element | null): Element | null {
-    return element ? element.closest(LIVE_REGION_QUERY) : null;
+    return element ? queries.closest(element, LIVE_REGION_QUERY) : null;
 }
 
 function isPolitenessSetting(
