@@ -1,6 +1,65 @@
 import { configure } from '../src/config';
-import { getClosestElement, getTextContent, isInDOM } from '../src/utils';
+import {
+    getClosestElement,
+    getClosestLiveRegion,
+    getTextContent,
+    isInDOM,
+} from '../src/utils';
 import { appendToRoot } from './utils';
+
+describe('getClosestLiveRegion', () => {
+    test('returns itself when live region', () => {
+        const element = document.createElement('div');
+        element.setAttribute('aria-live', 'polite');
+
+        const parent = document.createElement('div');
+        parent.setAttribute('aria-live', 'assertive');
+        parent.appendChild(element);
+
+        expect(getClosestLiveRegion(element)).toBe(element);
+    });
+
+    test('returns parent live region', () => {
+        const parent = document.createElement('div');
+        parent.setAttribute('aria-live', 'assertive');
+
+        const element = document.createElement('div');
+        parent.appendChild(element);
+
+        expect(getClosestLiveRegion(element)).toBe(parent);
+    });
+
+    test('returns live region from parent shadow roots', () => {
+        configure({ includeShadowDom: true });
+
+        const region = document.createElement('div');
+        region.setAttribute('aria-live', 'polite');
+
+        const first = document.createElement('div');
+        const second = document.createElement('div');
+        const last = document.createElement('div');
+        region.appendChild(first);
+        first.attachShadow({ mode: 'open' }).appendChild(second);
+        second.attachShadow({ mode: 'open' }).appendChild(last);
+
+        expect(getClosestLiveRegion(last)).toBe(region);
+    });
+
+    test('does not traverse shadow dom when config.includeShadowDom is false', () => {
+        configure({ includeShadowDom: false });
+
+        const region = document.createElement('div');
+        region.setAttribute('aria-live', 'polite');
+
+        const parent = document.createElement('div');
+        region.appendChild(parent);
+
+        const element = document.createElement('div');
+        parent.attachShadow({ mode: 'open' }).appendChild(element);
+
+        expect(getClosestLiveRegion(element)).toBe(null);
+    });
+});
 
 describe('getClosestElement', () => {
     test('returns itself when element', () => {
