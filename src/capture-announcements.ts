@@ -12,6 +12,7 @@ import {
 } from './utils';
 import { interceptMethod, interceptSetter, Restore } from './interceptors';
 import { isElement } from './dom-node-safe-guards';
+import { configure } from './config';
 
 interface Options {
     /** Callback invoked when announcement is captured */
@@ -19,12 +20,17 @@ interface Options {
         textContent: string,
         politenessSetting: Exclude<PolitenessSetting, 'off'>
     ) => void;
+
+    /** Indicates whether live regions inside `ShadowRoot`s should be tracked */
+    includeShadowDom?: boolean;
 }
 
 // Map of live regions to previous textContent
 const liveRegions = new Map<Node, string | null>();
 
 export default function CaptureAnnouncements(options: Options): Restore {
+    configure({ includeShadowDom: options.includeShadowDom || false });
+
     const onCapture: Options['onCapture'] = (
         textContent,
         politenessSetting

@@ -9,6 +9,7 @@ type StoryFn = () => HTMLElement;
 
 CaptureAnnouncements({
     onCapture: (text, level) => AnnouncementEvents.emit({ text, level }),
+    includeShadowDom: true,
 });
 
 addons.getChannel().addListener(STORY_CHANGED, () => {

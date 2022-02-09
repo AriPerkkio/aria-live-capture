@@ -1,5 +1,6 @@
 import CaptureAnnouncements from '../src';
 import { __PrivateUnstableAPI } from '../src/capture-announcements';
+import { getConfig } from '../src/config';
 import {
     appendToRoot,
     POLITE_CASES,
@@ -611,5 +612,32 @@ describe('element tracking', () => {
 
         expect(liveRegions.size).toBe(1);
         expect(liveRegions.has(element)).toBe(true);
+    });
+});
+
+describe('config', () => {
+    let cleanup: undefined | ReturnType<typeof CaptureAnnouncements>;
+    const onCapture = jest.fn();
+
+    afterEach(() => {
+        cleanup?.();
+    });
+
+    test('resolves includeShadowDom when not configured', () => {
+        cleanup = CaptureAnnouncements({ onCapture });
+
+        expect(getConfig().includeShadowDom).toBe(false);
+    });
+
+    test('resolves includeShadowDom when configured true', () => {
+        cleanup = CaptureAnnouncements({ onCapture, includeShadowDom: true });
+
+        expect(getConfig().includeShadowDom).toBe(true);
+    });
+
+    test('resolves includeShadowDom when configured false', () => {
+        cleanup = CaptureAnnouncements({ onCapture, includeShadowDom: false });
+
+        expect(getConfig().includeShadowDom).toBe(false);
     });
 });
