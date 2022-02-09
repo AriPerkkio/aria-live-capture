@@ -42,12 +42,11 @@ Pass `onCapture` callback to handle announcements.
 |   announcement    | `string` | Text content of the announcement |
 | politenessSetting | `string` | `polite\|assertive`              |
 
+<!-- prettier-ignore -->
 ```ts
 CaptureAnnouncements({
     onCapture: (announcement, politenessSetting) => {
-        console.log(
-            `"${announcement}" was announced with politeness setting "${politenessSetting}"`
-        );
+        console.log(`"${announcement}" was announced with politeness setting "${politenessSetting}"`);
     },
 });
 ```
@@ -55,6 +54,17 @@ CaptureAnnouncements({
 ```
 "Loading" was announced with politeness setting "polite"
 "Failed to load user details" was announced with politeness setting "assertive"
+```
+
+### includeShadowDom
+
+Pass an optional boolean `includeShadowDom` option to include tracking of live regions in Shadow DOM.
+Default value is `false`.
+
+```ts
+CaptureAnnouncements({
+    includeShadowDom: true,
+});
 ```
 
 ### cleanup
@@ -156,6 +166,23 @@ PASS ✅  | "Loading" is announced
 Render#1 | <div role="status" aria-hidden="true">Loading</div>
 Render#2 | <div role="status" aria-hidden="false">Loading</div>
 FAIL ❌  | "Loading" is not announced
+```
+
+With option `{ includeShadowDom: true }`:
+
+<!-- prettier-ignore -->
+```html
+Render#1 | <div role="status">
+         |     #shadow-root
+         |     <div></div>
+         | </div>
+         |
+Render#2 | <div role="status">
+         |     #shadow-root
+         |     <div>Loading</div>
+         | </div>
+         |
+PASS ✅  | "Loading" is announced
 ```
 
 ## Support
