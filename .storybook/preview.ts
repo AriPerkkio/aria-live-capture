@@ -1,3 +1,6 @@
+import { addons } from '@storybook/addons';
+import { STORY_CHANGED } from '@storybook/core-events';
+
 import CaptureAnnouncements from '../src';
 import prettyDOMWithShadowDOM from './pretty-dom-with-shadow-dom';
 import { AnnouncementEvents, SourceCodeUpdateEvents } from './utils';
@@ -6,6 +9,11 @@ type StoryFn = () => HTMLElement;
 
 CaptureAnnouncements({
     onCapture: (text, level) => AnnouncementEvents.emit({ text, level }),
+});
+
+addons.getChannel().addListener(STORY_CHANGED, () => {
+    // Reset captures after a story changes
+    AnnouncementEvents.clear();
 });
 
 export const decorators = [

@@ -83,9 +83,11 @@ export function createButtonCycle(
 type Subscriber<T> = (event: T) => void;
 class EventBus<EventType = undefined> {
     subscribers: Subscriber<EventType>[] = [];
+    events: EventType[] = [];
 
     on(subscriber: Subscriber<EventType>) {
         this.subscribers.push(subscriber);
+        this.events.forEach(subscriber);
     }
 
     off(subscriber: Subscriber<EventType>) {
@@ -94,6 +96,11 @@ class EventBus<EventType = undefined> {
 
     emit(event?: EventType) {
         this.subscribers.forEach(subscriber => subscriber(event));
+        this.events.push(event);
+    }
+
+    clear() {
+        this.events = [];
     }
 }
 

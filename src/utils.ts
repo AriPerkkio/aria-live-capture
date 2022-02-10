@@ -20,10 +20,19 @@ const LIVE_REGION_QUERY = [
 
 const HIDDEN_QUERY = '[aria-hidden="true"]';
 
-export function getAllLiveRegions(
-    context: Document | Element
-): ReturnType<typeof context['querySelectorAll']> {
-    return context.querySelectorAll(LIVE_REGION_QUERY);
+export function getAllLiveRegions(context: Document | Element): Element[] {
+    const liveRegions = Array.from(context.querySelectorAll(LIVE_REGION_QUERY));
+
+    // Check whether given `context` is also a live region
+    if (
+        isElement(context) &&
+        resolvePolitenessSetting(context) !== 'off' &&
+        isInDOM(context)
+    ) {
+        return liveRegions.concat(context).filter(filterUnique);
+    }
+
+    return liveRegions;
 }
 
 export function getClosestElement(node: Node): Element | null {
@@ -141,4 +150,8 @@ export function getTextContent(node: Node | null): string | null {
             .filter(Boolean)
             .join(' ')
     );
+}
+
+function filterUnique<T>(item: T, index: number, array: T[]): boolean {
+    return array.indexOf(item) === index;
 }
