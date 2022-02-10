@@ -43,6 +43,8 @@ export default function CaptureAnnouncements(options: Options): Restore {
      * - `textContent` of live region should have changed
      */
     function updateAnnouncements(node: Node) {
+        if (liveRegions.size === 0) return;
+
         const element = getClosestElement(node);
         if (!element) return;
 
@@ -93,8 +95,10 @@ export default function CaptureAnnouncements(options: Options): Restore {
      * Check DOM for live regions and update `liveRegions` store
      * - TODO: Could be optimized based on appended/updated child
      */
-    function updateLiveRegions() {
-        for (const liveRegion of getAllLiveRegions(document)) {
+    function updateLiveRegions(node: Node) {
+        const context = isElement(node) ? node : document;
+
+        for (const liveRegion of getAllLiveRegions(context)) {
             addLiveRegion(liveRegion);
         }
     }
@@ -103,7 +107,6 @@ export default function CaptureAnnouncements(options: Options): Restore {
         updateAnnouncements(this);
     }
 
-    // https://github.com/facebook/react/blob/9198a5cec0936a21a5ba194a22fcbac03eba5d1d/packages/react-dom/src/client/setTextContent.js#L12-L35
     function onNodeValueChange(this: Node) {
         updateAnnouncements(this);
     }
@@ -112,7 +115,7 @@ export default function CaptureAnnouncements(options: Options): Restore {
      * Shared handler for methods which mount new nodes on DOM, e.g. appendChild, insertBefore
      */
     function onNodeMount(node: Node) {
-        updateLiveRegions();
+        updateLiveRegions(node);
         updateAnnouncements(node);
     }
 
@@ -145,7 +148,7 @@ export default function CaptureAnnouncements(options: Options): Restore {
 
                 // Previous value was not live region attribute value
                 if (!isAlreadyTracked && liveRegionAttribute) {
-                    return updateLiveRegions();
+                    return updateLiveRegions(this);
                 }
 
                 // Value was changed to assertive - announce content immediately
@@ -160,7 +163,7 @@ export default function CaptureAnnouncements(options: Options): Restore {
             }
 
             case 'aria-hidden': {
-                updateLiveRegions();
+                updateLiveRegions(this);
                 return updateAnnouncements(this);
             }
 
@@ -181,7 +184,7 @@ export default function CaptureAnnouncements(options: Options): Restore {
         const [attribute] = args;
 
         if (attribute === 'aria-hidden') {
-            updateLiveRegions();
+            updateLiveRegions(this);
             updateAnnouncements(this);
         }
     }
@@ -190,6 +193,8 @@ export default function CaptureAnnouncements(options: Options): Restore {
         this: Element,
         ...args: Parameters<Element['removeChild']>
     ) {
+        if (liveRegions.size === 0) return;
+
         const [node] = args;
 
         if (node == null || !isElement(node)) {
@@ -241,6 +246,7 @@ function onRemoveAttributeBefore(
     this: Element,
     ...args: Parameters<Element['removeAttribute']>
 ) {
+    if (liveRegions.size === 0) return;
     if (!isElement(this)) return;
 
     const [attribute] = args;
