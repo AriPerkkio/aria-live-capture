@@ -84,7 +84,7 @@ export function liveRegionDeeplyInShadowDOM() {
             element.appendChild(hello);
             element.appendChild(world);
 
-            last.append(element);
+            last.appendChild(element);
         }
     );
 }
