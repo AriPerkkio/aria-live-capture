@@ -11,6 +11,8 @@ When developing an application which utilizes ARIA live announcements it is ofte
 This tool aims to help developers easily see announcements without having to use actual screen readers.
 However final assertion should always be made with the actual target assistive technology.
 
+For online demo see [Storybook playground](https://ariperkkio.github.io/aria-live-capture).
+
 For validating ARIA live regions in tests see [`extend-to-be-announced`](https://github.com/AriPerkkio/extend-to-be-announced).
 
 For Storybook integration see [`storybook-addon-aria-live`](https://github.com/AriPerkkio/storybook-addon-aria-live).
