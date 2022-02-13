@@ -340,15 +340,8 @@ describe.each(ASSERTIVE_CASES)('$testName', ({ name, value }) => {
         expect(onCapture).toHaveBeenCalledWith('Hello world', 'assertive');
     });
 
-    test('should announce when content is added with `replaceChildren`', () => {
-        const parent = document.createElement('div');
-        const child = document.createElement('div');
-        parent.appendChild(child);
-        appendToRoot(parent);
-
-        element.textContent = 'Hello world';
-        parent.replaceChild(element, child);
-    });
+    // TODO: This is now possible: https://github.com/jsdom/jsdom/issues/3102
+    test.todo('should announce when content is added with `replaceChildren`');
 
     test('should not announce when live region is hidden', () => {
         element.setAttribute('aria-hidden', 'true');
