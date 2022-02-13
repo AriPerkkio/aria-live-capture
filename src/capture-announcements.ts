@@ -242,6 +242,9 @@ export default function CaptureAnnouncements(options: Options): Restore {
         interceptSetter(Node.prototype, 'nodeValue', onNodeValueChange)
     ];
 
+    // Initialize live regions which are already in DOM
+    updateLiveRegions(document);
+
     return function restore() {
         cleanups.splice(0).forEach(cleanup => cleanup());
         liveRegions.clear();
