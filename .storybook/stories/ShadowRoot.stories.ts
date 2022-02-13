@@ -115,3 +115,33 @@ export function liveRegionWrappingElementAndShadowDOM() {
         }
     );
 }
+
+export function visibilityToggle() {
+    let shadowRoot: ShadowRoot;
+
+    const element = document.createElement('div');
+    element.textContent = 'Hello world';
+
+    function appendChild() {
+        shadowRoot.appendChild(element);
+    }
+    function removeChild() {
+        shadowRoot.removeChild(element);
+    }
+
+    return createButtonCycle(
+        parent => {
+            const region = document.createElement('div');
+            region.setAttribute('aria-live', 'polite');
+            parent.appendChild(region);
+
+            const host = document.createElement('div');
+            region.appendChild(host);
+
+            shadowRoot = host.attachShadow({ mode: 'open' });
+        },
+        ...Array(50)
+            .fill([appendChild, removeChild])
+            .reduce((all, methods) => [...all, ...methods], [])
+    );
+}
