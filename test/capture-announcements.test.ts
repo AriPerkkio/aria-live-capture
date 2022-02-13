@@ -641,6 +641,19 @@ describe('element tracking', () => {
         expect(liveRegions.size).toBe(0);
         expect(liveRegions.has(region)).toBe(false);
     });
+
+    test('existing elements are tracked by initialization', () => {
+        cleanup?.();
+
+        element.setAttribute('aria-live', 'polite');
+        appendToRoot(element);
+
+        expect(liveRegions.size).toBe(0);
+        cleanup = CaptureAnnouncements({ onCapture: jest.fn() });
+
+        expect(liveRegions.size).toBe(1);
+        expect(liveRegions.has(element)).toBe(true);
+    });
 });
 
 describe('config', () => {
