@@ -1,4 +1,4 @@
-import { createElement, update } from './virtual-dom';
+import { htmlToElement, update } from 'virtual-dom-nodes';
 
 const STATUS_TO_ICON = {
     PASS: '\u00A0✅',
@@ -27,16 +27,13 @@ export function createMountToggle(
 
     const wrapper = document.createElement('div');
     wrapper.appendChild(button);
-    wrapper.appendChild(createElement(unmountedState));
+    wrapper.appendChild(htmlToElement(unmountedState));
 
     let toggled = false;
     button.addEventListener('click', () => {
         const lastChild = wrapper.lastChild;
 
-        update(
-            lastChild,
-            createElement(toggled ? unmountedState : mountedState)
-        );
+        update(lastChild, toggled ? unmountedState : mountedState);
 
         toggled = !toggled;
         SourceCodeUpdateEvents.emit();
