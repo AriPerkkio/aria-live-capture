@@ -1,3 +1,5 @@
+import { beforeEach, describe, expect, test } from 'vitest';
+
 import { configure } from '../src/config';
 import {
     getAllLiveRegions,
