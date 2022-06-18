@@ -50,7 +50,7 @@ export function interceptMethod<
     method: (...args: any[]) => void,
     order: ExecutionOrder = 'AFTER'
 ): Restore {
-    const original = (object[methodName] as unknown) as Function;
+    const original = object[methodName] as unknown as Function;
 
     if (typeof original !== 'function') {
         throw new Error(

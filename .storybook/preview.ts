@@ -143,6 +143,8 @@ function formatSourceCode(str: string) {
 
 const compose = (...fns) =>
     fns.reduceRight(
-        (prevFn, nextFn) => (...args) => nextFn(prevFn(...args)),
+        (prevFn, nextFn) =>
+            (...args) =>
+                nextFn(prevFn(...args)),
         value => value
     );
