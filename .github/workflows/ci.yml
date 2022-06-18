@@ -33,6 +33,6 @@ jobs:
               run: yarn test
 
             - name: Integration Tests
-              uses: cypress-io/github-action@v2
+              uses: cypress-io/github-action@v4
               with:
                   start: yarn test:integration
