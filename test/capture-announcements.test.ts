@@ -1,3 +1,5 @@
+import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
+
 import CaptureAnnouncements from '../src';
 import { __PrivateUnstableAPI } from '../src/capture-announcements';
 import { configure, getConfig } from '../src/config';
@@ -13,7 +15,7 @@ const { liveRegions } = __PrivateUnstableAPI;
 describe.each(POLITE_CASES)('$testName', ({ name, value, tag }) => {
     let element: HTMLElement;
     let cleanup: undefined | ReturnType<typeof CaptureAnnouncements>;
-    const onCapture = jest.fn();
+    const onCapture = vi.fn();
 
     afterEach(() => {
         cleanup?.();
@@ -172,7 +174,7 @@ describe.each(POLITE_CASES)('$testName', ({ name, value, tag }) => {
 describe.each(ASSERTIVE_CASES)('$testName', ({ name, value }) => {
     let element: HTMLElement;
     let cleanup: undefined | ReturnType<typeof CaptureAnnouncements>;
-    const onCapture = jest.fn();
+    const onCapture = vi.fn();
 
     afterEach(() => {
         cleanup?.();
@@ -400,7 +402,7 @@ describe.each(ASSERTIVE_CASES)('$testName', ({ name, value }) => {
 describe.each(OFF_CASES)('$testName', ({ name, value }) => {
     let element: HTMLElement;
     let cleanup: undefined | ReturnType<typeof CaptureAnnouncements>;
-    const onCapture = jest.fn();
+    const onCapture = vi.fn();
 
     afterEach(() => {
         cleanup?.();
@@ -450,7 +452,7 @@ describe.each(OFF_CASES)('$testName', ({ name, value }) => {
 describe('common', () => {
     let element: HTMLElement;
     let cleanup: undefined | ReturnType<typeof CaptureAnnouncements>;
-    const onCapture = jest.fn();
+    const onCapture = vi.fn();
 
     afterEach(() => {
         cleanup?.();
@@ -509,7 +511,7 @@ describe('element tracking', () => {
     });
 
     beforeEach(() => {
-        cleanup = CaptureAnnouncements({ onCapture: jest.fn() });
+        cleanup = CaptureAnnouncements({ onCapture: vi.fn() });
         element = document.createElement('div');
     });
 
@@ -649,7 +651,7 @@ describe('element tracking', () => {
         appendToRoot(element);
 
         expect(liveRegions.size).toBe(0);
-        cleanup = CaptureAnnouncements({ onCapture: jest.fn() });
+        cleanup = CaptureAnnouncements({ onCapture: vi.fn() });
 
         expect(liveRegions.size).toBe(1);
         expect(liveRegions.has(element)).toBe(true);
@@ -658,7 +660,7 @@ describe('element tracking', () => {
 
 describe('config', () => {
     let cleanup: undefined | ReturnType<typeof CaptureAnnouncements>;
-    const onCapture = jest.fn();
+    const onCapture = vi.fn();
 
     afterEach(() => {
         cleanup?.();

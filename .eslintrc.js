@@ -29,10 +29,7 @@ module.exports = {
     overrides: [
         {
             files: ['test/**'],
-            extends: [
-                'plugin:testing-library/dom',
-                'plugin:jest-dom/recommended',
-            ],
+            extends: ['plugin:testing-library/dom'],
             rules: {
                 '@typescript-eslint/no-non-null-assertion': 'off',
             },
