@@ -27,8 +27,9 @@
         "docs:deploy": "gh-pages -d docs"
     },
     "devDependencies": {
-        "@storybook/addon-docs": "^6.4.12",
-        "@storybook/html": "^6.4.12",
+        "@storybook/addon-docs": "^6.5.9",
+        "@storybook/builder-vite": "^0.1.36",
+        "@storybook/html": "^6.5.9",
         "@testing-library/cypress": "^8.0.1",
         "@testing-library/dom": "^8.11.3",
         "@typescript-eslint/eslint-plugin": "^4.27.0",

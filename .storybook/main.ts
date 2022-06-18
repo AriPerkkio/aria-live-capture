@@ -6,7 +6,5 @@ module.exports = {
             options: { transcludeMarkdown: true },
         },
     ],
-    features: {
-        postcss: false,
-    },
+    core: { builder: '@storybook/builder-vite' },
 };
