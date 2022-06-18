@@ -16,7 +16,7 @@ export function interceptSetter<
 
     if (!descriptor || !descriptor.set) {
         throw new Error(
-            `Unable to intercept ${property}. No descriptor available.`
+            `Unable to intercept ${String(property)}. No descriptor available.`
         );
     }
 
@@ -54,7 +54,9 @@ export function interceptMethod<
 
     if (typeof original !== 'function') {
         throw new Error(
-            `Expected ${methodName} to be a function. Received ${typeof original}: ${original}`
+            `Expected ${String(
+                methodName
+            )} to be a function. Received ${typeof original}: ${original}`
         );
     }
 
