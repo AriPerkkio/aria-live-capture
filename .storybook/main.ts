@@ -15,6 +15,9 @@ const config: StorybookViteConfig = {
         const viteConfig: UserConfig = {
             // Storybook is deployed at Github Pages
             base: configType === 'PRODUCTION' ? '/aria-live-capture/' : '/',
+
+            // Preserve names of functions. Those are used when adding custom Story names.
+            esbuild: { keepNames: true },
         };
 
         return mergeConfig(config, viteConfig);
