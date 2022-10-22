@@ -15,7 +15,8 @@
         "url": "https://github.com/AriPerkkio/aria-live-capture"
     },
     "scripts": {
-        "prebuild": "rimraf dist",
+        "changelog": "npx conventional-changelog-cli -i CHANGELOG.md -p angular -s -r 0",
+        "prebuild": "rm -rf ./dist",
         "build": "tsc --project tsconfig.prod.json",
         "lint": "eslint . --max-warnings 0 --ext .js,.ts,.tsx",
         "test": "vitest run",
