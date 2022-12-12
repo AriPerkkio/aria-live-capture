@@ -19,6 +19,12 @@
             "matchManagers": ["dockerfile", "docker-compose"],
             "groupName": "all docker dependencies",
             "groupSlug": "all-docker"
+        },
+        {
+            "matchUpdateTypes": ["major", "minor"],
+            "groupName": "typescript breaking changes",
+            "matchPackageNames": ["typescript"],
+            "description": "Typescript does not follow semver. Minor versions can introduce breaking changes."
         }
     ]
 }
