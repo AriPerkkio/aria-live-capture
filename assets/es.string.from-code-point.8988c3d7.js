@@ -1,0 +1,2 @@
+var C=Object.defineProperty;var n=(o,t)=>C(o,"name",{value:t,configurable:!0});import{a5 as f,a6 as g}from"./iframe.33a3b148.js";var s=f,v=g,i=String.fromCharCode,d=String.fromCodePoint,x=!!d&&d.length!=1;s({target:"String",stat:!0,forced:x},{fromCodePoint:n(function(t){for(var e=[],m=arguments.length,a=0,r;m>a;){if(r=+arguments[a++],v(r,1114111)!==r)throw RangeError(r+" is not a valid code point");e.push(r<65536?i(r):i(((r-=65536)>>10)+55296,r%1024+56320))}return e.join("")},"fromCodePoint")});
+//# sourceMappingURL=es.string.from-code-point.8988c3d7.js.map
