@@ -1,4 +1,4 @@
-ARG VARIANT=16-bullseye
+ARG VARIANT=18-bullseye
 FROM mcr.microsoft.com/vscode/devcontainers/javascript-node:${VARIANT}
 
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
