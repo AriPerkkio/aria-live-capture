@@ -36,4 +36,4 @@ jobs:
             - name: Integration Tests
               uses: cypress-io/github-action@v4
               with:
-                  start: yarn test:integration
+                  command: yarn test:integration
