@@ -10,7 +10,9 @@ export function addStoryName(
     fn: () => any,
     status: keyof typeof STATUS_TO_ICON
 ) {
-    const camelCaseAsSentence = fn.name.replace(/([A-Z])/g, ' $1');
+    const camelCaseAsSentence = fn.name
+        .replace(/([A-Z])/g, ' $1')
+        .replace(/\d/g, '');
 
     // @ts-ignore
     fn.storyName = camelCaseAsSentence + STATUS_TO_ICON[status];
