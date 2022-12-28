@@ -1,10 +1,15 @@
+import type { Meta, Story } from '@storybook/html';
+import { within, userEvent } from '@storybook/testing-library';
+import { expect } from '@storybook/jest';
+
+import '../expect-extend';
 import { addStoryName, createMountToggle } from '../utils';
 
 export default {
     title: 'Aria-live/aria-live="assertive"',
-};
+} as Meta;
 
-export function LiveRegionAvailableBeforeContent() {
+export const LiveRegionAvailableBeforeContent: Story = () => {
     return createMountToggle(
         `
         <div aria-live="assertive">
@@ -16,10 +21,17 @@ export function LiveRegionAvailableBeforeContent() {
         </div>
         `
     );
-}
+};
 addStoryName(LiveRegionAvailableBeforeContent, 'PASS');
+LiveRegionAvailableBeforeContent.play = async ({ canvasElement }) => {
+    const button = within(canvasElement).getByRole('button');
+    expect('Hello world').not.toBeAnnounced();
 
-export function LiveRegionUnavailableBeforeContent() {
+    userEvent.click(button);
+    expect('Hello world').toBeAnnounced('assertive');
+};
+
+export const LiveRegionUnavailableBeforeContent: Story = () => {
     return createMountToggle(
         `
         <div>
@@ -31,10 +43,17 @@ export function LiveRegionUnavailableBeforeContent() {
         </div>
         `
     );
-}
+};
 addStoryName(LiveRegionUnavailableBeforeContent, 'FAIL');
+LiveRegionUnavailableBeforeContent.play = async ({ canvasElement }) => {
+    const button = within(canvasElement).getByRole('button');
+    expect('Hello world').not.toBeAnnounced();
 
-export function AnchestorIsHidden() {
+    userEvent.click(button);
+    expect('Hello world').not.toBeAnnounced();
+};
+
+export const AnchestorIsHidden: Story = () => {
     return createMountToggle(
         `
         <div aria-hidden="true">
@@ -50,10 +69,17 @@ export function AnchestorIsHidden() {
         </div>
         `
     );
-}
+};
 addStoryName(AnchestorIsHidden, 'FAIL');
+AnchestorIsHidden.play = async ({ canvasElement }) => {
+    const button = within(canvasElement).getByRole('button');
+    expect('Hello world').not.toBeAnnounced();
 
-export function LiveRegionIsHidden() {
+    userEvent.click(button);
+    expect('Hello world').not.toBeAnnounced();
+};
+
+export const LiveRegionIsHidden: Story = () => {
     return createMountToggle(
         `
         <div aria-hidden="true" aria-live="assertive">
@@ -65,10 +91,17 @@ export function LiveRegionIsHidden() {
         </div>
         `
     );
-}
+};
 addStoryName(LiveRegionIsHidden, 'FAIL');
+LiveRegionIsHidden.play = async ({ canvasElement }) => {
+    const button = within(canvasElement).getByRole('button');
+    expect('Hello world').not.toBeAnnounced();
 
-export function ContentIsHidden() {
+    userEvent.click(button);
+    expect('Hello world').not.toBeAnnounced();
+};
+
+export const ContentIsHidden: Story = () => {
     return createMountToggle(
         `
         <div aria-live="assertive">
@@ -82,10 +115,17 @@ export function ContentIsHidden() {
         </div>
         `
     );
-}
+};
 addStoryName(ContentIsHidden, 'FAIL');
+ContentIsHidden.play = async ({ canvasElement }) => {
+    const button = within(canvasElement).getByRole('button');
+    expect('Hello world').not.toBeAnnounced();
 
-export function ContentIsPartiallyHidden() {
+    userEvent.click(button);
+    expect('Hello world').not.toBeAnnounced();
+};
+
+export const ContentIsPartiallyHidden: Story = () => {
     return createMountToggle(
         `
         <div aria-live="assertive">
@@ -102,10 +142,19 @@ export function ContentIsPartiallyHidden() {
         </div>
         `
     );
-}
+};
 addStoryName(ContentIsPartiallyHidden, 'PARTIAL');
+ContentIsPartiallyHidden.play = async ({ canvasElement }) => {
+    const button = within(canvasElement).getByRole('button');
+    expect('Hello').not.toBeAnnounced();
 
-export function PartOfContentChanges() {
+    userEvent.click(button);
+    expect('Hello').toBeAnnounced('assertive');
+    expect('world').not.toBeAnnounced();
+    expect('Hello world').not.toBeAnnounced();
+};
+
+export const PartOfContentChanges: Story = () => {
     return createMountToggle(
         `
         <div aria-live="assertive">
@@ -125,5 +174,12 @@ export function PartOfContentChanges() {
         </div>
         `
     );
-}
+};
 addStoryName(PartOfContentChanges, 'PASS');
+PartOfContentChanges.play = async ({ canvasElement }) => {
+    const button = within(canvasElement).getByRole('button');
+    expect('Hello world').not.toBeAnnounced();
+
+    userEvent.click(button);
+    expect('Hello world').toBeAnnounced('assertive');
+};

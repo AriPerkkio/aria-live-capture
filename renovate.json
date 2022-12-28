@@ -16,11 +16,6 @@
             "groupSlug": "all-github-actions"
         },
         {
-            "matchManagers": ["dockerfile", "docker-compose"],
-            "groupName": "all docker dependencies",
-            "groupSlug": "all-docker"
-        },
-        {
             "matchUpdateTypes": ["major", "minor"],
             "groupName": "typescript breaking changes",
             "matchPackageNames": ["typescript"],

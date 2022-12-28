@@ -2,12 +2,20 @@ import { mergeConfig, UserConfig } from 'vite';
 import type { StorybookViteConfig } from '@storybook/builder-vite';
 
 const config: StorybookViteConfig = {
-    stories: ['./README.stories.mdx', './**/*.stories.ts'],
+    stories: [
+        './README.stories.mdx',
+        './**/AriaLive*.stories.ts',
+        './**/Role*.stories.ts',
+        './**/Output.stories.ts',
+        './**/ElementApi.stories.ts',
+        './**/*.stories.ts',
+    ],
     addons: [
         {
             name: '@storybook/addon-docs',
             options: { transcludeMarkdown: true },
         },
+        '@storybook/addon-interactions',
     ],
     core: { builder: '@storybook/builder-vite' },
 

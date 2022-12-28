@@ -1,10 +1,15 @@
-import { createButtonCycle } from '../utils';
+import type { Story, Meta } from '@storybook/html';
+import { within, userEvent } from '@storybook/testing-library';
+import { expect } from '@storybook/jest';
+
+import '../expect-extend';
+import { createButtonCycle, times } from '../utils';
 
 export default {
     title: 'DOM API Support/Element',
-};
+} as Meta;
 
-export function setAttribute() {
+export const setAttribute: Story = () => {
     let element: HTMLElement;
 
     return createButtonCycle(
@@ -19,10 +24,22 @@ export function setAttribute() {
             element.textContent = 'Hello world';
         }
     );
-}
+};
 setAttribute.storyName = 'setAttribute';
+setAttribute.play = ({ canvasElement }) => {
+    const button = within(canvasElement).getByRole('button');
+    expect('Hello world').not.toBeAnnounced();
 
-export function insertAdjacentElement() {
+    times(2)(() => {
+        userEvent.click(button);
+        expect('Hello world').not.toBeAnnounced();
+    });
+
+    userEvent.click(button);
+    expect('Hello world').toBeAnnounced('polite');
+};
+
+export const insertAdjacentElement: Story = () => {
     let element: HTMLElement;
 
     return createButtonCycle(
@@ -37,10 +54,20 @@ export function insertAdjacentElement() {
             element.insertAdjacentElement('afterbegin', child);
         }
     );
-}
+};
 insertAdjacentElement.storyName = 'insertAdjacentElement';
+insertAdjacentElement.play = ({ canvasElement }) => {
+    const button = within(canvasElement).getByRole('button');
+    expect('Hello world').not.toBeAnnounced();
 
-export function insertAdjacentHTML() {
+    userEvent.click(button);
+    expect('Hello world').not.toBeAnnounced();
+
+    userEvent.click(button);
+    expect('Hello world').toBeAnnounced('polite');
+};
+
+export const insertAdjacentHTML: Story = () => {
     let element: HTMLElement;
 
     return createButtonCycle(
@@ -56,10 +83,20 @@ export function insertAdjacentHTML() {
             );
         }
     );
-}
+};
 insertAdjacentHTML.storyName = 'insertAdjacentHTML';
+insertAdjacentHTML.play = ({ canvasElement }) => {
+    const button = within(canvasElement).getByRole('button');
+    expect('Hello world').not.toBeAnnounced();
 
-export function insertAdjacentText() {
+    userEvent.click(button);
+    expect('Hello world').not.toBeAnnounced();
+
+    userEvent.click(button);
+    expect('Hello world').toBeAnnounced('polite');
+};
+
+export const insertAdjacentText: Story = () => {
     let element: HTMLElement;
 
     return createButtonCycle(
@@ -72,10 +109,20 @@ export function insertAdjacentText() {
             element.insertAdjacentText('afterbegin', 'Hello world');
         }
     );
-}
+};
 insertAdjacentText.storyName = 'insertAdjacentText';
+insertAdjacentText.play = ({ canvasElement }) => {
+    const button = within(canvasElement).getByRole('button');
+    expect('Hello world').not.toBeAnnounced();
 
-export function before() {
+    userEvent.click(button);
+    expect('Hello world').not.toBeAnnounced();
+
+    userEvent.click(button);
+    expect('Hello world').toBeAnnounced('polite');
+};
+
+export const before: Story = () => {
     let element: HTMLElement;
     let child: HTMLElement;
 
@@ -96,10 +143,20 @@ export function before() {
             child.before(sibling);
         }
     );
-}
+};
 before.storyName = 'before';
+before.play = ({ canvasElement }) => {
+    const button = within(canvasElement).getByRole('button');
+    expect('Hello world').not.toBeAnnounced();
 
-export function append() {
+    userEvent.click(button);
+    expect('Hello world').not.toBeAnnounced();
+
+    userEvent.click(button);
+    expect('Hello world').toBeAnnounced('polite');
+};
+
+export const append: Story = () => {
     let element: HTMLElement;
 
     return createButtonCycle(
@@ -119,10 +176,20 @@ export function append() {
             element.append(sibling);
         }
     );
-}
+};
 append.storyName = 'append';
+append.play = ({ canvasElement }) => {
+    const button = within(canvasElement).getByRole('button');
+    expect('Hello world').not.toBeAnnounced();
 
-export function prepend() {
+    userEvent.click(button);
+    expect('Hello world').not.toBeAnnounced();
+
+    userEvent.click(button);
+    expect('Hello world').toBeAnnounced('polite');
+};
+
+export const prepend: Story = () => {
     let element: HTMLElement;
 
     return createButtonCycle(
@@ -142,10 +209,20 @@ export function prepend() {
             element.prepend(sibling);
         }
     );
-}
+};
 prepend.storyName = 'prepend';
+prepend.play = ({ canvasElement }) => {
+    const button = within(canvasElement).getByRole('button');
+    expect('Hello world').not.toBeAnnounced();
 
-export function removeAttribute() {
+    userEvent.click(button);
+    expect('Hello world').not.toBeAnnounced();
+
+    userEvent.click(button);
+    expect('Hello world').toBeAnnounced('polite');
+};
+
+export const removeAttribute: Story = () => {
     let element: HTMLElement;
     let child: HTMLElement;
 
@@ -174,10 +251,22 @@ export function removeAttribute() {
             child.removeAttribute('aria-hidden');
         }
     );
-}
+};
 removeAttribute.storyName = 'removeAttribute';
+removeAttribute.play = ({ canvasElement }) => {
+    const button = within(canvasElement).getByRole('button');
+    expect('Hello world').not.toBeAnnounced();
 
-export function removeChild() {
+    times(4)(() => {
+        userEvent.click(button);
+        expect('Hello world').not.toBeAnnounced();
+    });
+
+    userEvent.click(button);
+    expect('Hello world').toBeAnnounced('polite');
+};
+
+export const removeChild: Story = () => {
     let element: HTMLElement;
     let sibling: HTMLElement;
 
@@ -200,5 +289,15 @@ export function removeChild() {
             element.removeChild(sibling);
         }
     );
-}
+};
 removeChild.storyName = 'removeChild';
+removeChild.play = ({ canvasElement }) => {
+    const button = within(canvasElement).getByRole('button');
+    expect('Hello').not.toBeAnnounced();
+
+    userEvent.click(button);
+    expect('Hello').not.toBeAnnounced();
+
+    userEvent.click(button);
+    expect('Hello').toBeAnnounced('polite');
+};

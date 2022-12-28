@@ -3,6 +3,3 @@ node_modules
 coverage
 dist
 docs
-
-cypress/videos
-cypress/screenshots

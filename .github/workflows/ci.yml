@@ -37,6 +37,4 @@ jobs:
               run: yarn test
 
             - name: Integration Tests
-              uses: cypress-io/github-action@v4
-              with:
-                  command: yarn test:integration
+              run: yarn test:integration

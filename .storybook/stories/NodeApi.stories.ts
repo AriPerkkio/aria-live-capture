@@ -1,9 +1,15 @@
-import { createButtonCycle } from '../utils';
+import type { Story, Meta } from '@storybook/html';
+import { within, userEvent } from '@storybook/testing-library';
+import { expect } from '@storybook/jest';
+
+import '../expect-extend';
+import { createButtonCycle, times } from '../utils';
 
 export default {
     title: 'DOM API Support/Node',
-};
-export function appendChild() {
+} as Meta;
+
+export const appendChild: Story = () => {
     let element: HTMLElement;
 
     return createButtonCycle(
@@ -19,10 +25,20 @@ export function appendChild() {
             element.appendChild(child);
         }
     );
-}
+};
 appendChild.storyName = 'appendChild';
+appendChild.play = ({ canvasElement }) => {
+    const button = within(canvasElement).getByRole('button');
+    expect('Hello world').not.toBeAnnounced();
 
-export function insertBefore() {
+    userEvent.click(button);
+    expect('Hello world').not.toBeAnnounced();
+
+    userEvent.click(button);
+    expect('Hello world').toBeAnnounced('polite');
+};
+
+export const insertBefore: Story = () => {
     let element: HTMLElement;
     let child: HTMLElement;
 
@@ -43,10 +59,20 @@ export function insertBefore() {
             element.insertBefore(sibling, child);
         }
     );
-}
+};
 insertBefore.storyName = 'insertBefore';
+insertBefore.play = ({ canvasElement }) => {
+    const button = within(canvasElement).getByRole('button');
+    expect('Hello world').not.toBeAnnounced();
 
-export function replaceChild() {
+    userEvent.click(button);
+    expect('Hello world').not.toBeAnnounced();
+
+    userEvent.click(button);
+    expect('Hello world').toBeAnnounced('polite');
+};
+
+export const replaceChild: Story = () => {
     let element: HTMLElement;
     let child: HTMLElement;
 
@@ -67,10 +93,20 @@ export function replaceChild() {
             element.replaceChild(newChild, child);
         }
     );
-}
+};
 replaceChild.storyName = 'replaceChild';
+replaceChild.play = ({ canvasElement }) => {
+    const button = within(canvasElement).getByRole('button');
+    expect('Hello world').not.toBeAnnounced();
 
-export function textContent() {
+    userEvent.click(button);
+    expect('Hello world').not.toBeAnnounced();
+
+    userEvent.click(button);
+    expect('Hello world').toBeAnnounced('polite');
+};
+
+export const textContent: Story = () => {
     let element: HTMLElement;
     let child: HTMLElement;
 
@@ -91,10 +127,22 @@ export function textContent() {
             child.textContent = 'from child';
         }
     );
-}
+};
 textContent.storyName = 'textContent';
+textContent.play = ({ canvasElement }) => {
+    const button = within(canvasElement).getByRole('button');
+    expect('Hello world').not.toBeAnnounced();
 
-export function nodeValue() {
+    times(2)(() => {
+        userEvent.click(button);
+        expect('Hello world').not.toBeAnnounced();
+    });
+
+    userEvent.click(button);
+    expect('Hello world').toBeAnnounced('polite');
+};
+
+export const nodeValue: Story = () => {
     let element: HTMLElement;
     let textNode: Node;
 
@@ -112,5 +160,15 @@ export function nodeValue() {
             textNode.nodeValue = 'Hello world';
         }
     );
-}
+};
 nodeValue.storyName = 'nodeValue';
+nodeValue.play = ({ canvasElement }) => {
+    const button = within(canvasElement).getByRole('button');
+    expect('Hello world').not.toBeAnnounced();
+
+    userEvent.click(button);
+    expect('Hello world').not.toBeAnnounced();
+
+    userEvent.click(button);
+    expect('Hello world').toBeAnnounced('polite');
+};

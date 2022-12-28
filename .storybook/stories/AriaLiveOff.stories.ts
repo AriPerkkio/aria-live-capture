@@ -1,10 +1,15 @@
+import type { Meta, Story } from '@storybook/html';
+import { within, userEvent } from '@storybook/testing-library';
+import { expect } from '@storybook/jest';
+
+import '../expect-extend';
 import { addStoryName, createMountToggle } from '../utils';
 
 export default {
     title: 'Aria-live/aria-live="off"',
-};
+} as Meta;
 
-export function WithTextContent() {
+export const WithTextContent: Story = () => {
     return createMountToggle(
         `
         <div aria-live="off">
@@ -16,10 +21,17 @@ export function WithTextContent() {
         </div>
         `
     );
-}
+};
 addStoryName(WithTextContent, 'FAIL');
+WithTextContent.play = async ({ canvasElement }) => {
+    const button = within(canvasElement).getByRole('button');
+    expect('Hello world').not.toBeAnnounced();
 
-export function WrapsLiveRegion() {
+    userEvent.click(button);
+    expect('Hello world').not.toBeAnnounced();
+};
+
+export const WrapsLiveRegion: Story = () => {
     return createMountToggle(
         `
         <div aria-live="off">
@@ -35,10 +47,17 @@ export function WrapsLiveRegion() {
         </div>
         `
     );
-}
+};
 addStoryName(WrapsLiveRegion, 'PASS');
+WrapsLiveRegion.play = async ({ canvasElement }) => {
+    const button = within(canvasElement).getByRole('button');
+    expect('Hello world').not.toBeAnnounced();
 
-export function WrappedInLiveRegion() {
+    userEvent.click(button);
+    expect('Hello world').toBeAnnounced('polite');
+};
+
+export const WrappedInLiveRegion: Story = () => {
     return createMountToggle(
         `
         <div aria-live="polite">
@@ -54,10 +73,17 @@ export function WrappedInLiveRegion() {
         </div>
         `
     );
-}
+};
 addStoryName(WrappedInLiveRegion, 'FAIL');
+WrappedInLiveRegion.play = async ({ canvasElement }) => {
+    const button = within(canvasElement).getByRole('button');
+    expect('Hello world').not.toBeAnnounced();
 
-export function SiblingIsVisible() {
+    userEvent.click(button);
+    expect('Hello world').not.toBeAnnounced();
+};
+
+export const SiblingIsVisible: Story = () => {
     return createMountToggle(
         `
         <div aria-live="polite">
@@ -76,5 +102,14 @@ export function SiblingIsVisible() {
         </div>
         `
     );
-}
+};
 addStoryName(SiblingIsVisible, 'PARTIAL');
+SiblingIsVisible.play = async ({ canvasElement }) => {
+    const button = within(canvasElement).getByRole('button');
+    expect('world').not.toBeAnnounced();
+
+    userEvent.click(button);
+    expect('world').toBeAnnounced('polite');
+    expect('Hello').not.toBeAnnounced();
+    expect('Hello world').not.toBeAnnounced();
+};
