@@ -20,7 +20,7 @@ export default function prettyDOMWithShadowDOM(
 
     return prettyDOM(dom, maxLength, {
         ...options,
-        plugins: [plugin],
+        plugins: [plugin as any],
         filterNode: () => true,
     });
 }
@@ -283,11 +283,11 @@ function serialize(
 function getChildren(node: Element | DocumentFragment): Node[] {
     const shadowRoot = node instanceof Element && node.shadowRoot;
 
-    const nodes = [node, shadowRoot].filter(Boolean);
+    const nodes = [node, shadowRoot].filter(Boolean) as Element[];
 
     const children = nodes.reduce(
         (all, current) => [...all, ...(current.childNodes || current.children)],
-        []
+        [] as Node[]
     );
 
     return children;

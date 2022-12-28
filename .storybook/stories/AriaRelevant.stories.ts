@@ -1,10 +1,12 @@
+import { Meta, Story } from '@storybook/html';
+
 import { createMountToggle } from '../utils';
 
 export default {
     title: 'Unsupported/aria-relevant',
-};
+} as Meta;
 
-export function Additions() {
+export const Additions: Story = () => {
     return createMountToggle(
         `
         <ul aria-live="polite" aria-relevant="additions">
@@ -18,10 +20,10 @@ export function Additions() {
         </ul>
         `
     );
-}
+};
 Additions.storyName = 'additions';
 
-export function Removals() {
+export const Removals: Story = () => {
     return createMountToggle(
         `
         <ul aria-live="polite" aria-relevant="removals">
@@ -35,10 +37,10 @@ export function Removals() {
         </ul>
         `
     );
-}
+};
 Removals.storyName = 'removals';
 
-export function Text() {
+export const Text: Story = () => {
     return createMountToggle(
         `
         <div aria-live="polite" aria-relevant="text">
@@ -51,10 +53,10 @@ export function Text() {
         </div>
         `
     );
-}
+};
 Text.storyName = 'text';
 
-export function All() {
+export const All: Story = () => {
     return createMountToggle(
         `
         <ul aria-live="polite" aria-relevant="all">
@@ -71,5 +73,5 @@ export function All() {
         </ul>
         `
     );
-}
+};
 All.storyName = 'all';

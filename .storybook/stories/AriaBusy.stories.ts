@@ -1,10 +1,12 @@
+import type { Meta, Story } from '@storybook/html';
+
 import { createButtonCycle } from '../utils';
 
 export default {
     title: 'Unsupported/aria-busy',
-};
+} as Meta;
 
-export function AriaBusy() {
+export const AriaBusy: Story = () => {
     let element: HTMLElement;
 
     return createButtonCycle(
@@ -30,5 +32,5 @@ export function AriaBusy() {
             element.setAttribute('aria-busy', 'false');
         }
     );
-}
+};
 AriaBusy.storyName = 'true/false';

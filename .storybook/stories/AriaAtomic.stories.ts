@@ -1,10 +1,12 @@
+import type { Meta, Story } from '@storybook/html';
+
 import { createMountToggle } from '../utils';
 
 export default {
     title: 'Unsupported/aria-atomic',
-};
+} as Meta;
 
-export function True() {
+export const True: Story = () => {
     return createMountToggle(
         `
         <div aria-live="polite" aria-atomic="true">
@@ -18,10 +20,10 @@ export function True() {
         </div>
         `
     );
-}
+};
 True.storyName = 'true';
 
-export function False() {
+export const False: Story = () => {
     return createMountToggle(
         `
         <div aria-live="polite" aria-atomic="false">
@@ -35,5 +37,5 @@ export function False() {
         </div>
         `
     );
-}
+};
 False.storyName = 'false';

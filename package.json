@@ -21,8 +21,8 @@
         "lint": "eslint . --max-warnings 0 --ext .js,.ts,.tsx",
         "test": "vitest run",
         "test:integration": "start-server-and-test docs 6006 'cypress run'",
-        "cy": "cypress run",
-        "validate": "yarn build && yarn lint && yarn test && yarn test:integration",
+        "typecheck": "tsc --noEmit",
+        "validate": "yarn build && yarn lint && yarn typecheck && yarn test && yarn test:integration",
         "docs": "start-storybook -p 6006 --quiet --loglevel error",
         "docs:build": "build-storybook --quiet --loglevel error --output-dir docs",
         "docs:deploy": "gh-pages -d docs"
