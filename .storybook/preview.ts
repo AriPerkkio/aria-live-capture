@@ -38,13 +38,17 @@ export const decorators = [
                 prettyDOMWithShadowDOM
             )(html);
 
-            sourceCodeFrame.querySelector(`#${sourceCodeId}`).innerHTML = code;
+            const frame = sourceCodeFrame.querySelector(`#${sourceCodeId}`);
+            if (!frame) throw new Error(`Unable to find ${sourceCodeId}`);
+            frame.innerHTML = code;
         }
 
         SourceCodeUpdateEvents.on(updateSourceCodeFrame);
         updateSourceCodeFrame();
 
-        sourceCodeFrame.querySelector(`#${storyTargetId}`).appendChild(html);
+        const storyTarget = sourceCodeFrame.querySelector(`#${storyTargetId}`);
+        if (!storyTarget) throw new Error(`Unable to find ${storyTargetId}`);
+        storyTarget.appendChild(html);
 
         return sourceCodeFrame;
     },
@@ -89,21 +93,28 @@ export const decorators = [
             const li = document.createElement('li');
             li.textContent = `${level}: ${text}`;
 
-            announcementsFrame
-                .querySelector(`#${announcementsId}`)
-                .appendChild(li);
+            const list = announcementsFrame.querySelector(
+                `#${announcementsId}`
+            );
+            if (!list) throw new Error(`Unable to find ${announcementsId}`);
+            list.appendChild(li);
         });
 
-        announcementsFrame.querySelector(`#${storyTargetId}`).appendChild(html);
+        const storyTarget = announcementsFrame.querySelector(
+            `#${storyTargetId}`
+        );
+        if (!storyTarget) throw new Error(`Unable to find ${storyTargetId}`);
+        storyTarget.appendChild(html);
 
         return announcementsFrame;
     },
 ];
 
-function escapeHTML(str) {
+function escapeHTML(str: string) {
     return str.replace(
         /[&<>'"]/g,
         tag =>
+            // @ts-expect-error -- umm...
             ({
                 '&': '&amp;',
                 '<': '&lt;',
@@ -141,10 +152,12 @@ function formatSourceCode(str: string) {
     );
 }
 
-const compose = (...fns) =>
+const compose = (...fns: any[]) =>
     fns.reduceRight(
         (prevFn, nextFn) =>
-            (...args) =>
+            (...args: any[]) =>
                 nextFn(prevFn(...args)),
-        value => value
+        (value: any) => value
+    );
+
     );

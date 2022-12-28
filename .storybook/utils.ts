@@ -1,4 +1,5 @@
 import { htmlToElement, update } from 'virtual-dom-nodes';
+import type { Story } from '@storybook/html';
 
 const STATUS_TO_ICON = {
     PASS: '\u00A0✅',
@@ -6,15 +7,11 @@ const STATUS_TO_ICON = {
     PARTIAL: '\u00A0⚠️',
 };
 
-export function addStoryName(
-    fn: () => any,
-    status: keyof typeof STATUS_TO_ICON
-) {
+export function addStoryName(fn: Story, status: keyof typeof STATUS_TO_ICON) {
     const camelCaseAsSentence = fn.name
         .replace(/([A-Z])/g, ' $1')
         .replace(/\d/g, '');
 
-    // @ts-ignore
     fn.storyName = camelCaseAsSentence + STATUS_TO_ICON[status];
 
     return fn;
@@ -34,11 +31,12 @@ export function createMountToggle(
     let toggled = false;
     button.addEventListener('click', () => {
         const lastChild = wrapper.lastChild;
+        if (!lastChild) throw new Error('wrapper missing lastChild');
 
         update(lastChild, toggled ? unmountedState : mountedState);
 
         toggled = !toggled;
-        SourceCodeUpdateEvents.emit();
+        SourceCodeUpdateEvents.emit(undefined);
     });
 
     return wrapper;
@@ -73,7 +71,7 @@ export function createButtonCycle(
             index++;
         }
 
-        SourceCodeUpdateEvents.emit();
+        SourceCodeUpdateEvents.emit(undefined);
     });
 
     return wrapper;
@@ -93,7 +91,7 @@ class EventBus<EventType = undefined> {
         this.subscribers = this.subscribers.filter(s => s !== subscriber);
     }
 
-    emit(event?: EventType) {
+    emit(event: EventType) {
         this.subscribers.forEach(subscriber => subscriber(event));
         this.events.push(event);
     }
