@@ -1,10 +1,15 @@
+import { within, userEvent } from '@storybook/testing-library';
+import { expect } from '@storybook/jest';
+import type { Story, Meta } from '@storybook/html';
+
+import '../expect-extend';
 import { addStoryName, createMountToggle } from '../utils';
 
 export default {
     title: 'Elements/<output>',
-};
+} as Meta;
 
-export function LiveRegionAvailableBeforeContent() {
+export const LiveRegionAvailableBeforeContent: Story = () => {
     return createMountToggle(
         `
         <output>
@@ -16,10 +21,17 @@ export function LiveRegionAvailableBeforeContent() {
         </output>
         `
     );
-}
+};
 addStoryName(LiveRegionAvailableBeforeContent, 'PASS');
+LiveRegionAvailableBeforeContent.play = async ({ canvasElement }) => {
+    const button = within(canvasElement).getByRole('button');
+    expect('Hello world').not.toBeAnnounced();
 
-export function LiveRegionNotAvailableBeforeContent() {
+    userEvent.click(button);
+    expect('Hello world').toBeAnnounced('polite');
+};
+
+export const LiveRegionNotAvailableBeforeContent: Story = () => {
     return createMountToggle(
         `
         <div>
@@ -33,5 +45,12 @@ export function LiveRegionNotAvailableBeforeContent() {
         </div>
         `
     );
-}
+};
 addStoryName(LiveRegionNotAvailableBeforeContent, 'FAIL');
+LiveRegionNotAvailableBeforeContent.play = async ({ canvasElement }) => {
+    const button = within(canvasElement).getByRole('button');
+    expect('Hello world').not.toBeAnnounced();
+
+    userEvent.click(button);
+    expect('Hello world').not.toBeAnnounced();
+};

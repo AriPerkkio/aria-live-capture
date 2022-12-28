@@ -1,10 +1,15 @@
-import { createButtonCycle } from '../utils';
+import type { Story, Meta } from '@storybook/html';
+import { within, userEvent } from '@storybook/testing-library';
+import { expect } from '@storybook/jest';
+
+import '../expect-extend';
+import { createButtonCycle, times } from '../utils';
 
 export default {
     title: 'DOM API Support/ShadowRoot',
-};
+} as Meta;
 
-export function liveRegionInsideShadowDOM() {
+export const LiveRegionInsideShadowDOM: Story = () => {
     let shadowRoot: ShadowRoot;
     let element: HTMLElement;
 
@@ -25,9 +30,21 @@ export function liveRegionInsideShadowDOM() {
             element.textContent = 'Hello world';
         }
     );
-}
+};
+LiveRegionInsideShadowDOM.play = async ({ canvasElement }) => {
+    const button = within(canvasElement).getByRole('button');
+    expect('Hello world').not.toBeAnnounced();
 
-export function liveRegionWrappingShadowDOM() {
+    times(2)(() => {
+        userEvent.click(button);
+        expect('Hello world').not.toBeAnnounced();
+    });
+
+    userEvent.click(button);
+    expect('Hello world').toBeAnnounced('polite');
+};
+
+export const LiveRegionWrappingShadowDOM: Story = () => {
     let shadowRoot: ShadowRoot;
 
     return createButtonCycle(
@@ -48,9 +65,21 @@ export function liveRegionWrappingShadowDOM() {
             shadowRoot.appendChild(element);
         }
     );
-}
+};
+LiveRegionWrappingShadowDOM.play = async ({ canvasElement }) => {
+    const button = within(canvasElement).getByRole('button');
+    expect('Hello world').not.toBeAnnounced();
 
-export function liveRegionDeeplyInShadowDOM() {
+    times(2)(() => {
+        userEvent.click(button);
+        expect('Hello world').not.toBeAnnounced();
+    });
+
+    userEvent.click(button);
+    expect('Hello world').toBeAnnounced('polite');
+};
+
+export const LiveRegionDeeplyInShadowDOM: Story = () => {
     let third: HTMLElement;
     let last: ShadowRoot;
 
@@ -87,9 +116,21 @@ export function liveRegionDeeplyInShadowDOM() {
             last.appendChild(element);
         }
     );
-}
+};
+LiveRegionDeeplyInShadowDOM.play = async ({ canvasElement }) => {
+    const button = within(canvasElement).getByRole('button');
+    expect('Hello world').not.toBeAnnounced();
 
-export function liveRegionWrappingElementAndShadowDOM() {
+    times(3)(() => {
+        userEvent.click(button);
+        expect('Hello world').not.toBeAnnounced();
+    });
+
+    userEvent.click(button);
+    expect('Hello world').toBeAnnounced('polite');
+};
+
+export const LiveRegionWrappingElementAndShadowDOM: Story = () => {
     let shadowRoot: ShadowRoot;
 
     return createButtonCycle(
@@ -114,9 +155,21 @@ export function liveRegionWrappingElementAndShadowDOM() {
             shadowRoot.host.appendChild(world);
         }
     );
-}
+};
+LiveRegionWrappingElementAndShadowDOM.play = async ({ canvasElement }) => {
+    const button = within(canvasElement).getByRole('button');
+    expect('Hello world').not.toBeAnnounced();
 
-export function visibilityToggle() {
+    times(2)(() => {
+        userEvent.click(button);
+        expect('Hello').not.toBeAnnounced();
+    });
+
+    userEvent.click(button);
+    expect('Hello').toBeAnnounced('polite');
+};
+
+export const VisibilityToggle: Story = () => {
     let shadowRoot: ShadowRoot;
 
     const element = document.createElement('div');
@@ -144,4 +197,14 @@ export function visibilityToggle() {
             .fill([appendChild, removeChild])
             .reduce((all, methods) => [...all, ...methods], [])
     );
-}
+};
+VisibilityToggle.play = async ({ canvasElement }) => {
+    const button = within(canvasElement).getByRole('button');
+    expect('Hello world').not.toBeAnnounced();
+
+    userEvent.click(button);
+    expect('Hello world').not.toBeAnnounced();
+
+    userEvent.click(button);
+    expect('Hello world').toBeAnnounced('polite');
+};

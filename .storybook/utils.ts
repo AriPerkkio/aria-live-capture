@@ -10,7 +10,8 @@ const STATUS_TO_ICON = {
 export function addStoryName(fn: Story, status: keyof typeof STATUS_TO_ICON) {
     const camelCaseAsSentence = fn.name
         .replace(/([A-Z])/g, ' $1')
-        .replace(/\d/g, '');
+        .replace(/\d/g, '')
+        .replace(/\$/g, '');
 
     fn.storyName = camelCaseAsSentence + STATUS_TO_ICON[status];
 
@@ -107,3 +108,9 @@ export const AnnouncementEvents = new EventBus<{
     text: string;
     level: string;
 }>();
+
+export function times(count: number) {
+    return function execute(method: () => unknown): void {
+        Array(count).fill(null).forEach(method);
+    };
+}

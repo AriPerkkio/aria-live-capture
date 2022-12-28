@@ -41,18 +41,6 @@ module.exports = {
                 '@typescript-eslint/ban-ts-comment': 'off',
             },
         },
-        {
-            files: ['cypress/support/**'],
-            rules: {
-                '@typescript-eslint/no-namespace': 'off',
-            },
-        },
     ],
-    ignorePatterns: [
-        'dist',
-        'docs',
-        '!.storybook',
-        'cypress/videos',
-        'cypress/screenshots',
-    ],
+    ignorePatterns: ['dist', 'docs', '!.storybook'],
 };

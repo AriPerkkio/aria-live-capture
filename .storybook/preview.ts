@@ -1,5 +1,7 @@
 import { addons } from '@storybook/addons';
 import { STORY_CHANGED } from '@storybook/core-events';
+import { expect } from '@storybook/jest';
+import { within, screen } from '@storybook/testing-library';
 
 import CaptureAnnouncements from '../src';
 import prettyDOMWithShadowDOM from './pretty-dom-with-shadow-dom';
@@ -160,4 +162,42 @@ const compose = (...fns: any[]) =>
         (value: any) => value
     );
 
-    );
+expect.extend({
+    toBeAnnounced: function toBeAnnounced(
+        this: { isNot?: boolean },
+        text: string,
+        politenessSetting?: 'assertive' | 'polite'
+    ) {
+        const container = screen.getByRole('heading', {
+            name: 'Captured announcements',
+            hidden: true,
+        }).parentElement;
+
+        if (!container) {
+            return {
+                pass: false,
+                message: () => 'Unable to find announcements container',
+            };
+        }
+
+        const [element] = within(container).queryAllByText(
+            `${politenessSetting}: ${text}`
+        );
+
+        const pass = element != null;
+
+        if (pass) {
+            return {
+                pass,
+                message: () =>
+                    `Expected announcement "${text}" not to be done, but it was.`,
+            };
+        }
+
+        return {
+            pass,
+            message: () =>
+                `Expected announcement "${text}" to be done, but it was not.`,
+        };
+    },
+});
