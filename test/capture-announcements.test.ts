@@ -342,14 +342,17 @@ describe.each(ASSERTIVE_CASES)('$testName', ({ name, value }) => {
         expect(onCapture).toHaveBeenCalledWith('Hello world', 'assertive');
     });
 
-    test('should announce when content is added with `replaceChildren`', () => {
-        const parent = document.createElement('div');
-        const child = document.createElement('div');
-        parent.appendChild(child);
-        appendToRoot(parent);
+    test('should announce when content is added with `replaceChildren`', async () => {
+        appendToRoot(element);
 
-        element.textContent = 'Hello world';
-        parent.replaceChild(element, child);
+        element.appendChild(document.createElement('div'));
+
+        const child = document.createElement('div');
+        child.textContent = 'Hello world';
+
+        element.replaceChildren(child);
+
+        expect(onCapture).toHaveBeenCalledWith('Hello world', 'assertive');
     });
 
     test('should not announce when live region is hidden', () => {

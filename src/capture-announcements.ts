@@ -225,6 +225,7 @@ export default function CaptureAnnouncements(options: Options): Restore {
     // prettier-ignore
     const cleanups: Restore[] = [
         interceptMethod(DocumentFragment.prototype, 'removeChild', onRemoveChild),
+        interceptMethod(DocumentFragment.prototype, 'replaceChildren', onNodeMount),
         interceptMethod(DocumentFragment.prototype, 'append', onNodeMount),
         interceptMethod(DocumentFragment.prototype, 'prepend', onNodeMount),
 
@@ -232,6 +233,7 @@ export default function CaptureAnnouncements(options: Options): Restore {
         interceptMethod(Element.prototype, 'removeAttribute', onRemoveAttributeBefore, 'BEFORE'),
         interceptMethod(Element.prototype, 'removeAttribute', onRemoveAttributeAfter, 'AFTER'),
         interceptMethod(Element.prototype, 'removeChild', onRemoveChild),
+        interceptMethod(Element.prototype, 'replaceChildren', onNodeMount),
         interceptMethod(Element.prototype, 'insertAdjacentElement', onInsertAdjacent),
         interceptMethod(Element.prototype, 'insertAdjacentHTML', onInsertAdjacent),
         interceptMethod(Element.prototype, 'insertAdjacentText', onInsertAdjacent),

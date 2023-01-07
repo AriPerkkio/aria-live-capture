@@ -222,6 +222,42 @@ prepend.play = ({ canvasElement }) => {
     expect('Hello world').toBeAnnounced('polite');
 };
 
+export const replaceChildren: Story = () => {
+    let element: HTMLElement;
+    let child: HTMLElement;
+
+    return createButtonCycle(
+        parent => {
+            element = document.createElement('div');
+            element.setAttribute('aria-live', 'polite');
+
+            parent.appendChild(element);
+        },
+        () => {
+            element.appendChild(document.createElement('p'));
+            element.appendChild(document.createElement('div'));
+        },
+        () => {
+            child = document.createElement('span');
+            child.textContent = 'Hello world';
+            element.replaceChildren(child);
+        }
+    );
+};
+replaceChildren.storyName = 'replaceChildren';
+replaceChildren.play = ({ canvasElement }) => {
+    const button = within(canvasElement).getByRole('button');
+    expect('Hello world').not.toBeAnnounced();
+
+    times(2)(() => {
+        userEvent.click(button);
+        expect('Hello world').not.toBeAnnounced();
+    });
+
+    userEvent.click(button);
+    expect('Hello world').toBeAnnounced('polite');
+};
+
 export const removeAttribute: Story = () => {
     let element: HTMLElement;
     let child: HTMLElement;
