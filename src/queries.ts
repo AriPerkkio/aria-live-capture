@@ -55,7 +55,7 @@ export function getChildNodes(node: Node): Node['childNodes'] {
  */
 export function querySelectorAll(
     context: Document | Element,
-    ...args: Parameters<typeof context['querySelectorAll']>
+    ...args: Parameters<(typeof context)['querySelectorAll']>
 ): Element[] {
     if (!getConfig().includeShadowDom) {
         return Array.from(context.querySelectorAll(...args));
