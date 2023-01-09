@@ -4,7 +4,7 @@ import * as queries from './queries';
 export type PolitenessSetting = 'polite' | 'assertive' | 'off';
 
 const LIVE_REGION_ROLES = ['status', 'log', 'alert'] as const;
-type LiveRegionRole = typeof LIVE_REGION_ROLES[number];
+type LiveRegionRole = (typeof LIVE_REGION_ROLES)[number];
 
 const LIVE_REGION_QUERY = [
     '[role="status"]',
