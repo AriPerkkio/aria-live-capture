@@ -1,3 +1,12 @@
+## [1.0.1](https://github.com/AriPerkkio/aria-live-capture/compare/v1.0.0...v1.0.1) (2023-01-09)
+
+
+### Bug Fixes
+
+* track `Element.replaceChildren` and `DocumentFragment.replaceChildren` APIs ([ee87bc5](https://github.com/AriPerkkio/aria-live-capture/commit/ee87bc5dc4a44190aef5dc79394db1922edfa5d0))
+
+
+
 # [1.0.0](https://github.com/AriPerkkio/aria-live-capture/compare/v0.5.1...v1.0.0) (2022-10-22)
 
 
