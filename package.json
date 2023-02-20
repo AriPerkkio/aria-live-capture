@@ -35,7 +35,7 @@
         "@storybook/jest": "^0.0.10",
         "@storybook/test-runner": "^0.9.4",
         "@storybook/testing-library": "^0.0.13",
-        "@testing-library/dom": "^8.20.0",
+        "@testing-library/dom": "^9.0.0",
         "@typescript-eslint/eslint-plugin": "^5.52.0",
         "@typescript-eslint/parser": "^5.52.0",
         "eslint": "^8.34.0",
