@@ -20,6 +20,11 @@
             "groupName": "typescript breaking changes",
             "matchPackageNames": ["typescript"],
             "description": "Typescript does not follow semver. Minor versions can introduce breaking changes."
+        },
+        {
+            "groupName": "storybook",
+            "matchPackagePatterns": ["^@storybook"],
+            "description": "Storybook releases seem to break easily."
         }
     ]
 }
