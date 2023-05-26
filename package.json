@@ -28,10 +28,10 @@
         "docs:deploy": "gh-pages -d docs"
     },
     "devDependencies": {
-        "@storybook/addon-docs": "^6.5.16",
-        "@storybook/addon-interactions": "^6.5.16",
-        "@storybook/builder-vite": "0.4.2",
-        "@storybook/html": "^6.5.16",
+        "@storybook/addon-docs": "^7.0.18",
+        "@storybook/addon-interactions": "^7.0.18",
+        "@storybook/builder-vite": "7.0.18",
+        "@storybook/html": "^7.0.18",
         "@storybook/jest": "^0.0.10",
         "@storybook/test-runner": "^0.9.4",
         "@storybook/testing-library": "^0.0.13",
