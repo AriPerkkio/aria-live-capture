@@ -12,16 +12,17 @@ jobs:
 
         steps:
             - uses: actions/checkout@v3
+            - uses: pnpm/action-setup@v2
             - uses: ./.github/actions/setup-and-cache
 
-            - run: yarn install
-            - run: yarn build
-            - run: yarn test
-            - run: yarn lint
-            - run: yarn docs:build
+            - run: pnpm install
+            - run: pnpm build
+            - run: pnpm test
+            - run: pnpm lint
+            - run: pnpm docs:build
             - name: Deploy with gh-pages
               run: |
                   git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-                  yarn docs:deploy -u "github-actions-bot <support+actions@github.com>"
+                  pnpm docs:deploy -u "github-actions-bot <support+actions@github.com>"
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

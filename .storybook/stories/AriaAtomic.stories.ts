@@ -1,4 +1,4 @@
-import type { Meta, Story } from '@storybook/html';
+import type { Meta, StoryFn } from '@storybook/html';
 
 import { createMountToggle } from '../utils';
 
@@ -6,7 +6,7 @@ export default {
     title: 'Unsupported/aria-atomic',
 } as Meta;
 
-export const True: Story = () => {
+export const True: StoryFn = () => {
     return createMountToggle(
         `
         <div aria-live="polite" aria-atomic="true">
@@ -23,7 +23,7 @@ export const True: Story = () => {
 };
 True.storyName = 'true';
 
-export const False: Story = () => {
+export const False: StoryFn = () => {
     return createMountToggle(
         `
         <div aria-live="polite" aria-atomic="false">

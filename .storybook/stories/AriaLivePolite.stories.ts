@@ -1,15 +1,15 @@
 import { within, userEvent } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
-import type { Story, Meta } from '@storybook/html';
+import type { StoryFn, Meta } from '@storybook/html';
 
 import '../expect-extend';
-import { addStoryName, createMountToggle } from '../utils';
+import { createMountToggle } from '../utils';
 
 export default {
     title: 'Aria-live/aria-live="polite"',
 } as Meta;
 
-export const LiveRegionAvailableBeforeContent: Story = () => {
+export const LiveRegionAvailableBeforeContent: StoryFn = () => {
     return createMountToggle(
         `
         <div aria-live="polite">
@@ -22,7 +22,8 @@ export const LiveRegionAvailableBeforeContent: Story = () => {
         `
     );
 };
-addStoryName(LiveRegionAvailableBeforeContent, 'PASS');
+LiveRegionAvailableBeforeContent.storyName =
+    'Live region available before content ✅';
 LiveRegionAvailableBeforeContent.play = async ({ canvasElement }) => {
     const button = within(canvasElement).getByRole('button');
     expect('Hello world').not.toBeAnnounced();
@@ -31,7 +32,7 @@ LiveRegionAvailableBeforeContent.play = async ({ canvasElement }) => {
     expect('Hello world').toBeAnnounced('polite');
 };
 
-export const LiveRegionUnavailableBeforeContent: Story = () => {
+export const LiveRegionUnavailableBeforeContent: StoryFn = () => {
     return createMountToggle(
         `
         <div></div>
@@ -43,7 +44,8 @@ export const LiveRegionUnavailableBeforeContent: Story = () => {
         `
     );
 };
-addStoryName(LiveRegionUnavailableBeforeContent, 'FAIL');
+LiveRegionUnavailableBeforeContent.storyName =
+    'Live region unavailable before content ❌';
 LiveRegionUnavailableBeforeContent.play = async ({ canvasElement }) => {
     const button = within(canvasElement).getByRole('button');
     expect('Hello world').not.toBeAnnounced();

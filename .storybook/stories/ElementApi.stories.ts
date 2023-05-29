@@ -1,4 +1,4 @@
-import type { Story, Meta } from '@storybook/html';
+import type { StoryFn, Meta } from '@storybook/html';
 import { within, userEvent } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
 
@@ -9,7 +9,7 @@ export default {
     title: 'DOM API Support/Element',
 } as Meta;
 
-export const setAttribute: Story = () => {
+export const setAttribute: StoryFn = () => {
     let element: HTMLElement;
 
     return createButtonCycle(
@@ -39,7 +39,7 @@ setAttribute.play = ({ canvasElement }) => {
     expect('Hello world').toBeAnnounced('polite');
 };
 
-export const insertAdjacentElement: Story = () => {
+export const insertAdjacentElement: StoryFn = () => {
     let element: HTMLElement;
 
     return createButtonCycle(
@@ -67,7 +67,7 @@ insertAdjacentElement.play = ({ canvasElement }) => {
     expect('Hello world').toBeAnnounced('polite');
 };
 
-export const insertAdjacentHTML: Story = () => {
+export const insertAdjacentHTML: StoryFn = () => {
     let element: HTMLElement;
 
     return createButtonCycle(
@@ -96,7 +96,7 @@ insertAdjacentHTML.play = ({ canvasElement }) => {
     expect('Hello world').toBeAnnounced('polite');
 };
 
-export const insertAdjacentText: Story = () => {
+export const insertAdjacentText: StoryFn = () => {
     let element: HTMLElement;
 
     return createButtonCycle(
@@ -122,7 +122,7 @@ insertAdjacentText.play = ({ canvasElement }) => {
     expect('Hello world').toBeAnnounced('polite');
 };
 
-export const before: Story = () => {
+export const before: StoryFn = () => {
     let element: HTMLElement;
     let child: HTMLElement;
 
@@ -156,7 +156,7 @@ before.play = ({ canvasElement }) => {
     expect('Hello world').toBeAnnounced('polite');
 };
 
-export const append: Story = () => {
+export const append: StoryFn = () => {
     let element: HTMLElement;
 
     return createButtonCycle(
@@ -189,7 +189,7 @@ append.play = ({ canvasElement }) => {
     expect('Hello world').toBeAnnounced('polite');
 };
 
-export const prepend: Story = () => {
+export const prepend: StoryFn = () => {
     let element: HTMLElement;
 
     return createButtonCycle(
@@ -222,7 +222,7 @@ prepend.play = ({ canvasElement }) => {
     expect('Hello world').toBeAnnounced('polite');
 };
 
-export const replaceChildren: Story = () => {
+export const replaceChildren: StoryFn = () => {
     let element: HTMLElement;
     let child: HTMLElement;
 
@@ -258,7 +258,7 @@ replaceChildren.play = ({ canvasElement }) => {
     expect('Hello world').toBeAnnounced('polite');
 };
 
-export const removeAttribute: Story = () => {
+export const removeAttribute: StoryFn = () => {
     let element: HTMLElement;
     let child: HTMLElement;
 
@@ -302,7 +302,7 @@ removeAttribute.play = ({ canvasElement }) => {
     expect('Hello world').toBeAnnounced('polite');
 };
 
-export const removeChild: Story = () => {
+export const removeChild: StoryFn = () => {
     let element: HTMLElement;
     let sibling: HTMLElement;
 

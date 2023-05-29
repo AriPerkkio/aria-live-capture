@@ -1,6 +1,8 @@
 # aria-live-capture
 
-[![version](https://img.shields.io/npm/v/aria-live-capture)](https://www.npmjs.com/package/aria-live-capture)
+<a href="https://www.npmjs.com/package/aria-live-capture">
+    <img alt="version" src="https://img.shields.io/npm/v/aria-live-capture" />
+</a>
 
 [Installation](#installation) | [Usage](#usage) | [Announcement detection examples](#announcement-detection-examples) | [Support](#support)
 
@@ -24,7 +26,7 @@ Read more about inspiration from [Building testing tools for ARIA live regions](
 `aria-live-capture` should be included in development dependencies.
 
 ```bash
-yarn add --dev aria-live-capture
+npm install --save-dev aria-live-capture
 ```
 
 ## Usage
@@ -81,7 +83,7 @@ cleanup();
 
 ## Announcement detection examples
 
-[Test online](https://ariperkkio.github.io/aria-live-capture) <a href="https://ariperkkio.github.io/aria-live-capture" target="_blank"><img src="https://raw.githubusercontent.com/storybooks/brand/master/badge/badge-storybook.svg"></img></a>
+[Test online](https://ariperkkio.github.io/aria-live-capture)&nbsp;&nbsp;<a href="https://ariperkkio.github.io/aria-live-capture" target="_blank"><img src="https://raw.githubusercontent.com/storybooks/brand/master/badge/badge-storybook.svg" /></a>
 
 <!-- prettier-ignore -->
 ```html

@@ -1,15 +1,15 @@
-import type { Story, Meta } from '@storybook/html';
+import type { StoryFn, Meta } from '@storybook/html';
 import { within, userEvent } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
 
 import '../expect-extend';
-import { addStoryName, createMountToggle } from '../utils';
+import { createMountToggle } from '../utils';
 
 export default {
     title: 'Role/role="alert"',
 } as Meta;
 
-export const LiveRegionAvailableBeforeContent: Story = () => {
+export const LiveRegionAvailableBeforeContent: StoryFn = () => {
     return createMountToggle(
         `
         <div role="alert">
@@ -22,7 +22,8 @@ export const LiveRegionAvailableBeforeContent: Story = () => {
         `
     );
 };
-addStoryName(LiveRegionAvailableBeforeContent, 'PASS');
+LiveRegionAvailableBeforeContent.storyName =
+    'Live region available before content ✅';
 LiveRegionAvailableBeforeContent.play = async ({ canvasElement }) => {
     const button = within(canvasElement).getByRole('button');
     expect('Hello world').not.toBeAnnounced();
@@ -31,7 +32,7 @@ LiveRegionAvailableBeforeContent.play = async ({ canvasElement }) => {
     expect('Hello world').toBeAnnounced('assertive');
 };
 
-export const LiveRegionUnavailableBeforeContent: Story = () => {
+export const LiveRegionUnavailableBeforeContent: StoryFn = () => {
     return createMountToggle(
         `
         <div></div>
@@ -43,7 +44,8 @@ export const LiveRegionUnavailableBeforeContent: Story = () => {
         `
     );
 };
-addStoryName(LiveRegionUnavailableBeforeContent, 'PASS');
+LiveRegionUnavailableBeforeContent.storyName =
+    'Live region unavailable before content ✅';
 LiveRegionUnavailableBeforeContent.play = async ({ canvasElement }) => {
     const button = within(canvasElement).getByRole('button');
     expect('Hello world').not.toBeAnnounced();
@@ -52,7 +54,7 @@ LiveRegionUnavailableBeforeContent.play = async ({ canvasElement }) => {
     expect('Hello world').toBeAnnounced('assertive');
 };
 
-export const AnchestorIsHidden: Story = () => {
+export const AnchestorIsHidden: StoryFn = () => {
     return createMountToggle(
         `
         <div aria-hidden="true">
@@ -69,7 +71,7 @@ export const AnchestorIsHidden: Story = () => {
         `
     );
 };
-addStoryName(AnchestorIsHidden, 'FAIL');
+AnchestorIsHidden.storyName = 'Anchestor is hidden ❌';
 AnchestorIsHidden.play = async ({ canvasElement }) => {
     const button = within(canvasElement).getByRole('button');
     expect('Hello world').not.toBeAnnounced();
@@ -78,7 +80,7 @@ AnchestorIsHidden.play = async ({ canvasElement }) => {
     expect('Hello world').not.toBeAnnounced();
 };
 
-export const LiveRegionIsHidden: Story = () => {
+export const LiveRegionIsHidden: StoryFn = () => {
     return createMountToggle(
         `
         <div aria-hidden="true" role="alert">
@@ -91,7 +93,7 @@ export const LiveRegionIsHidden: Story = () => {
         `
     );
 };
-addStoryName(LiveRegionIsHidden, 'FAIL');
+LiveRegionIsHidden.storyName = 'Live region is hidden ❌';
 LiveRegionIsHidden.play = async ({ canvasElement }) => {
     const button = within(canvasElement).getByRole('button');
     expect('Hello world').not.toBeAnnounced();
@@ -100,7 +102,7 @@ LiveRegionIsHidden.play = async ({ canvasElement }) => {
     expect('Hello world').not.toBeAnnounced();
 };
 
-export const ContentIsHidden: Story = () => {
+export const ContentIsHidden: StoryFn = () => {
     return createMountToggle(
         `
         <div role="alert">
@@ -115,7 +117,7 @@ export const ContentIsHidden: Story = () => {
         `
     );
 };
-addStoryName(ContentIsHidden, 'FAIL');
+ContentIsHidden.storyName = 'Content is hidden ❌';
 ContentIsHidden.play = async ({ canvasElement }) => {
     const button = within(canvasElement).getByRole('button');
     expect('Hello world').not.toBeAnnounced();
@@ -124,7 +126,7 @@ ContentIsHidden.play = async ({ canvasElement }) => {
     expect('Hello world').not.toBeAnnounced();
 };
 
-export const ContentIsPartiallyHidden: Story = () => {
+export const ContentIsPartiallyHidden: StoryFn = () => {
     return createMountToggle(
         `
         <div role="alert">
@@ -142,7 +144,7 @@ export const ContentIsPartiallyHidden: Story = () => {
         `
     );
 };
-addStoryName(ContentIsPartiallyHidden, 'PARTIAL');
+ContentIsPartiallyHidden.storyName = 'Content is partially hidden ⚠️';
 ContentIsPartiallyHidden.play = async ({ canvasElement }) => {
     const button = within(canvasElement).getByRole('button');
     expect('Hello world').not.toBeAnnounced();
@@ -152,7 +154,7 @@ ContentIsPartiallyHidden.play = async ({ canvasElement }) => {
     expect('Hello').toBeAnnounced('assertive');
 };
 
-export const PartOfContentChanges: Story = () => {
+export const PartOfContentChanges: StoryFn = () => {
     return createMountToggle(
         `
         <div role="alert">
@@ -173,7 +175,7 @@ export const PartOfContentChanges: Story = () => {
         `
     );
 };
-addStoryName(PartOfContentChanges, 'PASS');
+PartOfContentChanges.storyName = 'Part of content changes ✅';
 PartOfContentChanges.play = async ({ canvasElement }) => {
     const button = within(canvasElement).getByRole('button');
     expect('Hello world').not.toBeAnnounced();
@@ -182,7 +184,7 @@ PartOfContentChanges.play = async ({ canvasElement }) => {
     expect('Hello world').toBeAnnounced('assertive');
 };
 
-export const AriaHiddenChanges: Story = () => {
+export const AriaHiddenChanges: StoryFn = () => {
     return createMountToggle(
         `
         <div role="alert">
@@ -200,7 +202,7 @@ export const AriaHiddenChanges: Story = () => {
         `
     );
 };
-addStoryName(AriaHiddenChanges, 'PASS');
+AriaHiddenChanges.storyName = 'aria-hidden changes ✅';
 AriaHiddenChanges.play = async ({ canvasElement }) => {
     const button = within(canvasElement).getByRole('button');
     expect('Hello world').not.toBeAnnounced();

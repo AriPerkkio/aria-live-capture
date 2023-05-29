@@ -1,15 +1,15 @@
-import type { Story, Meta } from '@storybook/html';
+import type { StoryFn, Meta } from '@storybook/html';
 import { within, userEvent } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
 
 import '../expect-extend';
-import { addStoryName, createMountToggle } from '../utils';
+import { createMountToggle } from '../utils';
 
 export default {
     title: 'Role/role="marquee"',
 } as Meta;
 
-export const WithTextContent: Story = () => {
+export const WithTextContent: StoryFn = () => {
     return createMountToggle(
         `
         <div role="marquee">
@@ -22,7 +22,7 @@ export const WithTextContent: Story = () => {
         `
     );
 };
-addStoryName(WithTextContent, 'FAIL');
+WithTextContent.storyName = 'With text content ❌';
 WithTextContent.play = async ({ canvasElement }) => {
     const button = within(canvasElement).getByRole('button');
     expect('Hello world').not.toBeAnnounced();
@@ -31,7 +31,7 @@ WithTextContent.play = async ({ canvasElement }) => {
     expect('Hello world').not.toBeAnnounced();
 };
 
-export const WrapsLiveRegion: Story = () => {
+export const WrapsLiveRegion: StoryFn = () => {
     return createMountToggle(
         `
         <div role="marquee">
@@ -48,7 +48,7 @@ export const WrapsLiveRegion: Story = () => {
         `
     );
 };
-addStoryName(WrapsLiveRegion, 'PASS');
+WrapsLiveRegion.storyName = 'Wraps live region ✅';
 WrapsLiveRegion.play = async ({ canvasElement }) => {
     const button = within(canvasElement).getByRole('button');
     expect('Hello world').not.toBeAnnounced();
@@ -57,7 +57,7 @@ WrapsLiveRegion.play = async ({ canvasElement }) => {
     expect('Hello world').toBeAnnounced('polite');
 };
 
-export const WrappedInLiveRegion: Story = () => {
+export const WrappedInLiveRegion: StoryFn = () => {
     return createMountToggle(
         `
         <div role="status">
@@ -74,7 +74,7 @@ export const WrappedInLiveRegion: Story = () => {
         `
     );
 };
-addStoryName(WrappedInLiveRegion, 'FAIL');
+WrappedInLiveRegion.storyName = 'Wrapped in live region ❌';
 WrappedInLiveRegion.play = async ({ canvasElement }) => {
     const button = within(canvasElement).getByRole('button');
     expect('Hello world').not.toBeAnnounced();
@@ -83,7 +83,7 @@ WrappedInLiveRegion.play = async ({ canvasElement }) => {
     expect('Hello world').not.toBeAnnounced();
 };
 
-export const SiblingIsVisible: Story = () => {
+export const SiblingIsVisible: StoryFn = () => {
     return createMountToggle(
         `
         <div role="status">
@@ -103,7 +103,7 @@ export const SiblingIsVisible: Story = () => {
         `
     );
 };
-addStoryName(SiblingIsVisible, 'PARTIAL');
+SiblingIsVisible.storyName = 'Sibling is visible ⚠️';
 SiblingIsVisible.play = async ({ canvasElement }) => {
     const button = within(canvasElement).getByRole('button');
     expect('Hello world').not.toBeAnnounced();
