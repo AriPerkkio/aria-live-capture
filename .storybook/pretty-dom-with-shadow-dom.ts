@@ -5,15 +5,14 @@
  * https://github.com/testing-library/dom-testing-library/blob/main/src/DOMElementFilter.ts
  */
 
-import { prettyDOM } from '@testing-library/dom';
-import type { Config, NewPlugin, Printer, Refs } from 'pretty-format';
+import { prettyDOM, type prettyFormat } from '@testing-library/dom';
 
 export default function prettyDOMWithShadowDOM(
     ...args: Parameters<typeof prettyDOM>
 ): ReturnType<typeof prettyDOM> {
     const [dom, maxLength, options] = args;
 
-    const plugin: NewPlugin = {
+    const plugin: prettyFormat.NewPlugin = {
         test: (val: any) => val?.constructor?.name && testNode(val),
         serialize,
     };
@@ -33,11 +32,11 @@ function escapeHTML(str: string): string {
 function printProps(
     keys: Array<string>,
     props: Record<string, unknown>,
-    config: Config,
+    config: prettyFormat.Config,
     indentation: string,
     depth: number,
-    refs: Refs,
-    printer: Printer
+    refs: prettyFormat.Refs,
+    printer: prettyFormat.Printer
 ): string {
     const indentationNext = indentation + config.indent;
     const colors = config.colors;
@@ -79,11 +78,11 @@ const NodeTypeTextNode = 3;
 // Return empty string if children is empty.
 const printChildren = (
     children: Array<unknown>,
-    config: Config,
+    config: prettyFormat.Config,
     indentation: string,
     depth: number,
-    refs: Refs,
-    printer: Printer
+    refs: prettyFormat.Refs,
+    printer: prettyFormat.Printer
 ): string =>
     children
         .map(child => {
@@ -105,12 +104,12 @@ const printChildren = (
         })
         .join('');
 
-const printText = (text: string, config: Config): string => {
+const printText = (text: string, config: prettyFormat.Config): string => {
     const contentColor = config.colors.content;
     return contentColor.open + escapeHTML(text) + contentColor.close;
 };
 
-const printComment = (comment: string, config: Config): string => {
+const printComment = (comment: string, config: prettyFormat.Config): string => {
     const commentColor = config.colors.comment;
     return (
         commentColor.open +
@@ -130,7 +129,7 @@ const printElement = (
     printedProps: string,
     printedChildren: string,
     hasShadowRoot: boolean,
-    config: Config,
+    config: prettyFormat.Config,
     indentation: string
 ): string => {
     const tagColor = config.colors.tag;
@@ -164,7 +163,10 @@ const printElement = (
     );
 };
 
-const printElementAsLeaf = (type: string, config: Config): string => {
+const printElementAsLeaf = (
+    type: string,
+    config: prettyFormat.Config
+): string => {
     const tagColor = config.colors.tag;
     return (
         tagColor.open +
@@ -217,11 +219,11 @@ function nodeIsFragment(node: HandledType): node is DocumentFragment {
 
 function serialize(
     node: HandledType,
-    config: Config,
+    config: prettyFormat.Config,
     indentation: string,
     depth: number,
-    refs: Refs,
-    printer: Printer
+    refs: prettyFormat.Refs,
+    printer: prettyFormat.Printer
 ): string {
     if (nodeIsText(node)) {
         return printText(node.data, config);
