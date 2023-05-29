@@ -1,7 +1,7 @@
-import { mergeConfig, UserConfig } from 'vite';
-import type { StorybookViteConfig } from '@storybook/builder-vite';
+import { mergeConfig, type UserConfig } from 'vite';
+import type { StorybookConfig } from '@storybook/html-vite';
 
-const config: StorybookViteConfig = {
+const config: StorybookConfig = {
     stories: [
         './README.stories.mdx',
         './**/AriaLive*.stories.ts',
@@ -10,14 +10,8 @@ const config: StorybookViteConfig = {
         './**/ElementApi.stories.ts',
         './**/*.stories.ts',
     ],
-    addons: [
-        {
-            name: '@storybook/addon-docs',
-            options: { transcludeMarkdown: true },
-        },
-        '@storybook/addon-interactions',
-    ],
-    core: { builder: '@storybook/builder-vite' },
+    addons: ['@storybook/addon-docs', '@storybook/addon-interactions'],
+    framework: '@storybook/html-vite',
 
     async viteFinal(config, { configType }) {
         const viteConfig: UserConfig = {

@@ -1,4 +1,4 @@
-import type { Story, Meta } from '@storybook/html';
+import type { StoryFn, Meta } from '@storybook/html';
 import { within, userEvent } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
 
@@ -9,7 +9,7 @@ export default {
     title: 'DOM API Support/ShadowRoot',
 } as Meta;
 
-export const LiveRegionInsideShadowDOM: Story = () => {
+export const LiveRegionInsideShadowDOM: StoryFn = () => {
     let shadowRoot: ShadowRoot;
     let element: HTMLElement;
 
@@ -44,7 +44,7 @@ LiveRegionInsideShadowDOM.play = async ({ canvasElement }) => {
     expect('Hello world').toBeAnnounced('polite');
 };
 
-export const LiveRegionWrappingShadowDOM: Story = () => {
+export const LiveRegionWrappingShadowDOM: StoryFn = () => {
     let shadowRoot: ShadowRoot;
 
     return createButtonCycle(
@@ -79,7 +79,7 @@ LiveRegionWrappingShadowDOM.play = async ({ canvasElement }) => {
     expect('Hello world').toBeAnnounced('polite');
 };
 
-export const LiveRegionDeeplyInShadowDOM: Story = () => {
+export const LiveRegionDeeplyInShadowDOM: StoryFn = () => {
     let third: HTMLElement;
     let last: ShadowRoot;
 
@@ -130,7 +130,7 @@ LiveRegionDeeplyInShadowDOM.play = async ({ canvasElement }) => {
     expect('Hello world').toBeAnnounced('polite');
 };
 
-export const LiveRegionWrappingElementAndShadowDOM: Story = () => {
+export const LiveRegionWrappingElementAndShadowDOM: StoryFn = () => {
     let shadowRoot: ShadowRoot;
 
     return createButtonCycle(
@@ -169,7 +169,7 @@ LiveRegionWrappingElementAndShadowDOM.play = async ({ canvasElement }) => {
     expect('Hello').toBeAnnounced('polite');
 };
 
-export const VisibilityToggle: Story = () => {
+export const VisibilityToggle: StoryFn = () => {
     let shadowRoot: ShadowRoot;
 
     const element = document.createElement('div');

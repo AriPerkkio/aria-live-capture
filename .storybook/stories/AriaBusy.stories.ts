@@ -1,4 +1,4 @@
-import type { Meta, Story } from '@storybook/html';
+import type { Meta, StoryFn } from '@storybook/html';
 
 import { createButtonCycle } from '../utils';
 
@@ -6,7 +6,7 @@ export default {
     title: 'Unsupported/aria-busy',
 } as Meta;
 
-export const AriaBusy: Story = () => {
+export const AriaBusy: StoryFn = () => {
     let element: HTMLElement;
 
     return createButtonCycle(

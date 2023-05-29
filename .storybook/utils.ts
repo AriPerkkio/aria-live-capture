@@ -1,22 +1,4 @@
 import { htmlToElement, update } from 'virtual-dom-nodes';
-import type { Story } from '@storybook/html';
-
-const STATUS_TO_ICON = {
-    PASS: '\u00A0✅',
-    FAIL: '\u00A0❌',
-    PARTIAL: '\u00A0⚠️',
-};
-
-export function addStoryName(fn: Story, status: keyof typeof STATUS_TO_ICON) {
-    const camelCaseAsSentence = fn.name
-        .replace(/([A-Z])/g, ' $1')
-        .replace(/\d/g, '')
-        .replace(/\$/g, '');
-
-    fn.storyName = camelCaseAsSentence + STATUS_TO_ICON[status];
-
-    return fn;
-}
 
 export function createMountToggle(
     unmountedState: string,

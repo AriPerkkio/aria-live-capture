@@ -1,4 +1,4 @@
-import type { Story, Meta } from '@storybook/html';
+import type { StoryFn, Meta } from '@storybook/html';
 import { within, userEvent } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
 
@@ -9,7 +9,7 @@ export default {
     title: 'DOM API Support/Node',
 } as Meta;
 
-export const appendChild: Story = () => {
+export const appendChild: StoryFn = () => {
     let element: HTMLElement;
 
     return createButtonCycle(
@@ -38,7 +38,7 @@ appendChild.play = ({ canvasElement }) => {
     expect('Hello world').toBeAnnounced('polite');
 };
 
-export const insertBefore: Story = () => {
+export const insertBefore: StoryFn = () => {
     let element: HTMLElement;
     let child: HTMLElement;
 
@@ -72,7 +72,7 @@ insertBefore.play = ({ canvasElement }) => {
     expect('Hello world').toBeAnnounced('polite');
 };
 
-export const replaceChild: Story = () => {
+export const replaceChild: StoryFn = () => {
     let element: HTMLElement;
     let child: HTMLElement;
 
@@ -106,7 +106,7 @@ replaceChild.play = ({ canvasElement }) => {
     expect('Hello world').toBeAnnounced('polite');
 };
 
-export const textContent: Story = () => {
+export const textContent: StoryFn = () => {
     let element: HTMLElement;
     let child: HTMLElement;
 
@@ -142,7 +142,7 @@ textContent.play = ({ canvasElement }) => {
     expect('Hello world').toBeAnnounced('polite');
 };
 
-export const nodeValue: Story = () => {
+export const nodeValue: StoryFn = () => {
     let element: HTMLElement;
     let textNode: Node;
 

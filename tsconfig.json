@@ -4,6 +4,7 @@
         "skipLibCheck": true,
         "module": "commonjs",
         "target": "es6",
+        "lib": ["es6", "dom", "dom.iterable", "es2017"],
         "declaration": true,
         "declarationMap": true,
         "outDir": "dist"

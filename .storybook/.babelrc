@@ -1,2 +1,0 @@
-// This is only for Storybook
-{ "presets": ["@babel/preset-env", "@babel/preset-typescript"] }
