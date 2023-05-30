@@ -1,4 +1,4 @@
-var g=Object.defineProperty;var o=(e,n)=>g(e,"name",{value:n,configurable:!0});import{r as m,M as h,e as f}from"./chunk-PCJTTTQV-7b1ab660.js";import{u as R}from"./index-c1ae0dc4.js";import"./iframe-533d985b.js";import"../sb-preview/runtime.js";import"./index-722d4584.js";import"./index-a8eb9816.js";import"./index-ce7257af.js";import"./uniq-6402743e.js";const A=`# aria-live-capture
+var g=Object.defineProperty;var o=(e,n)=>g(e,"name",{value:n,configurable:!0});import{r as m,M as h,e as f}from"./chunk-PCJTTTQV-ee712522.js";import{u as R}from"./index-b87e9470.js";import"./iframe-4b6f6b49.js";import"../sb-preview/runtime.js";import"./index-722d4584.js";import"./index-a8eb9816.js";import"./index-ce7257af.js";import"./uniq-6402743e.js";const A=`# aria-live-capture
 
 <a href="https://www.npmjs.com/package/aria-live-capture">
     <img alt="version" src="https://img.shields.io/npm/v/aria-live-capture" />
@@ -198,9 +198,6 @@ PASS ✅  | "Loading" is announced
 |  \`aria-atomic\`  | ❌ 👷  |
 |   \`aria-busy\`   |   ❌   |
 | \`aria-relevant\` |   ❌   |
-
-
-Temp build 1
 `;var c={exports:{}},s={};/**
  * @license React
  * react-jsx-runtime.production.min.js
@@ -209,6 +206,6 @@ Temp build 1
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
- */var b=m,w=Symbol.for("react.element"),S=Symbol.for("react.fragment"),L=Object.prototype.hasOwnProperty,y=b.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentOwner,_={key:!0,ref:!0,__self:!0,__source:!0};function v(e,n,l){var t,r={},d=null,u=null;l!==void 0&&(d=""+l),n.key!==void 0&&(d=""+n.key),n.ref!==void 0&&(u=n.ref);for(t in n)L.call(n,t)&&!_.hasOwnProperty(t)&&(r[t]=n[t]);if(e&&e.defaultProps)for(t in n=e.defaultProps,n)r[t]===void 0&&(r[t]=n[t]);return{$$typeof:w,type:e,key:d,ref:u,props:r,_owner:y.current}}o(v,"q");s.Fragment=S;s.jsx=v;s.jsxs=v;c.exports=s;var i=c.exports;function p(e){return i.jsxs(i.Fragment,{children:[i.jsx(h,{title:"Aria Live Capture"}),`
+ */var w=m,S=Symbol.for("react.element"),b=Symbol.for("react.fragment"),L=Object.prototype.hasOwnProperty,y=w.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentOwner,_={key:!0,ref:!0,__self:!0,__source:!0};function v(e,n,l){var t,r={},d=null,u=null;l!==void 0&&(d=""+l),n.key!==void 0&&(d=""+n.key),n.ref!==void 0&&(u=n.ref);for(t in n)L.call(n,t)&&!_.hasOwnProperty(t)&&(r[t]=n[t]);if(e&&e.defaultProps)for(t in n=e.defaultProps,n)r[t]===void 0&&(r[t]=n[t]);return{$$typeof:S,type:e,key:d,ref:u,props:r,_owner:y.current}}o(v,"q");s.Fragment=b;s.jsx=v;s.jsxs=v;c.exports=s;var i=c.exports;function p(e){return i.jsxs(i.Fragment,{children:[i.jsx(h,{title:"Aria Live Capture"}),`
 `,i.jsx(f,{children:A})]})}o(p,"_createMdxContent");function k(e={}){const{wrapper:n}=Object.assign({},R(),e.components);return n?i.jsx(n,{...e,children:i.jsx(p,{...e})}):p()}o(k,"MDXContent");const x=o(()=>{throw new Error("Docs-only story")},"__page");x.parameters={docsOnly:!0};const a={title:"Aria Live Capture",tags:["stories-mdx"],includeStories:["__page"]};a.parameters=a.parameters||{};a.parameters.docs={...a.parameters.docs||{},page:k};const T=["__page"];export{T as __namedExportsOrder,x as __page,a as default};
-//# sourceMappingURL=README.stories-ec97dd49.js.map
+//# sourceMappingURL=README.stories-6daabfa2.js.map
