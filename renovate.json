@@ -3,6 +3,7 @@
     "extends": ["schedule:weekly"],
     "labels": ["dependencies"],
     "rangeStrategy": "bump",
+    "dependencyDashboard": true,
     "packageRules": [
         {
             "matchUpdateTypes": ["minor", "patch"],
