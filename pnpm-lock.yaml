@@ -56,6 +56,9 @@ devDependencies:
   '@vitest/browser':
     specifier: ^0.31.3
     version: 0.31.3(rollup@2.79.1)(vitest@0.31.1)
+  '@vitest/utils':
+    specifier: ^0.31.3
+    version: 0.31.3
   eslint:
     specifier: ^8.41.0
     version: 8.41.0
@@ -4451,6 +4454,14 @@ packages:
 
   /@vitest/utils@0.31.1:
     resolution: {integrity: sha512-yFyRD5ilwojsZfo3E0BnH72pSVSuLg2356cN1tCEe/0RtDzxTPYwOomIC+eQbot7m6DRy4tPZw+09mB7NkbMmA==}
+    dependencies:
+      concordance: 5.0.4
+      loupe: 2.3.6
+      pretty-format: 27.5.1
+    dev: true
+
+  /@vitest/utils@0.31.3:
+    resolution: {integrity: sha512-aLxfilR38ARSw6U/E9hl5bkn2TNeWLK7rZaIWZQUpT6BBilbehwJbSVGENubW5Pb9cawqchZZ7IQMW99t0Ww3A==}
     dependencies:
       concordance: 5.0.4
       loupe: 2.3.6
