@@ -1,4 +1,4 @@
-lockfileVersion: '6.0'
+lockfileVersion: '6.1'
 
 settings:
   autoInstallPeers: true
@@ -56,9 +56,6 @@ devDependencies:
   '@vitest/browser':
     specifier: ^0.32.2
     version: 0.32.2(rollup@2.79.1)(vitest@0.32.2)
-  '@vitest/utils':
-    specifier: ^0.32.2
-    version: 0.32.2
   eslint:
     specifier: ^8.42.0
     version: 8.42.0
