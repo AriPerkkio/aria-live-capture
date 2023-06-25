@@ -28,7 +28,7 @@ LiveRegionAvailableBeforeContent.play = async ({ canvasElement }) => {
     const button = within(canvasElement).getByRole('button');
     expect('Hello world').not.toBeAnnounced();
 
-    userEvent.click(button);
+    await userEvent.click(button);
     expect('Hello world').toBeAnnounced('polite');
 };
 
@@ -53,6 +53,6 @@ LiveRegionUnavailableBeforeContent.play = async ({ canvasElement }) => {
     const button = within(canvasElement).getByRole('button');
     expect('Hello world').not.toBeAnnounced();
 
-    userEvent.click(button);
+    await userEvent.click(button);
     expect('Hello world').not.toBeAnnounced();
 };

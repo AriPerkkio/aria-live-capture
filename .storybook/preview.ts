@@ -1,7 +1,7 @@
 import { addons } from '@storybook/addons';
 import { STORY_CHANGED } from '@storybook/core-events';
 import { expect } from '@storybook/jest';
-import { within, screen } from '@storybook/testing-library';
+import { within } from '@storybook/testing-library';
 
 import CaptureAnnouncements from '../src';
 import prettyDOMWithShadowDOM from './pretty-dom-with-shadow-dom';
@@ -168,7 +168,7 @@ expect.extend({
         text: string,
         politenessSetting?: 'assertive' | 'polite'
     ) {
-        const container = screen.getByRole('heading', {
+        const container = within(document.body).getByRole('heading', {
             name: 'Captured announcements',
             hidden: true,
         }).parentElement;

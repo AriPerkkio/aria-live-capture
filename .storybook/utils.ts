@@ -92,7 +92,17 @@ export const AnnouncementEvents = new EventBus<{
 }>();
 
 export function times(count: number) {
-    return function execute(method: () => unknown): void {
-        Array(count).fill(null).forEach(method);
+    return function execute<T>(
+        method: () => T
+    ): T extends Promise<any> ? Promise<Awaited<T>[]> : void {
+        const outputs = Array(count).fill(null).map(method);
+
+        if (outputs.some(o => o instanceof Promise)) {
+            // @ts-expect-error
+            return Promise.all(outputs);
+        }
+
+        // @ts-expect-error
+        return;
     };
 }
