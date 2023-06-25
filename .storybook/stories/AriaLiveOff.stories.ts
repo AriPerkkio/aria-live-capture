@@ -27,7 +27,7 @@ WithTextContent.play = async ({ canvasElement }) => {
     const button = within(canvasElement).getByRole('button');
     expect('Hello world').not.toBeAnnounced();
 
-    userEvent.click(button);
+    await userEvent.click(button);
     expect('Hello world').not.toBeAnnounced();
 };
 
@@ -53,7 +53,7 @@ WrapsLiveRegion.play = async ({ canvasElement }) => {
     const button = within(canvasElement).getByRole('button');
     expect('Hello world').not.toBeAnnounced();
 
-    userEvent.click(button);
+    await userEvent.click(button);
     expect('Hello world').toBeAnnounced('polite');
 };
 
@@ -79,7 +79,7 @@ WrappedInLiveRegion.play = async ({ canvasElement }) => {
     const button = within(canvasElement).getByRole('button');
     expect('Hello world').not.toBeAnnounced();
 
-    userEvent.click(button);
+    await userEvent.click(button);
     expect('Hello world').not.toBeAnnounced();
 };
 
@@ -108,7 +108,7 @@ SiblingIsVisible.play = async ({ canvasElement }) => {
     const button = within(canvasElement).getByRole('button');
     expect('world').not.toBeAnnounced();
 
-    userEvent.click(button);
+    await userEvent.click(button);
     expect('world').toBeAnnounced('polite');
     expect('Hello').not.toBeAnnounced();
     expect('Hello world').not.toBeAnnounced();

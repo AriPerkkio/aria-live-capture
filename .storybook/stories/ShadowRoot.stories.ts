@@ -35,12 +35,12 @@ LiveRegionInsideShadowDOM.play = async ({ canvasElement }) => {
     const button = within(canvasElement).getByRole('button');
     expect('Hello world').not.toBeAnnounced();
 
-    times(2)(() => {
-        userEvent.click(button);
+    times(2)(async () => {
+        await userEvent.click(button);
         expect('Hello world').not.toBeAnnounced();
     });
 
-    userEvent.click(button);
+    await userEvent.click(button);
     expect('Hello world').toBeAnnounced('polite');
 };
 
@@ -70,12 +70,12 @@ LiveRegionWrappingShadowDOM.play = async ({ canvasElement }) => {
     const button = within(canvasElement).getByRole('button');
     expect('Hello world').not.toBeAnnounced();
 
-    times(2)(() => {
-        userEvent.click(button);
+    times(2)(async () => {
+        await userEvent.click(button);
         expect('Hello world').not.toBeAnnounced();
     });
 
-    userEvent.click(button);
+    await userEvent.click(button);
     expect('Hello world').toBeAnnounced('polite');
 };
 
@@ -121,12 +121,12 @@ LiveRegionDeeplyInShadowDOM.play = async ({ canvasElement }) => {
     const button = within(canvasElement).getByRole('button');
     expect('Hello world').not.toBeAnnounced();
 
-    times(3)(() => {
-        userEvent.click(button);
+    times(3)(async () => {
+        await userEvent.click(button);
         expect('Hello world').not.toBeAnnounced();
     });
 
-    userEvent.click(button);
+    await userEvent.click(button);
     expect('Hello world').toBeAnnounced('polite');
 };
 
@@ -160,12 +160,12 @@ LiveRegionWrappingElementAndShadowDOM.play = async ({ canvasElement }) => {
     const button = within(canvasElement).getByRole('button');
     expect('Hello world').not.toBeAnnounced();
 
-    times(2)(() => {
-        userEvent.click(button);
+    times(2)(async () => {
+        await userEvent.click(button);
         expect('Hello').not.toBeAnnounced();
     });
 
-    userEvent.click(button);
+    await userEvent.click(button);
     expect('Hello').toBeAnnounced('polite');
 };
 
@@ -202,9 +202,9 @@ VisibilityToggle.play = async ({ canvasElement }) => {
     const button = within(canvasElement).getByRole('button');
     expect('Hello world').not.toBeAnnounced();
 
-    userEvent.click(button);
+    await userEvent.click(button);
     expect('Hello world').not.toBeAnnounced();
 
-    userEvent.click(button);
+    await userEvent.click(button);
     expect('Hello world').toBeAnnounced('polite');
 };

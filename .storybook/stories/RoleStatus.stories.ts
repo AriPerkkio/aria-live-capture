@@ -28,7 +28,7 @@ LiveRegionAvailableBeforeContent.play = async ({ canvasElement }) => {
     const button = within(canvasElement).getByRole('button');
     expect('Hello world').not.toBeAnnounced();
 
-    userEvent.click(button);
+    await userEvent.click(button);
     expect('Hello world').toBeAnnounced('polite');
 };
 
@@ -50,7 +50,7 @@ LiveRegionUnavailableBeforeContent.play = async ({ canvasElement }) => {
     const button = within(canvasElement).getByRole('button');
     expect('Hello world').not.toBeAnnounced();
 
-    userEvent.click(button);
+    await userEvent.click(button);
     expect('Hello world').not.toBeAnnounced();
 };
 
@@ -76,7 +76,7 @@ AnchestorIsHidden.play = async ({ canvasElement }) => {
     const button = within(canvasElement).getByRole('button');
     expect('Hello world').not.toBeAnnounced();
 
-    userEvent.click(button);
+    await userEvent.click(button);
     expect('Hello world').not.toBeAnnounced();
 };
 
@@ -98,7 +98,7 @@ LiveRegionIsHidden.play = async ({ canvasElement }) => {
     const button = within(canvasElement).getByRole('button');
     expect('Hello world').not.toBeAnnounced();
 
-    userEvent.click(button);
+    await userEvent.click(button);
     expect('Hello world').not.toBeAnnounced();
 };
 
@@ -122,7 +122,7 @@ ContentIsHidden.play = async ({ canvasElement }) => {
     const button = within(canvasElement).getByRole('button');
     expect('Hello world').not.toBeAnnounced();
 
-    userEvent.click(button);
+    await userEvent.click(button);
     expect('Hello world').not.toBeAnnounced();
 };
 
@@ -149,7 +149,7 @@ ContentIsPartiallyHidden.play = async ({ canvasElement }) => {
     const button = within(canvasElement).getByRole('button');
     expect('Hello').not.toBeAnnounced();
 
-    userEvent.click(button);
+    await userEvent.click(button);
     expect('Hello').toBeAnnounced('polite');
     expect('world').not.toBeAnnounced();
     expect('Hello world').not.toBeAnnounced();
@@ -181,7 +181,7 @@ PartOfContentChanges.play = async ({ canvasElement }) => {
     const button = within(canvasElement).getByRole('button');
     expect('Hello world').not.toBeAnnounced();
 
-    userEvent.click(button);
+    await userEvent.click(button);
     expect('Hello world').toBeAnnounced('polite');
 };
 
@@ -208,6 +208,6 @@ AriaHiddenChanges.play = async ({ canvasElement }) => {
     const button = within(canvasElement).getByRole('button');
     expect('Hello world').not.toBeAnnounced();
 
-    userEvent.click(button);
+    await userEvent.click(button);
     expect('Hello world').toBeAnnounced('polite');
 };

@@ -27,14 +27,14 @@ export const appendChild: StoryFn = () => {
     );
 };
 appendChild.storyName = 'appendChild';
-appendChild.play = ({ canvasElement }) => {
+appendChild.play = async ({ canvasElement }) => {
     const button = within(canvasElement).getByRole('button');
     expect('Hello world').not.toBeAnnounced();
 
-    userEvent.click(button);
+    await userEvent.click(button);
     expect('Hello world').not.toBeAnnounced();
 
-    userEvent.click(button);
+    await userEvent.click(button);
     expect('Hello world').toBeAnnounced('polite');
 };
 
@@ -61,14 +61,14 @@ export const insertBefore: StoryFn = () => {
     );
 };
 insertBefore.storyName = 'insertBefore';
-insertBefore.play = ({ canvasElement }) => {
+insertBefore.play = async ({ canvasElement }) => {
     const button = within(canvasElement).getByRole('button');
     expect('Hello world').not.toBeAnnounced();
 
-    userEvent.click(button);
+    await userEvent.click(button);
     expect('Hello world').not.toBeAnnounced();
 
-    userEvent.click(button);
+    await userEvent.click(button);
     expect('Hello world').toBeAnnounced('polite');
 };
 
@@ -95,14 +95,14 @@ export const replaceChild: StoryFn = () => {
     );
 };
 replaceChild.storyName = 'replaceChild';
-replaceChild.play = ({ canvasElement }) => {
+replaceChild.play = async ({ canvasElement }) => {
     const button = within(canvasElement).getByRole('button');
     expect('Hello world').not.toBeAnnounced();
 
-    userEvent.click(button);
+    await userEvent.click(button);
     expect('Hello world').not.toBeAnnounced();
 
-    userEvent.click(button);
+    await userEvent.click(button);
     expect('Hello world').toBeAnnounced('polite');
 };
 
@@ -129,16 +129,16 @@ export const textContent: StoryFn = () => {
     );
 };
 textContent.storyName = 'textContent';
-textContent.play = ({ canvasElement }) => {
+textContent.play = async ({ canvasElement }) => {
     const button = within(canvasElement).getByRole('button');
     expect('Hello world').not.toBeAnnounced();
 
-    times(2)(() => {
-        userEvent.click(button);
+    times(2)(async () => {
+        await userEvent.click(button);
         expect('Hello world').not.toBeAnnounced();
     });
 
-    userEvent.click(button);
+    await userEvent.click(button);
     expect('Hello world').toBeAnnounced('polite');
 };
 
@@ -162,13 +162,13 @@ export const nodeValue: StoryFn = () => {
     );
 };
 nodeValue.storyName = 'nodeValue';
-nodeValue.play = ({ canvasElement }) => {
+nodeValue.play = async ({ canvasElement }) => {
     const button = within(canvasElement).getByRole('button');
     expect('Hello world').not.toBeAnnounced();
 
-    userEvent.click(button);
+    await userEvent.click(button);
     expect('Hello world').not.toBeAnnounced();
 
-    userEvent.click(button);
+    await userEvent.click(button);
     expect('Hello world').toBeAnnounced('polite');
 };

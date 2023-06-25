@@ -26,16 +26,16 @@ export const setAttribute: StoryFn = () => {
     );
 };
 setAttribute.storyName = 'setAttribute';
-setAttribute.play = ({ canvasElement }) => {
+setAttribute.play = async ({ canvasElement }) => {
     const button = within(canvasElement).getByRole('button');
     expect('Hello world').not.toBeAnnounced();
 
-    times(2)(() => {
-        userEvent.click(button);
+    await times(2)(async () => {
+        await userEvent.click(button);
         expect('Hello world').not.toBeAnnounced();
     });
 
-    userEvent.click(button);
+    await userEvent.click(button);
     expect('Hello world').toBeAnnounced('polite');
 };
 
@@ -56,14 +56,14 @@ export const insertAdjacentElement: StoryFn = () => {
     );
 };
 insertAdjacentElement.storyName = 'insertAdjacentElement';
-insertAdjacentElement.play = ({ canvasElement }) => {
+insertAdjacentElement.play = async ({ canvasElement }) => {
     const button = within(canvasElement).getByRole('button');
     expect('Hello world').not.toBeAnnounced();
 
-    userEvent.click(button);
+    await userEvent.click(button);
     expect('Hello world').not.toBeAnnounced();
 
-    userEvent.click(button);
+    await userEvent.click(button);
     expect('Hello world').toBeAnnounced('polite');
 };
 
@@ -85,14 +85,14 @@ export const insertAdjacentHTML: StoryFn = () => {
     );
 };
 insertAdjacentHTML.storyName = 'insertAdjacentHTML';
-insertAdjacentHTML.play = ({ canvasElement }) => {
+insertAdjacentHTML.play = async ({ canvasElement }) => {
     const button = within(canvasElement).getByRole('button');
     expect('Hello world').not.toBeAnnounced();
 
-    userEvent.click(button);
+    await userEvent.click(button);
     expect('Hello world').not.toBeAnnounced();
 
-    userEvent.click(button);
+    await userEvent.click(button);
     expect('Hello world').toBeAnnounced('polite');
 };
 
@@ -111,14 +111,14 @@ export const insertAdjacentText: StoryFn = () => {
     );
 };
 insertAdjacentText.storyName = 'insertAdjacentText';
-insertAdjacentText.play = ({ canvasElement }) => {
+insertAdjacentText.play = async ({ canvasElement }) => {
     const button = within(canvasElement).getByRole('button');
     expect('Hello world').not.toBeAnnounced();
 
-    userEvent.click(button);
+    await userEvent.click(button);
     expect('Hello world').not.toBeAnnounced();
 
-    userEvent.click(button);
+    await userEvent.click(button);
     expect('Hello world').toBeAnnounced('polite');
 };
 
@@ -145,14 +145,14 @@ export const before: StoryFn = () => {
     );
 };
 before.storyName = 'before';
-before.play = ({ canvasElement }) => {
+before.play = async ({ canvasElement }) => {
     const button = within(canvasElement).getByRole('button');
     expect('Hello world').not.toBeAnnounced();
 
-    userEvent.click(button);
+    await userEvent.click(button);
     expect('Hello world').not.toBeAnnounced();
 
-    userEvent.click(button);
+    await userEvent.click(button);
     expect('Hello world').toBeAnnounced('polite');
 };
 
@@ -178,14 +178,14 @@ export const append: StoryFn = () => {
     );
 };
 append.storyName = 'append';
-append.play = ({ canvasElement }) => {
+append.play = async ({ canvasElement }) => {
     const button = within(canvasElement).getByRole('button');
     expect('Hello world').not.toBeAnnounced();
 
-    userEvent.click(button);
+    await userEvent.click(button);
     expect('Hello world').not.toBeAnnounced();
 
-    userEvent.click(button);
+    await userEvent.click(button);
     expect('Hello world').toBeAnnounced('polite');
 };
 
@@ -211,14 +211,14 @@ export const prepend: StoryFn = () => {
     );
 };
 prepend.storyName = 'prepend';
-prepend.play = ({ canvasElement }) => {
+prepend.play = async ({ canvasElement }) => {
     const button = within(canvasElement).getByRole('button');
     expect('Hello world').not.toBeAnnounced();
 
-    userEvent.click(button);
+    await userEvent.click(button);
     expect('Hello world').not.toBeAnnounced();
 
-    userEvent.click(button);
+    await userEvent.click(button);
     expect('Hello world').toBeAnnounced('polite');
 };
 
@@ -245,16 +245,16 @@ export const replaceChildren: StoryFn = () => {
     );
 };
 replaceChildren.storyName = 'replaceChildren';
-replaceChildren.play = ({ canvasElement }) => {
+replaceChildren.play = async ({ canvasElement }) => {
     const button = within(canvasElement).getByRole('button');
     expect('Hello world').not.toBeAnnounced();
 
-    times(2)(() => {
-        userEvent.click(button);
+    times(2)(async () => {
+        await userEvent.click(button);
         expect('Hello world').not.toBeAnnounced();
     });
 
-    userEvent.click(button);
+    await userEvent.click(button);
     expect('Hello world').toBeAnnounced('polite');
 };
 
@@ -289,16 +289,16 @@ export const removeAttribute: StoryFn = () => {
     );
 };
 removeAttribute.storyName = 'removeAttribute';
-removeAttribute.play = ({ canvasElement }) => {
+removeAttribute.play = async ({ canvasElement }) => {
     const button = within(canvasElement).getByRole('button');
     expect('Hello world').not.toBeAnnounced();
 
-    times(4)(() => {
-        userEvent.click(button);
+    times(4)(async () => {
+        await userEvent.click(button);
         expect('Hello world').not.toBeAnnounced();
     });
 
-    userEvent.click(button);
+    await userEvent.click(button);
     expect('Hello world').toBeAnnounced('polite');
 };
 
@@ -327,13 +327,13 @@ export const removeChild: StoryFn = () => {
     );
 };
 removeChild.storyName = 'removeChild';
-removeChild.play = ({ canvasElement }) => {
+removeChild.play = async ({ canvasElement }) => {
     const button = within(canvasElement).getByRole('button');
     expect('Hello').not.toBeAnnounced();
 
-    userEvent.click(button);
+    await userEvent.click(button);
     expect('Hello').not.toBeAnnounced();
 
-    userEvent.click(button);
+    await userEvent.click(button);
     expect('Hello').toBeAnnounced('polite');
 };
