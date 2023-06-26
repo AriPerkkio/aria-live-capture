@@ -14,7 +14,7 @@
         "type": "git",
         "url": "https://github.com/AriPerkkio/aria-live-capture"
     },
-    "packageManager": "pnpm@8.6.3",
+    "packageManager": "pnpm@8.6.4",
     "scripts": {
         "changelog": "npx conventional-changelog-cli -i CHANGELOG.md -p angular -s -r 0",
         "prebuild": "rm -rf ./dist",
