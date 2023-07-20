@@ -1,2 +1,0 @@
-var i=Object.defineProperty;var r=(o,e)=>i(o,"name",{value:e,configurable:!0});function a(o){throw new Error('Could not dynamically require "'+o+'". Please configure the dynamicRequireTargets or/and ignoreDynamicRequires option of @rollup/plugin-commonjs appropriately for this require call to work.')}r(a,"commonjsRequire");export{a as c};
-//# sourceMappingURL=_commonjs-dynamic-modules-fefbfc1c.js.map
