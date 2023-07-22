@@ -41,3 +41,8 @@ jobs:
 
             - name: Integration Tests
               run: pnpm test:integration
+
+            - name: Documentation Tests
+              run: |
+                  pnpm docs:build
+                  pnpm test:docs

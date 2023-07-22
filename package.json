@@ -22,11 +22,14 @@
         "lint": "eslint . --max-warnings 0 --ext .js,.ts,.tsx",
         "test": "vitest run",
         "test:integration": "start-server-and-test docs 6006 'test-storybook'",
+        "test:docs": "start-server-and-test docs:run 8080 docs:test",
         "typecheck": "tsc --noEmit",
-        "validate": "pnpm build && pnpm lint && pnpm typecheck && pnpm test && pnpm test:integration",
+        "validate": "pnpm build && pnpm lint && pnpm typecheck && pnpm test && pnpm test:integration && pnpm test:docs",
         "docs": "storybook dev -p 6006",
         "docs:build": "storybook build --output-dir docs",
-        "docs:deploy": "gh-pages -d docs"
+        "docs:deploy": "gh-pages -d docs",
+        "docs:run": "live-server docs --mount=/aria-live-capture:docs",
+        "docs:test": "vitest run --config ./vitest.config.docs.ts"
     },
     "devDependencies": {
         "@storybook/addon-docs": "^7.0.26",
@@ -50,6 +53,8 @@
         "eslint-plugin-prettier": "^4.2.1",
         "eslint-plugin-testing-library": "^5.11.0",
         "gh-pages": "^5.0.0",
+        "live-server": "1.2.1",
+        "playwright": "1.33.0",
         "prettier": "^2.8.8",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
@@ -59,11 +64,6 @@
         "virtual-dom-nodes": "^0.2.0",
         "vite": "^4.4.4",
         "vitest": "^0.33.0"
-    },
-    "pnpm": {
-        "overrides": {
-            "playwright": "1.33.0"
-        }
     },
     "keywords": [
         "aria",
