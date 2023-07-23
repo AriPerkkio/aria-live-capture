@@ -10,7 +10,7 @@ type ExecutionOrder = 'BEFORE' | 'AFTER';
 export function interceptSetter<
     T extends Object = Object,
     P extends keyof T = keyof T,
-    K extends T[P] = T[P]
+    K extends T[P] = T[P],
 >(obj: T, property: P, method: (value: K) => void): Restore {
     const descriptor = Object.getOwnPropertyDescriptor(obj, property);
 
@@ -43,7 +43,7 @@ export function interceptSetter<
  */
 export function interceptMethod<
     T extends Object = Object,
-    P extends keyof T = keyof T
+    P extends keyof T = keyof T,
 >(
     object: T,
     methodName: P,
