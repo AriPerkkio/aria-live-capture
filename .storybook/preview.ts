@@ -123,7 +123,7 @@ function escapeHTML(str: string) {
                 '>': '&gt;',
                 "'": '&#39;',
                 '"': '&quot;',
-            }[tag])
+            })[tag]
     );
 }
 
