@@ -25,7 +25,7 @@ devDependencies:
     version: 7.0.26(@babel/core@7.22.5)
   '@storybook/html-vite':
     specifier: ^7.0.26
-    version: 7.0.26(@babel/core@7.22.5)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)(vite@4.4.4)
+    version: 7.0.26(@babel/core@7.22.5)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)(vite@4.4.6)
   '@storybook/jest':
     specifier: ^0.1.0
     version: 0.1.0
@@ -69,11 +69,11 @@ devDependencies:
     specifier: ^5.0.0
     version: 5.0.0
   live-server:
-    specifier: 1.2.1
-    version: 1.2.1
+    specifier: 1.2.2
+    version: 1.2.2
   playwright:
-    specifier: 1.33.0
-    version: 1.33.0
+    specifier: 1.36.1
+    version: 1.36.1
   prettier:
     specifier: ^3.0.0
     version: 3.0.0
@@ -96,11 +96,11 @@ devDependencies:
     specifier: ^0.2.0
     version: 0.2.0
   vite:
-    specifier: ^4.4.4
-    version: 4.4.4(@types/node@20.2.5)
+    specifier: ^4.4.6
+    version: 4.4.6(@types/node@20.2.5)
   vitest:
     specifier: ^0.33.0
-    version: 0.33.0(@vitest/browser@0.33.0)(playwright@1.33.0)
+    version: 0.33.0(@vitest/browser@0.33.0)(playwright@1.36.1)
 
 packages:
 
@@ -3594,7 +3594,7 @@ packages:
       - supports-color
     dev: true
 
-  /@storybook/builder-vite@7.0.26(typescript@5.1.6)(vite@4.4.4):
+  /@storybook/builder-vite@7.0.26(typescript@5.1.6)(vite@4.4.6):
     resolution: {integrity: sha512-PRvySwvJEBLTZcUCKIULdxeFZeoDeK5odGFN0oIJhGZlOEI7jzbAcBT9SEZUh+Cv4Pk93XFr5+ZJCm/yrmF8RA==}
     peerDependencies:
       '@preact/preset-vite': '*'
@@ -3630,7 +3630,7 @@ packages:
       remark-slug: 6.1.0
       rollup: 3.26.2
       typescript: 5.1.6
-      vite: 4.4.4(@types/node@20.2.5)
+      vite: 4.4.6(@types/node@20.2.5)
     transitivePeerDependencies:
       - encoding
       - supports-color
@@ -4006,12 +4006,12 @@ packages:
     resolution: {integrity: sha512-FcOqPAXACP0I3oJ/ws6/rrPT9WGhu915Cg8D02a9YxLo0DE9zI+a9A5gRGvmQ09fiWPukqI8ZAEoQEdWUKMQdQ==}
     dev: true
 
-  /@storybook/html-vite@7.0.26(@babel/core@7.22.5)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)(vite@4.4.4):
+  /@storybook/html-vite@7.0.26(@babel/core@7.22.5)(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.6)(vite@4.4.6):
     resolution: {integrity: sha512-UM956CKgkUTAu/kS52SWOyejJlAakdf38aLptW8gPAOMG+ANic1IMmt7FJtNH33rCWzmjC4B6BhnB67i9KMBIw==}
     engines: {node: ^14.18 || >=16}
     dependencies:
       '@storybook/addons': 7.0.26(react-dom@18.2.0)(react@18.2.0)
-      '@storybook/builder-vite': 7.0.26(typescript@5.1.6)(vite@4.4.4)
+      '@storybook/builder-vite': 7.0.26(typescript@5.1.6)(vite@4.4.6)
       '@storybook/channel-postmessage': 7.0.26
       '@storybook/channel-websocket': 7.0.26
       '@storybook/client-api': 7.0.26
@@ -4274,7 +4274,7 @@ packages:
       jest-serializer-html: 7.1.0
       jest-watch-typeahead: 2.2.2(jest@28.1.3)
       node-fetch: 2.6.11
-      playwright: 1.33.0
+      playwright: 1.36.1
       read-pkg-up: 7.0.1
       tempy: 1.0.1
       ts-dedent: 2.2.0
@@ -4964,7 +4964,7 @@ packages:
     dependencies:
       modern-node-polyfills: 0.1.3(rollup@2.79.1)
       sirv: 2.0.3
-      vitest: 0.33.0(@vitest/browser@0.33.0)(playwright@1.33.0)
+      vitest: 0.33.0(@vitest/browser@0.33.0)(playwright@1.36.1)
     transitivePeerDependencies:
       - rollup
     dev: true
@@ -9361,8 +9361,8 @@ packages:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
     dev: true
 
-  /live-server@1.2.1:
-    resolution: {integrity: sha512-Yn2XCVjErTkqnM3FfTmM7/kWy3zP7+cEtC7x6u+wUzlQ+1UW3zEYbbyJrc0jNDwiMDZI0m4a0i3dxlGHVyXczw==}
+  /live-server@1.2.2:
+    resolution: {integrity: sha512-t28HXLjITRGoMSrCOv4eZ88viHaBVIjKjdI5PO92Vxlu+twbk6aE0t7dVIaz6ZWkjPilYFV6OSdMYl9ybN2B4w==}
     engines: {node: '>=0.10.0'}
     hasBin: true
     dependencies:
@@ -10344,25 +10344,25 @@ packages:
       pathe: 1.1.1
     dev: true
 
-  /playwright-core@1.33.0:
-    resolution: {integrity: sha512-aizyPE1Cj62vAECdph1iaMILpT0WUDCq3E6rW6I+dleSbBoGbktvJtzS6VHkZ4DKNEOG9qJpiom/ZxO+S15LAw==}
-    engines: {node: '>=14'}
-    hasBin: true
-    dev: true
-
   /playwright-core@1.34.3:
     resolution: {integrity: sha512-2pWd6G7OHKemc5x1r1rp8aQcpvDh7goMBZlJv6Co5vCNLVcQJdhxRL09SGaY6HcyHH9aT4tiynZabMofVasBYw==}
     engines: {node: '>=14'}
     hasBin: true
     dev: true
 
-  /playwright@1.33.0:
-    resolution: {integrity: sha512-+zzU3V2TslRX2ETBRgQKsKytYBkJeLZ2xzUj4JohnZnxQnivoUvOvNbRBYWSYykQTO0Y4zb8NwZTYFUO+EpPBQ==}
-    engines: {node: '>=14'}
+  /playwright-core@1.36.1:
+    resolution: {integrity: sha512-7+tmPuMcEW4xeCL9cp9KxmYpQYHKkyjwoXRnoeTowaeNat8PoBMk/HwCYhqkH2fRkshfKEOiVus/IhID2Pg8kg==}
+    engines: {node: '>=16'}
+    hasBin: true
+    dev: true
+
+  /playwright@1.36.1:
+    resolution: {integrity: sha512-2ZqHpD0U0COKR8bqR3W5IkyIAAM0mT9FgGJB9xWCI1qAUkqLxJskA1ueeQOTH2Qfz3+oxdwwf2EzdOX+RkZmmQ==}
+    engines: {node: '>=16'}
     hasBin: true
     requiresBuild: true
     dependencies:
-      playwright-core: 1.33.0
+      playwright-core: 1.36.1
     dev: true
 
   /polished@4.2.2:
@@ -12027,7 +12027,7 @@ packages:
       mlly: 1.4.0
       pathe: 1.1.1
       picocolors: 1.0.0
-      vite: 4.4.4(@types/node@20.2.5)
+      vite: 4.4.6(@types/node@20.2.5)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -12039,8 +12039,8 @@ packages:
       - terser
     dev: true
 
-  /vite@4.4.4(@types/node@20.2.5):
-    resolution: {integrity: sha512-4mvsTxjkveWrKDJI70QmelfVqTm+ihFAb6+xf4sjEU2TmUCTlVX87tmg/QooPEMQb/lM9qGHT99ebqPziEd3wg==}
+  /vite@4.4.6(@types/node@20.2.5):
+    resolution: {integrity: sha512-EY6Mm8vJ++S3D4tNAckaZfw3JwG3wa794Vt70M6cNJ6NxT87yhq7EC8Rcap3ahyHdo8AhCmV9PTk+vG1HiYn1A==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
     peerDependencies:
@@ -12075,7 +12075,7 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vitest@0.33.0(@vitest/browser@0.33.0)(playwright@1.33.0):
+  /vitest@0.33.0(@vitest/browser@0.33.0)(playwright@1.36.1):
     resolution: {integrity: sha512-1CxaugJ50xskkQ0e969R/hW47za4YXDUfWJDxip1hwbnhUjYolpfUn2AMOulqG/Dtd9WYAtkHmM/m3yKVrEejQ==}
     engines: {node: '>=v14.18.0'}
     hasBin: true
@@ -12124,12 +12124,12 @@ packages:
       magic-string: 0.30.1
       pathe: 1.1.1
       picocolors: 1.0.0
-      playwright: 1.33.0
+      playwright: 1.36.1
       std-env: 3.3.3
       strip-literal: 1.0.1
       tinybench: 2.5.0
       tinypool: 0.6.0
-      vite: 4.4.4(@types/node@20.2.5)
+      vite: 4.4.6(@types/node@20.2.5)
       vite-node: 0.33.0(@types/node@20.2.5)
       why-is-node-running: 2.2.2
     transitivePeerDependencies:
