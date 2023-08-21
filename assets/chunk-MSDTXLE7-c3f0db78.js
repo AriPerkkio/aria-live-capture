@@ -1,2 +1,0 @@
-var s=Object.defineProperty;var o=(r,e)=>s(r,"name",{value:e,configurable:!0});import{r as l}from"./chunk-S4VUQJ4A-f0377813.js";var h=o(({icon:r,color:e,size:i,...n})=>{const a=e||"currentColor",t=i||"14px";return l.createElement("span",{role:"img","aria-hidden":"true",style:{color:a,width:t,height:t,display:"inline-flex",fontSize:"inherit"},...n},r)},"IconWrapper");export{h as I};
-//# sourceMappingURL=chunk-MSDTXLE7-c3f0db78.js.map
