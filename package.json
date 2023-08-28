@@ -52,7 +52,7 @@
         "eslint-config-prettier": "^9.0.0",
         "eslint-plugin-prettier": "^5.0.0",
         "eslint-plugin-testing-library": "^5.11.1",
-        "gh-pages": "^5.0.0",
+        "gh-pages": "^6.0.0",
         "jsdom": "^22.1.0",
         "live-server": "1.2.2",
         "playwright": "1.37.1",
