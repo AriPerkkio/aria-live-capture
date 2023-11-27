@@ -41,7 +41,7 @@
         "@storybook/html-vite": "^7.5.3",
         "@storybook/jest": "^0.2.3",
         "@storybook/manager-api": "^7.5.3",
-        "@storybook/test-runner": "^0.15.1",
+        "@storybook/test-runner": "^0.15.2",
         "@storybook/testing-library": "^0.2.2",
         "@storybook/theming": "^7.5.3",
         "@testing-library/dom": "^9.3.3",
