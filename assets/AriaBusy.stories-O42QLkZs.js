@@ -18,4 +18,3 @@ var d=Object.defineProperty;var r=(e,t)=>d(e,"name",{value:t,configurable:!0});i
     element.setAttribute('aria-busy', 'false');
   });
 }`,...(i=(l=n.parameters)==null?void 0:l.docs)==null?void 0:i.source}}};const m=["AriaBusy"];export{n as AriaBusy,m as __namedExportsOrder,u as default};
-//# sourceMappingURL=AriaBusy.stories-O42QLkZs.js.map
