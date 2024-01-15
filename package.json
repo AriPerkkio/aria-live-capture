@@ -14,7 +14,7 @@
         "type": "git",
         "url": "https://github.com/AriPerkkio/aria-live-capture"
     },
-    "packageManager": "pnpm@8.14.0",
+    "packageManager": "pnpm@8.14.1",
     "scripts": {
         "changelog": "npx conventional-changelog-cli -i CHANGELOG.md -p angular -s -r 0",
         "prebuild": "rm -rf ./dist",
@@ -44,19 +44,19 @@
         "@storybook/test-runner": "^0.16.0",
         "@storybook/testing-library": "^0.2.2",
         "@storybook/theming": "^7.6.7",
-        "@testing-library/dom": "^9.3.3",
-        "@typescript-eslint/eslint-plugin": "^6.18.0",
-        "@typescript-eslint/parser": "^6.18.0",
-        "@vitest/browser": "1.1.3",
+        "@testing-library/dom": "^9.3.4",
+        "@typescript-eslint/eslint-plugin": "^6.18.1",
+        "@typescript-eslint/parser": "^6.18.1",
+        "@vitest/browser": "1.2.0",
         "eslint": "^8.56.0",
         "eslint-config-prettier": "^9.1.0",
-        "eslint-plugin-prettier": "^5.1.2",
+        "eslint-plugin-prettier": "^5.1.3",
         "eslint-plugin-testing-library": "^6.2.0",
         "gh-pages": "^6.1.1",
         "jsdom": "^23.2.0",
         "live-server": "1.2.2",
         "playwright": "1.40.1",
-        "prettier": "^3.1.1",
+        "prettier": "^3.2.2",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "start-server-and-test": "^2.0.3",
@@ -64,7 +64,7 @@
         "typescript": "^5.3.3",
         "virtual-dom-nodes": "^0.2.0",
         "vite": "^5.0.11",
-        "vitest": "1.1.3"
+        "vitest": "1.2.0"
     },
     "keywords": [
         "aria",
