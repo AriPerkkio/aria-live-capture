@@ -1,4 +1,4 @@
-var R=Object.defineProperty;var d=(o,r)=>R(o,"name",{value:r,configurable:!0});import{w as a,e,u as s}from"./index-Ir1JuLXk.js";import{c as u}from"./utils-0JiZS-09.js";import"./_commonjsHelpers-RFtSs_Ch.js";import"./index-Kg-CViSs.js";import"./uniq-rlwX4jXw.js";import"./_getTag-NtD66v87.js";import"./index-A6DoDoRZ.js";import"./index-GzfZrMcW.js";const N={title:'Role/role="marquee"'},n=d(()=>u(`
+var R=Object.defineProperty;var d=(o,r)=>R(o,"name",{value:r,configurable:!0});import{w as a,e,u as s}from"./index-8bPMSs_H.js";import{c as u}from"./utils-0JiZS-09.js";import"./_commonjsHelpers-RFtSs_Ch.js";import"./index-Kg-CViSs.js";import"./uniq-rlwX4jXw.js";import"./_getTag-NtD66v87.js";import"./index-A6DoDoRZ.js";import"./index-GzfZrMcW.js";const N={title:'Role/role="marquee"'},n=d(()=>u(`
         <div role="marquee">
         </div>
         `,`
