@@ -1,7 +1,7 @@
-import { addons } from '@storybook/addons';
 import { STORY_CHANGED } from '@storybook/core-events';
 import { expect } from '@storybook/jest';
 import { within } from '@storybook/testing-library';
+import { addons } from '@storybook/manager-api';
 
 import CaptureAnnouncements from '../src';
 import prettyDOMWithShadowDOM from './pretty-dom-with-shadow-dom';

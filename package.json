@@ -34,7 +34,6 @@
     "devDependencies": {
         "@storybook/addon-docs": "^8.0.0",
         "@storybook/addon-interactions": "^8.0.0",
-        "@storybook/addons": "^7.6.17",
         "@storybook/blocks": "^8.0.0",
         "@storybook/core-events": "^8.0.0",
         "@storybook/html": "^8.0.0",
