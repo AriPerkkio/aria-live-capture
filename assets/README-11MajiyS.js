@@ -1,4 +1,4 @@
-var v=Object.defineProperty;var r=(e,n)=>v(e,"name",{value:n,configurable:!0});import{r as g}from"./index-dKaXzWJ5.js";import{u as m}from"./index-l5JRdSLw.js";import{M as h,d as f}from"./index-_xcJnWSP.js";import"./_getTag-xF9ELAxU.js";import"./uniq-SFcGWYPh.js";import"./_defineProperty-rS7CuEv5.js";import"./iframe-8xqNUCkW.js";import"../sb-preview/runtime.js";import"./index-lx1OeGKE.js";import"./index-Kg-CViSs.js";var p={exports:{}},a={};/**
+var v=Object.defineProperty;var r=(e,n)=>v(e,"name",{value:n,configurable:!0});import{d as g,M as m,e as h}from"./index-0bs7uQZk.js";import{u as f}from"./index-8tSnSn2q.js";import"./iframe-IXO3vi03.js";import"../sb-preview/runtime.js";import"./_getTag-j4S1vZ1b.js";import"./index-hE5SaiR8.js";import"./uniq-xVmxHuSc.js";import"./index-Kg-CViSs.js";var p={exports:{}},a={};/**
  * @license React
  * react-jsx-runtime.production.min.js
  *
@@ -206,5 +206,5 @@ PASS ✅  | "Loading" is announced
 |  \`aria-atomic\`  | ❌ 👷  |
 |   \`aria-busy\`   |   ❌   |
 | \`aria-relevant\` |   ❌   |
-`;function u(e){return i.jsxs(i.Fragment,{children:[i.jsx(h,{title:"Aria Live Capture"}),`
-`,i.jsx(f,{children:k})]})}r(u,"_createMdxContent");function M(e={}){const{wrapper:n}={...m(),...e.components};return n?i.jsx(n,{...e,children:i.jsx(u,{...e})}):u()}r(M,"MDXContent");export{M as default};
+`;function u(e){return i.jsxs(i.Fragment,{children:[i.jsx(m,{title:"Aria Live Capture"}),`
+`,i.jsx(h,{children:k})]})}r(u,"_createMdxContent");function j(e={}){const{wrapper:n}={...f(),...e.components};return n?i.jsx(n,{...e,children:i.jsx(u,{...e})}):u()}r(j,"MDXContent");export{j as default};

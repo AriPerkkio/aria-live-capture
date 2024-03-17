@@ -1,4 +1,4 @@
-var m=Object.defineProperty;var l=(n,r)=>m(n,"name",{value:r,configurable:!0});import{w as u,e as t,u as g}from"./index-LyOdQSfw.js";import{c as p}from"./utils-0JiZS-09.js";import"./_getTag-xF9ELAxU.js";import"./index-Kg-CViSs.js";import"./uniq-SFcGWYPh.js";import"./index-Qpwo46hH.js";const L={title:'Role/role="log"'},e=l(()=>p(`
+var m=Object.defineProperty;var l=(n,r)=>m(n,"name",{value:r,configurable:!0});import{w as u,e as t,u as g}from"./index-Fo3KY3VO.js";import{c as p}from"./utils-0JiZS-09.js";import"./_getTag-j4S1vZ1b.js";import"./index-Kg-CViSs.js";import"./uniq-xVmxHuSc.js";import"./index-l9NhgMCM.js";const L={title:'Role/role="log"'},e=l(()=>p(`
         <div role="log">
         </div>
         `,`

@@ -1,4 +1,4 @@
-var O=Object.defineProperty;var r=(n,a)=>O(n,"name",{value:a,configurable:!0});import{w as i,e,u as o}from"./index-LyOdQSfw.js";import{c as t}from"./utils-0JiZS-09.js";import"./_getTag-xF9ELAxU.js";import"./index-Kg-CViSs.js";import"./uniq-SFcGWYPh.js";import"./index-Qpwo46hH.js";const F={title:'Aria-live/aria-live="assertive"'},s=r(()=>t(`
+var O=Object.defineProperty;var r=(n,a)=>O(n,"name",{value:a,configurable:!0});import{w as i,e,u as o}from"./index-Fo3KY3VO.js";import{c as t}from"./utils-0JiZS-09.js";import"./_getTag-j4S1vZ1b.js";import"./index-Kg-CViSs.js";import"./uniq-xVmxHuSc.js";import"./index-l9NhgMCM.js";const F={title:'Aria-live/aria-live="assertive"'},s=r(()=>t(`
         <div aria-live="assertive">
         </div>
         `,`
