@@ -1,4 +1,4 @@
-var g=Object.defineProperty;var n=(t,i)=>g(t,"name",{value:i,configurable:!0});import{w as p,e as r,u}from"./index-8bPMSs_H.js";import{c as m}from"./utils-0JiZS-09.js";import"./_commonjsHelpers-RFtSs_Ch.js";import"./index-Kg-CViSs.js";import"./uniq-rlwX4jXw.js";import"./_getTag-NtD66v87.js";import"./index-A6DoDoRZ.js";import"./index-GzfZrMcW.js";const C={title:'Aria-live/aria-live="polite"'},e=n(()=>m(`
+var g=Object.defineProperty;var n=(t,i)=>g(t,"name",{value:i,configurable:!0});import{w as p,e as r,u}from"./index-15ZThCPC.js";import{c as m}from"./utils-0JiZS-09.js";import"./_commonjsHelpers-RFtSs_Ch.js";import"./index-Kg-CViSs.js";import"./uniq-rlwX4jXw.js";import"./_getTag-NtD66v87.js";import"./index-KU_5yyTr.js";import"./index-GzfZrMcW.js";const C={title:'Aria-live/aria-live="polite"'},e=n(()=>m(`
         <div aria-live="polite">
         </div>
         `,`
