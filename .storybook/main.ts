@@ -3,7 +3,7 @@ import type { StorybookConfig } from '@storybook/html-vite';
 
 const config: StorybookConfig = {
     stories: [
-        './README.stories.mdx',
+        './README.mdx',
         './**/AriaLive*.stories.ts',
         './**/Role*.stories.ts',
         './**/Output.stories.ts',
