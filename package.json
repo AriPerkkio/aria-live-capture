@@ -1,6 +1,6 @@
 {
     "name": "aria-live-capture",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Capture announcements of ARIA-live regions",
     "main": "dist/index.js",
     "files": [
