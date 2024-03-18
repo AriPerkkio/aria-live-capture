@@ -452,6 +452,31 @@ describe.each(OFF_CASES)('$testName', ({ name, value }) => {
     });
 });
 
+describe('[role="timer"]', () => {
+    let cleanup: undefined | ReturnType<typeof CaptureAnnouncements>;
+    const onCapture = vi.fn();
+
+    afterEach(() => {
+        cleanup?.();
+        onCapture.mockReset();
+    });
+
+    beforeEach(() => {
+        cleanup = CaptureAnnouncements({ onCapture });
+    });
+
+    test('should announce when aria-live is set', () => {
+        const liveRegion = document.createElement('div');
+        liveRegion.setAttribute('role', 'timer');
+        liveRegion.setAttribute('aria-live', 'assertive');
+
+        appendToRoot(liveRegion);
+        liveRegion.textContent = 'Hello world';
+
+        expect(onCapture).toHaveBeenCalledWith('Hello world', 'assertive');
+    });
+});
+
 describe('common', () => {
     let element: HTMLElement;
     let cleanup: undefined | ReturnType<typeof CaptureAnnouncements>;
