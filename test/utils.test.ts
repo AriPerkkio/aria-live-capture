@@ -418,6 +418,14 @@ describe('isHidden', () => {
         expect(isHidden(element)).toBe(true);
     });
 
+    test('element with role="timer" and aria-live="assertive" is not hidden', () => {
+        const element = document.createElement('div');
+        element.setAttribute('role', 'timer');
+        element.setAttribute('aria-live', 'assertive');
+
+        expect(isHidden(element)).toBe(false);
+    });
+
     test('element with role="status" is visible', () => {
         const element = document.createElement('div');
         element.setAttribute('role', 'status');

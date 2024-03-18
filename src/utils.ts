@@ -81,8 +81,11 @@ export function isHidden(node: Node): boolean {
     }
 
     const role = element.getAttribute('role');
+    const ariaLive = element.getAttribute('aria-live');
     if (role === 'marquee' || role === 'timer') {
-        return true;
+        if (ariaLive !== 'polite' && ariaLive !== 'assertive') {
+            return true;
+        }
     }
 
     return queries.closest(element, HIDDEN_QUERY) != null;
