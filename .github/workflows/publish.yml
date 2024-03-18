@@ -7,6 +7,7 @@ on:
                 type: choice
                 description: Type of the release
                 options:
+                    - snapshot
                     - patch
                     - minor
                     - major
@@ -14,6 +15,7 @@ on:
 jobs:
     build:
         runs-on: ubuntu-latest
+        if: ${{ github.event.inputs.release-type != 'snapshot' }}
         steps:
             - uses: actions/checkout@v4
               with:
@@ -21,7 +23,7 @@ jobs:
 
             - uses: actions/setup-node@v4
               with:
-                  node-version: '18'
+                  node-version: '20'
                   registry-url: 'https://registry.npmjs.org'
 
             - name: Install pnpm
@@ -63,5 +65,35 @@ jobs:
 
             - name: Publish to npm
               run: npm publish
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+    publish-snapshot:
+        runs-on: ubuntu-latest
+        if: ${{ github.event.inputs.release-type == 'snapshot' }}
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+
+            - uses: actions/setup-node@v3
+              with:
+                  node-version: '20'
+                  registry-url: 'https://registry.npmjs.org'
+
+            - name: Install pnpm
+              uses: pnpm/action-setup@v2
+
+            - name: Install
+              run: pnpm install
+
+            - name: Build
+              run: pnpm build
+
+            - name: Bump snapshot version
+              run: npm version --no-git-tag-version --preid=snapshot prepatch
+
+            - name: Bump snapshot version
+              run: npm publish --tag snapshot
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
