@@ -1,3 +1,12 @@
+## [1.0.2](https://github.com/AriPerkkio/aria-live-capture/compare/v1.0.1...v1.0.2) (2024-03-18)
+
+
+### Bug Fixes
+
+* `role="timer"` with `aria-live` should announce ([#179](https://github.com/AriPerkkio/aria-live-capture/issues/179)) ([e8961ee](https://github.com/AriPerkkio/aria-live-capture/commit/e8961eeac4d4973f17d1838e46e91475e71d214f))
+
+
+
 ## [1.0.1](https://github.com/AriPerkkio/aria-live-capture/compare/v1.0.0...v1.0.1) (2023-01-09)
 
 
