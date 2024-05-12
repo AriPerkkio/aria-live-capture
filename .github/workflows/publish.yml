@@ -91,7 +91,7 @@ jobs:
               run: pnpm build
 
             - name: Bump snapshot version
-              run: npm version --no-git-tag-version --preid=snapshot prepatch
+              run: npm version --no-git-tag-version --preid=snapshot-$(git rev-parse --short HEAD) prepatch
 
             - name: Bump snapshot version
               run: npm publish --tag snapshot
