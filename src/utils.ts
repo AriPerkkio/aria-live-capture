@@ -1,5 +1,5 @@
-import { isElement } from './dom-node-safe-guards';
-import * as queries from './queries';
+import { isElement } from './dom-node-safe-guards.js';
+import * as queries from './queries.js';
 
 export type PolitenessSetting = 'polite' | 'assertive' | 'off';
 

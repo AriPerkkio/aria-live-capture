@@ -1,5 +1,5 @@
-import { getConfig } from './config';
-import { isDocument, isElement, isShadowRoot } from './dom-node-safe-guards';
+import { getConfig } from './config.js';
+import { isDocument, isElement, isShadowRoot } from './dom-node-safe-guards.js';
 
 /**
  * `Element.closest` which traverses tree up when `ShadowRoot` is encountered

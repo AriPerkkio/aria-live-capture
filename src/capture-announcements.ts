@@ -9,10 +9,10 @@ import {
     PolitenessSetting,
     resolvePolitenessSetting,
     trimWhiteSpace,
-} from './utils';
-import { interceptMethod, interceptSetter, Restore } from './interceptors';
-import { isElement } from './dom-node-safe-guards';
-import { configure } from './config';
+} from './utils.js';
+import { interceptMethod, interceptSetter, Restore } from './interceptors.js';
+import { isElement } from './dom-node-safe-guards.js';
+import { configure } from './config.js';
 
 interface Options {
     /** Callback invoked when announcement is captured */
