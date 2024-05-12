@@ -1,3 +1,12 @@
+# [2.0.0](https://github.com/AriPerkkio/aria-live-capture/compare/v1.0.2...v2.0.0) (2024-05-12)
+
+
+### Bug Fixes
+
+* add `.js` extensions ([019c981](https://github.com/AriPerkkio/aria-live-capture/commit/019c981eb852142cf228e7a8979820fe1c69c3f7))
+
+
+
 ## [1.0.2](https://github.com/AriPerkkio/aria-live-capture/compare/v1.0.1...v1.0.2) (2024-03-18)
 
 
