@@ -1,4 +1,4 @@
-var A=Object.defineProperty;var e=(x,T)=>A(x,"name",{value:T,configurable:!0});import{c as t}from"./utils-LNpl-ahl.js";const N={title:"Unsupported/aria-relevant"},i=e(()=>t(`
+var A=Object.defineProperty;var e=(x,T)=>A(x,"name",{value:T,configurable:!0});import{c as t}from"./utils-Ci3PKtkl.js";const N={title:"Unsupported/aria-relevant"},i=e(()=>t(`
         <ul aria-live="polite" aria-relevant="additions">
             <li>First</li>
         </ul>

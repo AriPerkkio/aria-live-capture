@@ -1,4 +1,4 @@
-var v=Object.defineProperty;var r=(c,d)=>v(c,"name",{value:d,configurable:!0});import{c as p}from"./utils-LNpl-ahl.js";const g={title:"Unsupported/aria-atomic"},a=r(()=>p(`
+var v=Object.defineProperty;var r=(c,d)=>v(c,"name",{value:d,configurable:!0});import{c as p}from"./utils-Ci3PKtkl.js";const g={title:"Unsupported/aria-atomic"},a=r(()=>p(`
         <div aria-live="polite" aria-atomic="true">
             <span>Hello</span>
         </div>
