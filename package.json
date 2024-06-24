@@ -18,7 +18,7 @@
         "type": "git",
         "url": "https://github.com/AriPerkkio/aria-live-capture"
     },
-    "packageManager": "pnpm@9.3.0",
+    "packageManager": "pnpm@9.4.0",
     "scripts": {
         "changelog": "npx conventional-changelog-cli -i CHANGELOG.md -p angular -s -r 0",
         "prebuild": "rm -rf ./dist",
@@ -49,8 +49,8 @@
         "@storybook/testing-library": "^0.2.2",
         "@storybook/theming": "^8.1.9",
         "@testing-library/dom": "^10.1.0",
-        "@typescript-eslint/eslint-plugin": "^7.13.0",
-        "@typescript-eslint/parser": "^7.13.0",
+        "@typescript-eslint/eslint-plugin": "^7.13.1",
+        "@typescript-eslint/parser": "^7.13.1",
         "@vitest/browser": "1.6.0",
         "@vitest/coverage-istanbul": "^1.6.0",
         "eslint": "^8.57.0",
