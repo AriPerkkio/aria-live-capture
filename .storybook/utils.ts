@@ -98,11 +98,11 @@ export function times(count: number) {
         const outputs = Array(count).fill(null).map(method);
 
         if (outputs.some(o => o instanceof Promise)) {
-            // @ts-expect-error
+            // @ts-expect-error --complex type
             return Promise.all(outputs);
         }
 
-        // @ts-expect-error
+        // @ts-expect-error -- complex type
         return;
     };
 }

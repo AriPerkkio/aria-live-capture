@@ -6,7 +6,7 @@ beforeAll(async () => {
     browser = await chromium.launch({ headless: true });
 });
 afterAll(async () => {
-    browser?.close();
+    await browser?.close();
 });
 
 // Check that production build of Storybook docs opens fine.
