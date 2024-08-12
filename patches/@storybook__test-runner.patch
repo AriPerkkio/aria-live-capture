@@ -1,0 +1,52 @@
+diff --git a/dist/index.js b/dist/index.js
+index accc3632466e5b25b0122b2961e7c94a80a2759b..1984513ac34861abe5d800cbfa2dd7ddad770bef 100644
+--- a/dist/index.js
++++ b/dist/index.js
+@@ -13566,7 +13566,7 @@ var testPrefixer = /* @__PURE__ */ __name((context) => {
+           await globalThis.__sbPreVisit(page, context);
+         }
+ 
+-        const result = await page.evaluate(({ id, hasPlayFn }) => __test(id, hasPlayFn), {
++        const result = await page.addInitScript(({ id, hasPlayFn }) => __test(id, hasPlayFn), {
+           id: %%id%%,
+         });
+   
+diff --git a/dist/index.mjs b/dist/index.mjs
+index 3bef97836744b3c38d5cf7cbf1a7da806ea1b850..d3fc1cfdecad3eed12566bdfb8b51d4da4a339dc 100644
+--- a/dist/index.mjs
++++ b/dist/index.mjs
+@@ -13549,7 +13549,7 @@ var testPrefixer = /* @__PURE__ */ __name((context) => {
+           await globalThis.__sbPreVisit(page, context);
+         }
+ 
+-        const result = await page.evaluate(({ id, hasPlayFn }) => __test(id, hasPlayFn), {
++        const result = await page.addInitScript(({ id, hasPlayFn }) => __test(id, hasPlayFn), {
+           id: %%id%%,
+         });
+   
+diff --git a/dist/test-storybook.js b/dist/test-storybook.js
+index f5f2a8f08d189c87316d69aabe906d2ef320e02d..c36a2d6bfc398dc593d56feb2f4290f6f5e21aa3 100755
+--- a/dist/test-storybook.js
++++ b/dist/test-storybook.js
+@@ -17623,7 +17623,7 @@ var testPrefixer = /* @__PURE__ */ __name((context) => {
+           await globalThis.__sbPreVisit(page, context);
+         }
+ 
+-        const result = await page.evaluate(({ id, hasPlayFn }) => __test(id, hasPlayFn), {
++        const result = await page.addInitScript(({ id, hasPlayFn }) => __test(id, hasPlayFn), {
+           id: %%id%%,
+         });
+   
+diff --git a/dist/test-storybook.mjs b/dist/test-storybook.mjs
+index 2ac7d7a93f6582ea736dff80709646ede0def3fd..14f3dc1cb9b69a203604609075c82acaf1206874 100755
+--- a/dist/test-storybook.mjs
++++ b/dist/test-storybook.mjs
+@@ -17629,7 +17629,7 @@ var testPrefixer = /* @__PURE__ */ __name((context) => {
+           await globalThis.__sbPreVisit(page, context);
+         }
+ 
+-        const result = await page.evaluate(({ id, hasPlayFn }) => __test(id, hasPlayFn), {
++        const result = await page.addInitScript(({ id, hasPlayFn }) => __test(id, hasPlayFn), {
+           id: %%id%%,
+         });
+   

@@ -84,5 +84,10 @@
         "singleQuote": true,
         "tabWidth": 4,
         "printWidth": 80
+    },
+    "pnpm": {
+        "patchedDependencies": {
+            "@storybook/test-runner": "patches/@storybook__test-runner.patch"
+        }
     }
 }

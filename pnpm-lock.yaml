@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  '@storybook/test-runner':
+    hash: bievocczwd5fugftmd3rc6rl4u
+    path: patches/@storybook__test-runner.patch
+
 importers:
 
   .:
@@ -40,7 +45,7 @@ importers:
         version: 8.2.8(storybook@8.2.8(@babel/preset-env@7.24.6(@babel/core@7.24.6)))
       '@storybook/test-runner':
         specifier: ^0.19.1
-        version: 0.19.1(@types/node@20.14.10)(prettier@3.3.3)(storybook@8.2.8(@babel/preset-env@7.24.6(@babel/core@7.24.6)))
+        version: 0.19.1(patch_hash=bievocczwd5fugftmd3rc6rl4u)(@types/node@20.14.10)(prettier@3.3.3)(storybook@8.2.8(@babel/preset-env@7.24.6(@babel/core@7.24.6)))
       '@storybook/testing-library':
         specifier: ^0.2.2
         version: 0.2.2
@@ -7050,7 +7055,7 @@ snapshots:
       react-dom: 18.3.1(react@18.3.1)
       storybook: 8.2.8(@babel/preset-env@7.24.6(@babel/core@7.24.6))
 
-  '@storybook/test-runner@0.19.1(@types/node@20.14.10)(prettier@3.3.3)(storybook@8.2.8(@babel/preset-env@7.24.6(@babel/core@7.24.6)))':
+  '@storybook/test-runner@0.19.1(patch_hash=bievocczwd5fugftmd3rc6rl4u)(@types/node@20.14.10)(prettier@3.3.3)(storybook@8.2.8(@babel/preset-env@7.24.6(@babel/core@7.24.6)))':
     dependencies:
       '@babel/core': 7.24.6
       '@babel/generator': 7.24.6
