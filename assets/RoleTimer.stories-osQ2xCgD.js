@@ -1,4 +1,4 @@
-var W=Object.defineProperty;var d=(o,t)=>W(o,"name",{value:t,configurable:!0});import{w as s,e,u as a}from"./index-DyQEHAXc.js";import{c as v}from"./utils-DoweNrC_.js";import"./uniq-BfPxkha0.js";import"./index-B7qynYb3.js";import"./index-xg6uORB8.js";const I={title:'Role/role="timer"'},r=d(()=>v(`
+var W=Object.defineProperty;var d=(o,t)=>W(o,"name",{value:t,configurable:!0});import{w as s,e,u as a}from"./index-CQ95XYNs.js";import{c as v}from"./utils-DoweNrC_.js";import"./uniq-BfPxkha0.js";import"./index-B7qynYb3.js";import"./index-xg6uORB8.js";const I={title:'Role/role="timer"'},r=d(()=>v(`
         <div role="timer">
         </div>
         `,`

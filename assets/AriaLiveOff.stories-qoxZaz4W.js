@@ -1,4 +1,4 @@
-var W=Object.defineProperty;var l=(i,o)=>W(i,"name",{value:o,configurable:!0});import{w as d,e,u as v}from"./index-DyQEHAXc.js";import{c as s}from"./utils-DoweNrC_.js";import"./uniq-BfPxkha0.js";import"./index-B7qynYb3.js";import"./index-xg6uORB8.js";const h={title:'Aria-live/aria-live="off"'},n=l(()=>s(`
+var W=Object.defineProperty;var l=(i,o)=>W(i,"name",{value:o,configurable:!0});import{w as d,e,u as v}from"./index-CQ95XYNs.js";import{c as s}from"./utils-DoweNrC_.js";import"./uniq-BfPxkha0.js";import"./index-B7qynYb3.js";import"./index-xg6uORB8.js";const h={title:'Aria-live/aria-live="off"'},n=l(()=>s(`
         <div aria-live="off">
         </div>
         `,`
