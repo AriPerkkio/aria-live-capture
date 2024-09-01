@@ -19,8 +19,6 @@ For validating ARIA live regions in tests see [`extend-to-be-announced`](https:/
 
 For Storybook integration see [`storybook-addon-aria-live`](https://github.com/AriPerkkio/storybook-addon-aria-live).
 
-Read more about inspiration from [Building testing tools for ARIA live regions](https://loihdefactor.com/en/2022/04/29/building-testing-tools-for-aria-live-regions).
-
 ## Installation
 
 `aria-live-capture` should be included in development dependencies.
