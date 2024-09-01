@@ -1,4 +1,4 @@
-var v=Object.defineProperty;var r=(e,n)=>v(e,"name",{value:n,configurable:!0});import{ag as g,al as m,am as h}from"./index-Bwcm-uAI.js";import{u as f}from"./index-C7olOgbb.js";import"./iframe-CWCUIJrb.js";import"../sb-preview/runtime.js";import"./uniq-BfPxkha0.js";import"./index-CVKBbiO3.js";import"./index-B7qynYb3.js";var p={exports:{}},a={};/**
+var v=Object.defineProperty;var r=(e,n)=>v(e,"name",{value:n,configurable:!0});import{ag as g,al as m,am as h}from"./index-BPGnTuLA.js";import{u as f}from"./index-IDHzrr_z.js";import"./iframe-ClRsB5Lh.js";import"../sb-preview/runtime.js";import"./uniq-BfPxkha0.js";import"./index-CVKBbiO3.js";import"./index-B7qynYb3.js";var p={exports:{}},a={};/**
  * @license React
  * react-jsx-runtime.production.min.js
  *
@@ -6,7 +6,7 @@ var v=Object.defineProperty;var r=(e,n)=>v(e,"name",{value:n,configurable:!0});i
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
- */var R=g,A=Symbol.for("react.element"),S=Symbol.for("react.fragment"),b=Object.prototype.hasOwnProperty,w=R.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentOwner,L={key:!0,ref:!0,__self:!0,__source:!0};function c(e,n,d){var t,o={},s=null,l=null;d!==void 0&&(s=""+d),n.key!==void 0&&(s=""+n.key),n.ref!==void 0&&(l=n.ref);for(t in n)b.call(n,t)&&!L.hasOwnProperty(t)&&(o[t]=n[t]);if(e&&e.defaultProps)for(t in n=e.defaultProps,n)o[t]===void 0&&(o[t]=n[t]);return{$$typeof:A,type:e,key:s,ref:l,props:o,_owner:w.current}}r(c,"q");a.Fragment=S;a.jsx=c;a.jsxs=c;p.exports=a;var i=p.exports;const k=`# aria-live-capture
+ */var R=g,S=Symbol.for("react.element"),w=Symbol.for("react.fragment"),A=Object.prototype.hasOwnProperty,L=R.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentOwner,b={key:!0,ref:!0,__self:!0,__source:!0};function c(e,n,d){var t,o={},s=null,l=null;d!==void 0&&(s=""+d),n.key!==void 0&&(s=""+n.key),n.ref!==void 0&&(l=n.ref);for(t in n)A.call(n,t)&&!b.hasOwnProperty(t)&&(o[t]=n[t]);if(e&&e.defaultProps)for(t in n=e.defaultProps,n)o[t]===void 0&&(o[t]=n[t]);return{$$typeof:S,type:e,key:s,ref:l,props:o,_owner:L.current}}r(c,"q");a.Fragment=w;a.jsx=c;a.jsxs=c;p.exports=a;var i=p.exports;const k=`# aria-live-capture
 
 <a href="https://www.npmjs.com/package/aria-live-capture">
     <img alt="version" src="https://img.shields.io/npm/v/aria-live-capture" />
@@ -26,8 +26,6 @@ For online demo see [Storybook playground](https://ariperkkio.github.io/aria-liv
 For validating ARIA live regions in tests see [\`extend-to-be-announced\`](https://github.com/AriPerkkio/extend-to-be-announced).
 
 For Storybook integration see [\`storybook-addon-aria-live\`](https://github.com/AriPerkkio/storybook-addon-aria-live).
-
-Read more about inspiration from [Building testing tools for ARIA live regions](https://loihdefactor.com/en/2022/04/29/building-testing-tools-for-aria-live-regions).
 
 ## Installation
 
