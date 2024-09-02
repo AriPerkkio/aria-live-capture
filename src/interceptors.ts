@@ -8,7 +8,7 @@ type ExecutionOrder = 'BEFORE' | 'AFTER';
  * - Original setter is invoked first
  */
 export function interceptSetter<
-    T extends Object = Object,
+    T extends object = object,
     P extends keyof T = keyof T,
     K extends T[P] = T[P],
 >(obj: T, property: P, method: (value: K) => void): Restore {
@@ -42,7 +42,7 @@ export function interceptSetter<
  * - Original method is invoked first by default
  */
 export function interceptMethod<
-    T extends Object = Object,
+    T extends object = object,
     P extends keyof T = keyof T,
 >(
     object: T,
@@ -50,7 +50,7 @@ export function interceptMethod<
     method: (...args: any[]) => void,
     order: ExecutionOrder = 'AFTER'
 ): Restore {
-    const original = object[methodName] as unknown as Function;
+    const original = object[methodName] as unknown as typeof method;
 
     if (typeof original !== 'function') {
         throw new Error(
