@@ -5,7 +5,6 @@ export default defineConfig({
         reporters: process.env.CI ? 'default' : 'verbose',
         coverage: {
             enabled: true,
-            provider: 'istanbul',
             include: ['src'],
             thresholds: {
                 statements: 90,
