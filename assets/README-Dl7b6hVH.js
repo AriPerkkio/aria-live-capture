@@ -1,12 +1,4 @@
-var v=Object.defineProperty;var r=(e,n)=>v(e,"name",{value:n,configurable:!0});import{ag as g,al as m,am as h}from"./index-DYRw28Lf.js";import{u as f}from"./index-Bxv3DV8T.js";import"./iframe-D4b1QuTZ.js";import"../sb-preview/runtime.js";import"./uniq-BfPxkha0.js";import"./index-CVKBbiO3.js";import"./index-B7qynYb3.js";var p={exports:{}},a={};/**
- * @license React
- * react-jsx-runtime.production.min.js
- *
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */var R=g,S=Symbol.for("react.element"),w=Symbol.for("react.fragment"),A=Object.prototype.hasOwnProperty,L=R.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentOwner,b={key:!0,ref:!0,__self:!0,__source:!0};function c(e,n,d){var t,o={},s=null,l=null;d!==void 0&&(s=""+d),n.key!==void 0&&(s=""+n.key),n.ref!==void 0&&(l=n.ref);for(t in n)A.call(n,t)&&!b.hasOwnProperty(t)&&(o[t]=n[t]);if(e&&e.defaultProps)for(t in n=e.defaultProps,n)o[t]===void 0&&(o[t]=n[t]);return{$$typeof:S,type:e,key:s,ref:l,props:o,_owner:L.current}}r(c,"q");a.Fragment=w;a.jsx=c;a.jsxs=c;p.exports=a;var i=p.exports;const k=`# aria-live-capture
+var a=Object.defineProperty;var i=(n,t)=>a(n,"name",{value:t,configurable:!0});import{af as e,ag as r,ah as s}from"./index-Dspz6jJT.js";import{u as d}from"./index-OWrM1Bda.js";import"./iframe-CtgAn4qh.js";import"../sb-preview/runtime.js";import"./uniq-BfPxkha0.js";import"./index-DRG9NxfK.js";import"./index-B7qynYb3.js";const l=`# aria-live-capture
 
 <a href="https://www.npmjs.com/package/aria-live-capture">
     <img alt="version" src="https://img.shields.io/npm/v/aria-live-capture" />
@@ -204,5 +196,5 @@ PASS ✅  | "Loading" is announced
 |  \`aria-atomic\`  | ❌ 👷  |
 |   \`aria-busy\`   |   ❌   |
 | \`aria-relevant\` |   ❌   |
-`;function u(e){return i.jsxs(i.Fragment,{children:[i.jsx(m,{title:"Aria Live Capture"}),`
-`,i.jsx(h,{children:k})]})}r(u,"_createMdxContent");function D(e={}){const{wrapper:n}={...f(),...e.components};return n?i.jsx(n,{...e,children:i.jsx(u,{...e})}):u()}r(D,"MDXContent");export{D as default};
+`;function o(n){return e.jsxs(e.Fragment,{children:[e.jsx(r,{title:"Aria Live Capture"}),`
+`,e.jsx(s,{children:l})]})}i(o,"_createMdxContent");function L(n={}){const{wrapper:t}={...d(),...n.components};return t?e.jsx(t,{...n,children:e.jsx(o,{...n})}):o()}i(L,"MDXContent");export{L as default};
