@@ -1,4 +1,4 @@
-var R=Object.defineProperty;var d=(o,r)=>R(o,"name",{value:r,configurable:!0});import{w as a,e,u as s}from"./index-CQ95XYNs.js";import{c as u}from"./utils-DoweNrC_.js";import"./uniq-BfPxkha0.js";import"./index-B7qynYb3.js";import"./index-xg6uORB8.js";const k={title:'Role/role="marquee"'},n=d(()=>u(`
+var R=Object.defineProperty;var d=(o,r)=>R(o,"name",{value:r,configurable:!0});import{w as a,e,u as s}from"./index-DT-QJkXL.js";import{c as u}from"./utils-DoweNrC_.js";import"./_commonjsHelpers-1BxWT6uA.js";import"./index-B7qynYb3.js";import"./uniq-DZEWJdOL.js";import"./index-gbGkGNUf.js";const I={title:'Role/role="marquee"'},n=d(()=>u(`
         <div role="marquee">
         </div>
         `,`
@@ -92,4 +92,4 @@ var R=Object.defineProperty;var d=(o,r)=>R(o,"name",{value:r,configurable:!0});i
             </div>
         </div>
         \`);
-}`,...(A=(B=l.parameters)==null?void 0:B.docs)==null?void 0:A.source}}};const I=["WithTextContent","WrapsLiveRegion","WrappedInLiveRegion","SiblingIsVisible"];export{l as SiblingIsVisible,n as WithTextContent,i as WrappedInLiveRegion,t as WrapsLiveRegion,I as __namedExportsOrder,k as default};
+}`,...(A=(B=l.parameters)==null?void 0:B.docs)==null?void 0:A.source}}};const L=["WithTextContent","WrapsLiveRegion","WrappedInLiveRegion","SiblingIsVisible"];export{l as SiblingIsVisible,n as WithTextContent,i as WrappedInLiveRegion,t as WrapsLiveRegion,L as __namedExportsOrder,I as default};

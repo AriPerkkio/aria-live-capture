@@ -1,4 +1,4 @@
-var W=Object.defineProperty;var d=(o,t)=>W(o,"name",{value:t,configurable:!0});import{w as s,e,u as a}from"./index-CQ95XYNs.js";import{c as v}from"./utils-DoweNrC_.js";import"./uniq-BfPxkha0.js";import"./index-B7qynYb3.js";import"./index-xg6uORB8.js";const I={title:'Role/role="timer"'},r=d(()=>v(`
+var W=Object.defineProperty;var d=(o,t)=>W(o,"name",{value:t,configurable:!0});import{w as s,e,u as a}from"./index-DT-QJkXL.js";import{c as v}from"./utils-DoweNrC_.js";import"./_commonjsHelpers-1BxWT6uA.js";import"./index-B7qynYb3.js";import"./uniq-DZEWJdOL.js";import"./index-gbGkGNUf.js";const L={title:'Role/role="timer"'},r=d(()=>v(`
         <div role="timer">
         </div>
         `,`
@@ -92,4 +92,4 @@ var W=Object.defineProperty;var d=(o,t)=>W(o,"name",{value:t,configurable:!0});i
             </div>
         </div>
         \`);
-}`,...(R=(A=l.parameters)==null?void 0:A.docs)==null?void 0:R.source}}};const L=["WithTextContent","WrapsLiveRegion","WrappedInLiveRegion","SiblingIsVisible"];export{l as SiblingIsVisible,r as WithTextContent,i as WrappedInLiveRegion,n as WrapsLiveRegion,L as __namedExportsOrder,I as default};
+}`,...(R=(A=l.parameters)==null?void 0:A.docs)==null?void 0:R.source}}};const N=["WithTextContent","WrapsLiveRegion","WrappedInLiveRegion","SiblingIsVisible"];export{l as SiblingIsVisible,r as WithTextContent,i as WrappedInLiveRegion,n as WrapsLiveRegion,N as __namedExportsOrder,L as default};

@@ -1,4 +1,4 @@
-var W=Object.defineProperty;var l=(i,o)=>W(i,"name",{value:o,configurable:!0});import{w as d,e,u as v}from"./index-CQ95XYNs.js";import{c as s}from"./utils-DoweNrC_.js";import"./uniq-BfPxkha0.js";import"./index-B7qynYb3.js";import"./index-xg6uORB8.js";const h={title:'Aria-live/aria-live="off"'},n=l(()=>s(`
+var W=Object.defineProperty;var l=(i,o)=>W(i,"name",{value:o,configurable:!0});import{w as d,e,u as v}from"./index-DT-QJkXL.js";import{c as s}from"./utils-DoweNrC_.js";import"./_commonjsHelpers-1BxWT6uA.js";import"./index-B7qynYb3.js";import"./uniq-DZEWJdOL.js";import"./index-gbGkGNUf.js";const k={title:'Aria-live/aria-live="off"'},n=l(()=>s(`
         <div aria-live="off">
         </div>
         `,`
@@ -92,4 +92,4 @@ var W=Object.defineProperty;var l=(i,o)=>W(i,"name",{value:o,configurable:!0});i
             </div>
         </div>
         \`);
-}`,...(A=(B=t.parameters)==null?void 0:B.docs)==null?void 0:A.source}}};const k=["WithTextContent","WrapsLiveRegion","WrappedInLiveRegion","SiblingIsVisible"];export{t as SiblingIsVisible,n as WithTextContent,a as WrappedInLiveRegion,r as WrapsLiveRegion,k as __namedExportsOrder,h as default};
+}`,...(A=(B=t.parameters)==null?void 0:B.docs)==null?void 0:A.source}}};const I=["WithTextContent","WrapsLiveRegion","WrappedInLiveRegion","SiblingIsVisible"];export{t as SiblingIsVisible,n as WithTextContent,a as WrappedInLiveRegion,r as WrapsLiveRegion,I as __namedExportsOrder,k as default};

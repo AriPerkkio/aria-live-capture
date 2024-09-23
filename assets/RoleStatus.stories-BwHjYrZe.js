@@ -1,4 +1,4 @@
-var j=Object.defineProperty;var t=(n,o)=>j(n,"name",{value:o,configurable:!0});import{w as r,e,u as a}from"./index-CQ95XYNs.js";import{c as s}from"./utils-DoweNrC_.js";import"./uniq-BfPxkha0.js";import"./index-B7qynYb3.js";import"./index-xg6uORB8.js";const K={title:'Role/role="status"'},d=t(()=>s(`
+var j=Object.defineProperty;var t=(n,o)=>j(n,"name",{value:o,configurable:!0});import{w as r,e,u as a}from"./index-DT-QJkXL.js";import{c as s}from"./utils-DoweNrC_.js";import"./_commonjsHelpers-1BxWT6uA.js";import"./index-B7qynYb3.js";import"./uniq-DZEWJdOL.js";import"./index-gbGkGNUf.js";const Q={title:'Role/role="status"'},d=t(()=>s(`
         <div role="status">
         </div>
         `,`
@@ -172,4 +172,4 @@ var j=Object.defineProperty;var t=(n,o)=>j(n,"name",{value:o,configurable:!0});i
             </span>
         </div>
         \`);
-}`,...(U=(E=g.parameters)==null?void 0:E.docs)==null?void 0:U.source}}};const Q=["LiveRegionAvailableBeforeContent","LiveRegionUnavailableBeforeContent","AnchestorIsHidden","LiveRegionIsHidden","ContentIsHidden","ContentIsPartiallyHidden","PartOfContentChanges","AriaHiddenChanges"];export{i as AnchestorIsHidden,g as AriaHiddenChanges,c as ContentIsHidden,v as ContentIsPartiallyHidden,d as LiveRegionAvailableBeforeContent,u as LiveRegionIsHidden,l as LiveRegionUnavailableBeforeContent,p as PartOfContentChanges,Q as __namedExportsOrder,K as default};
+}`,...(U=(E=g.parameters)==null?void 0:E.docs)==null?void 0:U.source}}};const V=["LiveRegionAvailableBeforeContent","LiveRegionUnavailableBeforeContent","AnchestorIsHidden","LiveRegionIsHidden","ContentIsHidden","ContentIsPartiallyHidden","PartOfContentChanges","AriaHiddenChanges"];export{i as AnchestorIsHidden,g as AriaHiddenChanges,c as ContentIsHidden,v as ContentIsPartiallyHidden,d as LiveRegionAvailableBeforeContent,u as LiveRegionIsHidden,l as LiveRegionUnavailableBeforeContent,p as PartOfContentChanges,V as __namedExportsOrder,Q as default};

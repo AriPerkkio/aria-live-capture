@@ -1,4 +1,4 @@
-var g=Object.defineProperty;var r=(t,i)=>g(t,"name",{value:i,configurable:!0});import{w as p,e as n,u}from"./index-CQ95XYNs.js";import{c as m}from"./utils-DoweNrC_.js";import"./uniq-BfPxkha0.js";import"./index-B7qynYb3.js";import"./index-xg6uORB8.js";const H={title:'Aria-live/aria-live="polite"'},e=r(()=>m(`
+var g=Object.defineProperty;var r=(t,i)=>g(t,"name",{value:i,configurable:!0});import{w as p,e as n,u}from"./index-DT-QJkXL.js";import{c as m}from"./utils-DoweNrC_.js";import"./_commonjsHelpers-1BxWT6uA.js";import"./index-B7qynYb3.js";import"./uniq-DZEWJdOL.js";import"./index-gbGkGNUf.js";const L={title:'Aria-live/aria-live="polite"'},e=r(()=>m(`
         <div aria-live="polite">
         </div>
         `,`
@@ -28,4 +28,4 @@ var g=Object.defineProperty;var r=(t,i)=>g(t,"name",{value:i,configurable:!0});i
             Hello world
         </div>
         \`);
-}`,...(c=(s=o.parameters)==null?void 0:s.docs)==null?void 0:c.source}}};const L=["LiveRegionAvailableBeforeContent","LiveRegionUnavailableBeforeContent"];export{e as LiveRegionAvailableBeforeContent,o as LiveRegionUnavailableBeforeContent,L as __namedExportsOrder,H as default};
+}`,...(c=(s=o.parameters)==null?void 0:s.docs)==null?void 0:c.source}}};const R=["LiveRegionAvailableBeforeContent","LiveRegionUnavailableBeforeContent"];export{e as LiveRegionAvailableBeforeContent,o as LiveRegionUnavailableBeforeContent,R as __namedExportsOrder,L as default};
