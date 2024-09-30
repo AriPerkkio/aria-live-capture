@@ -36,7 +36,7 @@
         "docs:test": "vitest run --config ./vitest.config.docs.ts"
     },
     "devDependencies": {
-        "@eslint/js": "^9.11.0",
+        "@eslint/js": "^9.11.1",
         "@storybook/addon-docs": "^8.3.2",
         "@storybook/addon-interactions": "^8.3.2",
         "@storybook/blocks": "^8.3.2",
@@ -52,7 +52,7 @@
         "@testing-library/dom": "^10.4.0",
         "@vitest/browser": "2.1.1",
         "@vitest/coverage-v8": "2.1.1",
-        "eslint": "^9.11.0",
+        "eslint": "^9.11.1",
         "eslint-config-prettier": "^9.1.0",
         "eslint-plugin-prettier": "^5.2.1",
         "gh-pages": "^6.1.1",
@@ -66,9 +66,9 @@
         "start-server-and-test": "^2.0.8",
         "storybook": "^8.3.2",
         "typescript": "^5.6.2",
-        "typescript-eslint": "^8.6.0",
+        "typescript-eslint": "^8.7.0",
         "virtual-dom-nodes": "^0.2.2",
-        "vite": "^5.4.7",
+        "vite": "^5.4.8",
         "vitest": "2.1.1"
     },
     "keywords": [
