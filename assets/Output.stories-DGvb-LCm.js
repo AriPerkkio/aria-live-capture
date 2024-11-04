@@ -1,4 +1,4 @@
-var g=Object.defineProperty;var a=(t,n)=>g(t,"name",{value:n,configurable:!0});import{w as d,e as r,u as v}from"./index-DT-QJkXL.js";import{c as m}from"./utils-DoweNrC_.js";import"./_commonjsHelpers-1BxWT6uA.js";import"./index-B7qynYb3.js";import"./uniq-DZEWJdOL.js";import"./index-gbGkGNUf.js";const L={title:"Elements/<output>"},e=a(()=>m(`
+var g=Object.defineProperty;var a=(t,n)=>g(t,"name",{value:n,configurable:!0});import{w as d,e as r,u as v}from"./index-CUxuIc3P.js";import{c as m}from"./utils-DoweNrC_.js";import"./_commonjsHelpers-1BxWT6uA.js";import"./index-B7qynYb3.js";const H={title:"Elements/<output>"},e=a(()=>m(`
         <output>
         </output>
         `,`
@@ -34,4 +34,4 @@ var g=Object.defineProperty;var a=(t,n)=>g(t,"name",{value:n,configurable:!0});i
             </output>
         </div>
         \`);
-}`,...(p=(c=o.parameters)==null?void 0:c.docs)==null?void 0:p.source}}};const R=["LiveRegionAvailableBeforeContent","LiveRegionUnavailableBeforeContent"];export{e as LiveRegionAvailableBeforeContent,o as LiveRegionUnavailableBeforeContent,R as __namedExportsOrder,L as default};
+}`,...(p=(c=o.parameters)==null?void 0:c.docs)==null?void 0:p.source}}};const A=["LiveRegionAvailableBeforeContent","LiveRegionUnavailableBeforeContent"];export{e as LiveRegionAvailableBeforeContent,o as LiveRegionUnavailableBeforeContent,A as __namedExportsOrder,H as default};

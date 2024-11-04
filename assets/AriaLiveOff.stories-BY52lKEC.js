@@ -1,4 +1,4 @@
-var W=Object.defineProperty;var l=(i,o)=>W(i,"name",{value:o,configurable:!0});import{w as d,e,u as v}from"./index-DT-QJkXL.js";import{c as s}from"./utils-DoweNrC_.js";import"./_commonjsHelpers-1BxWT6uA.js";import"./index-B7qynYb3.js";import"./uniq-DZEWJdOL.js";import"./index-gbGkGNUf.js";const k={title:'Aria-live/aria-live="off"'},n=l(()=>s(`
+var W=Object.defineProperty;var l=(i,o)=>W(i,"name",{value:o,configurable:!0});import{w as d,e,u as v}from"./index-CUxuIc3P.js";import{c as s}from"./utils-DoweNrC_.js";import"./_commonjsHelpers-1BxWT6uA.js";import"./index-B7qynYb3.js";const M={title:'Aria-live/aria-live="off"'},n=l(()=>s(`
         <div aria-live="off">
         </div>
         `,`
@@ -50,7 +50,7 @@ var W=Object.defineProperty;var l=(i,o)=>W(i,"name",{value:o,configurable:!0});i
             Hello world
         </div>
         \`);
-}`,...(u=(p=n.parameters)==null?void 0:p.docs)==null?void 0:u.source}}};var f,m,g;r.parameters={...r.parameters,docs:{...(f=r.parameters)==null?void 0:f.docs,source:{originalSource:`() => {
+}`,...(u=(p=n.parameters)==null?void 0:p.docs)==null?void 0:u.source}}};var f,g,m;r.parameters={...r.parameters,docs:{...(f=r.parameters)==null?void 0:f.docs,source:{originalSource:`() => {
   return createMountToggle(\`
         <div aria-live="off">
             <div aria-live="polite">
@@ -63,7 +63,7 @@ var W=Object.defineProperty;var l=(i,o)=>W(i,"name",{value:o,configurable:!0});i
             </div>
         </div>
         \`);
-}`,...(g=(m=r.parameters)==null?void 0:m.docs)==null?void 0:g.source}}};var w,y,H;a.parameters={...a.parameters,docs:{...(w=a.parameters)==null?void 0:w.docs,source:{originalSource:`() => {
+}`,...(m=(g=r.parameters)==null?void 0:g.docs)==null?void 0:m.source}}};var w,y,H;a.parameters={...a.parameters,docs:{...(w=a.parameters)==null?void 0:w.docs,source:{originalSource:`() => {
   return createMountToggle(\`
         <div aria-live="polite">
             <div aria-live="off">
@@ -92,4 +92,4 @@ var W=Object.defineProperty;var l=(i,o)=>W(i,"name",{value:o,configurable:!0});i
             </div>
         </div>
         \`);
-}`,...(A=(B=t.parameters)==null?void 0:B.docs)==null?void 0:A.source}}};const I=["WithTextContent","WrapsLiveRegion","WrappedInLiveRegion","SiblingIsVisible"];export{t as SiblingIsVisible,n as WithTextContent,a as WrappedInLiveRegion,r as WrapsLiveRegion,I as __namedExportsOrder,k as default};
+}`,...(A=(B=t.parameters)==null?void 0:B.docs)==null?void 0:A.source}}};const h=["WithTextContent","WrapsLiveRegion","WrappedInLiveRegion","SiblingIsVisible"];export{t as SiblingIsVisible,n as WithTextContent,a as WrappedInLiveRegion,r as WrapsLiveRegion,h as __namedExportsOrder,M as default};
