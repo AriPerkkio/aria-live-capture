@@ -31,7 +31,7 @@
         "validate": "pnpm build && pnpm lint && pnpm typecheck && pnpm test && pnpm test:integration && pnpm test:docs",
         "docs": "storybook dev -p 6006",
         "docs:build": "storybook build --output-dir docs",
-        "docs:deploy": "touch docs/.nojekyll && gh-pages --dist docs --dotfiles true",
+        "docs:deploy": "touch docs/.nojekyll && gh-pages --dist docs --dotfiles",
         "docs:run": "live-server docs --mount=/aria-live-capture:docs",
         "docs:test": "vitest run --config ./vitest.config.docs.ts"
     },
