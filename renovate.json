@@ -26,6 +26,12 @@
             "groupName": "storybook",
             "matchPackagePatterns": ["^@storybook", "^storybook"],
             "description": "Storybook releases seem to break easily."
+        },
+        {
+            "matchUpdateTypes": ["major"],
+            "groupName": "vitest",
+            "matchPackagePatterns": ["^@vitest", "^vitest"],
+            "description": "Vitest majors"
         }
     ]
 }
