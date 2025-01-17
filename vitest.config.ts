@@ -2,7 +2,10 @@ import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
     test: {
+        include: ['test/**/*.test.ts'],
+        setupFiles: ['./test/setup.ts'],
         reporters: process.env.CI ? 'default' : 'verbose',
+
         coverage: {
             enabled: true,
             include: ['src'],
@@ -13,5 +16,27 @@ export default defineConfig({
                 lines: 90,
             },
         },
+
+        workspace: [
+            {
+                extends: true,
+                test: {
+                    name: 'Browser',
+                    browser: {
+                        enabled: true,
+                        headless: true,
+                        provider: 'playwright',
+                        instances: [{ browser: 'chromium' }],
+                    },
+                },
+            },
+            {
+                extends: true,
+                test: {
+                    name: 'JSDOM',
+                    environment: 'jsdom',
+                },
+            },
+        ],
     },
 });
