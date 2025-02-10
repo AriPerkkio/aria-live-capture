@@ -1,7 +1,0 @@
-var _=Object.defineProperty;var i=(e,r)=>_(e,"name",{value:r,configurable:!0});import{d as f}from"./index-B7qynYb3.js";var u=Object.defineProperty,l=i((e,r)=>{for(var p in r)u(e,p,{get:r[p],enumerable:!0})},"__export");const{simulatePageLoad:a,simulateDOMContentLoaded:O}=__STORYBOOK_MODULE_PREVIEW_API__,{global:c}=__STORYBOOK_MODULE_GLOBAL__;var y={};l(y,{parameters:i(()=>m,"parameters"),render:i(()=>h,"render"),renderToCanvas:i(()=>M,"renderToCanvas")});var{Node:L}=c,h=i((e,r)=>{let{id:p,component:t}=r;if(typeof t=="string"){let n=t;return Object.keys(e).forEach(o=>{n=n.replace(`{{${o}}}`,e[o])}),n}if(t instanceof HTMLElement){let n=t.cloneNode(!0);return Object.keys(e).forEach(o=>{n.setAttribute(o,typeof e[o]=="string"?e[o]:JSON.stringify(e[o]))}),n}if(typeof t=="function")return t(e,r);throw console.warn(f`
-    Storybook's HTML renderer only supports rendering DOM elements and strings.
-    Received: ${t}
-  `),new Error(`Unable to render story ${p}`)},"render");function M({storyFn:e,kind:r,name:p,showMain:t,showError:n,forceRemount:o},d){let s=e();if(t(),typeof s=="string")d.innerHTML=s,a(d);else if(s instanceof L){if(d.firstChild===s&&o===!1)return;d.innerHTML="",d.appendChild(s),O()}else n({title:`Expecting an HTML snippet or DOM node from the story: "${p}" of "${r}".`,description:f`
-        Did you forget to return the HTML snippet from the story?
-        Use "() => <your snippet or node>" or when defining the story.
-      `})}i(M,"renderToCanvas");var m={renderer:"html"};export{m as parameters,h as render,M as renderToCanvas};
