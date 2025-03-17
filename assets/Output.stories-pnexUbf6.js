@@ -1,4 +1,4 @@
-var g=Object.defineProperty;var a=(t,n)=>g(t,"name",{value:n,configurable:!0});import{w as d,e as r,u as v}from"./index-DpecJGNu.js";import{c as m}from"./utils-DoweNrC_.js";import"./_commonjsHelpers-1BxWT6uA.js";import"./index-B7qynYb3.js";const H={title:"Elements/<output>"},e=a(()=>m(`
+var g=Object.defineProperty;var a=(t,n)=>g(t,"name",{value:n,configurable:!0});import{w as d,e as r,u as v}from"./index-DaVmlbw1.js";import{c as m}from"./utils-DoweNrC_.js";import"./_commonjsHelpers-apMbue5Q.js";import"./index-B7qynYb3.js";const H={title:"Elements/<output>"},e=a(()=>m(`
         <output>
         </output>
         `,`
