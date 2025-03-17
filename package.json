@@ -18,7 +18,7 @@
         "type": "git",
         "url": "https://github.com/AriPerkkio/aria-live-capture"
     },
-    "packageManager": "pnpm@10.6.2",
+    "packageManager": "pnpm@10.6.3",
     "scripts": {
         "changelog": "npx conventional-changelog-cli -i CHANGELOG.md -p angular -s -r 0",
         "prebuild": "rm -rf ./dist",
@@ -63,12 +63,12 @@
         "publint": "^0.3.9",
         "react": "^19.0.0",
         "react-dom": "^19.0.0",
-        "start-server-and-test": "^2.0.10",
+        "start-server-and-test": "^2.0.11",
         "storybook": "^8.5.8",
         "typescript": "^5.8.2",
-        "typescript-eslint": "^8.26.0",
+        "typescript-eslint": "^8.26.1",
         "virtual-dom-nodes": "^0.2.2",
-        "vite": "^6.2.1",
+        "vite": "^6.2.2",
         "vitest": "3.0.8"
     },
     "keywords": [
