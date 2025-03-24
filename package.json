@@ -18,7 +18,7 @@
         "type": "git",
         "url": "https://github.com/AriPerkkio/aria-live-capture"
     },
-    "packageManager": "pnpm@10.6.3",
+    "packageManager": "pnpm@10.6.5",
     "scripts": {
         "changelog": "npx conventional-changelog-cli -i CHANGELOG.md -p angular -s -r 0",
         "prebuild": "rm -rf ./dist",
@@ -36,7 +36,7 @@
         "docs:test": "vitest run --config ./vitest.config.docs.ts"
     },
     "devDependencies": {
-        "@eslint/js": "^9.22.0",
+        "@eslint/js": "^9.23.0",
         "@storybook/addon-docs": "^8.5.8",
         "@storybook/addon-interactions": "^8.5.8",
         "@storybook/blocks": "^8.5.8",
@@ -50,15 +50,15 @@
         "@storybook/testing-library": "^0.2.2",
         "@storybook/theming": "^8.5.8",
         "@testing-library/dom": "^10.4.0",
-        "@vitest/browser": "3.0.8",
-        "@vitest/coverage-v8": "3.0.8",
-        "eslint": "^9.22.0",
+        "@vitest/browser": "3.0.9",
+        "@vitest/coverage-v8": "3.0.9",
+        "eslint": "^9.23.0",
         "eslint-config-prettier": "^10.1.1",
-        "eslint-plugin-prettier": "^5.2.3",
+        "eslint-plugin-prettier": "^5.2.4",
         "gh-pages": "^6.3.0",
         "jsdom": "^26.0.0",
         "live-server": "1.2.2",
-        "playwright": "1.51.0",
+        "playwright": "1.51.1",
         "prettier": "^3.5.3",
         "publint": "^0.3.9",
         "react": "^19.0.0",
@@ -66,10 +66,10 @@
         "start-server-and-test": "^2.0.11",
         "storybook": "^8.5.8",
         "typescript": "^5.8.2",
-        "typescript-eslint": "^8.26.1",
+        "typescript-eslint": "^8.27.0",
         "virtual-dom-nodes": "^0.2.2",
         "vite": "^6.2.2",
-        "vitest": "3.0.8"
+        "vitest": "3.0.9"
     },
     "keywords": [
         "aria",
