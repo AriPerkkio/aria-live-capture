@@ -4,11 +4,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-patchedDependencies:
-  '@storybook/test-runner':
-    hash: 221cdbedf7e5f0e4c990dbbe544ae6d93e67be914dd6e7dd1fa1604172518a16
-    path: patches/@storybook__test-runner.patch
-
 importers:
 
   .:
@@ -45,7 +40,7 @@ importers:
         version: 8.6.14(storybook@8.6.14(prettier@3.5.3))
       '@storybook/test-runner':
         specifier: ^0.22.0
-        version: 0.22.0(patch_hash=221cdbedf7e5f0e4c990dbbe544ae6d93e67be914dd6e7dd1fa1604172518a16)(@types/node@20.14.10)(storybook@8.6.14(prettier@3.5.3))
+        version: 0.22.0(@types/node@20.14.10)(storybook@8.6.14(prettier@3.5.3))
       '@storybook/testing-library':
         specifier: ^0.2.2
         version: 0.2.2
@@ -5266,7 +5261,7 @@ snapshots:
       react-dom: 19.1.0(react@19.1.0)
       storybook: 8.6.14(prettier@3.5.3)
 
-  '@storybook/test-runner@0.22.0(patch_hash=221cdbedf7e5f0e4c990dbbe544ae6d93e67be914dd6e7dd1fa1604172518a16)(@types/node@20.14.10)(storybook@8.6.14(prettier@3.5.3))':
+  '@storybook/test-runner@0.22.0(@types/node@20.14.10)(storybook@8.6.14(prettier@3.5.3))':
     dependencies:
       '@babel/core': 7.24.6
       '@babel/generator': 7.24.6
