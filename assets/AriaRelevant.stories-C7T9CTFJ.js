@@ -1,4 +1,4 @@
-var A=Object.defineProperty;var e=(x,T)=>A(x,"name",{value:T,configurable:!0});import{c as t}from"./utils-DoweNrC_.js";const N={title:"Unsupported/aria-relevant"},i=e(()=>t(`
+var s=Object.defineProperty;var e=(n,o)=>s(n,"name",{value:o,configurable:!0});import{c as t}from"./utils-XaxLrPgB.js";const v={title:"Unsupported/aria-relevant"},i=e(()=>t(`
         <ul aria-live="polite" aria-relevant="additions">
             <li>First</li>
         </ul>
@@ -36,7 +36,7 @@ var A=Object.defineProperty;var e=(x,T)=>A(x,"name",{value:T,configurable:!0});i
 
             <li>Third</li>
         </ul>
-        `),"All");a.storyName="all";var n,o,s;i.parameters={...i.parameters,docs:{...(n=i.parameters)==null?void 0:n.docs,source:{originalSource:`() => {
+        `),"All");a.storyName="all";i.parameters={...i.parameters,docs:{...i.parameters?.docs,source:{originalSource:`() => {
   return createMountToggle(\`
         <ul aria-live="polite" aria-relevant="additions">
             <li>First</li>
@@ -47,7 +47,7 @@ var A=Object.defineProperty;var e=(x,T)=>A(x,"name",{value:T,configurable:!0});i
             <li>Second</li>
         </ul>
         \`);
-}`,...(s=(o=i.parameters)==null?void 0:o.docs)==null?void 0:s.source}}};var u,d,v;r.parameters={...r.parameters,docs:{...(u=r.parameters)==null?void 0:u.docs,source:{originalSource:`() => {
+}`,...i.parameters?.docs?.source}}};r.parameters={...r.parameters,docs:{...r.parameters?.docs,source:{originalSource:`() => {
   return createMountToggle(\`
         <ul aria-live="polite" aria-relevant="removals">
             <li>First</li>
@@ -58,7 +58,7 @@ var A=Object.defineProperty;var e=(x,T)=>A(x,"name",{value:T,configurable:!0});i
             <li>First</li>
         </ul>
         \`);
-}`,...(v=(d=r.parameters)==null?void 0:d.docs)==null?void 0:v.source}}};var c,p,m;l.parameters={...l.parameters,docs:{...(c=l.parameters)==null?void 0:c.docs,source:{originalSource:`() => {
+}`,...r.parameters?.docs?.source}}};l.parameters={...l.parameters,docs:{...l.parameters?.docs,source:{originalSource:`() => {
   return createMountToggle(\`
         <div aria-live="polite" aria-relevant="text">
             First
@@ -68,7 +68,7 @@ var A=Object.defineProperty;var e=(x,T)=>A(x,"name",{value:T,configurable:!0});i
             First, Second
         </div>
         \`);
-}`,...(m=(p=l.parameters)==null?void 0:p.docs)==null?void 0:m.source}}};var F,g,S;a.parameters={...a.parameters,docs:{...(F=a.parameters)==null?void 0:F.docs,source:{originalSource:`() => {
+}`,...l.parameters?.docs?.source}}};a.parameters={...a.parameters,docs:{...a.parameters?.docs,source:{originalSource:`() => {
   return createMountToggle(\`
         <ul aria-live="polite" aria-relevant="all">
             <li>First</li>
@@ -82,4 +82,4 @@ var A=Object.defineProperty;var e=(x,T)=>A(x,"name",{value:T,configurable:!0});i
             <li>Third</li>
         </ul>
         \`);
-}`,...(S=(g=a.parameters)==null?void 0:g.docs)==null?void 0:S.source}}};const R=["Additions","Removals","Text","All"];export{i as Additions,a as All,r as Removals,l as Text,R as __namedExportsOrder,N as default};
+}`,...a.parameters?.docs?.source}}};const c=["Additions","Removals","Text","All"];export{i as Additions,a as All,r as Removals,l as Text,c as __namedExportsOrder,v as default};

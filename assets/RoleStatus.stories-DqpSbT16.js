@@ -1,4 +1,4 @@
-var j=Object.defineProperty;var t=(n,o)=>j(n,"name",{value:o,configurable:!0});import{w as r,e,u as a}from"./index-DaVmlbw1.js";import{c as s}from"./utils-DoweNrC_.js";import"./_commonjsHelpers-apMbue5Q.js";import"./index-B7qynYb3.js";const J={title:'Role/role="status"'},d=t(()=>s(`
+var m=Object.defineProperty;var t=(n,o)=>m(n,"name",{value:o,configurable:!0});import{w as r,e,u as a}from"./index-DzH2OIry.js";import{c as s}from"./utils-XaxLrPgB.js";import"./_commonjsHelpers-BO6-jdEg.js";import"./index-B7qynYb3.js";const A={title:'Role/role="status"'},d=t(()=>s(`
         <div role="status">
         </div>
         `,`
@@ -77,7 +77,7 @@ var j=Object.defineProperty;var t=(n,o)=>j(n,"name",{value:o,configurable:!0});i
                 Hello world
             </span>
         </div>
-        `),"AriaHiddenChanges");g.storyName="aria-hidden changes ✅";g.play=async({canvasElement:n})=>{const o=r(n).getByRole("button");e("Hello world").not.toBeAnnounced(),await a.click(o),e("Hello world").toBeAnnounced("polite")};var m,H,w;d.parameters={...d.parameters,docs:{...(m=d.parameters)==null?void 0:m.docs,source:{originalSource:`() => {
+        `),"AriaHiddenChanges");g.storyName="aria-hidden changes ✅";g.play=async({canvasElement:n})=>{const o=r(n).getByRole("button");e("Hello world").not.toBeAnnounced(),await a.click(o),e("Hello world").toBeAnnounced("polite")};d.parameters={...d.parameters,docs:{...d.parameters?.docs,source:{originalSource:`() => {
   return createMountToggle(\`
         <div role="status">
         </div>
@@ -86,7 +86,7 @@ var j=Object.defineProperty;var t=(n,o)=>j(n,"name",{value:o,configurable:!0});i
             Hello world
         </div>
         \`);
-}`,...(w=(H=d.parameters)==null?void 0:H.docs)==null?void 0:w.source}}};var y,B,h;l.parameters={...l.parameters,docs:{...(y=l.parameters)==null?void 0:y.docs,source:{originalSource:`() => {
+}`,...d.parameters?.docs?.source}}};l.parameters={...l.parameters,docs:{...l.parameters?.docs,source:{originalSource:`() => {
   return createMountToggle(\`
         <div></div>
         \`, \`
@@ -94,7 +94,7 @@ var j=Object.defineProperty;var t=(n,o)=>j(n,"name",{value:o,configurable:!0});i
             Hello world
         </div>
         \`);
-}`,...(h=(B=l.parameters)==null?void 0:B.docs)==null?void 0:h.source}}};var A,b,C;i.parameters={...i.parameters,docs:{...(A=i.parameters)==null?void 0:A.docs,source:{originalSource:`() => {
+}`,...l.parameters?.docs?.source}}};i.parameters={...i.parameters,docs:{...i.parameters?.docs,source:{originalSource:`() => {
   return createMountToggle(\`
         <div aria-hidden="true">
             <div role="status">
@@ -107,7 +107,7 @@ var j=Object.defineProperty;var t=(n,o)=>j(n,"name",{value:o,configurable:!0});i
             </div>
         </div>
         \`);
-}`,...(C=(b=i.parameters)==null?void 0:b.docs)==null?void 0:C.source}}};var R,f,L;u.parameters={...u.parameters,docs:{...(R=u.parameters)==null?void 0:R.docs,source:{originalSource:`() => {
+}`,...i.parameters?.docs?.source}}};u.parameters={...u.parameters,docs:{...u.parameters?.docs,source:{originalSource:`() => {
   return createMountToggle(\`
         <div aria-hidden="true" role="status">
         </div>
@@ -116,7 +116,7 @@ var j=Object.defineProperty;var t=(n,o)=>j(n,"name",{value:o,configurable:!0});i
             Hello world
         </div>
         \`);
-}`,...(L=(f=u.parameters)==null?void 0:f.docs)==null?void 0:L.source}}};var M,S,T;c.parameters={...c.parameters,docs:{...(M=c.parameters)==null?void 0:M.docs,source:{originalSource:`() => {
+}`,...u.parameters?.docs?.source}}};c.parameters={...c.parameters,docs:{...c.parameters?.docs,source:{originalSource:`() => {
   return createMountToggle(\`
         <div role="status">
         </div>
@@ -127,7 +127,7 @@ var j=Object.defineProperty;var t=(n,o)=>j(n,"name",{value:o,configurable:!0});i
             </div>
         </div>
         \`);
-}`,...(T=(S=c.parameters)==null?void 0:S.docs)==null?void 0:T.source}}};var k,I,N;v.parameters={...v.parameters,docs:{...(k=v.parameters)==null?void 0:k.docs,source:{originalSource:`() => {
+}`,...c.parameters?.docs?.source}}};v.parameters={...v.parameters,docs:{...v.parameters?.docs,source:{originalSource:`() => {
   return createMountToggle(\`
         <div role="status">
         </div>
@@ -141,7 +141,7 @@ var j=Object.defineProperty;var t=(n,o)=>j(n,"name",{value:o,configurable:!0});i
             </span>
         </div>
         \`);
-}`,...(N=(I=v.parameters)==null?void 0:I.docs)==null?void 0:N.source}}};var P,x,O;p.parameters={...p.parameters,docs:{...(P=p.parameters)==null?void 0:P.docs,source:{originalSource:`() => {
+}`,...v.parameters?.docs?.source}}};p.parameters={...p.parameters,docs:{...p.parameters?.docs,source:{originalSource:`() => {
   return createMountToggle(\`
         <div role="status">
             <span>
@@ -158,7 +158,7 @@ var j=Object.defineProperty;var t=(n,o)=>j(n,"name",{value:o,configurable:!0});i
             </span>
         </div>
         \`);
-}`,...(O=(x=p.parameters)==null?void 0:x.docs)==null?void 0:O.source}}};var _,E,U;g.parameters={...g.parameters,docs:{...(_=g.parameters)==null?void 0:_.docs,source:{originalSource:`() => {
+}`,...p.parameters?.docs?.source}}};g.parameters={...g.parameters,docs:{...g.parameters?.docs,source:{originalSource:`() => {
   return createMountToggle(\`
         <div role="status">
             <span aria-hidden="true">
@@ -172,4 +172,4 @@ var j=Object.defineProperty;var t=(n,o)=>j(n,"name",{value:o,configurable:!0});i
             </span>
         </div>
         \`);
-}`,...(U=(E=g.parameters)==null?void 0:E.docs)==null?void 0:U.source}}};const K=["LiveRegionAvailableBeforeContent","LiveRegionUnavailableBeforeContent","AnchestorIsHidden","LiveRegionIsHidden","ContentIsHidden","ContentIsPartiallyHidden","PartOfContentChanges","AriaHiddenChanges"];export{i as AnchestorIsHidden,g as AriaHiddenChanges,c as ContentIsHidden,v as ContentIsPartiallyHidden,d as LiveRegionAvailableBeforeContent,u as LiveRegionIsHidden,l as LiveRegionUnavailableBeforeContent,p as PartOfContentChanges,K as __namedExportsOrder,J as default};
+}`,...g.parameters?.docs?.source}}};const b=["LiveRegionAvailableBeforeContent","LiveRegionUnavailableBeforeContent","AnchestorIsHidden","LiveRegionIsHidden","ContentIsHidden","ContentIsPartiallyHidden","PartOfContentChanges","AriaHiddenChanges"];export{i as AnchestorIsHidden,g as AriaHiddenChanges,c as ContentIsHidden,v as ContentIsPartiallyHidden,d as LiveRegionAvailableBeforeContent,u as LiveRegionIsHidden,l as LiveRegionUnavailableBeforeContent,p as PartOfContentChanges,b as __namedExportsOrder,A as default};

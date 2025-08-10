@@ -1,4 +1,4 @@
-var W=Object.defineProperty;var l=(i,o)=>W(i,"name",{value:o,configurable:!0});import{w as d,e,u as v}from"./index-DaVmlbw1.js";import{c as s}from"./utils-DoweNrC_.js";import"./_commonjsHelpers-apMbue5Q.js";import"./index-B7qynYb3.js";const M={title:'Aria-live/aria-live="off"'},n=l(()=>s(`
+var c=Object.defineProperty;var l=(i,o)=>c(i,"name",{value:o,configurable:!0});import{w as d,e,u as v}from"./index-DzH2OIry.js";import{c as s}from"./utils-XaxLrPgB.js";import"./_commonjsHelpers-BO6-jdEg.js";import"./index-B7qynYb3.js";const w={title:'Aria-live/aria-live="off"'},n=l(()=>s(`
         <div aria-live="off">
         </div>
         `,`
@@ -41,7 +41,7 @@ var W=Object.defineProperty;var l=(i,o)=>W(i,"name",{value:o,configurable:!0});i
                 world
             </div>
         </div>
-        `),"SiblingIsVisible");t.storyName="Sibling is visible ⚠️";t.play=async({canvasElement:i})=>{const o=d(i).getByRole("button");e("world").not.toBeAnnounced(),await v.click(o),e("world").toBeAnnounced("polite"),e("Hello").not.toBeAnnounced(),e("Hello world").not.toBeAnnounced()};var c,p,u;n.parameters={...n.parameters,docs:{...(c=n.parameters)==null?void 0:c.docs,source:{originalSource:`() => {
+        `),"SiblingIsVisible");t.storyName="Sibling is visible ⚠️";t.play=async({canvasElement:i})=>{const o=d(i).getByRole("button");e("world").not.toBeAnnounced(),await v.click(o),e("world").toBeAnnounced("polite"),e("Hello").not.toBeAnnounced(),e("Hello world").not.toBeAnnounced()};n.parameters={...n.parameters,docs:{...n.parameters?.docs,source:{originalSource:`() => {
   return createMountToggle(\`
         <div aria-live="off">
         </div>
@@ -50,7 +50,7 @@ var W=Object.defineProperty;var l=(i,o)=>W(i,"name",{value:o,configurable:!0});i
             Hello world
         </div>
         \`);
-}`,...(u=(p=n.parameters)==null?void 0:p.docs)==null?void 0:u.source}}};var f,g,m;r.parameters={...r.parameters,docs:{...(f=r.parameters)==null?void 0:f.docs,source:{originalSource:`() => {
+}`,...n.parameters?.docs?.source}}};r.parameters={...r.parameters,docs:{...r.parameters?.docs,source:{originalSource:`() => {
   return createMountToggle(\`
         <div aria-live="off">
             <div aria-live="polite">
@@ -63,7 +63,7 @@ var W=Object.defineProperty;var l=(i,o)=>W(i,"name",{value:o,configurable:!0});i
             </div>
         </div>
         \`);
-}`,...(m=(g=r.parameters)==null?void 0:g.docs)==null?void 0:m.source}}};var w,y,H;a.parameters={...a.parameters,docs:{...(w=a.parameters)==null?void 0:w.docs,source:{originalSource:`() => {
+}`,...r.parameters?.docs?.source}}};a.parameters={...a.parameters,docs:{...a.parameters?.docs,source:{originalSource:`() => {
   return createMountToggle(\`
         <div aria-live="polite">
             <div aria-live="off">
@@ -76,7 +76,7 @@ var W=Object.defineProperty;var l=(i,o)=>W(i,"name",{value:o,configurable:!0});i
             </div>
         </div>
         \`);
-}`,...(H=(y=a.parameters)==null?void 0:y.docs)==null?void 0:H.source}}};var b,B,A;t.parameters={...t.parameters,docs:{...(b=t.parameters)==null?void 0:b.docs,source:{originalSource:`() => {
+}`,...a.parameters?.docs?.source}}};t.parameters={...t.parameters,docs:{...t.parameters?.docs,source:{originalSource:`() => {
   return createMountToggle(\`
         <div aria-live="polite">
             <div aria-live="off">
@@ -92,4 +92,4 @@ var W=Object.defineProperty;var l=(i,o)=>W(i,"name",{value:o,configurable:!0});i
             </div>
         </div>
         \`);
-}`,...(A=(B=t.parameters)==null?void 0:B.docs)==null?void 0:A.source}}};const h=["WithTextContent","WrapsLiveRegion","WrappedInLiveRegion","SiblingIsVisible"];export{t as SiblingIsVisible,n as WithTextContent,a as WrappedInLiveRegion,r as WrapsLiveRegion,h as __namedExportsOrder,M as default};
+}`,...t.parameters?.docs?.source}}};const y=["WithTextContent","WrapsLiveRegion","WrappedInLiveRegion","SiblingIsVisible"];export{t as SiblingIsVisible,n as WithTextContent,a as WrappedInLiveRegion,r as WrapsLiveRegion,y as __namedExportsOrder,w as default};

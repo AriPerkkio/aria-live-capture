@@ -1,4 +1,4 @@
-var W=Object.defineProperty;var d=(o,t)=>W(o,"name",{value:t,configurable:!0});import{w as s,e,u as a}from"./index-DaVmlbw1.js";import{c as v}from"./utils-DoweNrC_.js";import"./_commonjsHelpers-apMbue5Q.js";import"./index-B7qynYb3.js";const k={title:'Role/role="timer"'},r=d(()=>v(`
+var c=Object.defineProperty;var d=(o,t)=>c(o,"name",{value:t,configurable:!0});import{w as s,e,u as a}from"./index-DzH2OIry.js";import{c as v}from"./utils-XaxLrPgB.js";import"./_commonjsHelpers-BO6-jdEg.js";import"./index-B7qynYb3.js";const y={title:'Role/role="timer"'},r=d(()=>v(`
         <div role="timer">
         </div>
         `,`
@@ -41,7 +41,7 @@ var W=Object.defineProperty;var d=(o,t)=>W(o,"name",{value:t,configurable:!0});i
                 world
             </div>
         </div>
-        `),"SiblingIsVisible");l.storyName="Sibling is visible ⚠️";l.play=async({canvasElement:o})=>{const t=s(o).getByRole("button");e("world").not.toBeAnnounced("polite"),await a.click(t),e("world").toBeAnnounced("polite"),e("Hello").not.toBeAnnounced(),e("Hello world").not.toBeAnnounced()};var c,u,m;r.parameters={...r.parameters,docs:{...(c=r.parameters)==null?void 0:c.docs,source:{originalSource:`() => {
+        `),"SiblingIsVisible");l.storyName="Sibling is visible ⚠️";l.play=async({canvasElement:o})=>{const t=s(o).getByRole("button");e("world").not.toBeAnnounced("polite"),await a.click(t),e("world").toBeAnnounced("polite"),e("Hello").not.toBeAnnounced(),e("Hello world").not.toBeAnnounced()};r.parameters={...r.parameters,docs:{...r.parameters?.docs,source:{originalSource:`() => {
   return createMountToggle(\`
         <div role="timer">
         </div>
@@ -50,7 +50,7 @@ var W=Object.defineProperty;var d=(o,t)=>W(o,"name",{value:t,configurable:!0});i
             Hello world
         </div>
         \`);
-}`,...(m=(u=r.parameters)==null?void 0:u.docs)==null?void 0:m.source}}};var p,g,w;n.parameters={...n.parameters,docs:{...(p=n.parameters)==null?void 0:p.docs,source:{originalSource:`() => {
+}`,...r.parameters?.docs?.source}}};n.parameters={...n.parameters,docs:{...n.parameters?.docs,source:{originalSource:`() => {
   return createMountToggle(\`
         <div role="timer">
             <div role="status">
@@ -63,7 +63,7 @@ var W=Object.defineProperty;var d=(o,t)=>W(o,"name",{value:t,configurable:!0});i
             </div>
         </div>
         \`);
-}`,...(w=(g=n.parameters)==null?void 0:g.docs)==null?void 0:w.source}}};var y,H,b;i.parameters={...i.parameters,docs:{...(y=i.parameters)==null?void 0:y.docs,source:{originalSource:`() => {
+}`,...n.parameters?.docs?.source}}};i.parameters={...i.parameters,docs:{...i.parameters?.docs,source:{originalSource:`() => {
   return createMountToggle(\`
         <div role="status">
             <div role="timer">
@@ -76,7 +76,7 @@ var W=Object.defineProperty;var d=(o,t)=>W(o,"name",{value:t,configurable:!0});i
             </div>
         </div>
         \`);
-}`,...(b=(H=i.parameters)==null?void 0:H.docs)==null?void 0:b.source}}};var B,A,R;l.parameters={...l.parameters,docs:{...(B=l.parameters)==null?void 0:B.docs,source:{originalSource:`() => {
+}`,...i.parameters?.docs?.source}}};l.parameters={...l.parameters,docs:{...l.parameters?.docs,source:{originalSource:`() => {
   return createMountToggle(\`
         <div role="status">
             <div role="timer">
@@ -92,4 +92,4 @@ var W=Object.defineProperty;var d=(o,t)=>W(o,"name",{value:t,configurable:!0});i
             </div>
         </div>
         \`);
-}`,...(R=(A=l.parameters)==null?void 0:A.docs)==null?void 0:R.source}}};const I=["WithTextContent","WrapsLiveRegion","WrappedInLiveRegion","SiblingIsVisible"];export{l as SiblingIsVisible,r as WithTextContent,i as WrappedInLiveRegion,n as WrapsLiveRegion,I as __namedExportsOrder,k as default};
+}`,...l.parameters?.docs?.source}}};const H=["WithTextContent","WrapsLiveRegion","WrappedInLiveRegion","SiblingIsVisible"];export{l as SiblingIsVisible,r as WithTextContent,i as WrappedInLiveRegion,n as WrapsLiveRegion,H as __namedExportsOrder,y as default};

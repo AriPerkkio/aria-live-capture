@@ -1,4 +1,4 @@
-var O=Object.defineProperty;var r=(n,a)=>O(n,"name",{value:a,configurable:!0});import{w as i,e,u as o}from"./index-DaVmlbw1.js";import{c as t}from"./utils-DoweNrC_.js";import"./_commonjsHelpers-apMbue5Q.js";import"./index-B7qynYb3.js";const z={title:'Aria-live/aria-live="assertive"'},s=r(()=>t(`
+var g=Object.defineProperty;var r=(n,a)=>g(n,"name",{value:a,configurable:!0});import{w as i,e,u as o}from"./index-DzH2OIry.js";import{c as t}from"./utils-XaxLrPgB.js";import"./_commonjsHelpers-BO6-jdEg.js";import"./index-B7qynYb3.js";const A={title:'Aria-live/aria-live="assertive"'},s=r(()=>t(`
         <div aria-live="assertive">
         </div>
         `,`
@@ -66,7 +66,7 @@ var O=Object.defineProperty;var r=(n,a)=>O(n,"name",{value:a,configurable:!0});i
                 world
             </span>
         </div>
-        `),"PartOfContentChanges");p.storyName="Part of content changes ✅";p.play=async({canvasElement:n})=>{const a=i(n).getByRole("button");e("Hello world").not.toBeAnnounced(),await o.click(a),e("Hello world").toBeAnnounced("assertive")};var g,m,H;s.parameters={...s.parameters,docs:{...(g=s.parameters)==null?void 0:g.docs,source:{originalSource:`() => {
+        `),"PartOfContentChanges");p.storyName="Part of content changes ✅";p.play=async({canvasElement:n})=>{const a=i(n).getByRole("button");e("Hello world").not.toBeAnnounced(),await o.click(a),e("Hello world").toBeAnnounced("assertive")};s.parameters={...s.parameters,docs:{...s.parameters?.docs,source:{originalSource:`() => {
   return createMountToggle(\`
         <div aria-live="assertive">
         </div>
@@ -75,7 +75,7 @@ var O=Object.defineProperty;var r=(n,a)=>O(n,"name",{value:a,configurable:!0});i
             Hello world
         </div>
         \`);
-}`,...(H=(m=s.parameters)==null?void 0:m.docs)==null?void 0:H.source}}};var w,y,B;d.parameters={...d.parameters,docs:{...(w=d.parameters)==null?void 0:w.docs,source:{originalSource:`() => {
+}`,...s.parameters?.docs?.source}}};d.parameters={...d.parameters,docs:{...d.parameters?.docs,source:{originalSource:`() => {
   return createMountToggle(\`
         <div>
         </div>
@@ -84,7 +84,7 @@ var O=Object.defineProperty;var r=(n,a)=>O(n,"name",{value:a,configurable:!0});i
             Hello world
         </div>
         \`);
-}`,...(B=(y=d.parameters)==null?void 0:y.docs)==null?void 0:B.source}}};var A,h,b;l.parameters={...l.parameters,docs:{...(A=l.parameters)==null?void 0:A.docs,source:{originalSource:`() => {
+}`,...d.parameters?.docs?.source}}};l.parameters={...l.parameters,docs:{...l.parameters?.docs,source:{originalSource:`() => {
   return createMountToggle(\`
         <div aria-hidden="true">
             <div aria-live="assertive">
@@ -97,7 +97,7 @@ var O=Object.defineProperty;var r=(n,a)=>O(n,"name",{value:a,configurable:!0});i
             </div>
         </div>
         \`);
-}`,...(b=(h=l.parameters)==null?void 0:h.docs)==null?void 0:b.source}}};var C,R,f;v.parameters={...v.parameters,docs:{...(C=v.parameters)==null?void 0:C.docs,source:{originalSource:`() => {
+}`,...l.parameters?.docs?.source}}};v.parameters={...v.parameters,docs:{...v.parameters?.docs,source:{originalSource:`() => {
   return createMountToggle(\`
         <div aria-hidden="true" aria-live="assertive">
         </div>
@@ -106,7 +106,7 @@ var O=Object.defineProperty;var r=(n,a)=>O(n,"name",{value:a,configurable:!0});i
             Hello world
         </div>
         \`);
-}`,...(f=(R=v.parameters)==null?void 0:R.docs)==null?void 0:f.source}}};var L,I,M;c.parameters={...c.parameters,docs:{...(L=c.parameters)==null?void 0:L.docs,source:{originalSource:`() => {
+}`,...v.parameters?.docs?.source}}};c.parameters={...c.parameters,docs:{...c.parameters?.docs,source:{originalSource:`() => {
   return createMountToggle(\`
         <div aria-live="assertive">
         </div>
@@ -117,7 +117,7 @@ var O=Object.defineProperty;var r=(n,a)=>O(n,"name",{value:a,configurable:!0});i
             </div>
         </div>
         \`);
-}`,...(M=(I=c.parameters)==null?void 0:I.docs)==null?void 0:M.source}}};var T,k,N;u.parameters={...u.parameters,docs:{...(T=u.parameters)==null?void 0:T.docs,source:{originalSource:`() => {
+}`,...c.parameters?.docs?.source}}};u.parameters={...u.parameters,docs:{...u.parameters?.docs,source:{originalSource:`() => {
   return createMountToggle(\`
         <div aria-live="assertive">
         </div>
@@ -131,7 +131,7 @@ var O=Object.defineProperty;var r=(n,a)=>O(n,"name",{value:a,configurable:!0});i
             </span>
         </div>
         \`);
-}`,...(N=(k=u.parameters)==null?void 0:k.docs)==null?void 0:N.source}}};var S,P,x;p.parameters={...p.parameters,docs:{...(S=p.parameters)==null?void 0:S.docs,source:{originalSource:`() => {
+}`,...u.parameters?.docs?.source}}};p.parameters={...p.parameters,docs:{...p.parameters?.docs,source:{originalSource:`() => {
   return createMountToggle(\`
         <div aria-live="assertive">
             <span>
@@ -148,4 +148,4 @@ var O=Object.defineProperty;var r=(n,a)=>O(n,"name",{value:a,configurable:!0});i
             </span>
         </div>
         \`);
-}`,...(x=(P=p.parameters)==null?void 0:P.docs)==null?void 0:x.source}}};const D=["LiveRegionAvailableBeforeContent","LiveRegionUnavailableBeforeContent","AnchestorIsHidden","LiveRegionIsHidden","ContentIsHidden","ContentIsPartiallyHidden","PartOfContentChanges"];export{l as AnchestorIsHidden,c as ContentIsHidden,u as ContentIsPartiallyHidden,s as LiveRegionAvailableBeforeContent,v as LiveRegionIsHidden,d as LiveRegionUnavailableBeforeContent,p as PartOfContentChanges,D as __namedExportsOrder,z as default};
+}`,...p.parameters?.docs?.source}}};const h=["LiveRegionAvailableBeforeContent","LiveRegionUnavailableBeforeContent","AnchestorIsHidden","LiveRegionIsHidden","ContentIsHidden","ContentIsPartiallyHidden","PartOfContentChanges"];export{l as AnchestorIsHidden,c as ContentIsHidden,u as ContentIsPartiallyHidden,s as LiveRegionAvailableBeforeContent,v as LiveRegionIsHidden,d as LiveRegionUnavailableBeforeContent,p as PartOfContentChanges,h as __namedExportsOrder,A as default};
