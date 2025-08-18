@@ -66,9 +66,9 @@
         "start-server-and-test": "^2.0.13",
         "storybook": "^8.5.8",
         "typescript": "^5.8.3",
-        "typescript-eslint": "^8.39.0",
+        "typescript-eslint": "^8.39.1",
         "virtual-dom-nodes": "^0.2.2",
-        "vite": "^7.1.1",
+        "vite": "^7.1.2",
         "vitest": "3.2.4"
     },
     "keywords": [
