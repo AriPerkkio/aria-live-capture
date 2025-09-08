@@ -18,7 +18,7 @@
         "type": "git",
         "url": "https://github.com/AriPerkkio/aria-live-capture"
     },
-    "packageManager": "pnpm@10.15.0",
+    "packageManager": "pnpm@10.15.1",
     "scripts": {
         "changelog": "npx conventional-changelog-cli -i CHANGELOG.md -p angular -s -r 0",
         "prebuild": "rm -rf ./dist",
@@ -36,7 +36,7 @@
         "docs:test": "vitest run --config ./vitest.config.docs.ts"
     },
     "devDependencies": {
-        "@eslint/js": "^9.34.0",
+        "@eslint/js": "^9.35.0",
         "@storybook/addon-docs": "^8.5.8",
         "@storybook/addon-interactions": "^8.5.8",
         "@storybook/blocks": "^8.5.8",
@@ -52,7 +52,7 @@
         "@testing-library/dom": "^10.4.1",
         "@vitest/browser": "3.2.4",
         "@vitest/coverage-v8": "3.2.4",
-        "eslint": "^9.34.0",
+        "eslint": "^9.35.0",
         "eslint-config-prettier": "^10.1.8",
         "eslint-plugin-prettier": "^5.5.4",
         "gh-pages": "^6.3.0",
@@ -63,12 +63,12 @@
         "publint": "^0.3.12",
         "react": "^19.1.1",
         "react-dom": "^19.1.1",
-        "start-server-and-test": "^2.0.13",
+        "start-server-and-test": "^2.1.0",
         "storybook": "^8.5.8",
         "typescript": "^5.9.2",
-        "typescript-eslint": "^8.40.0",
+        "typescript-eslint": "^8.42.0",
         "virtual-dom-nodes": "^0.2.2",
-        "vite": "^7.1.3",
+        "vite": "^7.1.4",
         "vitest": "3.2.4"
     },
     "keywords": [
