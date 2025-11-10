@@ -1,4 +1,4 @@
-var a=Object.defineProperty;var i=(n,t)=>a(n,"name",{value:t,configurable:!0});import{j as e,b as r,c as s}from"./index-C2mEPeIn.js";import{useMDXComponents as d}from"./index-BHo2bCnM.js";import"./iframe-C7ROztHP.js";import"./_commonjsHelpers-BO6-jdEg.js";import"./index-Ds7XzZF9.js";import"./index-B7qynYb3.js";const l=`# aria-live-capture
+var a=Object.defineProperty;var i=(n,t)=>a(n,"name",{value:t,configurable:!0});import{j as e,b as r,c as s}from"./index-B8vWotuD.js";import{useMDXComponents as d}from"./index-DcmeSjzp.js";import"./iframe-BgL_LUBR.js";import"./_commonjsHelpers-BO6-jdEg.js";import"./index-Ds7XzZF9.js";import"./index-B7qynYb3.js";const l=`# aria-live-capture
 
 <a href="https://www.npmjs.com/package/aria-live-capture">
     <img alt="version" src="https://img.shields.io/npm/v/aria-live-capture" />

@@ -1,4 +1,4 @@
-var m=Object.defineProperty;var t=(n,o)=>m(n,"name",{value:o,configurable:!0});import{w as r,e,u as a}from"./index-BnDO0qUp.js";import{c as s}from"./utils-XaxLrPgB.js";import"./_commonjsHelpers-BO6-jdEg.js";import"./index-B7qynYb3.js";const A={title:'Role/role="status"'},d=t(()=>s(`
+var m=Object.defineProperty;var t=(n,o)=>m(n,"name",{value:o,configurable:!0});import{w as r,e,u as a}from"./index-YQA0kDYo.js";import{c as s}from"./utils-XaxLrPgB.js";import"./_commonjsHelpers-BO6-jdEg.js";import"./index-B7qynYb3.js";const A={title:'Role/role="status"'},d=t(()=>s(`
         <div role="status">
         </div>
         `,`
