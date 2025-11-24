@@ -17,13 +17,13 @@ jobs:
         runs-on: ubuntu-latest
         if: ${{ github.event.inputs.release-type != 'snapshot' }}
         steps:
-            - uses: actions/checkout@v5
+            - uses: actions/checkout@v6
               with:
                   fetch-depth: 0
 
             - uses: actions/setup-node@v6
               with:
-                  node-version: 22
+                  node-version: 24.11.1
                   registry-url: 'https://registry.npmjs.org'
 
             - name: Install pnpm
@@ -72,13 +72,13 @@ jobs:
         runs-on: ubuntu-latest
         if: ${{ github.event.inputs.release-type == 'snapshot' }}
         steps:
-            - uses: actions/checkout@v5
+            - uses: actions/checkout@v6
               with:
                   fetch-depth: 0
 
             - uses: actions/setup-node@v6
               with:
-                  node-version: 22
+                  node-version: 24.11.1
                   registry-url: 'https://registry.npmjs.org'
 
             - name: Install pnpm
