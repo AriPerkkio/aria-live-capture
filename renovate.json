@@ -12,6 +12,7 @@
             "groupSlug": "all-minor-patch-npm"
         },
         {
+            "matchUpdateTypes": ["major"],
             "matchManagers": ["github-actions"],
             "groupName": "all github-actions dependencies",
             "groupSlug": "all-github-actions"
