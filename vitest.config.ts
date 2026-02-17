@@ -6,7 +6,7 @@ const UNIT_TEST_PATTERN = ['test/**/*.test.ts'];
 
 export default defineConfig({
     test: {
-        reporters: process.env.CI ? 'default' : 'verbose',
+        reporters: process.env.CI ? 'default' : 'tree',
 
         coverage: {
             enabled: true,
@@ -21,16 +21,7 @@ export default defineConfig({
 
         projects: [
             {
-                plugins: [
-                    storybookTest({
-                        configDir: '.storybook',
-                        tags: {
-                            include: [],
-                            exclude: [],
-                            skip: [],
-                        },
-                    }),
-                ],
+                plugins: [storybookTest()],
                 test: {
                     name: 'storybook',
                     setupFiles: ['.storybook/vitest.setup.ts'],
