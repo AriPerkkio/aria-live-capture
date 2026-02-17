@@ -4,11 +4,11 @@
         "skipLibCheck": true,
         "module": "ES2022",
         "target": "ES2022",
-        "moduleResolution": "node",
+        "moduleResolution": "bundler",
         "lib": ["dom", "dom.iterable", "es2022"],
         "declaration": true,
         "declarationMap": true,
         "outDir": "dist"
     },
-    "include": ["src", "test", ".storybook/*"]
+    "include": ["src", "test", ".storybook/*", "vitest.config.ts"]
 }

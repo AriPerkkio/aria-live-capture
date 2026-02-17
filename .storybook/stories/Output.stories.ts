@@ -1,6 +1,6 @@
-import { within, userEvent } from '@storybook/testing-library';
-import { expect } from '@storybook/jest';
-import type { StoryFn, Meta } from '@storybook/html';
+import { within, userEvent } from 'storybook/test';
+import { expect } from 'storybook/test';
+import type { StoryFn, Meta } from 'storybook/html';
 
 import '../expect-extend';
 import { createMountToggle } from '../utils';
