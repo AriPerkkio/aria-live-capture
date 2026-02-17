@@ -25,7 +25,7 @@
         "build": "tsc --project tsconfig.prod.json",
         "lint": "eslint . --max-warnings 0 && publint",
         "test": "vitest run",
-        "test:integration": "vitest run --project=storybook",
+        "test:integration": "vitest run --project=storybook --coverage=false",
         "test:docs": "start-server-and-test docs:run 8080 docs:test",
         "typecheck": "tsc --noEmit",
         "validate": "pnpm build && pnpm lint && pnpm typecheck && pnpm test && pnpm test:integration && pnpm test:docs",
