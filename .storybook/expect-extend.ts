@@ -7,6 +7,8 @@ declare module 'vitest' {
          */
         toBeAnnounced(politenessSetting?: 'assertive' | 'polite'): T;
     }
+    // Vitest requires asymmetric matchers to be defined separately
+    // for use with expect.stringContaining(), expect.arrayContaining(), etc.
     interface AsymmetricMatchersContaining {
         /**
          * Assert whether given message was announced by ARIA live region.

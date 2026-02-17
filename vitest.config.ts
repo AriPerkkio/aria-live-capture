@@ -1,6 +1,8 @@
 import { defineConfig } from 'vitest/config';
 import { storybookTest } from '@storybook/experimental-addon-test/vitest-plugin';
 
+const UNIT_TEST_PATTERN = ['test/**/*.test.ts'];
+
 export default defineConfig({
     test: {
         reporters: process.env.CI ? 'default' : 'verbose',
@@ -46,7 +48,7 @@ export default defineConfig({
                 extends: true,
                 test: {
                     name: 'Browser',
-                    include: ['test/**/*.test.ts'],
+                    include: UNIT_TEST_PATTERN,
                     setupFiles: ['./test/setup.ts'],
                     browser: {
                         enabled: true,
@@ -60,7 +62,7 @@ export default defineConfig({
                 extends: true,
                 test: {
                     name: 'JSDOM',
-                    include: ['test/**/*.test.ts'],
+                    include: UNIT_TEST_PATTERN,
                     setupFiles: ['./test/setup.ts'],
                     environment: 'jsdom',
                 },
