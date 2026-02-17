@@ -1,5 +1,5 @@
 import { within, userEvent } from '@storybook/testing-library';
-import { expect } from '@storybook/jest';
+import { expect } from '@storybook/test';
 import type { StoryFn, Meta } from '@storybook/html';
 
 import '../expect-extend';

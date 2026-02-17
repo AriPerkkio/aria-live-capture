@@ -1,5 +1,5 @@
 import { STORY_CHANGED } from '@storybook/core-events';
-import { expect } from '@storybook/jest';
+import { expect } from '@storybook/test';
 import { within } from '@storybook/testing-library';
 import { addons } from '@storybook/preview-api';
 
