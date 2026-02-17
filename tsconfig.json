@@ -4,7 +4,7 @@
         "skipLibCheck": true,
         "module": "ES2022",
         "target": "ES2022",
-        "moduleResolution": "node",
+        "moduleResolution": "bundler",
         "lib": ["dom", "dom.iterable", "es2022"],
         "declaration": true,
         "declarationMap": true,
