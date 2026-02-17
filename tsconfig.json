@@ -10,5 +10,5 @@
         "declarationMap": true,
         "outDir": "dist"
     },
-    "include": ["src", "test", ".storybook/*"]
+    "include": ["src", "test", ".storybook/*", "vitest.config.ts"]
 }
