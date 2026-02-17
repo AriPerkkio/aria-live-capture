@@ -1,4 +1,4 @@
-import type { Meta, StoryFn } from '@storybook/html';
+import type { Meta, StoryFn } from 'storybook/html';
 
 import { createButtonCycle } from '../utils';
 

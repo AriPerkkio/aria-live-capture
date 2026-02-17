@@ -1,5 +1,6 @@
 import { defineConfig } from 'vitest/config';
-import { storybookTest } from '@storybook/experimental-addon-test/vitest-plugin';
+import { storybookTest } from '@storybook/addon-vitest/vitest-plugin';
+import { playwright } from '@vitest/browser-playwright';
 
 const UNIT_TEST_PATTERN = ['test/**/*.test.ts'];
 
@@ -39,8 +40,8 @@ export default defineConfig({
                     browser: {
                         enabled: true,
                         headless: true,
-                        name: 'chromium',
-                        provider: 'playwright',
+                        provider: playwright(),
+                        instances: [{ browser: 'chromium' }],
                     },
                 },
             },
@@ -53,8 +54,8 @@ export default defineConfig({
                     browser: {
                         enabled: true,
                         headless: true,
-                        name: 'chromium',
-                        provider: 'playwright',
+                        provider: playwright(),
+                        instances: [{ browser: 'chromium' }],
                     },
                 },
             },

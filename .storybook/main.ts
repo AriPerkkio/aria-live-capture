@@ -10,11 +10,7 @@ const config: StorybookConfig = {
         './**/ElementApi.stories.ts',
         './**/*.stories.ts',
     ],
-    addons: [
-        '@storybook/addon-docs',
-        '@storybook/addon-interactions',
-        '@storybook/experimental-addon-test',
-    ],
+    addons: ['@storybook/addon-docs', '@storybook/addon-vitest'],
     framework: '@storybook/html-vite',
 
     async viteFinal(config, { configType }) {
