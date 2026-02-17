@@ -2,19 +2,7 @@ import { defineConfig } from 'vitest/config';
 import { storybookTest } from '@storybook/experimental-addon-test/vitest-plugin';
 
 export default defineConfig({
-    plugins: [
-        storybookTest({
-            configDir: '.storybook',
-            tags: {
-                include: [],
-                exclude: [],
-                skip: [],
-            },
-        }),
-    ],
     test: {
-        include: ['test/**/*.test.ts'],
-        setupFiles: ['./test/setup.ts'],
         reporters: process.env.CI ? 'default' : 'verbose',
 
         coverage: {
@@ -30,10 +18,22 @@ export default defineConfig({
 
         projects: [
             {
-                extends: true,
+                plugins: [
+                    storybookTest({
+                        configDir: '.storybook',
+                        tags: {
+                            include: [],
+                            exclude: [],
+                            skip: [],
+                        },
+                    }),
+                ],
                 test: {
                     name: 'storybook',
                     setupFiles: ['.storybook/vitest.setup.ts'],
+                    coverage: {
+                        enabled: false,
+                    },
                     browser: {
                         enabled: true,
                         headless: true,
@@ -46,6 +46,8 @@ export default defineConfig({
                 extends: true,
                 test: {
                     name: 'Browser',
+                    include: ['test/**/*.test.ts'],
+                    setupFiles: ['./test/setup.ts'],
                     browser: {
                         enabled: true,
                         headless: true,
@@ -58,6 +60,8 @@ export default defineConfig({
                 extends: true,
                 test: {
                     name: 'JSDOM',
+                    include: ['test/**/*.test.ts'],
+                    setupFiles: ['./test/setup.ts'],
                     environment: 'jsdom',
                 },
             },
