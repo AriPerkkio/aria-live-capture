@@ -5,7 +5,6 @@ import * as previewAnnotations from './preview';
 const globalProjectAnnotations = setProjectAnnotations([previewAnnotations]);
 
 declare global {
-    // eslint-disable-next-line no-var
     var globalProjectAnnotations: typeof globalProjectAnnotations;
 }
 
