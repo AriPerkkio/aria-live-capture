@@ -1,4 +1,4 @@
-var s=Object.defineProperty;var e=(n,o)=>s(n,"name",{value:o,configurable:!0});import{c as t}from"./iframe-82Zg_pZv.js";import"./preload-helper-CL58OYxb.js";const c={title:"Unsupported/aria-relevant"},i=e(()=>t(`
+var s=Object.defineProperty;var e=(n,o)=>s(n,"name",{value:o,configurable:!0});import{c as t}from"./iframe-DGKWmdNJ.js";import"./preload-helper-CL58OYxb.js";const c={title:"Unsupported/aria-relevant"},i=e(()=>t(`
         <ul aria-live="polite" aria-relevant="additions">
             <li>First</li>
         </ul>

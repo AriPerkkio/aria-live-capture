@@ -1,4 +1,4 @@
-var s=Object.defineProperty;var r=(o,n)=>s(o,"name",{value:n,configurable:!0});import{c as i}from"./iframe-82Zg_pZv.js";import"./preload-helper-CL58OYxb.js";const c={title:"Unsupported/aria-atomic"},a=r(()=>i(`
+var s=Object.defineProperty;var r=(o,n)=>s(o,"name",{value:n,configurable:!0});import{c as i}from"./iframe-DGKWmdNJ.js";import"./preload-helper-CL58OYxb.js";const c={title:"Unsupported/aria-atomic"},a=r(()=>i(`
         <div aria-live="polite" aria-atomic="true">
             <span>Hello</span>
         </div>
