@@ -1,4 +1,4 @@
-var v=Object.defineProperty;var d=(o,r)=>v(o,"name",{value:r,configurable:!0});import{c as a}from"./iframe-DGKWmdNJ.js";import"./preload-helper-CL58OYxb.js";const{within:s,userEvent:u}=__STORYBOOK_MODULE_TEST__,{expect:e}=__STORYBOOK_MODULE_TEST__,g={title:'Role/role="marquee"'},n=d(()=>a(`
+var v=Object.defineProperty;var d=(o,r)=>v(o,"name",{value:r,configurable:!0});import{c as a}from"./iframe-4dnwcpfT.js";import"./preload-helper-CL58OYxb.js";const{within:s,userEvent:u}=__STORYBOOK_MODULE_TEST__,{expect:e}=__STORYBOOK_MODULE_TEST__,g={title:'Role/role="marquee"'},n=d(()=>a(`
         <div role="marquee">
         </div>
         `,`
