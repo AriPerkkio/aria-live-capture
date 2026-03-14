@@ -1,4 +1,4 @@
-var s=Object.defineProperty;var e=(n,o)=>s(n,"name",{value:o,configurable:!0});import{c as t}from"./iframe-ujSHn6nD.js";import"./preload-helper-CL58OYxb.js";const c={title:"Unsupported/aria-relevant"},i=e(()=>t(`
+import{n as e}from"./iframe-iMBPCvXT.js";var t={title:`Unsupported/aria-relevant`},n=()=>e(`
         <ul aria-live="polite" aria-relevant="additions">
             <li>First</li>
         </ul>
@@ -7,7 +7,7 @@ var s=Object.defineProperty;var e=(n,o)=>s(n,"name",{value:o,configurable:!0});i
             <li>First</li>
             <li>Second</li>
         </ul>
-        `),"Additions");i.storyName="additions";const r=e(()=>t(`
+        `);n.storyName=`additions`;var r=()=>e(`
         <ul aria-live="polite" aria-relevant="removals">
             <li>First</li>
             <li>Second</li>
@@ -16,7 +16,7 @@ var s=Object.defineProperty;var e=(n,o)=>s(n,"name",{value:o,configurable:!0});i
         <ul aria-live="polite" aria-relevant="removals">
             <li>First</li>
         </ul>
-        `),"Removals");r.storyName="removals";const l=e(()=>t(`
+        `);r.storyName=`removals`;var i=()=>e(`
         <div aria-live="polite" aria-relevant="text">
             First
         </div>
@@ -24,7 +24,7 @@ var s=Object.defineProperty;var e=(n,o)=>s(n,"name",{value:o,configurable:!0});i
         <div aria-live="polite" aria-relevant="text">
             First, Second
         </div>
-        `),"Text");l.storyName="text";const a=e(()=>t(`
+        `);i.storyName=`text`;var a=()=>e(`
         <ul aria-live="polite" aria-relevant="all">
             <li>First</li>
             <li>Second</li>
@@ -36,7 +36,7 @@ var s=Object.defineProperty;var e=(n,o)=>s(n,"name",{value:o,configurable:!0});i
 
             <li>Third</li>
         </ul>
-        `),"All");a.storyName="all";i.parameters={...i.parameters,docs:{...i.parameters?.docs,source:{originalSource:`() => {
+        `);a.storyName=`all`,n.parameters={...n.parameters,docs:{...n.parameters?.docs,source:{originalSource:`() => {
   return createMountToggle(\`
         <ul aria-live="polite" aria-relevant="additions">
             <li>First</li>
@@ -47,7 +47,7 @@ var s=Object.defineProperty;var e=(n,o)=>s(n,"name",{value:o,configurable:!0});i
             <li>Second</li>
         </ul>
         \`);
-}`,...i.parameters?.docs?.source}}};r.parameters={...r.parameters,docs:{...r.parameters?.docs,source:{originalSource:`() => {
+}`,...n.parameters?.docs?.source}}},r.parameters={...r.parameters,docs:{...r.parameters?.docs,source:{originalSource:`() => {
   return createMountToggle(\`
         <ul aria-live="polite" aria-relevant="removals">
             <li>First</li>
@@ -58,7 +58,7 @@ var s=Object.defineProperty;var e=(n,o)=>s(n,"name",{value:o,configurable:!0});i
             <li>First</li>
         </ul>
         \`);
-}`,...r.parameters?.docs?.source}}};l.parameters={...l.parameters,docs:{...l.parameters?.docs,source:{originalSource:`() => {
+}`,...r.parameters?.docs?.source}}},i.parameters={...i.parameters,docs:{...i.parameters?.docs,source:{originalSource:`() => {
   return createMountToggle(\`
         <div aria-live="polite" aria-relevant="text">
             First
@@ -68,7 +68,7 @@ var s=Object.defineProperty;var e=(n,o)=>s(n,"name",{value:o,configurable:!0});i
             First, Second
         </div>
         \`);
-}`,...l.parameters?.docs?.source}}};a.parameters={...a.parameters,docs:{...a.parameters?.docs,source:{originalSource:`() => {
+}`,...i.parameters?.docs?.source}}},a.parameters={...a.parameters,docs:{...a.parameters?.docs,source:{originalSource:`() => {
   return createMountToggle(\`
         <ul aria-live="polite" aria-relevant="all">
             <li>First</li>
@@ -82,4 +82,4 @@ var s=Object.defineProperty;var e=(n,o)=>s(n,"name",{value:o,configurable:!0});i
             <li>Third</li>
         </ul>
         \`);
-}`,...a.parameters?.docs?.source}}};const p=["Additions","Removals","Text","All"];export{i as Additions,a as All,r as Removals,l as Text,p as __namedExportsOrder,c as default};
+}`,...a.parameters?.docs?.source}}};var o=[`Additions`,`Removals`,`Text`,`All`];export{n as Additions,a as All,r as Removals,i as Text,o as __namedExportsOrder,t as default};

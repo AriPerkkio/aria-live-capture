@@ -1,4 +1,4 @@
-var s=Object.defineProperty;var r=(o,n)=>s(o,"name",{value:n,configurable:!0});import{c as i}from"./iframe-ujSHn6nD.js";import"./preload-helper-CL58OYxb.js";const c={title:"Unsupported/aria-atomic"},a=r(()=>i(`
+import{n as e}from"./iframe-iMBPCvXT.js";var t={title:`Unsupported/aria-atomic`},n=()=>e(`
         <div aria-live="polite" aria-atomic="true">
             <span>Hello</span>
         </div>
@@ -7,7 +7,7 @@ var s=Object.defineProperty;var r=(o,n)=>s(o,"name",{value:n,configurable:!0});i
             <span>Hello</span>
             <span>world</span>
         </div>
-        `),"True");a.storyName="true";const e=r(()=>i(`
+        `);n.storyName=`true`;var r=()=>e(`
         <div aria-live="polite" aria-atomic="false">
             <span>Hello</span>
         </div>
@@ -16,7 +16,7 @@ var s=Object.defineProperty;var r=(o,n)=>s(o,"name",{value:n,configurable:!0});i
             <span>Hello</span>
             <span>world</span>
         </div>
-        `),"False");e.storyName="false";a.parameters={...a.parameters,docs:{...a.parameters?.docs,source:{originalSource:`() => {
+        `);r.storyName=`false`,n.parameters={...n.parameters,docs:{...n.parameters?.docs,source:{originalSource:`() => {
   return createMountToggle(\`
         <div aria-live="polite" aria-atomic="true">
             <span>Hello</span>
@@ -27,7 +27,7 @@ var s=Object.defineProperty;var r=(o,n)=>s(o,"name",{value:n,configurable:!0});i
             <span>world</span>
         </div>
         \`);
-}`,...a.parameters?.docs?.source}}};e.parameters={...e.parameters,docs:{...e.parameters?.docs,source:{originalSource:`() => {
+}`,...n.parameters?.docs?.source}}},r.parameters={...r.parameters,docs:{...r.parameters?.docs,source:{originalSource:`() => {
   return createMountToggle(\`
         <div aria-live="polite" aria-atomic="false">
             <span>Hello</span>
@@ -38,4 +38,4 @@ var s=Object.defineProperty;var r=(o,n)=>s(o,"name",{value:n,configurable:!0});i
             <span>world</span>
         </div>
         \`);
-}`,...e.parameters?.docs?.source}}};const d=["True","False"];export{e as False,a as True,d as __namedExportsOrder,c as default};
+}`,...r.parameters?.docs?.source}}};var i=[`True`,`False`];export{r as False,n as True,i as __namedExportsOrder,t as default};

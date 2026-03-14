@@ -1,4 +1,4 @@
-var a=Object.defineProperty;var i=(n,t)=>a(n,"name",{value:t,configurable:!0});import{j as e,f as r,h as s}from"./blocks-CtfuUymA.js";import{useMDXComponents as d}from"./index-CS2vwbbS.js";import"./preload-helper-CL58OYxb.js";import"./iframe-ujSHn6nD.js";const l=`# aria-live-capture
+import{i as e}from"./chunk-YKABRMAI-Co2dNx2G.js";import"./react-DCnNfEIY.js";import{n as t}from"./lib-BkKOsMbZ.js";import"./chunk-242VQQM5-BgS__-ru.js";import"./components-DkLIXU7V.js";import{a as n,o as r}from"./blocks-DEIa9l17.js";var i=e(),a=`# aria-live-capture
 
 <a href="https://www.npmjs.com/package/aria-live-capture">
     <img alt="version" src="https://img.shields.io/npm/v/aria-live-capture" />
@@ -196,5 +196,5 @@ PASS ✅  | "Loading" is announced
 |  \`aria-atomic\`  | ❌ 👷  |
 |   \`aria-busy\`   |   ❌   |
 | \`aria-relevant\` |   ❌   |
-`;function o(n){return e.jsxs(e.Fragment,{children:[e.jsx(r,{title:"Aria Live Capture"}),`
-`,e.jsx(s,{children:l})]})}i(o,"_createMdxContent");function m(n={}){const{wrapper:t}={...d(),...n.components};return t?e.jsx(t,{...n,children:e.jsx(o,{...n})}):o()}i(m,"MDXContent");export{m as default};
+`;function o(e){return(0,i.jsxs)(i.Fragment,{children:[(0,i.jsx)(r,{title:`Aria Live Capture`}),`
+`,(0,i.jsx)(n,{children:a})]})}function s(e={}){let{wrapper:n}={...t(),...e.components};return n?(0,i.jsx)(n,{...e,children:(0,i.jsx)(o,{...e})}):o(e)}export{s as default};

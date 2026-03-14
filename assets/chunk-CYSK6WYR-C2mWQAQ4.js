@@ -1,0 +1,1 @@
+var e=e=>`control-${e.replace(/\s+/g,`-`)}`,t=e=>`set-${e.replace(/\s+/g,`-`)}`;export{t as n,e as t};
