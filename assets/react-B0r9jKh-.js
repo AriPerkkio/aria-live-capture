@@ -1,1 +1,0 @@
-import"./react-DCnNfEIY.js";import{t as e}from"./lib-BkKOsMbZ.js";export{e as MDXProvider};

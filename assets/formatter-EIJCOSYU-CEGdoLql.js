@@ -1,1 +1,0 @@
-import{d as e,u as t,w as n}from"./iframe-iMBPCvXT.js";var r=(0,n(e(),1).default)(2)(async(e,n)=>e===!1?n:t(n));export{r as formatter};
