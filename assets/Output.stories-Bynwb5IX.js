@@ -1,31 +1,37 @@
-import{n as e}from"./chunk-BneVvdWh.js";import{n as t,r as n}from"./iframe-0LTG6Nc-.js";var r,i,a,o,s,c,l;e((()=>{n(),{within:r,userEvent:i}=__STORYBOOK_MODULE_TEST__,{expect:a}=__STORYBOOK_MODULE_TEST__,o={title:`Aria-live/aria-live="polite"`},s=()=>t(`
-        <div aria-live="polite">
-        </div>
+import{n as e}from"./chunk-BneVvdWh.js";import{n as t,r as n}from"./iframe-CQvE6BS5.js";var r,i,a,o,s,c,l;e((()=>{n(),{within:r,userEvent:i}=__STORYBOOK_MODULE_TEST__,{expect:a}=__STORYBOOK_MODULE_TEST__,o={title:`Elements/<output>`},s=()=>t(`
+        <output>
+        </output>
         `,`
-        <div aria-live="polite">
+        <output>
             Hello world
-        </div>
+        </output>
         `),s.storyName=`Live region available before content ✅`,s.play=async({canvasElement:e})=>{let t=r(e).getByRole(`button`);a(`Hello world`).not.toBeAnnounced(),await i.click(t),a(`Hello world`).toBeAnnounced(`polite`)},c=()=>t(`
-        <div></div>
+        <div>
+        </div>
         `,`
-        <div aria-live="polite">
-            Hello world
+        <div>
+            <output>
+                Hello world
+            </output>
         </div>
         `),c.storyName=`Live region unavailable before content ❌`,c.play=async({canvasElement:e})=>{let t=r(e).getByRole(`button`);a(`Hello world`).not.toBeAnnounced(),await i.click(t),a(`Hello world`).not.toBeAnnounced()},s.parameters={...s.parameters,docs:{...s.parameters?.docs,source:{originalSource:`() => {
   return createMountToggle(\`
-        <div aria-live="polite">
-        </div>
+        <output>
+        </output>
         \`, \`
-        <div aria-live="polite">
+        <output>
             Hello world
-        </div>
+        </output>
         \`);
 }`,...s.parameters?.docs?.source}}},c.parameters={...c.parameters,docs:{...c.parameters?.docs,source:{originalSource:`() => {
   return createMountToggle(\`
-        <div></div>
+        <div>
+        </div>
         \`, \`
-        <div aria-live="polite">
-            Hello world
+        <div>
+            <output>
+                Hello world
+            </output>
         </div>
         \`);
 }`,...c.parameters?.docs?.source}}},l=[`LiveRegionAvailableBeforeContent`,`LiveRegionUnavailableBeforeContent`]}))();export{s as LiveRegionAvailableBeforeContent,c as LiveRegionUnavailableBeforeContent,l as __namedExportsOrder,o as default};

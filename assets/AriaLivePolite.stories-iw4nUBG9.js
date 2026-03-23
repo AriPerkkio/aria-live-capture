@@ -1,22 +1,22 @@
-import{n as e}from"./chunk-BneVvdWh.js";import{n as t,r as n}from"./iframe-0LTG6Nc-.js";var r,i,a,o,s,c,l;e((()=>{n(),{within:r,userEvent:i}=__STORYBOOK_MODULE_TEST__,{expect:a}=__STORYBOOK_MODULE_TEST__,o={title:`Role/role="log"`},s=()=>t(`
-        <div role="log">
+import{n as e}from"./chunk-BneVvdWh.js";import{n as t,r as n}from"./iframe-CQvE6BS5.js";var r,i,a,o,s,c,l;e((()=>{n(),{within:r,userEvent:i}=__STORYBOOK_MODULE_TEST__,{expect:a}=__STORYBOOK_MODULE_TEST__,o={title:`Aria-live/aria-live="polite"`},s=()=>t(`
+        <div aria-live="polite">
         </div>
         `,`
-        <div role="log">
+        <div aria-live="polite">
             Hello world
         </div>
         `),s.storyName=`Live region available before content ✅`,s.play=async({canvasElement:e})=>{let t=r(e).getByRole(`button`);a(`Hello world`).not.toBeAnnounced(),await i.click(t),a(`Hello world`).toBeAnnounced(`polite`)},c=()=>t(`
         <div></div>
         `,`
-        <div role="log">
+        <div aria-live="polite">
             Hello world
         </div>
         `),c.storyName=`Live region unavailable before content ❌`,c.play=async({canvasElement:e})=>{let t=r(e).getByRole(`button`);a(`Hello world`).not.toBeAnnounced(),await i.click(t),a(`Hello world`).not.toBeAnnounced()},s.parameters={...s.parameters,docs:{...s.parameters?.docs,source:{originalSource:`() => {
   return createMountToggle(\`
-        <div role="log">
+        <div aria-live="polite">
         </div>
         \`, \`
-        <div role="log">
+        <div aria-live="polite">
             Hello world
         </div>
         \`);
@@ -24,7 +24,7 @@ import{n as e}from"./chunk-BneVvdWh.js";import{n as t,r as n}from"./iframe-0LTG6
   return createMountToggle(\`
         <div></div>
         \`, \`
-        <div role="log">
+        <div aria-live="polite">
             Hello world
         </div>
         \`);
