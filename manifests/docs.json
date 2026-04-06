@@ -1,0 +1,1 @@
+{"v":0,"docs":{"aria-live-capture--docs":{"id":"aria-live-capture--docs","name":"Docs","path":"./.storybook/README.mdx","title":"Aria Live Capture","content":"import { Meta, Markdown } from '@storybook/addon-docs/blocks';\nimport Readme from '../README.md?raw';\n\n<Meta title=\"Aria Live Capture\" />\n\n<Markdown>{Readme}</Markdown>\n"}}}
