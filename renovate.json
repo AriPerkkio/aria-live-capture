@@ -27,6 +27,11 @@
             "groupName": "vitest",
             "description": "Vitest majors",
             "matchPackageNames": ["/^@vitest/", "/^vitest/"]
+        },
+        {
+            "matchManagers": ["github-actions"],
+            "matchUpdateTypes": ["minor", "patch", "digest", "pin", "pinDigest"],
+            "enabled": false
         }
     ]
 }
