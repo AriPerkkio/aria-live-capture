@@ -19,14 +19,14 @@
         },
         {
             "groupName": "storybook",
-            "matchPackagePatterns": ["^@storybook", "^storybook"],
-            "description": "Storybook releases seem to break easily."
+            "description": "Storybook releases seem to break easily.",
+            "matchPackageNames": ["/^@storybook/", "/^storybook/"]
         },
         {
             "matchUpdateTypes": ["major"],
             "groupName": "vitest",
-            "matchPackagePatterns": ["^@vitest", "^vitest"],
-            "description": "Vitest majors"
+            "description": "Vitest majors",
+            "matchPackageNames": ["/^@vitest/", "/^vitest/"]
         }
     ]
 }
