@@ -19,7 +19,7 @@ export default function prettyDOMWithShadowDOM(
 
     return prettyDOM(dom, maxLength, {
         ...options,
-        plugins: [plugin as any],
+        plugins: [plugin],
         filterNode: () => true,
     });
 }
