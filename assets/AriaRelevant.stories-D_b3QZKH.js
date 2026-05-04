@@ -1,4 +1,4 @@
-import{n as e}from"./chunk-DnJy8xQt.js";import{n as t,r as n}from"./iframe-DSouU4b9.js";var r,i,a,o,s,c;e((()=>{n(),r={title:`Unsupported/aria-relevant`},i=()=>t(`
+import{n as e}from"./chunk-DnJy8xQt.js";import{n as t,r as n}from"./iframe-BircjbKM.js";var r,i,a,o,s,c;e((()=>{n(),r={title:`Unsupported/aria-relevant`},i=()=>t(`
         <ul aria-live="polite" aria-relevant="additions">
             <li>First</li>
         </ul>
