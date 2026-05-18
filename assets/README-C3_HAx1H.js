@@ -1,4 +1,4 @@
-import{i as e}from"./preload-helper-nftRgiwO.js";import{I as t,P as n,R as r,a as i,o as a,s as o}from"./blocks-DeMcMciX.js";var s=e((()=>{n()})),c,l=e((()=>{c=`# aria-live-capture
+import{i as e}from"./preload-helper-nftRgiwO.js";import{B as t,I as n,R as r,a as i,o as a,s as o}from"./blocks-KouCayYz.js";var s=e((()=>{n()})),c,l=e((()=>{c=`# aria-live-capture
 
 <a href="https://www.npmjs.com/package/aria-live-capture">
     <img alt="version" src="https://img.shields.io/npm/v/aria-live-capture" />
@@ -197,4 +197,4 @@ PASS ✅  | "Loading" is announced
 |   \`aria-busy\`   |   ❌   |
 | \`aria-relevant\` |   ❌   |
 `}));function u(e){return(0,f.jsxs)(f.Fragment,{children:[(0,f.jsx)(a,{title:`Aria Live Capture`}),`
-`,(0,f.jsx)(i,{children:c})]})}function d(e={}){let{wrapper:n}={...t(),...e.components};return n?(0,f.jsx)(n,{...e,children:(0,f.jsx)(u,{...e})}):u(e)}var f;e((()=>{f=r(),s(),o(),l()}))();export{d as default};
+`,(0,f.jsx)(i,{children:c})]})}function d(e={}){let{wrapper:t}={...r(),...e.components};return t?(0,f.jsx)(t,{...e,children:(0,f.jsx)(u,{...e})}):u(e)}var f;e((()=>{f=t(),s(),o(),l()}))();export{d as default};
