@@ -1,4 +1,4 @@
-import{i as e}from"./preload-helper-MMKciXMk.js";import{B as t,F as n,R as r,a as i,o as a,s as o}from"./blocks-CVuCi4W3.js";var s=e((()=>{n()})),c,l=e((()=>{c=`# aria-live-capture
+import{i as e}from"./preload-helper-MMKciXMk.js";import{B as t,F as n,R as r,a as i,o as a,s as o}from"./blocks-CEURFE4u.js";var s=e((()=>{n()})),c,l=e((()=>{c=`# aria-live-capture
 
 <a href="https://www.npmjs.com/package/aria-live-capture">
     <img alt="version" src="https://img.shields.io/npm/v/aria-live-capture" />
