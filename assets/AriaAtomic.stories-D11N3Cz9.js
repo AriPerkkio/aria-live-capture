@@ -1,4 +1,4 @@
-import{i as e}from"./preload-helper-nftRgiwO.js";import{n as t,r as n}from"./iframe-C_5GF_0V.js";var r,i,a,o;e((()=>{n(),r={title:`Unsupported/aria-atomic`},i=()=>t(`
+import{i as e}from"./preload-helper-MMKciXMk.js";import{n as t,r as n}from"./iframe-B5bH1UGf.js";var r,i,a,o;e((()=>{n(),r={title:`Unsupported/aria-atomic`},i=()=>t(`
         <div aria-live="polite" aria-atomic="true">
             <span>Hello</span>
         </div>
