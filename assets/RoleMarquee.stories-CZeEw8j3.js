@@ -1,4 +1,4 @@
-import{i as e}from"./preload-helper-MMKciXMk.js";import{n as t,r as n}from"./iframe-CoGTOPxe.js";var r,i,a,o,s,c,l,u,d;e((()=>{n(),{within:r,userEvent:i}=__STORYBOOK_MODULE_TEST__,{expect:a}=__STORYBOOK_MODULE_TEST__,o={title:`Role/role="marquee"`},s=()=>t(`
+import{i as e}from"./preload-helper-MMKciXMk.js";import{n as t,r as n}from"./iframe-CaiSZu8b.js";var r,i,a,o,s,c,l,u,d;e((()=>{n(),{within:r,userEvent:i}=__STORYBOOK_MODULE_TEST__,{expect:a}=__STORYBOOK_MODULE_TEST__,o={title:`Role/role="marquee"`},s=()=>t(`
         <div role="marquee">
         </div>
         `,`
