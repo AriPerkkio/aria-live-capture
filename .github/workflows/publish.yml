@@ -27,7 +27,7 @@ jobs:
                   registry-url: 'https://registry.npmjs.org'
 
             - name: Install pnpm
-              uses: pnpm/action-setup@v2
+              uses: pnpm/action-setup@v6
 
             - name: Install
               run: |
@@ -82,7 +82,7 @@ jobs:
                   registry-url: 'https://registry.npmjs.org'
 
             - name: Install pnpm
-              uses: pnpm/action-setup@v2
+              uses: pnpm/action-setup@v6
 
             - name: Install
               run: pnpm install

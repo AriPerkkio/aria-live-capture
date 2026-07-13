@@ -12,7 +12,7 @@ jobs:
 
         steps:
             - uses: actions/checkout@v7
-            - uses: pnpm/action-setup@v2
+            - uses: pnpm/action-setup@v6
             - uses: ./.github/actions/setup-and-cache
 
             - run: |
