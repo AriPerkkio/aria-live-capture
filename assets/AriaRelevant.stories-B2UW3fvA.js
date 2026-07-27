@@ -1,4 +1,4 @@
-import{i as e}from"./preload-helper-D-5kLQCx.js";import{n as t,r as n}from"./iframe-CkpxuXQ8.js";var r,i,a,o,s,c;e((()=>{n(),r={title:`Unsupported/aria-relevant`},i=()=>t(`
+import{i as e}from"./preload-helper-D-5kLQCx.js";import{n as t,r as n}from"./iframe-CIIaUd18.js";var r,i,a,o,s,c;e((()=>{n(),r={title:`Unsupported/aria-relevant`},i=()=>t(`
         <ul aria-live="polite" aria-relevant="additions">
             <li>First</li>
         </ul>
