@@ -1,37 +1,31 @@
-import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{i as t,r as n}from"./iframe-DZtjO9Om.js";var r,i,a,o,s,c,l;function u(){return(u=e((()=>{t(),{within:r,userEvent:i}=__STORYBOOK_MODULE_TEST__,{expect:a}=__STORYBOOK_MODULE_TEST__,o={title:`Elements/<output>`},s=()=>n(`
-        <output>
-        </output>
-        `,`
-        <output>
-            Hello world
-        </output>
-        `),s.storyName=`Live region available before content ✅`,s.play=async({canvasElement:e})=>{let t=r(e).getByRole(`button`);a(`Hello world`).not.toBeAnnounced(),await i.click(t),a(`Hello world`).toBeAnnounced(`polite`)},c=()=>n(`
-        <div>
+import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{i as t,r as n}from"./iframe-CCnqvpgM.js";var r,i,a,o,s,c,l;function u(){return(u=e((()=>{t(),{within:r,userEvent:i}=__STORYBOOK_MODULE_TEST__,{expect:a}=__STORYBOOK_MODULE_TEST__,o={title:`Role/role="log"`},s=()=>n(`
+        <div role="log">
         </div>
         `,`
-        <div>
-            <output>
-                Hello world
-            </output>
+        <div role="log">
+            Hello world
+        </div>
+        `),s.storyName=`Live region available before content ✅`,s.play=async({canvasElement:e})=>{let t=r(e).getByRole(`button`);a(`Hello world`).not.toBeAnnounced(),await i.click(t),a(`Hello world`).toBeAnnounced(`polite`)},c=()=>n(`
+        <div></div>
+        `,`
+        <div role="log">
+            Hello world
         </div>
         `),c.storyName=`Live region unavailable before content ❌`,c.play=async({canvasElement:e})=>{let t=r(e).getByRole(`button`);a(`Hello world`).not.toBeAnnounced(),await i.click(t),a(`Hello world`).not.toBeAnnounced()},s.parameters={...s.parameters,docs:{...s.parameters?.docs,source:{originalSource:`() => {
   return createMountToggle(\`
-        <output>
-        </output>
+        <div role="log">
+        </div>
         \`, \`
-        <output>
+        <div role="log">
             Hello world
-        </output>
+        </div>
         \`);
 }`,...s.parameters?.docs?.source}}},c.parameters={...c.parameters,docs:{...c.parameters?.docs,source:{originalSource:`() => {
   return createMountToggle(\`
-        <div>
-        </div>
+        <div></div>
         \`, \`
-        <div>
-            <output>
-                Hello world
-            </output>
+        <div role="log">
+            Hello world
         </div>
         \`);
 }`,...c.parameters?.docs?.source}}},l=[`LiveRegionAvailableBeforeContent`,`LiveRegionUnavailableBeforeContent`]})))()}u();export{s as LiveRegionAvailableBeforeContent,c as LiveRegionUnavailableBeforeContent,l as __namedExportsOrder,o as default};
