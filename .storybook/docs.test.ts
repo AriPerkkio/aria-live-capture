@@ -3,7 +3,7 @@ import { afterAll, beforeAll, test } from 'vitest';
 
 let browser: Browser;
 beforeAll(async () => {
-    browser = await chromium.launch({ headless: true });
+    browser = await chromium.launch({ headless: true, channel: 'chrome' });
 });
 afterAll(async () => {
     await browser?.close();
