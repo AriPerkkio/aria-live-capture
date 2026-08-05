@@ -28,7 +28,6 @@ jobs:
             - name: Install & Build
               run: |
                   pnpm install
-                  pnpm exec playwright install
                   pnpm build
 
             - name: Lint
