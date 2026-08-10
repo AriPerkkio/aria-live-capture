@@ -1,90 +1,90 @@
-import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{i as t,r as n}from"./iframe-CCnqvpgM.js";var r,i,a,o,s,c,l,u,d;function f(){return(f=e((()=>{t(),{within:r,userEvent:i}=__STORYBOOK_MODULE_TEST__,{expect:a}=__STORYBOOK_MODULE_TEST__,o={title:`Aria-live/aria-live="off"`},s=()=>n(`
-        <div aria-live="off">
+import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{i as t,r as n}from"./iframe-CWGxaKE0.js";var r,i,a,o,s,c,l,u,d;function f(){return(f=e((()=>{t(),{within:r,userEvent:i}=__STORYBOOK_MODULE_TEST__,{expect:a}=__STORYBOOK_MODULE_TEST__,o={title:`Role/role="timer"`},s=()=>n(`
+        <div role="timer">
         </div>
         `,`
-        <div aria-live="off">
+        <div role="timer">
             Hello world
         </div>
         `),s.storyName=`With text content ❌`,s.play=async({canvasElement:e})=>{let t=r(e).getByRole(`button`);a(`Hello world`).not.toBeAnnounced(),await i.click(t),a(`Hello world`).not.toBeAnnounced()},c=()=>n(`
-        <div aria-live="off">
-            <div aria-live="polite">
+        <div role="timer">
+            <div role="status">
             </div>
         </div>
         `,`
-        <div aria-live="off">
-            <div aria-live="polite">
+        <div role="timer">
+            <div role="status">
                 Hello world
             </div>
         </div>
         `),c.storyName=`Wraps live region ✅`,c.play=async({canvasElement:e})=>{let t=r(e).getByRole(`button`);a(`Hello world`).not.toBeAnnounced(),await i.click(t),a(`Hello world`).toBeAnnounced(`polite`)},l=()=>n(`
-        <div aria-live="polite">
-            <div aria-live="off">
+        <div role="status">
+            <div role="timer">
             </div>
         </div>
         `,`
-        <div aria-live="polite">
-            <div aria-live="off">
+        <div role="status">
+            <div role="timer">
                 Hello world
             </div>
         </div>
         `),l.storyName=`Wrapped in live region ❌`,l.play=async({canvasElement:e})=>{let t=r(e).getByRole(`button`);a(`Hello world`).not.toBeAnnounced(),await i.click(t),a(`Hello world`).not.toBeAnnounced()},u=()=>n(`
-        <div aria-live="polite">
-            <div aria-live="off">
+        <div role="status">
+            <div role="timer">
             </div>
         </div>
         `,`
-        <div aria-live="polite">
-            <div aria-live="off">
+        <div role="status">
+            <div role="timer">
                 Hello
             </div>
             <div>
                 world
             </div>
         </div>
-        `),u.storyName=`Sibling is visible ⚠️`,u.play=async({canvasElement:e})=>{let t=r(e).getByRole(`button`);a(`world`).not.toBeAnnounced(),await i.click(t),a(`world`).toBeAnnounced(`polite`),a(`Hello`).not.toBeAnnounced(),a(`Hello world`).not.toBeAnnounced()},s.parameters={...s.parameters,docs:{...s.parameters?.docs,source:{originalSource:`() => {
+        `),u.storyName=`Sibling is visible ⚠️`,u.play=async({canvasElement:e})=>{let t=r(e).getByRole(`button`);a(`world`).not.toBeAnnounced(`polite`),await i.click(t),a(`world`).toBeAnnounced(`polite`),a(`Hello`).not.toBeAnnounced(),a(`Hello world`).not.toBeAnnounced()},s.parameters={...s.parameters,docs:{...s.parameters?.docs,source:{originalSource:`() => {
   return createMountToggle(\`
-        <div aria-live="off">
+        <div role="timer">
         </div>
         \`, \`
-        <div aria-live="off">
+        <div role="timer">
             Hello world
         </div>
         \`);
 }`,...s.parameters?.docs?.source}}},c.parameters={...c.parameters,docs:{...c.parameters?.docs,source:{originalSource:`() => {
   return createMountToggle(\`
-        <div aria-live="off">
-            <div aria-live="polite">
+        <div role="timer">
+            <div role="status">
             </div>
         </div>
         \`, \`
-        <div aria-live="off">
-            <div aria-live="polite">
+        <div role="timer">
+            <div role="status">
                 Hello world
             </div>
         </div>
         \`);
 }`,...c.parameters?.docs?.source}}},l.parameters={...l.parameters,docs:{...l.parameters?.docs,source:{originalSource:`() => {
   return createMountToggle(\`
-        <div aria-live="polite">
-            <div aria-live="off">
+        <div role="status">
+            <div role="timer">
             </div>
         </div>
         \`, \`
-        <div aria-live="polite">
-            <div aria-live="off">
+        <div role="status">
+            <div role="timer">
                 Hello world
             </div>
         </div>
         \`);
 }`,...l.parameters?.docs?.source}}},u.parameters={...u.parameters,docs:{...u.parameters?.docs,source:{originalSource:`() => {
   return createMountToggle(\`
-        <div aria-live="polite">
-            <div aria-live="off">
+        <div role="status">
+            <div role="timer">
             </div>
         </div>
         \`, \`
-        <div aria-live="polite">
-            <div aria-live="off">
+        <div role="status">
+            <div role="timer">
                 Hello
             </div>
             <div>
