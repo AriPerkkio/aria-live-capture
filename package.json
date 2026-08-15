@@ -61,7 +61,7 @@
     "react-dom": "^19.2.8",
     "start-server-and-test": "^3.0.12",
     "storybook": "^10.5.7",
-    "typescript": "^5.9.3",
+    "typescript": "^7.0.2",
     "virtual-dom-nodes": "^0.2.2",
     "vite": "^8.2.1",
     "vitest": "^4.1.10"
