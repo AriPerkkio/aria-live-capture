@@ -2,16 +2,16 @@ name: 'Setup-node and cache'
 description: 'Base setup for each action'
 author: 'AriPerkkio'
 inputs:
-    node-version:
-        required: false
-        description: 'Node version for setup-node'
-        default: '24'
+  node-version:
+    required: false
+    description: 'Node version for setup-node'
+    default: '24'
 runs:
-    using: 'composite'
-    steps:
-        - uses: actions/setup-node@v6
-          with:
-              node-version: ${{ inputs.node-version }}
+  using: 'composite'
+  steps:
+    - uses: actions/setup-node@v6
+      with:
+        node-version: ${{ inputs.node-version }}
 #        - uses: actions/cache@v3
 #          with:
 #              path: |

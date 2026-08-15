@@ -1,14 +1,14 @@
 {
-    "compilerOptions": {
-        "strict": true,
-        "skipLibCheck": true,
-        "module": "ES2022",
-        "target": "ES2022",
-        "moduleResolution": "bundler",
-        "lib": ["dom", "dom.iterable", "es2022"],
-        "declaration": true,
-        "declarationMap": true,
-        "outDir": "dist"
-    },
-    "include": ["src", "test", ".storybook/*", "vitest.config.ts"]
+  "compilerOptions": {
+    "strict": true,
+    "skipLibCheck": true,
+    "module": "ES2022",
+    "target": "ES2022",
+    "moduleResolution": "bundler",
+    "lib": ["dom", "dom.iterable", "es2022"],
+    "declaration": true,
+    "declarationMap": true,
+    "outDir": "dist"
+  },
+  "include": ["src", "test", ".storybook/*", "vitest.config.ts"]
 }

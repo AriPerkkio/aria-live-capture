@@ -6,53 +6,53 @@ import '../expect-extend';
 import { createMountToggle } from '../utils';
 
 export default {
-    title: 'Elements/<output>',
+  title: 'Elements/<output>',
 } as Meta;
 
 export const LiveRegionAvailableBeforeContent: StoryFn = () => {
-    return createMountToggle(
-        `
+  return createMountToggle(
+    `
         <output>
         </output>
         `,
-        `
+    `
         <output>
             Hello world
         </output>
         `
-    );
+  );
 };
 LiveRegionAvailableBeforeContent.storyName =
-    'Live region available before content ✅';
+  'Live region available before content ✅';
 LiveRegionAvailableBeforeContent.play = async ({ canvasElement }) => {
-    const button = within(canvasElement).getByRole('button');
-    expect('Hello world').not.toBeAnnounced();
+  const button = within(canvasElement).getByRole('button');
+  expect('Hello world').not.toBeAnnounced();
 
-    await userEvent.click(button);
-    expect('Hello world').toBeAnnounced('polite');
+  await userEvent.click(button);
+  expect('Hello world').toBeAnnounced('polite');
 };
 
 export const LiveRegionUnavailableBeforeContent: StoryFn = () => {
-    return createMountToggle(
-        `
+  return createMountToggle(
+    `
         <div>
         </div>
         `,
-        `
+    `
         <div>
             <output>
                 Hello world
             </output>
         </div>
         `
-    );
+  );
 };
 LiveRegionUnavailableBeforeContent.storyName =
-    'Live region unavailable before content ❌';
+  'Live region unavailable before content ❌';
 LiveRegionUnavailableBeforeContent.play = async ({ canvasElement }) => {
-    const button = within(canvasElement).getByRole('button');
-    expect('Hello world').not.toBeAnnounced();
+  const button = within(canvasElement).getByRole('button');
+  expect('Hello world').not.toBeAnnounced();
 
-    await userEvent.click(button);
-    expect('Hello world').not.toBeAnnounced();
+  await userEvent.click(button);
+  expect('Hello world').not.toBeAnnounced();
 };

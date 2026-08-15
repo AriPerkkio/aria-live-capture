@@ -6,205 +6,205 @@ import '../expect-extend';
 import { createButtonCycle, times } from '../utils';
 
 export default {
-    title: 'DOM API Support/ShadowRoot',
+  title: 'DOM API Support/ShadowRoot',
 } as Meta;
 
 export const LiveRegionInsideShadowDOM: StoryFn = () => {
-    let shadowRoot: ShadowRoot;
-    let element: HTMLElement;
+  let shadowRoot: ShadowRoot;
+  let element: HTMLElement;
 
-    return createButtonCycle(
-        parent => {
-            const host = document.createElement('div');
-            parent.appendChild(host);
+  return createButtonCycle(
+    parent => {
+      const host = document.createElement('div');
+      parent.appendChild(host);
 
-            shadowRoot = host.attachShadow({ mode: 'open' });
-        },
-        () => {
-            element = document.createElement('div');
-            element.setAttribute('aria-live', 'polite');
+      shadowRoot = host.attachShadow({ mode: 'open' });
+    },
+    () => {
+      element = document.createElement('div');
+      element.setAttribute('aria-live', 'polite');
 
-            shadowRoot.appendChild(element);
-        },
-        () => {
-            element.textContent = 'Hello world';
-        }
-    );
+      shadowRoot.appendChild(element);
+    },
+    () => {
+      element.textContent = 'Hello world';
+    }
+  );
 };
 LiveRegionInsideShadowDOM.play = async ({ canvasElement }) => {
-    const button = within(canvasElement).getByRole('button');
-    expect('Hello world').not.toBeAnnounced();
+  const button = within(canvasElement).getByRole('button');
+  expect('Hello world').not.toBeAnnounced();
 
-    times(2)(async () => {
-        await userEvent.click(button);
-        expect('Hello world').not.toBeAnnounced();
-    });
-
+  times(2)(async () => {
     await userEvent.click(button);
-    expect('Hello world').toBeAnnounced('polite');
+    expect('Hello world').not.toBeAnnounced();
+  });
+
+  await userEvent.click(button);
+  expect('Hello world').toBeAnnounced('polite');
 };
 
 export const LiveRegionWrappingShadowDOM: StoryFn = () => {
-    let shadowRoot: ShadowRoot;
+  let shadowRoot: ShadowRoot;
 
-    return createButtonCycle(
-        parent => {
-            const region = document.createElement('div');
-            region.setAttribute('aria-live', 'polite');
-            parent.appendChild(region);
+  return createButtonCycle(
+    parent => {
+      const region = document.createElement('div');
+      region.setAttribute('aria-live', 'polite');
+      parent.appendChild(region);
 
-            const host = document.createElement('div');
-            region.appendChild(host);
+      const host = document.createElement('div');
+      region.appendChild(host);
 
-            shadowRoot = host.attachShadow({ mode: 'open' });
-        },
-        () => {
-            const element = document.createElement('div');
-            element.textContent = 'Hello world';
+      shadowRoot = host.attachShadow({ mode: 'open' });
+    },
+    () => {
+      const element = document.createElement('div');
+      element.textContent = 'Hello world';
 
-            shadowRoot.appendChild(element);
-        }
-    );
+      shadowRoot.appendChild(element);
+    }
+  );
 };
 LiveRegionWrappingShadowDOM.play = async ({ canvasElement }) => {
-    const button = within(canvasElement).getByRole('button');
-    expect('Hello world').not.toBeAnnounced();
+  const button = within(canvasElement).getByRole('button');
+  expect('Hello world').not.toBeAnnounced();
 
-    times(2)(async () => {
-        await userEvent.click(button);
-        expect('Hello world').not.toBeAnnounced();
-    });
-
+  times(2)(async () => {
     await userEvent.click(button);
-    expect('Hello world').toBeAnnounced('polite');
+    expect('Hello world').not.toBeAnnounced();
+  });
+
+  await userEvent.click(button);
+  expect('Hello world').toBeAnnounced('polite');
 };
 
 export const LiveRegionDeeplyInShadowDOM: StoryFn = () => {
-    let third: HTMLElement;
-    let last: ShadowRoot;
+  let third: HTMLElement;
+  let last: ShadowRoot;
 
-    return createButtonCycle(
-        parent => {
-            const first = document.createElement('div');
-            parent.appendChild(first);
+  return createButtonCycle(
+    parent => {
+      const first = document.createElement('div');
+      parent.appendChild(first);
 
-            const second = document.createElement('div');
-            first.attachShadow({ mode: 'open' }).appendChild(second);
+      const second = document.createElement('div');
+      first.attachShadow({ mode: 'open' }).appendChild(second);
 
-            third = document.createElement('div');
-            second.attachShadow({ mode: 'open' }).appendChild(third);
+      third = document.createElement('div');
+      second.attachShadow({ mode: 'open' }).appendChild(third);
 
-            const fourth = document.createElement('div');
-            third.attachShadow({ mode: 'open' }).appendChild(fourth);
+      const fourth = document.createElement('div');
+      third.attachShadow({ mode: 'open' }).appendChild(fourth);
 
-            last = fourth.attachShadow({ mode: 'open' });
-        },
-        () => {
-            third.setAttribute('aria-live', 'polite');
-        },
-        () => {
-            const hello = document.createElement('span');
-            hello.textContent = 'Hello ';
+      last = fourth.attachShadow({ mode: 'open' });
+    },
+    () => {
+      third.setAttribute('aria-live', 'polite');
+    },
+    () => {
+      const hello = document.createElement('span');
+      hello.textContent = 'Hello ';
 
-            const world = document.createElement('span');
-            world.textContent = 'world';
+      const world = document.createElement('span');
+      world.textContent = 'world';
 
-            const element = document.createElement('div');
-            element.appendChild(hello);
-            element.appendChild(world);
+      const element = document.createElement('div');
+      element.appendChild(hello);
+      element.appendChild(world);
 
-            last.appendChild(element);
-        }
-    );
+      last.appendChild(element);
+    }
+  );
 };
 LiveRegionDeeplyInShadowDOM.play = async ({ canvasElement }) => {
-    const button = within(canvasElement).getByRole('button');
-    expect('Hello world').not.toBeAnnounced();
+  const button = within(canvasElement).getByRole('button');
+  expect('Hello world').not.toBeAnnounced();
 
-    times(3)(async () => {
-        await userEvent.click(button);
-        expect('Hello world').not.toBeAnnounced();
-    });
-
+  times(3)(async () => {
     await userEvent.click(button);
-    expect('Hello world').toBeAnnounced('polite');
+    expect('Hello world').not.toBeAnnounced();
+  });
+
+  await userEvent.click(button);
+  expect('Hello world').toBeAnnounced('polite');
 };
 
 export const LiveRegionWrappingElementAndShadowDOM: StoryFn = () => {
-    let shadowRoot: ShadowRoot;
+  let shadowRoot: ShadowRoot;
 
-    return createButtonCycle(
-        parent => {
-            const region = document.createElement('div');
-            region.setAttribute('aria-live', 'polite');
-            parent.appendChild(region);
+  return createButtonCycle(
+    parent => {
+      const region = document.createElement('div');
+      region.setAttribute('aria-live', 'polite');
+      parent.appendChild(region);
 
-            const host = document.createElement('div');
-            region.appendChild(host);
+      const host = document.createElement('div');
+      region.appendChild(host);
 
-            shadowRoot = host.attachShadow({ mode: 'open' });
-        },
-        () => {
-            const hello = document.createElement('div');
-            hello.textContent = 'Hello';
+      shadowRoot = host.attachShadow({ mode: 'open' });
+    },
+    () => {
+      const hello = document.createElement('div');
+      hello.textContent = 'Hello';
 
-            const world = document.createElement('div');
-            world.textContent = 'world';
+      const world = document.createElement('div');
+      world.textContent = 'world';
 
-            shadowRoot.appendChild(hello);
-            shadowRoot.host.appendChild(world);
-        }
-    );
+      shadowRoot.appendChild(hello);
+      shadowRoot.host.appendChild(world);
+    }
+  );
 };
 LiveRegionWrappingElementAndShadowDOM.play = async ({ canvasElement }) => {
-    const button = within(canvasElement).getByRole('button');
-    expect('Hello world').not.toBeAnnounced();
+  const button = within(canvasElement).getByRole('button');
+  expect('Hello world').not.toBeAnnounced();
 
-    times(2)(async () => {
-        await userEvent.click(button);
-        expect('Hello').not.toBeAnnounced();
-    });
-
+  times(2)(async () => {
     await userEvent.click(button);
-    expect('Hello').toBeAnnounced('polite');
+    expect('Hello').not.toBeAnnounced();
+  });
+
+  await userEvent.click(button);
+  expect('Hello').toBeAnnounced('polite');
 };
 
 export const VisibilityToggle: StoryFn = () => {
-    let shadowRoot: ShadowRoot;
+  let shadowRoot: ShadowRoot;
 
-    const element = document.createElement('div');
-    element.textContent = 'Hello world';
+  const element = document.createElement('div');
+  element.textContent = 'Hello world';
 
-    function appendChild() {
-        shadowRoot.appendChild(element);
-    }
-    function removeChild() {
-        shadowRoot.removeChild(element);
-    }
+  function appendChild() {
+    shadowRoot.appendChild(element);
+  }
+  function removeChild() {
+    shadowRoot.removeChild(element);
+  }
 
-    return createButtonCycle(
-        parent => {
-            const region = document.createElement('div');
-            region.setAttribute('aria-live', 'polite');
-            parent.appendChild(region);
+  return createButtonCycle(
+    parent => {
+      const region = document.createElement('div');
+      region.setAttribute('aria-live', 'polite');
+      parent.appendChild(region);
 
-            const host = document.createElement('div');
-            region.appendChild(host);
+      const host = document.createElement('div');
+      region.appendChild(host);
 
-            shadowRoot = host.attachShadow({ mode: 'open' });
-        },
-        ...Array(50)
-            .fill([appendChild, removeChild])
-            .reduce((all, methods) => [...all, ...methods], [])
-    );
+      shadowRoot = host.attachShadow({ mode: 'open' });
+    },
+    ...Array(50)
+      .fill([appendChild, removeChild])
+      .reduce((all, methods) => [...all, ...methods], [])
+  );
 };
 VisibilityToggle.play = async ({ canvasElement }) => {
-    const button = within(canvasElement).getByRole('button');
-    expect('Hello world').not.toBeAnnounced();
+  const button = within(canvasElement).getByRole('button');
+  expect('Hello world').not.toBeAnnounced();
 
-    await userEvent.click(button);
-    expect('Hello world').not.toBeAnnounced();
+  await userEvent.click(button);
+  expect('Hello world').not.toBeAnnounced();
 
-    await userEvent.click(button);
-    expect('Hello world').toBeAnnounced('polite');
+  await userEvent.click(button);
+  expect('Hello world').toBeAnnounced('polite');
 };

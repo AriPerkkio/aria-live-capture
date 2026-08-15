@@ -8,33 +8,33 @@ type ExecutionOrder = 'BEFORE' | 'AFTER';
  * - Original setter is invoked first
  */
 export function interceptSetter<
-    T extends object = object,
-    P extends keyof T = keyof T,
-    K extends T[P] = T[P],
+  T extends object = object,
+  P extends keyof T = keyof T,
+  K extends T[P] = T[P],
 >(obj: T, property: P, method: (value: K) => void): Restore {
-    const descriptor = Object.getOwnPropertyDescriptor(obj, property);
+  const descriptor = Object.getOwnPropertyDescriptor(obj, property);
 
-    if (!descriptor || !descriptor.set) {
-        throw new Error(
-            `Unable to intercept ${String(property)}. No descriptor available.`
-        );
-    }
+  if (!descriptor || !descriptor.set) {
+    throw new Error(
+      `Unable to intercept ${String(property)}. No descriptor available.`
+    );
+  }
 
-    const originalSetter = descriptor.set;
+  const originalSetter = descriptor.set;
 
-    descriptor.set = function interceptedSet(value: K) {
-        const output = originalSetter.call(this, value);
-        method.call(this, value);
+  descriptor.set = function interceptedSet(value: K) {
+    const output = originalSetter.call(this, value);
+    method.call(this, value);
 
-        return output;
-    };
+    return output;
+  };
 
+  Object.defineProperty(obj, property, descriptor);
+
+  return function restore() {
+    descriptor.set = originalSetter;
     Object.defineProperty(obj, property, descriptor);
-
-    return function restore() {
-        descriptor.set = originalSetter;
-        Object.defineProperty(obj, property, descriptor);
-    };
+  };
 }
 
 /**
@@ -42,47 +42,47 @@ export function interceptSetter<
  * - Original method is invoked first by default
  */
 export function interceptMethod<
-    T extends object = object,
-    P extends keyof T = keyof T,
+  T extends object = object,
+  P extends keyof T = keyof T,
 >(
-    object: T,
-    methodName: P,
-    method: (...args: any[]) => void,
-    order: ExecutionOrder = 'AFTER'
+  object: T,
+  methodName: P,
+  method: (...args: any[]) => void,
+  order: ExecutionOrder = 'AFTER'
 ): Restore {
-    const original = object[methodName] as unknown as typeof method;
+  const original = object[methodName] as unknown as typeof method;
 
-    if (typeof original !== 'function') {
-        throw new Error(
-            `Expected ${String(
-                methodName
-            )} to be a function. Received ${typeof original}: ${original}`
-        );
+  if (typeof original !== 'function') {
+    throw new Error(
+      `Expected ${String(
+        methodName
+      )} to be a function. Received ${typeof original}: ${original}`
+    );
+  }
+
+  if (typeof method !== 'function') {
+    throw new Error(
+      `Expected method to be a function. Received ${typeof method}: ${method}`
+    );
+  }
+
+  function interceptedMethod(this: T, ...args: any) {
+    if (order === 'BEFORE') {
+      method.call(this, ...args);
     }
 
-    if (typeof method !== 'function') {
-        throw new Error(
-            `Expected method to be a function. Received ${typeof method}: ${method}`
-        );
+    const output = original.call(this, ...args);
+
+    if (order === 'AFTER') {
+      method.call(this, ...args);
     }
 
-    function interceptedMethod(this: T, ...args: any) {
-        if (order === 'BEFORE') {
-            method.call(this, ...args);
-        }
+    return output;
+  }
 
-        const output = original.call(this, ...args);
+  object[methodName] = interceptedMethod as any;
 
-        if (order === 'AFTER') {
-            method.call(this, ...args);
-        }
-
-        return output;
-    }
-
-    object[methodName] = interceptedMethod as any;
-
-    return function restore() {
-        object[methodName] = original as any;
-    };
+  return function restore() {
+    object[methodName] = original as any;
+  };
 }

@@ -65,7 +65,7 @@ Default value is `false`.
 
 ```ts
 CaptureAnnouncements({
-    includeShadowDom: true,
+  includeShadowDom: true,
 });
 ```
 

@@ -1,45 +1,45 @@
 name: CI
 
 on:
-    push:
-        branches:
-            - master
-    pull_request:
-    workflow_dispatch:
+  push:
+    branches:
+      - master
+  pull_request:
+  workflow_dispatch:
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-latest
 
-        strategy:
-            matrix:
-                node-version: [22, 24, 26]
+    strategy:
+      matrix:
+        node-version: [22, 24, 26]
 
-        steps:
-            - uses: actions/checkout@v7
+    steps:
+      - uses: actions/checkout@v7
 
-            - name: Install pnpm
-              uses: pnpm/action-setup@v6
+      - name: Install pnpm
+        uses: pnpm/action-setup@v6
 
-            - uses: ./.github/actions/setup-and-cache
-              with:
-                  node-version: ${{ matrix.node-version }}
+      - uses: ./.github/actions/setup-and-cache
+        with:
+          node-version: ${{ matrix.node-version }}
 
-            - name: Install & Build
-              run: |
-                  pnpm install
-                  pnpm build
+      - name: Install & Build
+        run: |
+          pnpm install
+          pnpm build
 
-            - name: Lint
-              run: pnpm lint
+      - name: Lint
+        run: pnpm lint
 
-            - name: Typecheck
-              run: pnpm typecheck
+      - name: Typecheck
+        run: pnpm typecheck
 
-            - name: Unit Tests
-              run: pnpm test
+      - name: Unit Tests
+        run: pnpm test
 
-            - name: Documentation Tests
-              run: |
-                  pnpm docs:build
-                  pnpm test:docs
+      - name: Documentation Tests
+        run: |
+          pnpm docs:build
+          pnpm test:docs

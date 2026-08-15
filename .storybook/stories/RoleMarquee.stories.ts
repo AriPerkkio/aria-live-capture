@@ -6,92 +6,92 @@ import '../expect-extend';
 import { createMountToggle } from '../utils';
 
 export default {
-    title: 'Role/role="marquee"',
+  title: 'Role/role="marquee"',
 } as Meta;
 
 export const WithTextContent: StoryFn = () => {
-    return createMountToggle(
-        `
+  return createMountToggle(
+    `
         <div role="marquee">
         </div>
         `,
-        `
+    `
         <div role="marquee">
             Hello world
         </div>
         `
-    );
+  );
 };
 WithTextContent.storyName = 'With text content ❌';
 WithTextContent.play = async ({ canvasElement }) => {
-    const button = within(canvasElement).getByRole('button');
-    expect('Hello world').not.toBeAnnounced();
+  const button = within(canvasElement).getByRole('button');
+  expect('Hello world').not.toBeAnnounced();
 
-    await userEvent.click(button);
-    expect('Hello world').not.toBeAnnounced();
+  await userEvent.click(button);
+  expect('Hello world').not.toBeAnnounced();
 };
 
 export const WrapsLiveRegion: StoryFn = () => {
-    return createMountToggle(
-        `
+  return createMountToggle(
+    `
         <div role="marquee">
             <div role="status">
             </div>
         </div>
         `,
-        `
+    `
         <div role="marquee">
             <div role="status">
                 Hello world
             </div>
         </div>
         `
-    );
+  );
 };
 WrapsLiveRegion.storyName = 'Wraps live region ✅';
 WrapsLiveRegion.play = async ({ canvasElement }) => {
-    const button = within(canvasElement).getByRole('button');
-    expect('Hello world').not.toBeAnnounced();
+  const button = within(canvasElement).getByRole('button');
+  expect('Hello world').not.toBeAnnounced();
 
-    await userEvent.click(button);
-    expect('Hello world').toBeAnnounced('polite');
+  await userEvent.click(button);
+  expect('Hello world').toBeAnnounced('polite');
 };
 
 export const WrappedInLiveRegion: StoryFn = () => {
-    return createMountToggle(
-        `
+  return createMountToggle(
+    `
         <div role="status">
             <div role="marquee">
             </div>
         </div>
         `,
-        `
+    `
         <div role="status">
             <div role="marquee">
                 Hello world
             </div>
         </div>
         `
-    );
+  );
 };
 WrappedInLiveRegion.storyName = 'Wrapped in live region ❌';
 WrappedInLiveRegion.play = async ({ canvasElement }) => {
-    const button = within(canvasElement).getByRole('button');
-    expect('Hello world').not.toBeAnnounced();
+  const button = within(canvasElement).getByRole('button');
+  expect('Hello world').not.toBeAnnounced();
 
-    await userEvent.click(button);
-    expect('Hello world').not.toBeAnnounced();
+  await userEvent.click(button);
+  expect('Hello world').not.toBeAnnounced();
 };
 
 export const SiblingIsVisible: StoryFn = () => {
-    return createMountToggle(
-        `
+  return createMountToggle(
+    `
         <div role="status">
             <div role="marquee">
             </div>
         </div>
         `,
-        `
+    `
         <div role="status">
             <div role="marquee">
                 Hello
@@ -101,15 +101,15 @@ export const SiblingIsVisible: StoryFn = () => {
             </div>
         </div>
         `
-    );
+  );
 };
 SiblingIsVisible.storyName = 'Sibling is visible ⚠️';
 SiblingIsVisible.play = async ({ canvasElement }) => {
-    const button = within(canvasElement).getByRole('button');
-    expect('Hello world').not.toBeAnnounced();
+  const button = within(canvasElement).getByRole('button');
+  expect('Hello world').not.toBeAnnounced();
 
-    await userEvent.click(button);
-    expect('world').toBeAnnounced('polite');
-    expect('Hello world').not.toBeAnnounced();
-    expect('world').not.toBeAnnounced();
+  await userEvent.click(button);
+  expect('world').toBeAnnounced('polite');
+  expect('Hello world').not.toBeAnnounced();
+  expect('world').not.toBeAnnounced();
 };

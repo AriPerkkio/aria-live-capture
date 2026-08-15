@@ -9,77 +9,77 @@ import { AnnouncementEvents, SourceCodeUpdateEvents } from './utils';
 type StoryFn = () => HTMLElement;
 
 CaptureAnnouncements({
-    onCapture: (text, level) => AnnouncementEvents.emit({ text, level }),
-    includeShadowDom: true,
+  onCapture: (text, level) => AnnouncementEvents.emit({ text, level }),
+  includeShadowDom: true,
 });
 
 addons.getChannel().addListener(STORY_CHANGED, () => {
-    // Reset captures after a story changes
-    AnnouncementEvents.clear();
+  // Reset captures after a story changes
+  AnnouncementEvents.clear();
 });
 
 export const decorators = [
-    function withSourceCode(Story: StoryFn) {
-        const html = Story();
-        const sourceCodeFrame = document.createElement('div');
-        const sourceCodeId = 'source-code-frame';
-        const storyTargetId = 'story-target-source-code-frame';
+  function withSourceCode(Story: StoryFn) {
+    const html = Story();
+    const sourceCodeFrame = document.createElement('div');
+    const sourceCodeId = 'source-code-frame';
+    const storyTargetId = 'story-target-source-code-frame';
 
-        sourceCodeFrame.innerHTML = `
+    sourceCodeFrame.innerHTML = `
             <div style="display: flex; flex-direction: row; align-content: baseline;">
                 <div id="${storyTargetId}" style="flex-basis: 50%;"></div>
                 <pre id="${sourceCodeId}" aria-live="off" aria-hidden="true" style="flex-basis: 50%; margin: 0; background-color: #eee; padding: 0.5rem;"></pre>
             </div>
         `.trim();
 
-        function updateSourceCodeFrame() {
-            const code = compose(
-                escapeHTML,
-                formatSourceCode,
-                prettyDOMWithShadowDOM
-            )(html);
+    function updateSourceCodeFrame() {
+      const code = compose(
+        escapeHTML,
+        formatSourceCode,
+        prettyDOMWithShadowDOM
+      )(html);
 
-            const frame = sourceCodeFrame.querySelector(`#${sourceCodeId}`);
-            if (!frame) throw new Error(`Unable to find ${sourceCodeId}`);
-            frame.innerHTML = code;
-        }
+      const frame = sourceCodeFrame.querySelector(`#${sourceCodeId}`);
+      if (!frame) throw new Error(`Unable to find ${sourceCodeId}`);
+      frame.innerHTML = code;
+    }
 
-        SourceCodeUpdateEvents.on(updateSourceCodeFrame);
-        updateSourceCodeFrame();
+    SourceCodeUpdateEvents.on(updateSourceCodeFrame);
+    updateSourceCodeFrame();
 
-        const storyTarget = sourceCodeFrame.querySelector(`#${storyTargetId}`);
-        if (!storyTarget) throw new Error(`Unable to find ${storyTargetId}`);
-        storyTarget.appendChild(html);
+    const storyTarget = sourceCodeFrame.querySelector(`#${storyTargetId}`);
+    if (!storyTarget) throw new Error(`Unable to find ${storyTargetId}`);
+    storyTarget.appendChild(html);
 
-        return sourceCodeFrame;
-    },
+    return sourceCodeFrame;
+  },
 
-    function withFocusTarget(Story: StoryFn) {
-        const wrapper = document.createElement('div');
-        const focusTarget = document.createElement('a');
-        focusTarget.setAttribute('tabindex', '0');
-        focusTarget.setAttribute('href', 'javascript:void(0)');
-        focusTarget.setAttribute(
-            'style',
-            'display: inline-block; margin-bottom: 2rem;'
-        );
-        focusTarget.textContent = 'Focus target';
+  function withFocusTarget(Story: StoryFn) {
+    const wrapper = document.createElement('div');
+    const focusTarget = document.createElement('a');
+    focusTarget.setAttribute('tabindex', '0');
+    focusTarget.setAttribute('href', 'javascript:void(0)');
+    focusTarget.setAttribute(
+      'style',
+      'display: inline-block; margin-bottom: 2rem;'
+    );
+    focusTarget.textContent = 'Focus target';
 
-        wrapper.appendChild(focusTarget);
-        wrapper.appendChild(Story());
+    wrapper.appendChild(focusTarget);
+    wrapper.appendChild(Story());
 
-        setTimeout(() => focusTarget.focus(), 1000);
+    setTimeout(() => focusTarget.focus(), 1000);
 
-        return wrapper;
-    },
+    return wrapper;
+  },
 
-    function withAnnouncements(Story: StoryFn) {
-        const html = Story();
-        const announcementsFrame = document.createElement('div');
-        const announcementsId = 'announcements-frame';
-        const storyTargetId = 'story-target-announcement-frame';
+  function withAnnouncements(Story: StoryFn) {
+    const html = Story();
+    const announcementsFrame = document.createElement('div');
+    const announcementsId = 'announcements-frame';
+    const storyTargetId = 'story-target-announcement-frame';
 
-        announcementsFrame.innerHTML = `
+    announcementsFrame.innerHTML = `
             <div style="display: flex; flex-direction: column; align-content: baseline;">
                 <div id="${storyTargetId}" style="flex-basis: 50%;"></div>
 
@@ -90,113 +90,109 @@ export const decorators = [
             </div>
         `.trim();
 
-        AnnouncementEvents.on(({ text, level }) => {
-            const li = document.createElement('li');
-            li.textContent = `${level}: ${text}`;
+    AnnouncementEvents.on(({ text, level }) => {
+      const li = document.createElement('li');
+      li.textContent = `${level}: ${text}`;
 
-            const list = announcementsFrame.querySelector(
-                `#${announcementsId}`
-            );
-            if (!list) throw new Error(`Unable to find ${announcementsId}`);
-            list.appendChild(li);
-        });
+      const list = announcementsFrame.querySelector(`#${announcementsId}`);
+      if (!list) throw new Error(`Unable to find ${announcementsId}`);
+      list.appendChild(li);
+    });
 
-        const storyTarget = announcementsFrame.querySelector(
-            `#${storyTargetId}`
-        );
-        if (!storyTarget) throw new Error(`Unable to find ${storyTargetId}`);
-        storyTarget.appendChild(html);
+    const storyTarget = announcementsFrame.querySelector(`#${storyTargetId}`);
+    if (!storyTarget) throw new Error(`Unable to find ${storyTargetId}`);
+    storyTarget.appendChild(html);
 
-        return announcementsFrame;
-    },
+    return announcementsFrame;
+  },
 ];
 
 function escapeHTML(str: string) {
-    return str.replace(
-        /[&<>'"]/g,
-        tag =>
-            // @ts-expect-error -- umm...
-            ({
-                '&': '&amp;',
-                '<': '&lt;',
-                '>': '&gt;',
-                "'": '&#39;',
-                '"': '&quot;',
-            })[tag]
-    );
+  return str.replace(
+    /[&<>'"]/g,
+    tag =>
+      // @ts-expect-error -- umm...
+      ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        "'": '&#39;',
+        '"': '&quot;',
+      })[tag]
+  );
 }
 
 function formatSourceCode(str: string) {
-    return (
-        str
-            // Remove double line breaks
-            .replace(/\n +\n/g, '\n')
+  return (
+    str
+      // Remove double line breaks
+      .replace(/\n +\n/g, '\n')
 
-            // Remove parent div
-            .replace(/(^<div>\n|\n<\/div>$)/g, '')
+      // Remove parent div
+      .replace(/(^<div>\n|\n<\/div>$)/g, '')
 
-            // Remove one level of indention
-            .replace(/^ {2}/g, '')
-            .replace(/\n {2}/g, '\n')
+      // Remove one level of indention
+      .replace(/^ {2}/g, '')
+      .replace(/\n {2}/g, '\n')
 
-            // Add newline between each root level element
-            .replace(/(>\n)(<\w)/g, '$1\n$2')
+      // Add newline between each root level element
+      .replace(/(>\n)(<\w)/g, '$1\n$2')
 
-            // Replace self-ending tags with starting and ending tags
-            .replace(/( *)<(\w+)((\s|\w|=|"|-)*)\s*\/>/g, '$1<$2 $3>\n$1</$2>')
+      // Replace self-ending tags with starting and ending tags
+      .replace(/( *)<(\w+)((\s|\w|=|"|-)*)\s*\/>/g, '$1<$2 $3>\n$1</$2>')
 
-            // Align attributes to same level as tag when there is only a single attribute
-            .replace(/<(\w+) *\n +((\w|=|"|-)+)\n *>/g, '<$1 $2>')
+      // Align attributes to same level as tag when there is only a single attribute
+      .replace(/<(\w+) *\n +((\w|=|"|-)+)\n *>/g, '<$1 $2>')
 
-            // Remove spaces before end tag
-            .replace(/ +>/g, '>')
-    );
+      // Remove spaces before end tag
+      .replace(/ +>/g, '>')
+  );
 }
 
 const compose = (...fns: any[]) =>
-    fns.reduceRight(
-        (prevFn, nextFn) =>
-            (...args: any[]) =>
-                nextFn(prevFn(...args)),
-        (value: any) => value
-    );
+  fns.reduceRight(
+    (prevFn, nextFn) =>
+      (...args: any[]) =>
+        nextFn(prevFn(...args)),
+    (value: any) => value
+  );
 
 expect.extend({
-    toBeAnnounced: function toBeAnnounced(
-        this: { isNot?: boolean },
-        text: string,
-        politenessSetting?: 'assertive' | 'polite'
-    ) {
-        const container = within(document.body).getByRole('heading', {
-            name: 'Captured announcements',
-            hidden: true,
-        }).parentElement;
+  toBeAnnounced: function toBeAnnounced(
+    this: { isNot?: boolean },
+    text: string,
+    politenessSetting?: 'assertive' | 'polite'
+  ) {
+    const container = within(document.body).getByRole('heading', {
+      name: 'Captured announcements',
+      hidden: true,
+    }).parentElement;
 
-        if (!container) {
-            return {
-                pass: false,
-                message: () => 'Unable to find announcements container',
-            };
-        }
+    if (!container) {
+      return {
+        pass: false,
+        message: () => 'Unable to find announcements container',
+      };
+    }
 
-        const [element] = within(container).queryAllByText(
-            `${politenessSetting}: ${text}`
-        );
+    const [element] = within(container).queryAllByText(
+      `${politenessSetting}: ${text}`
+    );
 
-        const pass = element != null;
+    const pass = element != null;
 
-        if (pass) {
-            return {
-                pass,
-                message: () =>
-                    `Expected announcement "${text}" not to be done, but it was.`,
-            };
-        }
+    if (pass) {
+      return {
+        pass,
+        message: () =>
+          `Expected announcement "${text}" not to be done, but it was.`,
+      };
+    }
 
-        return {
-            pass,
-            message: () =>
-                `Expected announcement "${text}" to be done, but it was not.`,
-        };
-    },
+    return {
+      pass,
+      message: () =>
+        `Expected announcement "${text}" to be done, but it was not.`,
+    };
+  },
 });

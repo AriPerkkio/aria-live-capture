@@ -1,99 +1,99 @@
 name: Publish
 
 on:
-    workflow_dispatch:
-        inputs:
-            release-type:
-                type: choice
-                description: Type of the release
-                options:
-                    - snapshot
-                    - patch
-                    - minor
-                    - major
+  workflow_dispatch:
+    inputs:
+      release-type:
+        type: choice
+        description: Type of the release
+        options:
+          - snapshot
+          - patch
+          - minor
+          - major
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
-        if: ${{ github.event.inputs.release-type != 'snapshot' }}
-        steps:
-            - uses: actions/checkout@v7
-              with:
-                  fetch-depth: 0
+  build:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.release-type != 'snapshot' }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
 
-            - uses: actions/setup-node@v6
-              with:
-                  node-version: 24
-                  registry-url: 'https://registry.npmjs.org'
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          registry-url: 'https://registry.npmjs.org'
 
-            - name: Install pnpm
-              uses: pnpm/action-setup@v6
+      - name: Install pnpm
+        uses: pnpm/action-setup@v6
 
-            - name: Install
-              run: |
-                  pnpm install
-                  pnpm exec playwright install
+      - name: Install
+        run: |
+          pnpm install
+          pnpm exec playwright install
 
-            - name: Build
-              run: pnpm build
+      - name: Build
+        run: pnpm build
 
-            - name: Test
-              run: pnpm test
+      - name: Test
+        run: pnpm test
 
-            - name: Lint
-              run: pnpm lint
+      - name: Lint
+        run: pnpm lint
 
-            - name: Typecheck
-              run: pnpm typecheck
+      - name: Typecheck
+        run: pnpm typecheck
 
-            - name: Configure github-actions git
-              run: |
-                  git config --global user.name 'github-actions'
-                  git config --global user.email 'github-actions@users.noreply.github.com'
+      - name: Configure github-actions git
+        run: |
+          git config --global user.name 'github-actions'
+          git config --global user.email 'github-actions@users.noreply.github.com'
 
-            - name: Bump version
-              run: npm version ${{ github.event.inputs.release-type }}
+      - name: Bump version
+        run: npm version ${{ github.event.inputs.release-type }}
 
-            - name: Generate changelog
-              run: |
-                  pnpm changelog
-                  git add CHANGELOG.md
-                  git commit -m 'chore: changelog'
+      - name: Generate changelog
+        run: |
+          pnpm changelog
+          git add CHANGELOG.md
+          git commit -m 'chore: changelog'
 
-            - name: Push release tag
-              run: git push origin master --follow-tags
+      - name: Push release tag
+        run: git push origin master --follow-tags
 
-            - name: Publish to npm
-              run: npm publish
-              env:
-                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Publish to npm
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-    publish-snapshot:
-        runs-on: ubuntu-latest
-        if: ${{ github.event.inputs.release-type == 'snapshot' }}
-        steps:
-            - uses: actions/checkout@v7
-              with:
-                  fetch-depth: 0
+  publish-snapshot:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.release-type == 'snapshot' }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
 
-            - uses: actions/setup-node@v6
-              with:
-                  node-version: 24
-                  registry-url: 'https://registry.npmjs.org'
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          registry-url: 'https://registry.npmjs.org'
 
-            - name: Install pnpm
-              uses: pnpm/action-setup@v6
+      - name: Install pnpm
+        uses: pnpm/action-setup@v6
 
-            - name: Install
-              run: pnpm install
+      - name: Install
+        run: pnpm install
 
-            - name: Build
-              run: pnpm build
+      - name: Build
+        run: pnpm build
 
-            - name: Bump snapshot version
-              run: npm version --no-git-tag-version --preid=snapshot-$(git rev-parse --short HEAD) prepatch
+      - name: Bump snapshot version
+        run: npm version --no-git-tag-version --preid=snapshot-$(git rev-parse --short HEAD) prepatch
 
-            - name: Bump snapshot version
-              run: npm publish --tag snapshot
-              env:
-                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Bump snapshot version
+        run: npm publish --tag snapshot
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
