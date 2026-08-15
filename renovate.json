@@ -1,37 +1,37 @@
 {
-    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-    "extends": ["schedule:weekly"],
-    "labels": ["dependencies"],
-    "rangeStrategy": "bump",
-    "dependencyDashboard": true,
-    "packageRules": [
-        {
-            "matchUpdateTypes": ["minor", "patch"],
-            "matchManagers": ["npm"],
-            "groupName": "all non-major npm dependencies",
-            "groupSlug": "all-minor-patch-npm"
-        },
-        {
-            "matchUpdateTypes": ["major", "minor"],
-            "groupName": "typescript breaking changes",
-            "matchPackageNames": ["typescript"],
-            "description": "Typescript does not follow semver. Minor versions can introduce breaking changes."
-        },
-        {
-            "groupName": "storybook",
-            "description": "Storybook releases seem to break easily.",
-            "matchPackageNames": ["/^@storybook/", "/^storybook/"]
-        },
-        {
-            "matchUpdateTypes": ["major"],
-            "groupName": "vitest",
-            "description": "Vitest majors",
-            "matchPackageNames": ["/^@vitest/", "/^vitest/"]
-        },
-        {
-            "matchManagers": ["github-actions"],
-            "matchUpdateTypes": ["minor", "patch", "digest", "pin", "pinDigest"],
-            "enabled": false
-        }
-    ]
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["schedule:weekly"],
+  "labels": ["dependencies"],
+  "rangeStrategy": "bump",
+  "dependencyDashboard": true,
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["minor", "patch"],
+      "matchManagers": ["npm"],
+      "groupName": "all non-major npm dependencies",
+      "groupSlug": "all-minor-patch-npm"
+    },
+    {
+      "matchUpdateTypes": ["major", "minor"],
+      "groupName": "typescript breaking changes",
+      "matchPackageNames": ["typescript"],
+      "description": "Typescript does not follow semver. Minor versions can introduce breaking changes."
+    },
+    {
+      "groupName": "storybook",
+      "description": "Storybook releases seem to break easily.",
+      "matchPackageNames": ["/^@storybook/", "/^storybook/"]
+    },
+    {
+      "matchUpdateTypes": ["major"],
+      "groupName": "vitest",
+      "description": "Vitest majors",
+      "matchPackageNames": ["/^@vitest/", "/^vitest/"]
+    },
+    {
+      "matchManagers": ["github-actions"],
+      "matchUpdateTypes": ["minor", "patch", "digest", "pin", "pinDigest"],
+      "enabled": false
+    }
+  ]
 }

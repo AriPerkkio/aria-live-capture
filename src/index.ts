@@ -1,2 +1,2 @@
-export { default } from './capture-announcements.js';
-export type { PolitenessSetting } from './utils.js';
+export { default } from "./capture-announcements.js";
+export type { PolitenessSetting } from "./utils.js";

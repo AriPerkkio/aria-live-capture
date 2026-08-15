@@ -1,65 +1,65 @@
-import { defineConfig } from 'vitest/config';
-import { storybookTest } from '@storybook/addon-vitest/vitest-plugin';
-import { playwright } from '@vitest/browser-playwright';
+import { storybookTest } from "@storybook/addon-vitest/vitest-plugin";
+import { playwright } from "@vitest/browser-playwright";
+import { defineConfig } from "vitest/config";
 
-const UNIT_TEST_PATTERN = ['test/**/*.test.ts'];
+const UNIT_TEST_PATTERN = ["test/**/*.test.ts"];
 
 export default defineConfig({
-    test: {
-        reporters: process.env.CI ? 'default' : 'tree',
+  test: {
+    reporters: process.env.CI ? "default" : "tree",
 
-        coverage: {
-            enabled: true,
-            include: ['src'],
-            thresholds: {
-                statements: 90,
-                branches: 85,
-                functions: 95,
-                lines: 90,
-            },
-        },
-
-        projects: [
-            {
-                plugins: [storybookTest()],
-                test: {
-                    name: 'storybook',
-                    setupFiles: ['.storybook/vitest.setup.ts'],
-                    browser: {
-                        enabled: true,
-                        headless: true,
-                        provider: playwright({
-                            launchOptions: { channel: 'chrome' },
-                        }),
-                        instances: [{ browser: 'chromium' }],
-                    },
-                },
-            },
-            {
-                extends: true,
-                test: {
-                    name: 'Browser',
-                    include: UNIT_TEST_PATTERN,
-                    setupFiles: ['./test/setup.ts'],
-                    browser: {
-                        enabled: true,
-                        headless: true,
-                        provider: playwright({
-                            launchOptions: { channel: 'chrome' },
-                        }),
-                        instances: [{ browser: 'chromium' }],
-                    },
-                },
-            },
-            {
-                extends: true,
-                test: {
-                    name: 'JSDOM',
-                    include: UNIT_TEST_PATTERN,
-                    setupFiles: ['./test/setup.ts'],
-                    environment: 'jsdom',
-                },
-            },
-        ],
+    coverage: {
+      enabled: true,
+      include: ["src"],
+      thresholds: {
+        statements: 90,
+        branches: 85,
+        functions: 95,
+        lines: 90,
+      },
     },
+
+    projects: [
+      {
+        plugins: [storybookTest()],
+        test: {
+          name: "storybook",
+          setupFiles: [".storybook/vitest.setup.ts"],
+          browser: {
+            enabled: true,
+            headless: true,
+            provider: playwright({
+              launchOptions: { channel: "chrome" },
+            }),
+            instances: [{ browser: "chromium" }],
+          },
+        },
+      },
+      {
+        extends: true,
+        test: {
+          name: "Browser",
+          include: UNIT_TEST_PATTERN,
+          setupFiles: ["./test/setup.ts"],
+          browser: {
+            enabled: true,
+            headless: true,
+            provider: playwright({
+              launchOptions: { channel: "chrome" },
+            }),
+            instances: [{ browser: "chromium" }],
+          },
+        },
+      },
+      {
+        extends: true,
+        test: {
+          name: "JSDOM",
+          include: UNIT_TEST_PATTERN,
+          setupFiles: ["./test/setup.ts"],
+          environment: "jsdom",
+        },
+      },
+    ],
+  },
 });

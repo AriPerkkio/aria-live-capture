@@ -1,108 +1,103 @@
-import { htmlToElement, update } from 'virtual-dom-nodes';
+import { htmlToElement, update } from "virtual-dom-nodes";
 
-export function createMountToggle(
-    unmountedState: string,
-    mountedState: string
-) {
-    const button = document.createElement('button');
-    button.textContent = 'Mount';
+export function createMountToggle(unmountedState: string, mountedState: string) {
+  const button = document.createElement("button");
+  button.textContent = "Mount";
 
-    const wrapper = document.createElement('div');
-    wrapper.appendChild(button);
-    wrapper.appendChild(htmlToElement(unmountedState));
+  const wrapper = document.createElement("div");
+  wrapper.appendChild(button);
+  wrapper.appendChild(htmlToElement(unmountedState));
 
-    let toggled = false;
-    button.addEventListener('click', () => {
-        const lastChild = wrapper.lastChild;
-        if (!lastChild) throw new Error('wrapper missing lastChild');
+  let toggled = false;
+  button.addEventListener("click", () => {
+    const lastChild = wrapper.lastChild;
+    if (!lastChild) throw new Error("wrapper missing lastChild");
 
-        update(lastChild, toggled ? unmountedState : mountedState);
+    update(lastChild, toggled ? unmountedState : mountedState);
 
-        toggled = !toggled;
-        SourceCodeUpdateEvents.emit(undefined);
-    });
+    toggled = !toggled;
+    SourceCodeUpdateEvents.emit(undefined);
+  });
 
-    return wrapper;
+  return wrapper;
 }
 
-export function createButtonCycle(
-    ...onClicks: ((wrapper: HTMLElement) => void)[]
-) {
-    const button = document.createElement('button');
-    button.textContent = 'Next state';
+export function createButtonCycle(...onClicks: ((wrapper: HTMLElement) => void)[]) {
+  const button = document.createElement("button");
+  button.textContent = "Next state";
 
-    const wrapper = document.createElement('div');
-    wrapper.appendChild(button);
+  const wrapper = document.createElement("div");
+  wrapper.appendChild(button);
 
-    function cleanWrapper() {
-        for (const child of wrapper.childNodes) {
-            if (child !== button) {
-                wrapper.removeChild(child);
-            }
-        }
+  function cleanWrapper() {
+    for (const child of wrapper.childNodes) {
+      if (child !== button) {
+        wrapper.removeChild(child);
+      }
+    }
+  }
+
+  const maxIndex = onClicks.length;
+  let index = 0;
+
+  button.addEventListener("click", () => {
+    if (index === maxIndex) {
+      cleanWrapper();
+      index = 0;
+    } else {
+      onClicks[index](wrapper);
+      index++;
     }
 
-    const maxIndex = onClicks.length;
-    let index = 0;
+    SourceCodeUpdateEvents.emit(undefined);
+  });
 
-    button.addEventListener('click', () => {
-        if (index === maxIndex) {
-            cleanWrapper();
-            index = 0;
-        } else {
-            onClicks[index](wrapper);
-            index++;
-        }
-
-        SourceCodeUpdateEvents.emit(undefined);
-    });
-
-    return wrapper;
+  return wrapper;
 }
 
 type Subscriber<T> = (event: T) => void;
 class EventBus<EventType = undefined> {
-    subscribers: Subscriber<EventType>[] = [];
-    events: EventType[] = [];
+  subscribers: Subscriber<EventType>[] = [];
+  events: EventType[] = [];
 
-    on(subscriber: Subscriber<EventType>) {
-        this.subscribers.push(subscriber);
-        this.events.forEach(subscriber);
-    }
+  on(subscriber: Subscriber<EventType>) {
+    this.subscribers.push(subscriber);
+    this.events.forEach(subscriber);
+  }
 
-    off(subscriber: Subscriber<EventType>) {
-        this.subscribers = this.subscribers.filter(s => s !== subscriber);
-    }
+  off(subscriber: Subscriber<EventType>) {
+    this.subscribers = this.subscribers.filter((s) => s !== subscriber);
+  }
 
-    emit(event: EventType) {
-        this.subscribers.forEach(subscriber => subscriber(event));
-        this.events.push(event);
-    }
+  emit(event: EventType) {
+    this.subscribers.forEach((subscriber) => subscriber(event));
+    this.events.push(event);
+  }
 
-    clear() {
-        this.events = [];
-    }
+  clear() {
+    this.events = [];
+  }
 }
 
 export const SourceCodeUpdateEvents = new EventBus();
 
 export const AnnouncementEvents = new EventBus<{
-    text: string;
-    level: string;
+  text: string;
+  level: string;
 }>();
 
 export function times(count: number) {
-    return function execute<T>(
-        method: () => T
-    ): T extends Promise<any> ? Promise<Awaited<T>[]> : void {
-        const outputs = Array(count).fill(null).map(method);
+  return function execute<T>(
+    method: () => T,
+  ): T extends Promise<any> ? Promise<Awaited<T>[]> : void {
+    const outputs = Array(count).fill(null).map(method);
 
-        if (outputs.some(o => o instanceof Promise)) {
-            // @ts-expect-error --complex type
-            return Promise.all(outputs);
-        }
+    if (outputs.some((o) => o instanceof Promise)) {
+      // @ts-expect-error --complex type
+      return Promise.all(outputs);
+    }
 
-        // @ts-expect-error -- complex type
-        return;
-    };
+    // @ts-expect-error -- complex type
+    return;
+  };
 }

@@ -1,31 +1,32 @@
 name: Deploy docs
 
 on:
-    push:
-        branches:
-            - master
-    workflow_dispatch:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
 
 jobs:
-    deploy-docs:
-        runs-on: ubuntu-latest
+  deploy-docs:
+    runs-on: ubuntu-latest
 
-        steps:
-            - uses: actions/checkout@v7
-            - uses: pnpm/action-setup@v6
-            - uses: ./.github/actions/setup-and-cache
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: ./.github/actions/setup-and-cache
 
-            - run: |
-                  pnpm install
-                  pnpm exec playwright install
+      - run: |
+          pnpm install
+          pnpm exec playwright install
 
-            - run: pnpm build
-            - run: pnpm test
-            - run: pnpm lint
-            - run: pnpm docs:build
-            - name: Deploy with gh-pages
-              run: |
-                  git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-                  pnpm docs:deploy -u "github-actions-bot <support+actions@github.com>"
-              env:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: pnpm build
+      - run: pnpm test
+      - run: pnpm fmt --check
+      - run: pnpm lint
+      - run: pnpm docs:build
+      - name: Deploy with gh-pages
+        run: |
+          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          pnpm docs:deploy -u "github-actions-bot <support+actions@github.com>"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

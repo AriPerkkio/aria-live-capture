@@ -32,7 +32,7 @@ npm install --save-dev aria-live-capture
 Import `CaptureAnnouncements` from entrypoint.
 
 ```ts
-import CaptureAnnouncements from 'aria-live-capture';
+import CaptureAnnouncements from "aria-live-capture";
 ```
 
 ### onCapture
@@ -65,7 +65,7 @@ Default value is `false`.
 
 ```ts
 CaptureAnnouncements({
-    includeShadowDom: true,
+  includeShadowDom: true,
 });
 ```
 
