@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{s as t}from"./chunk-W22LQPXL-BaHg2iwv.js";import{i as n,r}from"./react-Bl2r1tuC.js";import{a as i,o as a,s as o}from"./blocks-CjzJhgPX.js";var s;function c(){return(c=e((()=>{s=`# aria-live-capture
+import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{s as t}from"./chunk-W22LQPXL-BaHg2iwv.js";import{i as n,r}from"./react-Bl2r1tuC.js";import{a as i,o as a,s as o}from"./blocks--CnVyKzG.js";var s;function c(){return(c=e((()=>{s=`# aria-live-capture
 
 <a href="https://www.npmjs.com/package/aria-live-capture">
     <img alt="version" src="https://img.shields.io/npm/v/aria-live-capture" />
@@ -32,7 +32,7 @@ npm install --save-dev aria-live-capture
 Import \`CaptureAnnouncements\` from entrypoint.
 
 \`\`\`ts
-import CaptureAnnouncements from 'aria-live-capture';
+import CaptureAnnouncements from "aria-live-capture";
 \`\`\`
 
 ### onCapture
@@ -65,7 +65,7 @@ Default value is \`false\`.
 
 \`\`\`ts
 CaptureAnnouncements({
-    includeShadowDom: true,
+  includeShadowDom: true,
 });
 \`\`\`
 
