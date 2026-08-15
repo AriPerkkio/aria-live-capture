@@ -1,6 +1,8 @@
 import { configure } from "./config.js";
 import { isElement } from "./dom-node-safe-guards.js";
-import { interceptMethod, interceptSetter, Restore } from "./interceptors.js";
+import type { Restore } from "./interceptors.js";
+import { interceptMethod, interceptSetter } from "./interceptors.js";
+import type { PolitenessSetting } from "./utils.js";
 import {
   getAllLiveRegions,
   getClosestElement,
@@ -9,7 +11,6 @@ import {
   isHidden,
   isInDOM,
   isLiveRegionAttribute,
-  PolitenessSetting,
   resolvePolitenessSetting,
   trimWhiteSpace,
 } from "./utils.js";

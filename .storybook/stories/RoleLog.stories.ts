@@ -1,4 +1,4 @@
-import type { StoryFn, Meta } from "storybook/html";
+import type { StoryFn, Meta } from "@storybook/html";
 import { within, userEvent } from "storybook/test";
 import { expect } from "storybook/test";
 

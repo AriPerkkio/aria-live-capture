@@ -1,4 +1,4 @@
-import type { StoryFn, Meta } from "storybook/html";
+import type { StoryFn, Meta } from "@storybook/html";
 import { within, userEvent } from "storybook/test";
 import { expect } from "storybook/test";
 
@@ -246,7 +246,7 @@ replaceChildren.play = async ({ canvasElement }) => {
   const button = within(canvasElement).getByRole("button");
   expect("Hello world").not.toBeAnnounced();
 
-  times(2)(async () => {
+  await times(2)(async () => {
     await userEvent.click(button);
     expect("Hello world").not.toBeAnnounced();
   });
@@ -290,7 +290,7 @@ removeAttribute.play = async ({ canvasElement }) => {
   const button = within(canvasElement).getByRole("button");
   expect("Hello world").not.toBeAnnounced();
 
-  times(4)(async () => {
+  await times(4)(async () => {
     await userEvent.click(button);
     expect("Hello world").not.toBeAnnounced();
   });

@@ -18,6 +18,7 @@ export function interceptSetter<
     throw new Error(`Unable to intercept ${String(property)}. No descriptor available.`);
   }
 
+  /* oxlint-disable typescript/unbound-method */
   const originalSetter = descriptor.set;
 
   descriptor.set = function interceptedSet(value: K) {
@@ -49,12 +50,14 @@ export function interceptMethod<T extends object = object, P extends keyof T = k
 
   if (typeof original !== "function") {
     throw new Error(
-      `Expected ${String(methodName)} to be a function. Received ${typeof original}: ${original}`,
+      `Expected ${String(methodName)} to be a function. Received ${typeof original as any}: ${original as any}`,
     );
   }
 
   if (typeof method !== "function") {
-    throw new Error(`Expected method to be a function. Received ${typeof method}: ${method}`);
+    throw new Error(
+      `Expected method to be a function. Received ${typeof method as any}: ${method as any}`,
+    );
   }
 
   function interceptedMethod(this: T, ...args: any) {

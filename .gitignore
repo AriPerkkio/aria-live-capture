@@ -4,3 +4,4 @@ coverage
 dist
 docs
 __screenshots__
+.vitest-attachments/

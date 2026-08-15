@@ -1,4 +1,5 @@
-import { Browser, chromium } from "playwright";
+import type { Browser } from "playwright";
+import { chromium } from "playwright";
 import { afterAll, beforeAll, test } from "vitest";
 
 let browser: Browser;
@@ -18,18 +19,18 @@ test("docs seem ok", async () => {
   await page.goto("http://localhost:8080");
 
   // Readme should be visible
-  await page.getByRole("heading", { level: 1, name: "aria-live-capture" });
-  await page.getByRole("heading", { level: 2, name: "Installation" });
-  await page.getByRole("heading", { level: 2, name: "Usage" });
-  await page.getByRole("heading", { level: 3, name: "onCapture" });
-  await page.getByRole("heading", { level: 3, name: "includeShadowDom" });
-  await page.getByRole("heading", { level: 3, name: "cleanup" });
+  page.getByRole("heading", { level: 1, name: "aria-live-capture" });
+  page.getByRole("heading", { level: 2, name: "Installation" });
+  page.getByRole("heading", { level: 2, name: "Usage" });
+  page.getByRole("heading", { level: 3, name: "onCapture" });
+  page.getByRole("heading", { level: 3, name: "includeShadowDom" });
+  page.getByRole("heading", { level: 3, name: "cleanup" });
 
   // Check one page
   await page.getByRole("button", { name: 'aria-live="polite"' }).click();
-  await page.getByRole("heading", {
+  page.getByRole("heading", {
     level: 2,
     name: "Captured announcements",
   });
-  await page.getByText("polite: Hello world");
+  page.getByText("polite: Hello world");
 });

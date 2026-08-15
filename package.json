@@ -29,7 +29,7 @@
     "prebuild": "rm -rf ./dist",
     "build": "tsc --project tsconfig.prod.json",
     "fmt": "oxfmt",
-    "lint": "eslint . --max-warnings 0 && publint",
+    "lint": "publint && oxlint",
     "test": "vitest run",
     "test:docs": "start-server-and-test docs:run 8080 docs:test",
     "typecheck": "tsc --noEmit",
@@ -41,7 +41,6 @@
     "docs:test": "vitest run --config ./vitest.config.docs.ts"
   },
   "devDependencies": {
-    "@eslint/js": "^10.0.1",
     "@storybook/addon-docs": "^10.5.7",
     "@storybook/addon-vitest": "^10.5.7",
     "@storybook/html": "10.5.7",
@@ -50,11 +49,12 @@
     "@vitest/browser": "^4.1.10",
     "@vitest/browser-playwright": "^4.1.10",
     "@vitest/coverage-v8": "^4.1.10",
-    "eslint": "^10.8.1",
     "gh-pages": "^6.3.0",
     "jsdom": "^29.1.1",
     "live-server": "1.2.2",
     "oxfmt": "^0.63.0",
+    "oxlint": "^1.78.0",
+    "oxlint-tsgolint": "^7.0.2001",
     "playwright": "1.62.1",
     "publint": "^0.3.23",
     "react": "^19.2.8",
@@ -62,7 +62,6 @@
     "start-server-and-test": "^3.0.12",
     "storybook": "^10.5.7",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.66.0",
     "virtual-dom-nodes": "^0.2.2",
     "vite": "^8.2.1",
     "vitest": "^4.1.10"
