@@ -1,22 +1,22 @@
-import { mergeConfig, type UserConfig } from 'vite';
-import type { StorybookConfig } from '@storybook/html-vite';
+import type { StorybookConfig } from "@storybook/html-vite";
+import { mergeConfig, type UserConfig } from "vite";
 
 const config: StorybookConfig = {
   stories: [
-    './README.mdx',
-    './**/AriaLive*.stories.ts',
-    './**/Role*.stories.ts',
-    './**/Output.stories.ts',
-    './**/ElementApi.stories.ts',
-    './**/*.stories.ts',
+    "./README.mdx",
+    "./**/AriaLive*.stories.ts",
+    "./**/Role*.stories.ts",
+    "./**/Output.stories.ts",
+    "./**/ElementApi.stories.ts",
+    "./**/*.stories.ts",
   ],
-  addons: ['@storybook/addon-docs', '@storybook/addon-vitest'],
-  framework: '@storybook/html-vite',
+  addons: ["@storybook/addon-docs", "@storybook/addon-vitest"],
+  framework: "@storybook/html-vite",
 
   async viteFinal(config, { configType }) {
     const viteConfig: UserConfig = {
       // Storybook is deployed at Github Pages
-      base: configType === 'PRODUCTION' ? '/aria-live-capture/' : '/',
+      base: configType === "PRODUCTION" ? "/aria-live-capture/" : "/",
 
       // Preserve names of functions. Those are used when adding custom Story names.
       esbuild: { keepNames: true },

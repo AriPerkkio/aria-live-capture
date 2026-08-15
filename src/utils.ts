@@ -1,9 +1,9 @@
-import { isElement } from './dom-node-safe-guards.js';
-import * as queries from './queries.js';
+import { isElement } from "./dom-node-safe-guards.js";
+import * as queries from "./queries.js";
 
-export type PolitenessSetting = 'polite' | 'assertive' | 'off';
+export type PolitenessSetting = "polite" | "assertive" | "off";
 
-const LIVE_REGION_ROLES = ['status', 'log', 'alert'] as const;
+const LIVE_REGION_ROLES = ["status", "log", "alert"] as const;
 type LiveRegionRole = (typeof LIVE_REGION_ROLES)[number];
 
 const LIVE_REGION_QUERY = [
@@ -12,12 +12,12 @@ const LIVE_REGION_QUERY = [
   '[role="alert"]',
   '[aria-live="polite"]',
   '[aria-live="assertive"]',
-  'output',
+  "output",
 
   // Roles with implicit aria-live="off"
   // '[role="marquee"]',
   // '[role="timer"]',
-].join(', ');
+].join(", ");
 
 const HIDDEN_QUERY = '[aria-hidden="true"]';
 
@@ -25,11 +25,7 @@ export function getAllLiveRegions(context: Document | Element): Element[] {
   const liveRegions = queries.querySelectorAll(context, LIVE_REGION_QUERY);
 
   // Check whether given `context` is also a live region
-  if (
-    isElement(context) &&
-    resolvePolitenessSetting(context) !== 'off' &&
-    isInDOM(context)
-  ) {
+  if (isElement(context) && resolvePolitenessSetting(context) !== "off" && isInDOM(context)) {
     return liveRegions.concat(context).filter(filterUnique);
   }
 
@@ -51,18 +47,15 @@ export function getClosestElement(node: Node): Element | null {
 }
 
 export function isLiveRegionAttribute(
-  attribute: string
+  attribute: string,
 ): attribute is LiveRegionRole | PolitenessSetting {
-  return (
-    LIVE_REGION_ROLES.includes(attribute as LiveRegionRole) ||
-    isPolitenessSetting(attribute)
-  );
+  return LIVE_REGION_ROLES.includes(attribute as LiveRegionRole) || isPolitenessSetting(attribute);
 }
 
 export function isInDOM(node: Node): boolean {
   const element = getClosestElement(node);
 
-  return element != null && queries.closest(element, 'html') != null;
+  return element != null && queries.closest(element, "html") != null;
 }
 
 // TODO: Support `hidden` and CSS attributes:
@@ -72,18 +65,18 @@ export function isHidden(node: Node): boolean {
 
   if (!element) return true;
 
-  if (element.getAttribute('aria-hidden') === 'true') {
+  if (element.getAttribute("aria-hidden") === "true") {
     return true;
   }
 
-  if (element.getAttribute('aria-live') === 'off') {
+  if (element.getAttribute("aria-live") === "off") {
     return true;
   }
 
-  const role = element.getAttribute('role');
-  const ariaLive = element.getAttribute('aria-live');
-  if (role === 'marquee' || role === 'timer') {
-    if (ariaLive !== 'polite' && ariaLive !== 'assertive') {
+  const role = element.getAttribute("role");
+  const ariaLive = element.getAttribute("aria-live");
+  if (role === "marquee" || role === "timer") {
+    if (ariaLive !== "polite" && ariaLive !== "assertive") {
       return true;
     }
   }
@@ -95,10 +88,8 @@ export function getClosestLiveRegion(element: Element | null): Element | null {
   return element ? queries.closest(element, LIVE_REGION_QUERY) : null;
 }
 
-function isPolitenessSetting(
-  setting: string | null
-): setting is PolitenessSetting {
-  return setting === 'polite' || setting === 'assertive' || setting === 'off';
+function isPolitenessSetting(setting: string | null): setting is PolitenessSetting {
+  return setting === "polite" || setting === "assertive" || setting === "off";
 }
 
 /**
@@ -106,18 +97,18 @@ function isPolitenessSetting(
  * - Recursively traverse tree up until live region is found
  */
 export function resolvePolitenessSetting(node: Node | null): PolitenessSetting {
-  if (!node || !isElement(node)) return 'off';
+  if (!node || !isElement(node)) return "off";
 
-  const ariaLive = node.getAttribute('aria-live');
+  const ariaLive = node.getAttribute("aria-live");
   if (isPolitenessSetting(ariaLive)) return ariaLive;
 
-  const role = node.getAttribute('role');
-  if (role === 'marquee' || role === 'timer') return 'off';
-  if (role === 'status' || role === 'log') return 'polite';
-  if (role === 'alert') return 'assertive';
+  const role = node.getAttribute("role");
+  if (role === "marquee" || role === "timer") return "off";
+  if (role === "status" || role === "log") return "polite";
+  if (role === "alert") return "assertive";
 
-  if (node.tagName.toLowerCase() === 'output') {
-    return 'polite';
+  if (node.tagName.toLowerCase() === "output") {
+    return "polite";
   }
 
   const closestLiveRegion = getClosestLiveRegion(node);
@@ -133,7 +124,7 @@ export function resolvePolitenessSetting(node: Node | null): PolitenessSetting {
 const WHITE_SPACE_REGEXP = /\s+/g;
 
 export function trimWhiteSpace(text: string): string | null {
-  const trimmed = text.trim().replace(WHITE_SPACE_REGEXP, ' ');
+  const trimmed = text.trim().replace(WHITE_SPACE_REGEXP, " ");
   return trimmed.length > 0 ? trimmed : null;
 }
 
@@ -151,10 +142,7 @@ export function getTextContent(node: Node | null): string | null {
   const childNodes = queries.getChildNodes(node);
   if (childNodes.length === 0) return null;
 
-  const textContent = Array.from(childNodes)
-    .map(getTextContent)
-    .filter(Boolean)
-    .join(' ');
+  const textContent = Array.from(childNodes).map(getTextContent).filter(Boolean).join(" ");
 
   return trimWhiteSpace(textContent);
 }

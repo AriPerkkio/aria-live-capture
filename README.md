@@ -32,7 +32,7 @@ npm install --save-dev aria-live-capture
 Import `CaptureAnnouncements` from entrypoint.
 
 ```ts
-import CaptureAnnouncements from 'aria-live-capture';
+import CaptureAnnouncements from "aria-live-capture";
 ```
 
 ### onCapture

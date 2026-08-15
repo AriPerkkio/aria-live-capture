@@ -1,16 +1,16 @@
-import { defineConfig } from 'vitest/config';
-import { storybookTest } from '@storybook/addon-vitest/vitest-plugin';
-import { playwright } from '@vitest/browser-playwright';
+import { storybookTest } from "@storybook/addon-vitest/vitest-plugin";
+import { playwright } from "@vitest/browser-playwright";
+import { defineConfig } from "vitest/config";
 
-const UNIT_TEST_PATTERN = ['test/**/*.test.ts'];
+const UNIT_TEST_PATTERN = ["test/**/*.test.ts"];
 
 export default defineConfig({
   test: {
-    reporters: process.env.CI ? 'default' : 'tree',
+    reporters: process.env.CI ? "default" : "tree",
 
     coverage: {
       enabled: true,
-      include: ['src'],
+      include: ["src"],
       thresholds: {
         statements: 90,
         branches: 85,
@@ -23,41 +23,41 @@ export default defineConfig({
       {
         plugins: [storybookTest()],
         test: {
-          name: 'storybook',
-          setupFiles: ['.storybook/vitest.setup.ts'],
+          name: "storybook",
+          setupFiles: [".storybook/vitest.setup.ts"],
           browser: {
             enabled: true,
             headless: true,
             provider: playwright({
-              launchOptions: { channel: 'chrome' },
+              launchOptions: { channel: "chrome" },
             }),
-            instances: [{ browser: 'chromium' }],
+            instances: [{ browser: "chromium" }],
           },
         },
       },
       {
         extends: true,
         test: {
-          name: 'Browser',
+          name: "Browser",
           include: UNIT_TEST_PATTERN,
-          setupFiles: ['./test/setup.ts'],
+          setupFiles: ["./test/setup.ts"],
           browser: {
             enabled: true,
             headless: true,
             provider: playwright({
-              launchOptions: { channel: 'chrome' },
+              launchOptions: { channel: "chrome" },
             }),
-            instances: [{ browser: 'chromium' }],
+            instances: [{ browser: "chromium" }],
           },
         },
       },
       {
         extends: true,
         test: {
-          name: 'JSDOM',
+          name: "JSDOM",
           include: UNIT_TEST_PATTERN,
-          setupFiles: ['./test/setup.ts'],
-          environment: 'jsdom',
+          setupFiles: ["./test/setup.ts"],
+          environment: "jsdom",
         },
       },
     ],

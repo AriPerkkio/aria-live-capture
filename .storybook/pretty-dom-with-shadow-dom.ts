@@ -5,7 +5,7 @@
  * https://github.com/testing-library/dom-testing-library/blob/main/src/DOMElementFilter.ts
  */
 
-import { prettyDOM, type prettyFormat } from '@testing-library/dom';
+import { prettyDOM, type prettyFormat } from "@testing-library/dom";
 
 export default function prettyDOMWithShadowDOM(
   ...args: Parameters<typeof prettyDOM>
@@ -25,7 +25,7 @@ export default function prettyDOMWithShadowDOM(
 }
 
 function escapeHTML(str: string): string {
-  return str.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  return str.replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
 
 // Return empty string if keys is empty.
@@ -36,25 +36,21 @@ function printProps(
   indentation: string,
   depth: number,
   refs: prettyFormat.Refs,
-  printer: prettyFormat.Printer
+  printer: prettyFormat.Printer,
 ): string {
   const indentationNext = indentation + config.indent;
   const colors = config.colors;
   return keys
-    .map(key => {
+    .map((key) => {
       const value = props[key];
       let printed = printer(value, config, indentationNext, depth, refs);
 
-      if (typeof value !== 'string') {
-        if (printed.indexOf('\n') !== -1) {
+      if (typeof value !== "string") {
+        if (printed.indexOf("\n") !== -1) {
           printed =
-            config.spacingOuter +
-            indentationNext +
-            printed +
-            config.spacingOuter +
-            indentation;
+            config.spacingOuter + indentationNext + printed + config.spacingOuter + indentation;
         }
-        printed = '{' + printed + '}';
+        printed = "{" + printed + "}";
       }
 
       return (
@@ -63,13 +59,13 @@ function printProps(
         colors.prop.open +
         key +
         colors.prop.close +
-        '=' +
+        "=" +
         colors.value.open +
         printed +
         colors.value.close
       );
     })
-    .join('');
+    .join("");
 }
 
 // https://developer.mozilla.org/en-US/docs/Web/API/Node/nodeType#node_type_constants
@@ -82,27 +78,27 @@ const printChildren = (
   indentation: string,
   depth: number,
   refs: prettyFormat.Refs,
-  printer: prettyFormat.Printer
+  printer: prettyFormat.Printer,
 ): string =>
   children
-    .map(child => {
+    .map((child) => {
       const printedChild =
-        typeof child === 'string'
+        typeof child === "string"
           ? printText(child, config)
           : printer(child, config, indentation, depth, refs);
 
       if (
-        printedChild === '' &&
-        typeof child === 'object' &&
+        printedChild === "" &&
+        typeof child === "object" &&
         child !== null &&
         (child as Node).nodeType !== NodeTypeTextNode
       ) {
         // A plugin serialized this Node to '' meaning we should ignore it.
-        return '';
+        return "";
       }
       return config.spacingOuter + indentation + printedChild;
     })
-    .join('');
+    .join("");
 
 const printText = (text: string, config: prettyFormat.Config): string => {
   const contentColor = config.colors.content;
@@ -111,13 +107,7 @@ const printText = (text: string, config: prettyFormat.Config): string => {
 
 const printComment = (comment: string, config: prettyFormat.Config): string => {
   const commentColor = config.colors.comment;
-  return (
-    commentColor.open +
-    '<!--' +
-    escapeHTML(comment) +
-    '-->' +
-    commentColor.close
-  );
+  return commentColor.open + "<!--" + escapeHTML(comment) + "-->" + commentColor.close;
 };
 
 // Separate the functions to format props, children, and element,
@@ -130,53 +120,39 @@ const printElement = (
   printedChildren: string,
   hasShadowRoot: boolean,
   config: prettyFormat.Config,
-  indentation: string
+  indentation: string,
 ): string => {
   const tagColor = config.colors.tag;
   const shadowRootMarkup = hasShadowRoot
     ? `${config.spacingOuter + indentation}  #shadow-root`
-    : '';
+    : "";
 
   return (
     tagColor.open +
-    '<' +
+    "<" +
     type +
     (printedProps &&
-      tagColor.close +
-        printedProps +
-        config.spacingOuter +
-        indentation +
-        tagColor.open) +
+      tagColor.close + printedProps + config.spacingOuter + indentation + tagColor.open) +
     (printedChildren
-      ? '>' +
+      ? ">" +
         shadowRootMarkup +
         tagColor.close +
         printedChildren +
         config.spacingOuter +
         indentation +
         tagColor.open +
-        '</' +
+        "</" +
         type
-      : (printedProps && !config.min ? '' : ' ') + '/') +
-    '>' +
+      : (printedProps && !config.min ? "" : " ") + "/") +
+    ">" +
     tagColor.close
   );
 };
 
-const printElementAsLeaf = (
-  type: string,
-  config: prettyFormat.Config
-): string => {
+const printElementAsLeaf = (type: string, config: prettyFormat.Config): string => {
   const tagColor = config.colors.tag;
   return (
-    tagColor.open +
-    '<' +
-    type +
-    tagColor.close +
-    ' …' +
-    tagColor.open +
-    ' />' +
-    tagColor.close
+    tagColor.open + "<" + type + tagColor.close + " …" + tagColor.open + " />" + tagColor.close
   );
 };
 
@@ -191,15 +167,14 @@ const testNode = (val: any) => {
   const constructorName = val.constructor.name;
   const { nodeType, tagName } = val;
   const isCustomElement =
-    (typeof tagName === 'string' && tagName.includes('-')) ||
-    (typeof val.hasAttribute === 'function' && val.hasAttribute('is'));
+    (typeof tagName === "string" && tagName.includes("-")) ||
+    (typeof val.hasAttribute === "function" && val.hasAttribute("is"));
 
   return (
-    (nodeType === ELEMENT_NODE &&
-      (ELEMENT_REGEXP.test(constructorName) || isCustomElement)) ||
-    (nodeType === TEXT_NODE && constructorName === 'Text') ||
-    (nodeType === COMMENT_NODE && constructorName === 'Comment') ||
-    (nodeType === FRAGMENT_NODE && constructorName === 'DocumentFragment')
+    (nodeType === ELEMENT_NODE && (ELEMENT_REGEXP.test(constructorName) || isCustomElement)) ||
+    (nodeType === TEXT_NODE && constructorName === "Text") ||
+    (nodeType === COMMENT_NODE && constructorName === "Comment") ||
+    (nodeType === FRAGMENT_NODE && constructorName === "DocumentFragment")
   );
 };
 
@@ -223,7 +198,7 @@ function serialize(
   indentation: string,
   depth: number,
   refs: prettyFormat.Refs,
-  printer: prettyFormat.Printer
+  printer: prettyFormat.Printer,
 ): string {
   if (nodeIsText(node)) {
     return printText(node.data, config);
@@ -233,9 +208,7 @@ function serialize(
     return printComment(node.data, config);
   }
 
-  const type = nodeIsFragment(node)
-    ? `DocumentFragment`
-    : node.tagName.toLowerCase();
+  const type = nodeIsFragment(node) ? `DocumentFragment` : node.tagName.toLowerCase();
 
   if (++depth > config.maxDepth) {
     return printElementAsLeaf(type, config);
@@ -247,10 +220,10 @@ function serialize(
     indentation + config.indent,
     depth,
     refs,
-    printer
+    printer,
   );
 
-  const hasShadowRoot = 'shadowRoot' in node && node.shadowRoot != null;
+  const hasShadowRoot = "shadowRoot" in node && node.shadowRoot != null;
 
   return printElement(
     type,
@@ -258,27 +231,24 @@ function serialize(
       nodeIsFragment(node)
         ? []
         : Array.from(node.attributes)
-            .map(attr => attr.name)
+            .map((attr) => attr.name)
             .sort(),
       nodeIsFragment(node)
         ? {}
-        : Array.from(node.attributes).reduce<Record<string, string>>(
-            (props, attribute) => {
-              props[attribute.name] = attribute.value;
-              return props;
-            },
-            {}
-          ),
+        : Array.from(node.attributes).reduce<Record<string, string>>((props, attribute) => {
+            props[attribute.name] = attribute.value;
+            return props;
+          }, {}),
       config,
       indentation + config.indent,
       depth,
       refs,
-      printer
+      printer,
     ),
     children,
     hasShadowRoot,
     config,
-    indentation
+    indentation,
   );
 }
 
@@ -289,7 +259,7 @@ function getChildren(node: Element | DocumentFragment): Node[] {
 
   const children = nodes.reduce(
     (all, current) => [...all, ...(current.childNodes || current.children)],
-    [] as Node[]
+    [] as Node[],
   );
 
   return children;

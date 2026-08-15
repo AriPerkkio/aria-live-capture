@@ -1,36 +1,36 @@
-import type { Meta, StoryFn } from 'storybook/html';
+import type { Meta, StoryFn } from "storybook/html";
 
-import { createButtonCycle } from '../utils';
+import { createButtonCycle } from "../utils";
 
 export default {
-  title: 'Unsupported/aria-busy',
+  title: "Unsupported/aria-busy",
 } as Meta;
 
 export const AriaBusy: StoryFn = () => {
   let element: HTMLElement;
 
   return createButtonCycle(
-    parent => {
-      element = document.createElement('div');
-      element.setAttribute('aria-live', 'polite');
+    (parent) => {
+      element = document.createElement("div");
+      element.setAttribute("aria-live", "polite");
       parent.appendChild(element);
     },
     () => {
-      element.setAttribute('aria-busy', 'true');
+      element.setAttribute("aria-busy", "true");
     },
     () => {
-      const child = document.createElement('div');
-      child.textContent = 'Hello';
+      const child = document.createElement("div");
+      child.textContent = "Hello";
       element.appendChild(child);
     },
     () => {
-      const child = document.createElement('div');
-      child.textContent = 'world';
+      const child = document.createElement("div");
+      child.textContent = "world";
       element.appendChild(child);
     },
     () => {
-      element.setAttribute('aria-busy', 'false');
-    }
+      element.setAttribute("aria-busy", "false");
+    },
   );
 };
-AriaBusy.storyName = 'true/false';
+AriaBusy.storyName = "true/false";

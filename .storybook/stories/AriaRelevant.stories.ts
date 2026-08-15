@@ -1,9 +1,9 @@
-import type { Meta, StoryFn } from 'storybook/html';
+import type { Meta, StoryFn } from "storybook/html";
 
-import { createMountToggle } from '../utils';
+import { createMountToggle } from "../utils";
 
 export default {
-  title: 'Unsupported/aria-relevant',
+  title: "Unsupported/aria-relevant",
 } as Meta;
 
 export const Additions: StoryFn = () => {
@@ -18,10 +18,10 @@ export const Additions: StoryFn = () => {
             <li>First</li>
             <li>Second</li>
         </ul>
-        `
+        `,
   );
 };
-Additions.storyName = 'additions';
+Additions.storyName = "additions";
 
 export const Removals: StoryFn = () => {
   return createMountToggle(
@@ -35,10 +35,10 @@ export const Removals: StoryFn = () => {
         <ul aria-live="polite" aria-relevant="removals">
             <li>First</li>
         </ul>
-        `
+        `,
   );
 };
-Removals.storyName = 'removals';
+Removals.storyName = "removals";
 
 export const Text: StoryFn = () => {
   return createMountToggle(
@@ -51,10 +51,10 @@ export const Text: StoryFn = () => {
         <div aria-live="polite" aria-relevant="text">
             First, Second
         </div>
-        `
+        `,
   );
 };
-Text.storyName = 'text';
+Text.storyName = "text";
 
 export const All: StoryFn = () => {
   return createMountToggle(
@@ -71,7 +71,7 @@ export const All: StoryFn = () => {
 
             <li>Third</li>
         </ul>
-        `
+        `,
   );
 };
-All.storyName = 'all';
+All.storyName = "all";

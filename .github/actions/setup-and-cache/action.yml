@@ -1,13 +1,13 @@
-name: 'Setup-node and cache'
-description: 'Base setup for each action'
-author: 'AriPerkkio'
+name: "Setup-node and cache"
+description: "Base setup for each action"
+author: "AriPerkkio"
 inputs:
   node-version:
     required: false
-    description: 'Node version for setup-node'
-    default: '24'
+    description: "Node version for setup-node"
+    default: "24"
 runs:
-  using: 'composite'
+  using: "composite"
   steps:
     - uses: actions/setup-node@v6
       with:

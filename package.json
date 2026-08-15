@@ -2,27 +2,33 @@
   "name": "aria-live-capture",
   "version": "2.0.0",
   "description": "Capture announcements of ARIA-live regions",
-  "type": "module",
-  "exports": "./dist/index.js",
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "files": [
-    "dist"
+  "keywords": [
+    "a11y",
+    "accessibility",
+    "aria",
+    "aria-live"
   ],
-  "author": "Ari Perkkio <ari.perkkio@gmail.com>",
-  "license": "MIT",
   "homepage": "https://github.com/AriPerkkio/aria-live-capture",
   "bugs": "https://github.com/AriPerkkio/aria-live-capture",
+  "license": "MIT",
+  "author": "Ari Perkkio <ari.perkkio@gmail.com>",
   "repository": {
     "type": "git",
     "url": "https://github.com/AriPerkkio/aria-live-capture"
   },
-  "packageManager": "pnpm@11.21.0",
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": "./dist/index.js",
   "scripts": {
     "changelog": "npx conventional-changelog-cli -i CHANGELOG.md -p angular -s -r 0",
     "prebuild": "rm -rf ./dist",
     "build": "tsc --project tsconfig.prod.json",
+    "fmt": "oxfmt",
     "lint": "eslint . --max-warnings 0 && publint",
     "test": "vitest run",
     "test:docs": "start-server-and-test docs:run 8080 docs:test",
@@ -45,13 +51,11 @@
     "@vitest/browser-playwright": "^4.1.10",
     "@vitest/coverage-v8": "^4.1.10",
     "eslint": "^10.8.1",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-prettier": "^5.5.6",
     "gh-pages": "^6.3.0",
     "jsdom": "^29.1.1",
     "live-server": "1.2.2",
+    "oxfmt": "^0.63.0",
     "playwright": "1.62.1",
-    "prettier": "^3.9.6",
     "publint": "^0.3.23",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
@@ -63,18 +67,5 @@
     "vite": "^8.2.1",
     "vitest": "^4.1.10"
   },
-  "keywords": [
-    "aria",
-    "aria-live",
-    "accessibility",
-    "a11y"
-  ],
-  "prettier": {
-    "arrowParens": "avoid",
-    "semi": true,
-    "trailingComma": "es5",
-    "singleQuote": true,
-    "tabWidth": 2,
-    "printWidth": 80
-  }
+  "packageManager": "pnpm@11.21.0"
 }

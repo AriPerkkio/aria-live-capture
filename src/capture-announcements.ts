@@ -1,3 +1,6 @@
+import { configure } from "./config.js";
+import { isElement } from "./dom-node-safe-guards.js";
+import { interceptMethod, interceptSetter, Restore } from "./interceptors.js";
 import {
   getAllLiveRegions,
   getClosestElement,
@@ -9,17 +12,11 @@ import {
   PolitenessSetting,
   resolvePolitenessSetting,
   trimWhiteSpace,
-} from './utils.js';
-import { interceptMethod, interceptSetter, Restore } from './interceptors.js';
-import { isElement } from './dom-node-safe-guards.js';
-import { configure } from './config.js';
+} from "./utils.js";
 
 interface Options {
   /** Callback invoked when announcement is captured */
-  onCapture: (
-    textContent: string,
-    politenessSetting: Exclude<PolitenessSetting, 'off'>
-  ) => void;
+  onCapture: (textContent: string, politenessSetting: Exclude<PolitenessSetting, "off">) => void;
 
   /** Indicates whether live regions inside `ShadowRoot`s should be tracked */
   includeShadowDom?: boolean;
@@ -31,7 +28,7 @@ const liveRegions = new Map<Node, string | null>();
 export default function CaptureAnnouncements(options: Options): Restore {
   configure({ includeShadowDom: options.includeShadowDom || false });
 
-  const onCapture: Options['onCapture'] = (textContent, politenessSetting) => {
+  const onCapture: Options["onCapture"] = (textContent, politenessSetting) => {
     const content = trimWhiteSpace(textContent);
 
     if (content) {
@@ -56,9 +53,9 @@ export default function CaptureAnnouncements(options: Options): Restore {
     if (liveRegion) {
       const politenessSetting = resolvePolitenessSetting(liveRegion);
 
-      if (politenessSetting !== 'off' && isInDOM(liveRegion)) {
+      if (politenessSetting !== "off" && isInDOM(liveRegion)) {
         const previousText = liveRegions.get(liveRegion);
-        const newText = getTextContent(liveRegion) || '';
+        const newText = getTextContent(liveRegion) || "";
 
         // Update text content when element disappears inside live region
         if (isHidden(element)) {
@@ -81,14 +78,14 @@ export default function CaptureAnnouncements(options: Options): Restore {
     if (isHidden(liveRegion)) return;
 
     const politenessSetting = resolvePolitenessSetting(liveRegion);
-    if (politenessSetting === 'off') return;
+    if (politenessSetting === "off") return;
 
     const textContent = getTextContent(liveRegion);
     liveRegions.set(liveRegion, textContent);
 
     // Content of role="alert" regions are announced on initial mount
     if (textContent) {
-      if (liveRegion.getAttribute('role') === 'alert') {
+      if (liveRegion.getAttribute("role") === "alert") {
         onCapture(textContent, politenessSetting);
       }
     }
@@ -126,10 +123,7 @@ export default function CaptureAnnouncements(options: Options): Restore {
     onNodeMount(this);
   }
 
-  function onSetAttribute(
-    this: Element,
-    ...args: Parameters<Element['setAttribute']>
-  ): void {
+  function onSetAttribute(this: Element, ...args: Parameters<Element["setAttribute"]>): void {
     if (!isElement(this)) return;
     if (!isInDOM(this)) return;
     if (!args[0]) return;
@@ -137,8 +131,8 @@ export default function CaptureAnnouncements(options: Options): Restore {
     const [attribute] = args;
 
     switch (attribute) {
-      case 'role':
-      case 'aria-live': {
+      case "role":
+      case "aria-live": {
         const isAlreadyTracked = liveRegions.has(this);
         const liveRegionAttribute = isLiveRegionAttribute(args[1]);
 
@@ -158,14 +152,14 @@ export default function CaptureAnnouncements(options: Options): Restore {
         if (
           isAlreadyTracked &&
           liveRegionAttribute &&
-          resolvePolitenessSetting(this) === 'assertive'
+          resolvePolitenessSetting(this) === "assertive"
         ) {
           return updateAnnouncements(this);
         }
         break;
       }
 
-      case 'aria-hidden': {
+      case "aria-hidden": {
         updateLiveRegions(this);
         return updateAnnouncements(this);
       }
@@ -175,10 +169,7 @@ export default function CaptureAnnouncements(options: Options): Restore {
     }
   }
 
-  function onRemoveAttributeAfter(
-    this: Element,
-    ...args: Parameters<Element['removeAttribute']>
-  ) {
+  function onRemoveAttributeAfter(this: Element, ...args: Parameters<Element["removeAttribute"]>) {
     if (!isElement(this)) return;
 
     // Note that at this point we are not 100% sure the removed attribute
@@ -186,16 +177,13 @@ export default function CaptureAnnouncements(options: Options): Restore {
     // here, e.g. no blindly removing the node from tracked nodes.
     const [attribute] = args;
 
-    if (attribute === 'aria-hidden') {
+    if (attribute === "aria-hidden") {
       updateLiveRegions(this);
       updateAnnouncements(this);
     }
   }
 
-  function onRemoveChild(
-    this: Element,
-    ...args: Parameters<Element['removeChild']>
-  ) {
+  function onRemoveChild(this: Element, ...args: Parameters<Element["removeChild"]>) {
     if (liveRegions.size === 0) return;
 
     const [node] = args;
@@ -246,15 +234,12 @@ export default function CaptureAnnouncements(options: Options): Restore {
   updateLiveRegions(document);
 
   return function restore() {
-    cleanups.splice(0).forEach(cleanup => cleanup());
+    cleanups.splice(0).forEach((cleanup) => cleanup());
     liveRegions.clear();
   };
 }
 
-function onRemoveAttributeBefore(
-  this: Element,
-  ...args: Parameters<Element['removeAttribute']>
-) {
+function onRemoveAttributeBefore(this: Element, ...args: Parameters<Element["removeAttribute"]>) {
   if (liveRegions.size === 0) return;
   if (!isElement(this)) return;
 
@@ -264,7 +249,7 @@ function onRemoveAttributeBefore(
   if (!this.hasAttribute(attribute)) return;
 
   // TODO: Should detect if we have role AND aria-live, and one is removed.
-  if (attribute === 'role' || attribute === 'aria-live') {
+  if (attribute === "role" || attribute === "aria-live") {
     // Live region attribute is removed -> Element is no longer a live region
     if (liveRegions.has(this)) {
       liveRegions.delete(this);

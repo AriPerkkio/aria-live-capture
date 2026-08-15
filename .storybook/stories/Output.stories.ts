@@ -1,12 +1,12 @@
-import { within, userEvent } from 'storybook/test';
-import { expect } from 'storybook/test';
-import type { StoryFn, Meta } from 'storybook/html';
+import type { StoryFn, Meta } from "storybook/html";
+import { within, userEvent } from "storybook/test";
+import { expect } from "storybook/test";
 
-import '../expect-extend';
-import { createMountToggle } from '../utils';
+import "../expect-extend";
+import { createMountToggle } from "../utils";
 
 export default {
-  title: 'Elements/<output>',
+  title: "Elements/<output>",
 } as Meta;
 
 export const LiveRegionAvailableBeforeContent: StoryFn = () => {
@@ -19,17 +19,16 @@ export const LiveRegionAvailableBeforeContent: StoryFn = () => {
         <output>
             Hello world
         </output>
-        `
+        `,
   );
 };
-LiveRegionAvailableBeforeContent.storyName =
-  'Live region available before content ✅';
+LiveRegionAvailableBeforeContent.storyName = "Live region available before content ✅";
 LiveRegionAvailableBeforeContent.play = async ({ canvasElement }) => {
-  const button = within(canvasElement).getByRole('button');
-  expect('Hello world').not.toBeAnnounced();
+  const button = within(canvasElement).getByRole("button");
+  expect("Hello world").not.toBeAnnounced();
 
   await userEvent.click(button);
-  expect('Hello world').toBeAnnounced('polite');
+  expect("Hello world").toBeAnnounced("polite");
 };
 
 export const LiveRegionUnavailableBeforeContent: StoryFn = () => {
@@ -44,15 +43,14 @@ export const LiveRegionUnavailableBeforeContent: StoryFn = () => {
                 Hello world
             </output>
         </div>
-        `
+        `,
   );
 };
-LiveRegionUnavailableBeforeContent.storyName =
-  'Live region unavailable before content ❌';
+LiveRegionUnavailableBeforeContent.storyName = "Live region unavailable before content ❌";
 LiveRegionUnavailableBeforeContent.play = async ({ canvasElement }) => {
-  const button = within(canvasElement).getByRole('button');
-  expect('Hello world').not.toBeAnnounced();
+  const button = within(canvasElement).getByRole("button");
+  expect("Hello world").not.toBeAnnounced();
 
   await userEvent.click(button);
-  expect('Hello world').not.toBeAnnounced();
+  expect("Hello world").not.toBeAnnounced();
 };

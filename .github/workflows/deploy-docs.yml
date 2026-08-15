@@ -21,6 +21,7 @@ jobs:
 
       - run: pnpm build
       - run: pnpm test
+      - run: pnpm fmt --check
       - run: pnpm lint
       - run: pnpm docs:build
       - name: Deploy with gh-pages

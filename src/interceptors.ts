@@ -1,7 +1,7 @@
 export type Restore = () => void;
 
 /** Indicates whether interception should happen before or after the original method calling */
-type ExecutionOrder = 'BEFORE' | 'AFTER';
+type ExecutionOrder = "BEFORE" | "AFTER";
 
 /**
  * Intercept objects setters of property
@@ -15,9 +15,7 @@ export function interceptSetter<
   const descriptor = Object.getOwnPropertyDescriptor(obj, property);
 
   if (!descriptor || !descriptor.set) {
-    throw new Error(
-      `Unable to intercept ${String(property)}. No descriptor available.`
-    );
+    throw new Error(`Unable to intercept ${String(property)}. No descriptor available.`);
   }
 
   const originalSetter = descriptor.set;
@@ -41,39 +39,32 @@ export function interceptSetter<
  * Intercept method calls of given object
  * - Original method is invoked first by default
  */
-export function interceptMethod<
-  T extends object = object,
-  P extends keyof T = keyof T,
->(
+export function interceptMethod<T extends object = object, P extends keyof T = keyof T>(
   object: T,
   methodName: P,
   method: (...args: any[]) => void,
-  order: ExecutionOrder = 'AFTER'
+  order: ExecutionOrder = "AFTER",
 ): Restore {
   const original = object[methodName] as unknown as typeof method;
 
-  if (typeof original !== 'function') {
+  if (typeof original !== "function") {
     throw new Error(
-      `Expected ${String(
-        methodName
-      )} to be a function. Received ${typeof original}: ${original}`
+      `Expected ${String(methodName)} to be a function. Received ${typeof original}: ${original}`,
     );
   }
 
-  if (typeof method !== 'function') {
-    throw new Error(
-      `Expected method to be a function. Received ${typeof method}: ${method}`
-    );
+  if (typeof method !== "function") {
+    throw new Error(`Expected method to be a function. Received ${typeof method}: ${method}`);
   }
 
   function interceptedMethod(this: T, ...args: any) {
-    if (order === 'BEFORE') {
+    if (order === "BEFORE") {
       method.call(this, ...args);
     }
 
     const output = original.call(this, ...args);
 
-    if (order === 'AFTER') {
+    if (order === "AFTER") {
       method.call(this, ...args);
     }
 

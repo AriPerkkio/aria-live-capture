@@ -1,10 +1,10 @@
-import { STORY_CHANGED } from 'storybook/internal/core-events';
-import { expect, within } from 'storybook/test';
-import { addons } from 'storybook/preview-api';
+import { STORY_CHANGED } from "storybook/internal/core-events";
+import { addons } from "storybook/preview-api";
+import { expect, within } from "storybook/test";
 
-import CaptureAnnouncements from '../src';
-import prettyDOMWithShadowDOM from './pretty-dom-with-shadow-dom';
-import { AnnouncementEvents, SourceCodeUpdateEvents } from './utils';
+import CaptureAnnouncements from "../src";
+import prettyDOMWithShadowDOM from "./pretty-dom-with-shadow-dom";
+import { AnnouncementEvents, SourceCodeUpdateEvents } from "./utils";
 
 type StoryFn = () => HTMLElement;
 
@@ -21,9 +21,9 @@ addons.getChannel().addListener(STORY_CHANGED, () => {
 export const decorators = [
   function withSourceCode(Story: StoryFn) {
     const html = Story();
-    const sourceCodeFrame = document.createElement('div');
-    const sourceCodeId = 'source-code-frame';
-    const storyTargetId = 'story-target-source-code-frame';
+    const sourceCodeFrame = document.createElement("div");
+    const sourceCodeId = "source-code-frame";
+    const storyTargetId = "story-target-source-code-frame";
 
     sourceCodeFrame.innerHTML = `
             <div style="display: flex; flex-direction: row; align-content: baseline;">
@@ -33,11 +33,7 @@ export const decorators = [
         `.trim();
 
     function updateSourceCodeFrame() {
-      const code = compose(
-        escapeHTML,
-        formatSourceCode,
-        prettyDOMWithShadowDOM
-      )(html);
+      const code = compose(escapeHTML, formatSourceCode, prettyDOMWithShadowDOM)(html);
 
       const frame = sourceCodeFrame.querySelector(`#${sourceCodeId}`);
       if (!frame) throw new Error(`Unable to find ${sourceCodeId}`);
@@ -55,15 +51,12 @@ export const decorators = [
   },
 
   function withFocusTarget(Story: StoryFn) {
-    const wrapper = document.createElement('div');
-    const focusTarget = document.createElement('a');
-    focusTarget.setAttribute('tabindex', '0');
-    focusTarget.setAttribute('href', 'javascript:void(0)');
-    focusTarget.setAttribute(
-      'style',
-      'display: inline-block; margin-bottom: 2rem;'
-    );
-    focusTarget.textContent = 'Focus target';
+    const wrapper = document.createElement("div");
+    const focusTarget = document.createElement("a");
+    focusTarget.setAttribute("tabindex", "0");
+    focusTarget.setAttribute("href", "javascript:void(0)");
+    focusTarget.setAttribute("style", "display: inline-block; margin-bottom: 2rem;");
+    focusTarget.textContent = "Focus target";
 
     wrapper.appendChild(focusTarget);
     wrapper.appendChild(Story());
@@ -75,9 +68,9 @@ export const decorators = [
 
   function withAnnouncements(Story: StoryFn) {
     const html = Story();
-    const announcementsFrame = document.createElement('div');
-    const announcementsId = 'announcements-frame';
-    const storyTargetId = 'story-target-announcement-frame';
+    const announcementsFrame = document.createElement("div");
+    const announcementsId = "announcements-frame";
+    const storyTargetId = "story-target-announcement-frame";
 
     announcementsFrame.innerHTML = `
             <div style="display: flex; flex-direction: column; align-content: baseline;">
@@ -91,7 +84,7 @@ export const decorators = [
         `.trim();
 
     AnnouncementEvents.on(({ text, level }) => {
-      const li = document.createElement('li');
+      const li = document.createElement("li");
       li.textContent = `${level}: ${text}`;
 
       const list = announcementsFrame.querySelector(`#${announcementsId}`);
@@ -110,15 +103,15 @@ export const decorators = [
 function escapeHTML(str: string) {
   return str.replace(
     /[&<>'"]/g,
-    tag =>
+    (tag) =>
       // @ts-expect-error -- umm...
       ({
-        '&': '&amp;',
-        '<': '&lt;',
-        '>': '&gt;',
-        "'": '&#39;',
-        '"': '&quot;',
-      })[tag]
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        "'": "&#39;",
+        '"': "&quot;",
+      })[tag],
   );
 }
 
@@ -126,26 +119,26 @@ function formatSourceCode(str: string) {
   return (
     str
       // Remove double line breaks
-      .replace(/\n +\n/g, '\n')
+      .replace(/\n +\n/g, "\n")
 
       // Remove parent div
-      .replace(/(^<div>\n|\n<\/div>$)/g, '')
+      .replace(/(^<div>\n|\n<\/div>$)/g, "")
 
       // Remove one level of indention
-      .replace(/^ {2}/g, '')
-      .replace(/\n {2}/g, '\n')
+      .replace(/^ {2}/g, "")
+      .replace(/\n {2}/g, "\n")
 
       // Add newline between each root level element
-      .replace(/(>\n)(<\w)/g, '$1\n$2')
+      .replace(/(>\n)(<\w)/g, "$1\n$2")
 
       // Replace self-ending tags with starting and ending tags
-      .replace(/( *)<(\w+)((\s|\w|=|"|-)*)\s*\/>/g, '$1<$2 $3>\n$1</$2>')
+      .replace(/( *)<(\w+)((\s|\w|=|"|-)*)\s*\/>/g, "$1<$2 $3>\n$1</$2>")
 
       // Align attributes to same level as tag when there is only a single attribute
-      .replace(/<(\w+) *\n +((\w|=|"|-)+)\n *>/g, '<$1 $2>')
+      .replace(/<(\w+) *\n +((\w|=|"|-)+)\n *>/g, "<$1 $2>")
 
       // Remove spaces before end tag
-      .replace(/ +>/g, '>')
+      .replace(/ +>/g, ">")
   );
 }
 
@@ -154,45 +147,41 @@ const compose = (...fns: any[]) =>
     (prevFn, nextFn) =>
       (...args: any[]) =>
         nextFn(prevFn(...args)),
-    (value: any) => value
+    (value: any) => value,
   );
 
 expect.extend({
   toBeAnnounced: function toBeAnnounced(
     this: { isNot?: boolean },
     text: string,
-    politenessSetting?: 'assertive' | 'polite'
+    politenessSetting?: "assertive" | "polite",
   ) {
-    const container = within(document.body).getByRole('heading', {
-      name: 'Captured announcements',
+    const container = within(document.body).getByRole("heading", {
+      name: "Captured announcements",
       hidden: true,
     }).parentElement;
 
     if (!container) {
       return {
         pass: false,
-        message: () => 'Unable to find announcements container',
+        message: () => "Unable to find announcements container",
       };
     }
 
-    const [element] = within(container).queryAllByText(
-      `${politenessSetting}: ${text}`
-    );
+    const [element] = within(container).queryAllByText(`${politenessSetting}: ${text}`);
 
     const pass = element != null;
 
     if (pass) {
       return {
         pass,
-        message: () =>
-          `Expected announcement "${text}" not to be done, but it was.`,
+        message: () => `Expected announcement "${text}" not to be done, but it was.`,
       };
     }
 
     return {
       pass,
-      message: () =>
-        `Expected announcement "${text}" to be done, but it was not.`,
+      message: () => `Expected announcement "${text}" to be done, but it was not.`,
     };
   },
 });
