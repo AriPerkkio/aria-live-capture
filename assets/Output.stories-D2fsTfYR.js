@@ -1,31 +1,37 @@
-import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{i as t,r as n}from"./iframe-ucVsEcP-.js";var r,i,a,o,s,c,l;function u(){return(u=e((()=>{t(),{within:r,userEvent:i}=__STORYBOOK_MODULE_TEST__,{expect:a}=__STORYBOOK_MODULE_TEST__,o={title:`Role/role="log"`},s=()=>n(`
-        <div role="log">
-        </div>
+import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{i as t,r as n}from"./iframe-BXs5NI2a.js";var r,i,a,o,s,c,l;function u(){return(u=e((()=>{t(),{within:r,userEvent:i}=__STORYBOOK_MODULE_TEST__,{expect:a}=__STORYBOOK_MODULE_TEST__,o={title:`Elements/<output>`},s=()=>n(`
+        <output>
+        </output>
         `,`
-        <div role="log">
+        <output>
             Hello world
-        </div>
+        </output>
         `),s.storyName=`Live region available before content ✅`,s.play=async({canvasElement:e})=>{let t=r(e).getByRole(`button`);a(`Hello world`).not.toBeAnnounced(),await i.click(t),a(`Hello world`).toBeAnnounced(`polite`)},c=()=>n(`
-        <div></div>
+        <div>
+        </div>
         `,`
-        <div role="log">
-            Hello world
+        <div>
+            <output>
+                Hello world
+            </output>
         </div>
         `),c.storyName=`Live region unavailable before content ❌`,c.play=async({canvasElement:e})=>{let t=r(e).getByRole(`button`);a(`Hello world`).not.toBeAnnounced(),await i.click(t),a(`Hello world`).not.toBeAnnounced()},s.parameters={...s.parameters,docs:{...s.parameters?.docs,source:{originalSource:`() => {
   return createMountToggle(\`
-        <div role="log">
-        </div>
+        <output>
+        </output>
         \`, \`
-        <div role="log">
+        <output>
             Hello world
-        </div>
+        </output>
         \`);
 }`,...s.parameters?.docs?.source}}},c.parameters={...c.parameters,docs:{...c.parameters?.docs,source:{originalSource:`() => {
   return createMountToggle(\`
-        <div></div>
+        <div>
+        </div>
         \`, \`
-        <div role="log">
-            Hello world
+        <div>
+            <output>
+                Hello world
+            </output>
         </div>
         \`);
 }`,...c.parameters?.docs?.source}}},l=[`LiveRegionAvailableBeforeContent`,`LiveRegionUnavailableBeforeContent`]})))()}u();export{s as LiveRegionAvailableBeforeContent,c as LiveRegionUnavailableBeforeContent,l as __namedExportsOrder,o as default};
