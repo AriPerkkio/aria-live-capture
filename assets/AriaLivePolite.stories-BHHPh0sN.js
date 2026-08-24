@@ -1,22 +1,22 @@
-import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{i as t,r as n}from"./iframe-CihWdkvl.js";var r,i,a,o,s,c,l;function u(){return(u=e((()=>{t(),{within:r,userEvent:i}=__STORYBOOK_MODULE_TEST__,{expect:a}=__STORYBOOK_MODULE_TEST__,o={title:`Role/role="log"`},s=()=>n(`
-        <div role="log">
+import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{i as t,r as n}from"./iframe-ucVsEcP-.js";var r,i,a,o,s,c,l;function u(){return(u=e((()=>{t(),{within:r,userEvent:i}=__STORYBOOK_MODULE_TEST__,{expect:a}=__STORYBOOK_MODULE_TEST__,o={title:`Aria-live/aria-live="polite"`},s=()=>n(`
+        <div aria-live="polite">
         </div>
         `,`
-        <div role="log">
+        <div aria-live="polite">
             Hello world
         </div>
         `),s.storyName=`Live region available before content ✅`,s.play=async({canvasElement:e})=>{let t=r(e).getByRole(`button`);a(`Hello world`).not.toBeAnnounced(),await i.click(t),a(`Hello world`).toBeAnnounced(`polite`)},c=()=>n(`
         <div></div>
         `,`
-        <div role="log">
+        <div aria-live="polite">
             Hello world
         </div>
         `),c.storyName=`Live region unavailable before content ❌`,c.play=async({canvasElement:e})=>{let t=r(e).getByRole(`button`);a(`Hello world`).not.toBeAnnounced(),await i.click(t),a(`Hello world`).not.toBeAnnounced()},s.parameters={...s.parameters,docs:{...s.parameters?.docs,source:{originalSource:`() => {
   return createMountToggle(\`
-        <div role="log">
+        <div aria-live="polite">
         </div>
         \`, \`
-        <div role="log">
+        <div aria-live="polite">
             Hello world
         </div>
         \`);
@@ -24,7 +24,7 @@ import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{i as t,r as n}from"./i
   return createMountToggle(\`
         <div></div>
         \`, \`
-        <div role="log">
+        <div aria-live="polite">
             Hello world
         </div>
         \`);
