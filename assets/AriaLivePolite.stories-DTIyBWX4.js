@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{i as t,r as n}from"./iframe-BXs5NI2a.js";var r,i,a,o,s,c,l;function u(){return(u=e((()=>{t(),{within:r,userEvent:i}=__STORYBOOK_MODULE_TEST__,{expect:a}=__STORYBOOK_MODULE_TEST__,o={title:`Aria-live/aria-live="polite"`},s=()=>n(`
+import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{i as t,r as n}from"./iframe-CX_IkDeK.js";var r,i,a,o,s,c,l;function u(){return(u=e((()=>{t(),{within:r,userEvent:i}=__STORYBOOK_MODULE_TEST__,{expect:a}=__STORYBOOK_MODULE_TEST__,o={title:`Aria-live/aria-live="polite"`},s=()=>n(`
         <div aria-live="polite">
         </div>
         `,`
@@ -11,7 +11,7 @@ import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{i as t,r as n}from"./i
         <div aria-live="polite">
             Hello world
         </div>
-        `),c.storyName=`Live region unavailable before content ❌`,c.play=async({canvasElement:e})=>{let t=r(e).getByRole(`button`);a(`Hello world`).not.toBeAnnounced(),await i.click(t),a(`Hello world`).not.toBeAnnounced()},s.parameters={...s.parameters,docs:{...s.parameters?.docs,source:{originalSource:`() => {
+        `),c.storyName=`Live region unavailable before content ❌`,c.play=async({canvasElement:e})=>{let t=r(e).getByRole(`button`);a(`Hello world`).not.toBeAnnounced(),await i.click(t),a(`Hello world`).not.toBeAnnounced()},l=[`LiveRegionAvailableBeforeContent`,`LiveRegionUnavailableBeforeContent`],s.parameters={...s.parameters,docs:{...s.parameters?.docs,source:{originalSource:`() => {
   return createMountToggle(\`
         <div aria-live="polite">
         </div>
@@ -28,4 +28,4 @@ import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{i as t,r as n}from"./i
             Hello world
         </div>
         \`);
-}`,...c.parameters?.docs?.source}}},l=[`LiveRegionAvailableBeforeContent`,`LiveRegionUnavailableBeforeContent`]})))()}u();export{s as LiveRegionAvailableBeforeContent,c as LiveRegionUnavailableBeforeContent,l as __namedExportsOrder,o as default};
+}`,...c.parameters?.docs?.source}}}})))()}u();export{s as LiveRegionAvailableBeforeContent,c as LiveRegionUnavailableBeforeContent,l as __namedExportsOrder,o as default};

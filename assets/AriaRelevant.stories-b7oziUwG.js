@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{i as t,r as n}from"./iframe-BXs5NI2a.js";var r,i,a,o,s,c;function l(){return(l=e((()=>{t(),r={title:`Unsupported/aria-relevant`},i=()=>n(`
+import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{i as t,r as n}from"./iframe-CX_IkDeK.js";var r,i,a,o,s,c;function l(){return(l=e((()=>{t(),r={title:`Unsupported/aria-relevant`},i=()=>n(`
         <ul aria-live="polite" aria-relevant="additions">
             <li>First</li>
         </ul>
@@ -36,7 +36,7 @@ import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{i as t,r as n}from"./i
 
             <li>Third</li>
         </ul>
-        `),s.storyName=`all`,i.parameters={...i.parameters,docs:{...i.parameters?.docs,source:{originalSource:`() => {
+        `),s.storyName=`all`,c=[`Additions`,`Removals`,`Text`,`All`],i.parameters={...i.parameters,docs:{...i.parameters?.docs,source:{originalSource:`() => {
   return createMountToggle(\`
         <ul aria-live="polite" aria-relevant="additions">
             <li>First</li>
@@ -82,4 +82,4 @@ import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{i as t,r as n}from"./i
             <li>Third</li>
         </ul>
         \`);
-}`,...s.parameters?.docs?.source}}},c=[`Additions`,`Removals`,`Text`,`All`]})))()}l();export{i as Additions,s as All,a as Removals,o as Text,c as __namedExportsOrder,r as default};
+}`,...s.parameters?.docs?.source}}}})))()}l();export{i as Additions,s as All,a as Removals,o as Text,c as __namedExportsOrder,r as default};

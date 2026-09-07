@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{i as t,r as n}from"./iframe-BXs5NI2a.js";var r,i,a,o,s,c,l,u,d;function f(){return(f=e((()=>{t(),{within:r,userEvent:i}=__STORYBOOK_MODULE_TEST__,{expect:a}=__STORYBOOK_MODULE_TEST__,o={title:`Role/role="timer"`},s=()=>n(`
+import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{i as t,r as n}from"./iframe-CX_IkDeK.js";var r,i,a,o,s,c,l,u,d;function f(){return(f=e((()=>{t(),{within:r,userEvent:i}=__STORYBOOK_MODULE_TEST__,{expect:a}=__STORYBOOK_MODULE_TEST__,o={title:`Role/role="timer"`},s=()=>n(`
         <div role="timer">
         </div>
         `,`
@@ -41,7 +41,7 @@ import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{i as t,r as n}from"./i
                 world
             </div>
         </div>
-        `),u.storyName=`Sibling is visible ⚠️`,u.play=async({canvasElement:e})=>{let t=r(e).getByRole(`button`);a(`world`).not.toBeAnnounced(`polite`),await i.click(t),a(`world`).toBeAnnounced(`polite`),a(`Hello`).not.toBeAnnounced(),a(`Hello world`).not.toBeAnnounced()},s.parameters={...s.parameters,docs:{...s.parameters?.docs,source:{originalSource:`() => {
+        `),u.storyName=`Sibling is visible ⚠️`,u.play=async({canvasElement:e})=>{let t=r(e).getByRole(`button`);a(`world`).not.toBeAnnounced(`polite`),await i.click(t),a(`world`).toBeAnnounced(`polite`),a(`Hello`).not.toBeAnnounced(),a(`Hello world`).not.toBeAnnounced()},d=[`WithTextContent`,`WrapsLiveRegion`,`WrappedInLiveRegion`,`SiblingIsVisible`],s.parameters={...s.parameters,docs:{...s.parameters?.docs,source:{originalSource:`() => {
   return createMountToggle(\`
         <div role="timer">
         </div>
@@ -92,4 +92,4 @@ import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{i as t,r as n}from"./i
             </div>
         </div>
         \`);
-}`,...u.parameters?.docs?.source}}},d=[`WithTextContent`,`WrapsLiveRegion`,`WrappedInLiveRegion`,`SiblingIsVisible`]})))()}f();export{u as SiblingIsVisible,s as WithTextContent,l as WrappedInLiveRegion,c as WrapsLiveRegion,d as __namedExportsOrder,o as default};
+}`,...u.parameters?.docs?.source}}}})))()}f();export{u as SiblingIsVisible,s as WithTextContent,l as WrappedInLiveRegion,c as WrapsLiveRegion,d as __namedExportsOrder,o as default};

@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{i as t,r as n}from"./iframe-BXs5NI2a.js";var r,i,a,o;function s(){return(s=e((()=>{t(),r={title:`Unsupported/aria-atomic`},i=()=>n(`
+import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{i as t,r as n}from"./iframe-CX_IkDeK.js";var r,i,a,o;function s(){return(s=e((()=>{t(),r={title:`Unsupported/aria-atomic`},i=()=>n(`
         <div aria-live="polite" aria-atomic="true">
             <span>Hello</span>
         </div>
@@ -16,7 +16,7 @@ import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{i as t,r as n}from"./i
             <span>Hello</span>
             <span>world</span>
         </div>
-        `),a.storyName=`false`,i.parameters={...i.parameters,docs:{...i.parameters?.docs,source:{originalSource:`() => {
+        `),a.storyName=`false`,o=[`True`,`False`],i.parameters={...i.parameters,docs:{...i.parameters?.docs,source:{originalSource:`() => {
   return createMountToggle(\`
         <div aria-live="polite" aria-atomic="true">
             <span>Hello</span>
@@ -38,4 +38,4 @@ import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{i as t,r as n}from"./i
             <span>world</span>
         </div>
         \`);
-}`,...a.parameters?.docs?.source}}},o=[`True`,`False`]})))()}s();export{a as False,i as True,o as __namedExportsOrder,r as default};
+}`,...a.parameters?.docs?.source}}}})))()}s();export{a as False,i as True,o as __namedExportsOrder,r as default};
