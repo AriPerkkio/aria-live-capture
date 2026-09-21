@@ -45,16 +45,16 @@
     "@storybook/addon-vitest": "^10.6.0",
     "@storybook/html": "10.6.0",
     "@storybook/html-vite": "^10.6.0",
-    "@testing-library/dom": "^10.4.1",
-    "@vitest/browser": "^5.0.0",
-    "@vitest/browser-playwright": "^5.0.0",
-    "@vitest/coverage-v8": "^5.0.0",
+    "@testing-library/dom": "^10.4.2",
+    "@vitest/browser": "^5.0.1",
+    "@vitest/browser-playwright": "^5.0.1",
+    "@vitest/coverage-v8": "^5.0.1",
     "gh-pages": "^6.3.0",
-    "jsdom": "^30.0.1",
+    "jsdom": "^30.1.0",
     "live-server": "1.2.2",
-    "oxfmt": "^0.67.0",
-    "oxlint": "^1.82.0",
-    "oxlint-tsgolint": "^7.0.2001",
+    "oxfmt": "^0.68.0",
+    "oxlint": "^1.83.0",
+    "oxlint-tsgolint": "^7.0.2002",
     "playwright": "1.63.0",
     "publint": "^0.3.24",
     "react": "^19.3.0",
@@ -64,7 +64,7 @@
     "typescript": "^7.0.2",
     "virtual-dom-nodes": "^0.2.2",
     "vite": "^8.3.0",
-    "vitest": "^5.0.0"
+    "vitest": "^5.0.1"
   },
   "packageManager": "pnpm@11.27.0"
 }
