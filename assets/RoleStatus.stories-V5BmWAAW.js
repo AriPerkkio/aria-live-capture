@@ -1,48 +1,48 @@
-import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{i as t,r as n}from"./iframe-BDdj0rrG.js";var r,i,a,o,s,c,l,u,d,f,p,m,h;function g(){return(g=e((()=>{t(),{within:r,userEvent:i}=__STORYBOOK_MODULE_TEST__,{expect:a}=__STORYBOOK_MODULE_TEST__,o={title:`Role/role="alert"`},s=()=>n(`
-        <div role="alert">
+import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{i as t,r as n}from"./iframe-Cb5sEjmk.js";var r,i,a,o,s,c,l,u,d,f,p,m,h;function g(){return(g=e((()=>{t(),{within:r,userEvent:i}=__STORYBOOK_MODULE_TEST__,{expect:a}=__STORYBOOK_MODULE_TEST__,o={title:`Role/role="status"`},s=()=>n(`
+        <div role="status">
         </div>
         `,`
-        <div role="alert">
+        <div role="status">
             Hello world
         </div>
-        `),s.storyName=`Live region available before content ✅`,s.play=async({canvasElement:e})=>{let t=r(e).getByRole(`button`);a(`Hello world`).not.toBeAnnounced(),await i.click(t),a(`Hello world`).toBeAnnounced(`assertive`)},c=()=>n(`
+        `),s.storyName=`Live region available before content ✅`,s.play=async({canvasElement:e})=>{let t=r(e).getByRole(`button`);a(`Hello world`).not.toBeAnnounced(),await i.click(t),a(`Hello world`).toBeAnnounced(`polite`)},c=()=>n(`
         <div></div>
         `,`
-        <div role="alert">
+        <div role="status">
             Hello world
         </div>
-        `),c.storyName=`Live region unavailable before content ✅`,c.play=async({canvasElement:e})=>{let t=r(e).getByRole(`button`);a(`Hello world`).not.toBeAnnounced(),await i.click(t),a(`Hello world`).toBeAnnounced(`assertive`)},l=()=>n(`
+        `),c.storyName=`Live region unavailable before content ❌`,c.play=async({canvasElement:e})=>{let t=r(e).getByRole(`button`);a(`Hello world`).not.toBeAnnounced(),await i.click(t),a(`Hello world`).not.toBeAnnounced()},l=()=>n(`
         <div aria-hidden="true">
-            <div role="alert">
+            <div role="status">
             </div>
         </div>
         `,`
         <div aria-hidden="true">
-            <div role="alert">
+            <div role="status">
                 Hello world
             </div>
         </div>
         `),l.storyName=`Anchestor is hidden ❌`,l.play=async({canvasElement:e})=>{let t=r(e).getByRole(`button`);a(`Hello world`).not.toBeAnnounced(),await i.click(t),a(`Hello world`).not.toBeAnnounced()},u=()=>n(`
-        <div aria-hidden="true" role="alert">
+        <div aria-hidden="true" role="status">
         </div>
         `,`
-        <div aria-hidden="true" role="alert">
+        <div aria-hidden="true" role="status">
             Hello world
         </div>
         `),u.storyName=`Live region is hidden ❌`,u.play=async({canvasElement:e})=>{let t=r(e).getByRole(`button`);a(`Hello world`).not.toBeAnnounced(),await i.click(t),a(`Hello world`).not.toBeAnnounced()},d=()=>n(`
-        <div role="alert">
+        <div role="status">
         </div>
         `,`
-        <div role="alert">
+        <div role="status">
             <div aria-hidden="true">
                 Hello world
             </div>
         </div>
         `),d.storyName=`Content is hidden ❌`,d.play=async({canvasElement:e})=>{let t=r(e).getByRole(`button`);a(`Hello world`).not.toBeAnnounced(),await i.click(t),a(`Hello world`).not.toBeAnnounced()},f=()=>n(`
-        <div role="alert">
+        <div role="status">
         </div>
         `,`
-        <div role="alert">
+        <div role="status">
             <span>
                 Hello
             </span>
@@ -50,14 +50,14 @@ import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{i as t,r as n}from"./i
                 world
             </span>
         </div>
-        `),f.storyName=`Content is partially hidden ⚠️`,f.play=async({canvasElement:e})=>{let t=r(e).getByRole(`button`);a(`Hello world`).not.toBeAnnounced(),await i.click(t),a(`Hello world`).not.toBeAnnounced(),a(`Hello`).toBeAnnounced(`assertive`)},p=()=>n(`
-        <div role="alert">
+        `),f.storyName=`Content is partially hidden ⚠️`,f.play=async({canvasElement:e})=>{let t=r(e).getByRole(`button`);a(`Hello`).not.toBeAnnounced(),await i.click(t),a(`Hello`).toBeAnnounced(`polite`),a(`world`).not.toBeAnnounced(),a(`Hello world`).not.toBeAnnounced()},p=()=>n(`
+        <div role="status">
             <span>
                 Hello
             </span>
         </div>
         `,`
-        <div role="alert">
+        <div role="status">
             <span>
                 Hello
             </span>
@@ -65,24 +65,24 @@ import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{i as t,r as n}from"./i
                 world
             </span>
         </div>
-        `),p.storyName=`Part of content changes ✅`,p.play=async({canvasElement:e})=>{let t=r(e).getByRole(`button`);a(`Hello world`).not.toBeAnnounced(),await i.click(t),a(`Hello world`).toBeAnnounced(`assertive`)},m=()=>n(`
-        <div role="alert">
+        `),p.storyName=`Part of content changes ✅`,p.play=async({canvasElement:e})=>{let t=r(e).getByRole(`button`);a(`Hello world`).not.toBeAnnounced(),await i.click(t),a(`Hello world`).toBeAnnounced(`polite`)},m=()=>n(`
+        <div role="status">
             <span aria-hidden="true">
                 Hello world
             </span>
         </div>
         `,`
-        <div role="alert">
+        <div role="status">
             <span>
                 Hello world
             </span>
         </div>
-        `),m.storyName=`aria-hidden changes ✅`,m.play=async({canvasElement:e})=>{let t=r(e).getByRole(`button`);a(`Hello world`).not.toBeAnnounced(),await i.click(t),a(`Hello world`).toBeAnnounced(`assertive`)},h=[`LiveRegionAvailableBeforeContent`,`LiveRegionUnavailableBeforeContent`,`AnchestorIsHidden`,`LiveRegionIsHidden`,`ContentIsHidden`,`ContentIsPartiallyHidden`,`PartOfContentChanges`,`AriaHiddenChanges`],s.parameters={...s.parameters,docs:{...s.parameters?.docs,source:{originalSource:`() => {
+        `),m.storyName=`aria-hidden changes ✅`,m.play=async({canvasElement:e})=>{let t=r(e).getByRole(`button`);a(`Hello world`).not.toBeAnnounced(),await i.click(t),a(`Hello world`).toBeAnnounced(`polite`)},h=[`LiveRegionAvailableBeforeContent`,`LiveRegionUnavailableBeforeContent`,`AnchestorIsHidden`,`LiveRegionIsHidden`,`ContentIsHidden`,`ContentIsPartiallyHidden`,`PartOfContentChanges`,`AriaHiddenChanges`],s.parameters={...s.parameters,docs:{...s.parameters?.docs,source:{originalSource:`() => {
   return createMountToggle(\`
-        <div role="alert">
+        <div role="status">
         </div>
         \`, \`
-        <div role="alert">
+        <div role="status">
             Hello world
         </div>
         \`);
@@ -90,38 +90,38 @@ import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{i as t,r as n}from"./i
   return createMountToggle(\`
         <div></div>
         \`, \`
-        <div role="alert">
+        <div role="status">
             Hello world
         </div>
         \`);
 }`,...c.parameters?.docs?.source}}},l.parameters={...l.parameters,docs:{...l.parameters?.docs,source:{originalSource:`() => {
   return createMountToggle(\`
         <div aria-hidden="true">
-            <div role="alert">
+            <div role="status">
             </div>
         </div>
         \`, \`
         <div aria-hidden="true">
-            <div role="alert">
+            <div role="status">
                 Hello world
             </div>
         </div>
         \`);
 }`,...l.parameters?.docs?.source}}},u.parameters={...u.parameters,docs:{...u.parameters?.docs,source:{originalSource:`() => {
   return createMountToggle(\`
-        <div aria-hidden="true" role="alert">
+        <div aria-hidden="true" role="status">
         </div>
         \`, \`
-        <div aria-hidden="true" role="alert">
+        <div aria-hidden="true" role="status">
             Hello world
         </div>
         \`);
 }`,...u.parameters?.docs?.source}}},d.parameters={...d.parameters,docs:{...d.parameters?.docs,source:{originalSource:`() => {
   return createMountToggle(\`
-        <div role="alert">
+        <div role="status">
         </div>
         \`, \`
-        <div role="alert">
+        <div role="status">
             <div aria-hidden="true">
                 Hello world
             </div>
@@ -129,10 +129,10 @@ import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{i as t,r as n}from"./i
         \`);
 }`,...d.parameters?.docs?.source}}},f.parameters={...f.parameters,docs:{...f.parameters?.docs,source:{originalSource:`() => {
   return createMountToggle(\`
-        <div role="alert">
+        <div role="status">
         </div>
         \`, \`
-        <div role="alert">
+        <div role="status">
             <span>
                 Hello
             </span>
@@ -143,13 +143,13 @@ import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{i as t,r as n}from"./i
         \`);
 }`,...f.parameters?.docs?.source}}},p.parameters={...p.parameters,docs:{...p.parameters?.docs,source:{originalSource:`() => {
   return createMountToggle(\`
-        <div role="alert">
+        <div role="status">
             <span>
                 Hello
             </span>
         </div>
         \`, \`
-        <div role="alert">
+        <div role="status">
             <span>
                 Hello
             </span>
@@ -160,13 +160,13 @@ import{n as e}from"./rolldown-runtime-DkW27tQK.js";import{i as t,r as n}from"./i
         \`);
 }`,...p.parameters?.docs?.source}}},m.parameters={...m.parameters,docs:{...m.parameters?.docs,source:{originalSource:`() => {
   return createMountToggle(\`
-        <div role="alert">
+        <div role="status">
             <span aria-hidden="true">
                 Hello world
             </span>
         </div>
         \`, \`
-        <div role="alert">
+        <div role="status">
             <span>
                 Hello world
             </span>
