@@ -41,10 +41,10 @@
     "docs:test": "vitest run --config ./vitest.config.docs.ts"
   },
   "devDependencies": {
-    "@storybook/addon-docs": "^10.6.2",
-    "@storybook/addon-vitest": "^10.6.2",
-    "@storybook/html": "10.6.2",
-    "@storybook/html-vite": "^10.6.2",
+    "@storybook/addon-docs": "^10.6.3",
+    "@storybook/addon-vitest": "^10.6.3",
+    "@storybook/html": "10.6.3",
+    "@storybook/html-vite": "^10.6.3",
     "@testing-library/dom": "^10.4.2",
     "@vitest/browser": "^5.0.5",
     "@vitest/browser-playwright": "^5.0.5",
@@ -60,7 +60,7 @@
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "start-server-and-test": "^3.0.13",
-    "storybook": "^10.6.2",
+    "storybook": "^10.6.3",
     "typescript": "^7.0.2",
     "virtual-dom-nodes": "^0.2.2",
     "vite": "^8.3.4",
