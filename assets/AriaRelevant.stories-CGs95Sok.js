@@ -1,4 +1,4 @@
-import{n as e}from"./rolldown-runtime-sJBDdmOt.js";import{i as t,r as n}from"./iframe-Dv7USMYZ.js";var r,i,a,o,s,c;function l(){return(l=e((()=>{t(),r={title:`Unsupported/aria-relevant`},i=()=>n(`
+import{n as e}from"./rolldown-runtime-sJBDdmOt.js";import{i as t,r as n}from"./iframe-D3jelSkA.js";var r,i,a,o,s,c;function l(){return(l=e((()=>{t(),r={title:`Unsupported/aria-relevant`},i=()=>n(`
         <ul aria-live="polite" aria-relevant="additions">
             <li>First</li>
         </ul>
