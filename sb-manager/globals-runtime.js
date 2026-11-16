@@ -1,7 +1,7 @@
 import { a as __toESM, n as __esmMin, r as __exportAll } from "./_manager-chunks/globals-runtime-XrdeG17s.js";
 import { C as require_major, S as require_minor, T as require_diff, b as require_prerelease, ft as parse, ht as init_esm, mt as dedent, pt as stringify, ut as init_dist, w as require_gt, x as require_patch, y as require_store2 } from "./_manager-chunks/globals-runtime-CzGMgLxl.js";
-import { A as init_tags$1, B as init_status_store, D as BUILT_IN_FILTERS, E as isReviewManagerRoute, G as init_emotion, H as toStatusValue, J as init_create, K as create, L as UNIVERSAL_STATUS_STORE_OPTIONS, O as Tag, R as countStatusesByValue, S as buildArgsParam, T as init_routes, U as emotion_exports, V as statusValueShortName, _ as init_mock, a as registerService, at as UniversalStore, b as init_router, d as createChecklistStore, f as init_checklist_store, g as MockUniversalStore, h as init_test_provider_store, i as init_manager, it as init_storybook_error, k as USER_TAG_FILTER, l as useServiceCommand, m as createTestProviderStore, ot as init_universal_store, p as UNIVERSAL_TEST_PROVIDER_STORE_OPTIONS, q as create_exports, r as getService, rt as StorybookError, s as useServiceQuery, u as UNIVERSAL_CHECKLIST_STORE_OPTIONS, v as init_use_universal_store_manager, w as queryFromLocation, x as router_exports, y as useUniversalStore, z as createStatusStore } from "./_manager-chunks/globals-runtime-D04kIJv5.js";
-import { A as SET_WHATS_NEW_CACHE, B as STORY_MISSING, C as SELECT_STORY, D as SET_GLOBALS, E as SET_FILTER, F as STORIES_COLLAPSE_ALL, G as UPDATE_GLOBALS, H as STORY_SPECIFIED, I as STORIES_EXPAND_ALL, J as core_events_exports, K as UPDATE_QUERY_PARAMS, L as STORY_ARGS_UPDATED, M as SHARED_STATE_SET, N as SIDEBAR_FILTER_CHANGED, O as SET_INDEX, P as SIDEBAR_OPEN_CONTEXT_MENU, Q as logger, R as STORY_CHANGED, S as RESULT_WHATS_NEW_DATA, T as SET_CURRENT_STORY, U as TELEMETRY_ERROR, V as STORY_PREPARED, W as TOGGLE_WHATS_NEW_NOTIFICATIONS, X as client_logger_exports, Y as init_core_events, Z as init_client_logger, _ as OPEN_IN_EDITOR_RESPONSE, a as channels_exports, b as REQUEST_WHATS_NEW_DATA, c as init_channel_slot, d as CURRENT_STORY_WAS_SET, f as DOCS_PREPARED, g as OPEN_IN_EDITOR_REQUEST, h as NAVIGATE_URL, i as mockChannel, j as SHARED_STATE_CHANGED, k as SET_STORIES, l as setChannel, m as GLOBALS_UPDATED, n as init_components, o as init_channels, p as FORCE_REMOUNT, q as UPDATE_STORY_ARGS, r as init_mock_channel, s as getChannel, t as components_exports, u as CONFIG_ERROR, v as PRELOAD_ENTRIES, w as SET_CONFIG, x as RESET_STORY_ARGS, y as PREVIEW_KEYDOWN, z as STORY_INDEX_INVALIDATED } from "./_manager-chunks/globals-runtime-C5yCOOyb.js";
+import { A as init_tags$1, B as init_status_store, D as BUILT_IN_FILTERS, E as isReviewManagerRoute, G as init_emotion, H as toStatusValue, J as init_create, K as create, L as UNIVERSAL_STATUS_STORE_OPTIONS, O as Tag, R as countStatusesByValue, S as buildArgsParam, T as init_routes, U as emotion_exports, V as statusValueShortName, _ as init_mock, a as registerService, at as UniversalStore, b as init_router, d as createChecklistStore, f as init_checklist_store, g as MockUniversalStore, h as init_test_provider_store, i as init_manager, it as init_storybook_error, k as USER_TAG_FILTER, l as useServiceCommand, m as createTestProviderStore, ot as init_universal_store, p as UNIVERSAL_TEST_PROVIDER_STORE_OPTIONS, q as create_exports, r as getService, rt as StorybookError, s as useServiceQuery, u as UNIVERSAL_CHECKLIST_STORE_OPTIONS, v as init_use_universal_store_manager, w as queryFromLocation, x as router_exports, y as useUniversalStore, z as createStatusStore } from "./_manager-chunks/globals-runtime-CZdu4wVH.js";
+import { $ as logger, A as SET_WHATS_NEW_CACHE, B as STORY_INDEX_INVALIDATED, C as SELECT_STORY, D as SET_GLOBALS, E as SET_FILTER, F as STORIES_COLLAPSE_ALL, G as TOGGLE_WHATS_NEW_NOTIFICATIONS, H as STORY_PREPARED, I as STORIES_EXPAND_ALL, J as UPDATE_STORY_ARGS, K as UPDATE_GLOBALS, L as STORY_ARGS_UPDATED, M as SHARED_STATE_SET, N as SIDEBAR_FILTER_CHANGED, O as SET_INDEX, P as SIDEBAR_OPEN_CONTEXT_MENU, Q as init_client_logger, R as STORY_CHANGED, S as RESULT_WHATS_NEW_DATA, T as SET_CURRENT_STORY, U as STORY_SPECIFIED, V as STORY_MISSING, W as TELEMETRY_ERROR, X as init_core_events, Y as core_events_exports, Z as client_logger_exports, _ as OPEN_IN_EDITOR_RESPONSE, a as channels_exports, b as REQUEST_WHATS_NEW_DATA, c as init_channel_slot, d as CURRENT_STORY_WAS_SET, f as DOCS_PREPARED, g as OPEN_IN_EDITOR_REQUEST, h as NAVIGATE_URL, i as mockChannel, j as SHARED_STATE_CHANGED, k as SET_STORIES, l as setChannel, m as GLOBALS_UPDATED, n as init_components, o as init_channels, p as FORCE_REMOUNT, q as UPDATE_QUERY_PARAMS, r as init_mock_channel, s as getChannel, t as components_exports, u as CONFIG_ERROR, v as PRELOAD_ENTRIES, w as SET_CONFIG, x as RESET_STORY_ARGS, y as PREVIEW_KEYDOWN, z as STORY_FINISHED } from "./_manager-chunks/globals-runtime-DTL5Usp2.js";
 import { At as init_dist$1, M as require_copy_to_clipboard, Z as FailedIcon, et as dist_exports, jt as scope, s as require_browser_dtector_umd_min, tt as init_dist$2 } from "./_manager-chunks/globals-runtime-C8r9nrt8.js";
 import { ct as require_react, it as require_jsx_runtime } from "./_manager-chunks/globals-runtime-DpF3al7J.js";
 import { B as FocusScope_exports, V as init_FocusScope } from "./_manager-chunks/globals-runtime-DUdJ_lLr.js";
@@ -9,7 +9,7 @@ import { n as require_react_dom } from "./_manager-chunks/globals-runtime-DNgiu6
 import { t as require_client } from "./_manager-chunks/globals-runtime-D23RyaMd.js";
 import { C as init_predicate, O as require_memoizerific, S as mergeWith, T as isEqual, a as init_array, b as omit, c as countBy, f as dequal, g as toMerged, i as throttle, m as init_object, n as init_function, p as init_dist$3, s as partition, v as pick } from "./_manager-chunks/globals-runtime-DfPn-YQU.js";
 import { r as stringify$1, t as init_main } from "./_manager-chunks/globals-runtime-Ci5x8rlg.js";
-import { n as types_exports, r as Addon_TypesEnum, t as init_types } from "./_manager-chunks/globals-runtime-1EHOIU1u.js";
+import { n as types_exports, r as Addon_TypesEnum, t as init_types } from "./_manager-chunks/globals-runtime-DnTQA78W.js";
 import { i as toId, r as sanitize, t as init_csf } from "./_manager-chunks/globals-runtime-CuYKAGmS.js";
 //#region src/preview-errors.ts
 var InvalidChannelPageError, StatusTypeIdMismatchError$1;
@@ -304,6 +304,7 @@ function ensurePanel(panels, selectedPanel, currentPanel) {
 var init$13;
 var init_addons = __esmMin((() => {
 	init_client_logger();
+	init_predicate();
 	init$13 = ({ provider, store, fullAPI }) => {
 		const api = {
 			getElements: (type) => provider.getElements(type),
@@ -328,13 +329,14 @@ var init_addons = __esmMin((() => {
 			},
 			setAddonState(addonId, newStateOrMerger, options) {
 				const merger = typeof newStateOrMerger === "function" ? newStateOrMerger : () => newStateOrMerger;
-				return store.setState((s) => ({
-					...s,
-					addons: {
+				return store.setState((s) => {
+					const current = s.addons[addonId];
+					const next = merger(current);
+					return !((options?.persistence ?? "none") !== "none") && isEqual(next, current) ? {} : { addons: {
 						...s.addons,
-						[addonId]: merger(s.addons[addonId])
-					}
-				}), options).then(() => api.getAddonState(addonId));
+						[addonId]: next
+					} };
+				}, options).then(() => api.getAddonState(addonId));
 			},
 			getAddonState: (addonId) => {
 				return store.getState().addons[addonId] || globalThis?.STORYBOOK_ADDON_STATE[addonId];
@@ -1283,32 +1285,18 @@ var init$8;
 var init_notifications = __esmMin((() => {
 	init_array();
 	init$8 = ({ store }) => {
+		const replace = (id, replacement) => {
+			const [removed, others] = partition(store.getState().notifications, (n) => n.id === id);
+			store.setState({ notifications: [...others, ...replacement] });
+			removed.forEach((notification) => notification.onClear?.({
+				dismissed: false,
+				timeout: false
+			}));
+		};
 		return {
 			api: {
-				addNotification: (newNotification) => {
-					store.setState(({ notifications }) => {
-						const [existing, others] = partition(notifications, (n) => n.id === newNotification.id);
-						existing.forEach((notification) => {
-							if (notification.onClear) notification.onClear({
-								dismissed: false,
-								timeout: false
-							});
-						});
-						return { notifications: [...others, newNotification] };
-					});
-				},
-				clearNotification: (notificationId) => {
-					store.setState(({ notifications }) => {
-						const [matching, others] = partition(notifications, (n) => n.id === notificationId);
-						matching.forEach((notification) => {
-							if (notification.onClear) notification.onClear({
-								dismissed: false,
-								timeout: false
-							});
-						});
-						return { notifications: others };
-					});
-				}
+				addNotification: (newNotification) => replace(newNotification.id, [newNotification]),
+				clearNotification: (notificationId) => replace(notificationId, [])
 			},
 			state: { notifications: [] }
 		};
@@ -1339,7 +1327,7 @@ var init_open_in_editor = __esmMin((() => {
 			} },
 			state: { notifications: [] },
 			init: async () => {
-				const { color } = await import("./_manager-chunks/globals-runtime-D04kIJv5.js").then((n) => (n.G(), n.U));
+				const { color } = await import("./_manager-chunks/globals-runtime-CZdu4wVH.js").then((n) => (n.G(), n.U));
 				provider.channel?.on(OPEN_IN_EDITOR_RESPONSE, (payload) => {
 					if (payload.error !== null) fullAPI.addNotification({
 						id: "open-in-editor-error",
@@ -1521,6 +1509,7 @@ var init_shortcuts = __esmMin((() => {
 	init_core_events();
 	init_dist$1();
 	import_copy_to_clipboard = /* @__PURE__ */ __toESM(require_copy_to_clipboard(), 1);
+	init_predicate();
 	init_client_logger();
 	init_shortcut();
 	init_layout();
@@ -1638,11 +1627,13 @@ var init_shortcuts = __esmMin((() => {
 				return value;
 			},
 			async setAddonShortcut(addon, shortcut) {
-				await api.setShortcuts((shortcuts) => ({
+				const id = `${addon}-${shortcut.actionName}`;
+				const previous = addonsShortcuts[id];
+				addonsShortcuts[id] = shortcut;
+				if (!(!!previous && isEqual(previous.defaultShortcut, shortcut.defaultShortcut) && id in (store.getState().shortcuts ?? {}))) await api.setShortcuts((shortcuts) => ({
 					...shortcuts,
-					[`${addon}-${shortcut.actionName}`]: shortcut.defaultShortcut
+					[id]: shortcut.defaultShortcut
 				}));
-				addonsShortcuts[`${addon}-${shortcut.actionName}`] = shortcut;
 				return shortcut;
 			},
 			async restoreDefaultShortcut(action) {
@@ -2563,7 +2554,7 @@ var init_stories = __esmMin((() => {
 			}
 		});
 		provider.channel?.on(STORY_PREPARED, function handler({ id, ...update }) {
-			const { ref, sourceType } = getEventMetadata(this, fullAPI);
+			const { ref } = getEventMetadata(this, fullAPI);
 			api.updateStory(id, {
 				...update,
 				prepared: true
@@ -2575,15 +2566,20 @@ var init_stories = __esmMin((() => {
 					store.setState({ hasCalledSetOptions: true });
 				}
 			}
-			if (sourceType === "local") {
+		});
+		provider.channel?.on(STORY_FINISHED, function handler({ storyId: finishedStoryId }) {
+			const { sourceType } = getEventMetadata(this, fullAPI);
+			if (sourceType !== "local") return;
+			scope.requestIdleCallback(() => {
 				const { storyId, index, refId } = store.getState();
-				if (!index) return;
+				if (!index || storyId !== finishedStoryId) return;
 				const toBePreloaded = Array.from(/* @__PURE__ */ new Set([api.findSiblingStoryId(storyId, index, 1, true), api.findSiblingStoryId(storyId, index, -1, true)])).filter(Boolean);
-				provider.channel?.emit(PRELOAD_ENTRIES, {
+				if (toBePreloaded.length > 0) provider.channel?.emit(PRELOAD_ENTRIES, {
 					ids: toBePreloaded,
+					source: "sibling",
 					options: { target: refId }
 				});
-			}
+			});
 		});
 		provider.channel?.on(DOCS_PREPARED, function handler({ id, ...update }) {
 			const { ref } = getEventMetadata(this, fullAPI);
@@ -2920,7 +2916,7 @@ var init_url = __esmMin((() => {
 //#region src/manager-api/version.ts
 var version;
 var init_version = __esmMin((() => {
-	version = "11.0.0-beta.1";
+	version = "11.0.0-beta.3";
 }));
 //#endregion
 //#region src/manager-api/modules/versions.ts
@@ -3133,6 +3129,10 @@ function update(storage, patch) {
 		...patch
 	});
 }
+function resolveUpdater(updater, state) {
+	const result = updater(state);
+	return Object.fromEntries(Object.entries(result).filter(([key, value]) => value !== state[key]));
+}
 var import_store2, STORAGE_KEY, Store;
 var init_store = __esmMin((() => {
 	import_store2 = /* @__PURE__ */ __toESM(require_store2(), 1);
@@ -3142,6 +3142,7 @@ var init_store = __esmMin((() => {
 	Store = class {
 		constructor({ allowPersistence, setState, getState }) {
 			this.persistenceHandlers = /* @__PURE__ */ new Map();
+			this.pendingPatches = [];
 			this.upstreamPersistence = allowPersistence ?? true;
 			this.upstreamSetState = setState;
 			this.upstreamGetState = getState;
@@ -3161,7 +3162,12 @@ var init_store = __esmMin((() => {
 			};
 		}
 		getState() {
-			return this.upstreamGetState();
+			const committed = this.upstreamGetState();
+			if (this.pendingPatches.length === 0) return committed;
+			return this.pendingPatches.reduce((acc, { patch }) => ({
+				...acc,
+				...patch
+			}), committed);
 		}
 		async setState(inputPatch, cbOrOptions, inputOptions) {
 			let callback;
@@ -3171,20 +3177,28 @@ var init_store = __esmMin((() => {
 				options = inputOptions;
 			} else options = cbOrOptions;
 			const { persistence = "none" } = options || {};
-			let patch = {};
-			let delta = {};
-			if (typeof inputPatch === "function") patch = (state) => {
-				delta = inputPatch(state);
-				return delta;
-			};
-			else {
-				patch = inputPatch;
-				delta = patch;
+			const delta = typeof inputPatch === "function" ? resolveUpdater(inputPatch, this.getState()) : inputPatch;
+			if (Object.keys(delta).length === 0) {
+				const state = this.getState();
+				callback?.(state);
+				return state;
 			}
+			const pending = {
+				patch: delta,
+				committed: false
+			};
+			this.pendingPatches.push(pending);
 			const newState = await new Promise((resolve) => {
-				this.upstreamSetState(patch, () => {
-					resolve(this.getState());
-				});
+				try {
+					this.upstreamSetState(delta, () => {
+						pending.committed = true;
+						while (this.pendingPatches[0]?.committed) this.pendingPatches.shift();
+						resolve(this.getState());
+					});
+				} catch (error) {
+					this.pendingPatches.splice(this.pendingPatches.indexOf(pending), 1);
+					throw error;
+				}
 			});
 			if (persistence !== "none" && this.upstreamPersistence) if (persistence === "url") {
 				const handler = this.persistenceHandlers.get("url");
@@ -3417,16 +3431,14 @@ var init_root = __esmMin((() => {
 				getState: () => this.state,
 				setState: (stateChange, callback) => {
 					if (!this.mounted) {
-						const patch = typeof stateChange === "function" ? stateChange(this.state) : stateChange;
 						this.state = {
 							...this.state,
-							...patch
+							...stateChange
 						};
-						callback?.(this.state);
-						return this.state;
+						callback(this.state);
+						return;
 					}
 					this.setState(stateChange, () => callback(this.state));
-					return this.state;
 				}
 			});
 			const routeData = {
