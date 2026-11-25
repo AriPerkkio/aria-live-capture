@@ -1,7 +1,7 @@
 import { a as __toESM, n as __esmMin, r as __exportAll } from "./_manager-chunks/globals-runtime-XrdeG17s.js";
 import { C as require_major, S as require_minor, T as require_diff, b as require_prerelease, ft as parse, ht as init_esm, mt as dedent, pt as stringify, ut as init_dist, w as require_gt, x as require_patch, y as require_store2 } from "./_manager-chunks/globals-runtime-CzGMgLxl.js";
-import { A as init_tags$1, B as init_status_store, D as BUILT_IN_FILTERS, E as isReviewManagerRoute, G as init_emotion, H as toStatusValue, J as init_create, K as create, L as UNIVERSAL_STATUS_STORE_OPTIONS, O as Tag, R as countStatusesByValue, S as buildArgsParam, T as init_routes, U as emotion_exports, V as statusValueShortName, _ as init_mock, a as registerService, at as UniversalStore, b as init_router, d as createChecklistStore, f as init_checklist_store, g as MockUniversalStore, h as init_test_provider_store, i as init_manager, it as init_storybook_error, k as USER_TAG_FILTER, l as useServiceCommand, m as createTestProviderStore, ot as init_universal_store, p as UNIVERSAL_TEST_PROVIDER_STORE_OPTIONS, q as create_exports, r as getService, rt as StorybookError, s as useServiceQuery, u as UNIVERSAL_CHECKLIST_STORE_OPTIONS, v as init_use_universal_store_manager, w as queryFromLocation, x as router_exports, y as useUniversalStore, z as createStatusStore } from "./_manager-chunks/globals-runtime-CZdu4wVH.js";
-import { $ as logger, A as SET_WHATS_NEW_CACHE, B as STORY_INDEX_INVALIDATED, C as SELECT_STORY, D as SET_GLOBALS, E as SET_FILTER, F as STORIES_COLLAPSE_ALL, G as TOGGLE_WHATS_NEW_NOTIFICATIONS, H as STORY_PREPARED, I as STORIES_EXPAND_ALL, J as UPDATE_STORY_ARGS, K as UPDATE_GLOBALS, L as STORY_ARGS_UPDATED, M as SHARED_STATE_SET, N as SIDEBAR_FILTER_CHANGED, O as SET_INDEX, P as SIDEBAR_OPEN_CONTEXT_MENU, Q as init_client_logger, R as STORY_CHANGED, S as RESULT_WHATS_NEW_DATA, T as SET_CURRENT_STORY, U as STORY_SPECIFIED, V as STORY_MISSING, W as TELEMETRY_ERROR, X as init_core_events, Y as core_events_exports, Z as client_logger_exports, _ as OPEN_IN_EDITOR_RESPONSE, a as channels_exports, b as REQUEST_WHATS_NEW_DATA, c as init_channel_slot, d as CURRENT_STORY_WAS_SET, f as DOCS_PREPARED, g as OPEN_IN_EDITOR_REQUEST, h as NAVIGATE_URL, i as mockChannel, j as SHARED_STATE_CHANGED, k as SET_STORIES, l as setChannel, m as GLOBALS_UPDATED, n as init_components, o as init_channels, p as FORCE_REMOUNT, q as UPDATE_QUERY_PARAMS, r as init_mock_channel, s as getChannel, t as components_exports, u as CONFIG_ERROR, v as PRELOAD_ENTRIES, w as SET_CONFIG, x as RESET_STORY_ARGS, y as PREVIEW_KEYDOWN, z as STORY_FINISHED } from "./_manager-chunks/globals-runtime-DTL5Usp2.js";
+import { A as init_tags$1, B as init_status_store, D as BUILT_IN_FILTERS, E as isReviewManagerRoute, G as init_emotion, H as toStatusValue, J as init_create, K as create, L as UNIVERSAL_STATUS_STORE_OPTIONS, O as Tag, R as countStatusesByValue, S as buildArgsParam, T as init_routes, U as emotion_exports, V as statusValueShortName, _ as init_mock, a as registerService, at as UniversalStore, b as init_router, d as createChecklistStore, f as init_checklist_store, g as MockUniversalStore, h as init_test_provider_store, i as init_manager, it as init_storybook_error, k as USER_TAG_FILTER, l as useServiceCommand, m as createTestProviderStore, ot as init_universal_store, p as UNIVERSAL_TEST_PROVIDER_STORE_OPTIONS, q as create_exports, r as getService, rt as StorybookError, s as useServiceQuery, u as UNIVERSAL_CHECKLIST_STORE_OPTIONS, v as init_use_universal_store_manager, w as queryFromLocation, x as router_exports, y as useUniversalStore, z as createStatusStore } from "./_manager-chunks/globals-runtime-C9zyVjBa.js";
+import { $ as logger, A as SET_WHATS_NEW_CACHE, B as STORY_INDEX_INVALIDATED, C as SELECT_STORY, D as SET_GLOBALS, E as SET_FILTER, F as STORIES_COLLAPSE_ALL, G as TOGGLE_WHATS_NEW_NOTIFICATIONS, H as STORY_PREPARED, I as STORIES_EXPAND_ALL, J as UPDATE_STORY_ARGS, K as UPDATE_GLOBALS, L as STORY_ARGS_UPDATED, M as SHARED_STATE_SET, N as SIDEBAR_FILTER_CHANGED, O as SET_INDEX, P as SIDEBAR_OPEN_CONTEXT_MENU, Q as init_client_logger, R as STORY_CHANGED, S as RESULT_WHATS_NEW_DATA, T as SET_CURRENT_STORY, U as STORY_SPECIFIED, V as STORY_MISSING, W as TELEMETRY_ERROR, X as init_core_events, Y as core_events_exports, Z as client_logger_exports, _ as OPEN_IN_EDITOR_RESPONSE, a as channels_exports, b as REQUEST_WHATS_NEW_DATA, c as init_channel_slot, d as CURRENT_STORY_WAS_SET, f as DOCS_PREPARED, g as OPEN_IN_EDITOR_REQUEST, h as NAVIGATE_URL, i as mockChannel, j as SHARED_STATE_CHANGED, k as SET_STORIES, l as setChannel, m as GLOBALS_UPDATED, n as init_components, o as init_channels, p as FORCE_REMOUNT, q as UPDATE_QUERY_PARAMS, r as init_mock_channel, s as getChannel, t as components_exports, u as CONFIG_ERROR, v as PRELOAD_ENTRIES, w as SET_CONFIG, x as RESET_STORY_ARGS, y as PREVIEW_KEYDOWN, z as STORY_FINISHED } from "./_manager-chunks/globals-runtime-GMPwMeY7.js";
 import { At as init_dist$1, M as require_copy_to_clipboard, Z as FailedIcon, et as dist_exports, jt as scope, s as require_browser_dtector_umd_min, tt as init_dist$2 } from "./_manager-chunks/globals-runtime-C8r9nrt8.js";
 import { ct as require_react, it as require_jsx_runtime } from "./_manager-chunks/globals-runtime-DpF3al7J.js";
 import { B as FocusScope_exports, V as init_FocusScope } from "./_manager-chunks/globals-runtime-DUdJ_lLr.js";
@@ -9,8 +9,8 @@ import { n as require_react_dom } from "./_manager-chunks/globals-runtime-DNgiu6
 import { t as require_client } from "./_manager-chunks/globals-runtime-D23RyaMd.js";
 import { C as init_predicate, O as require_memoizerific, S as mergeWith, T as isEqual, a as init_array, b as omit, c as countBy, f as dequal, g as toMerged, i as throttle, m as init_object, n as init_function, p as init_dist$3, s as partition, v as pick } from "./_manager-chunks/globals-runtime-DfPn-YQU.js";
 import { r as stringify$1, t as init_main } from "./_manager-chunks/globals-runtime-Ci5x8rlg.js";
-import { n as types_exports, r as Addon_TypesEnum, t as init_types } from "./_manager-chunks/globals-runtime-DnTQA78W.js";
-import { i as toId, r as sanitize, t as init_csf } from "./_manager-chunks/globals-runtime-CuYKAGmS.js";
+import { n as types_exports, r as Addon_TypesEnum, t as init_types } from "./_manager-chunks/globals-runtime-bY5VYPyX.js";
+import { a as toId, i as titleToPath, r as sanitize, t as init_csf } from "./_manager-chunks/globals-runtime-D-fV66AU.js";
 //#region src/preview-errors.ts
 var InvalidChannelPageError, StatusTypeIdMismatchError$1;
 var init_preview_errors = __esmMin((() => {
@@ -378,11 +378,7 @@ var init_channel = __esmMin((() => {
 //#endregion
 //#region src/preview-api/modules/preview-web/render/animation-utils.ts
 function isTestEnvironment() {
-	try {
-		return !!globalThis.__vitest_browser__ || !!globalThis.window?.navigator?.userAgent?.match(/StorybookTestRunner/);
-	} catch {
-		return false;
-	}
+	return !!globalThis.__vitest_browser__;
 }
 var init_animation_utils = __esmMin((() => {}));
 //#endregion
@@ -399,15 +395,14 @@ var init_intersect = __esmMin((() => {
 }));
 //#endregion
 //#region src/manager-api/lib/stories.ts
-var import_memoizerific$2, TITLE_PATH_SEPARATOR, transformStoryIndexV3toV4, transformStoryIndexV4toV5, transformStoryIndexToStoriesHash, addPreparedStories, getComponentLookupList, getStoriesLookupList;
+var import_memoizerific$2, isOwnEntry, transformStoryIndexV3toV4, transformStoryIndexV4toV5, transformStoryIndexToStoriesHash, addPreparedStories, getComponentLookupList, getStoriesLookupList;
 var init_stories$1 = __esmMin((() => {
 	init_csf();
 	init_array();
 	import_memoizerific$2 = /* @__PURE__ */ __toESM(require_memoizerific(), 1);
-	init_esm();
 	init_tags$1();
 	init_intersect();
-	TITLE_PATH_SEPARATOR = /\s*\/\s*/;
+	isOwnEntry = (component, entry) => (entry?.type === "docs" || entry?.type === "story") && titleToPath(entry.title).at(-1)?.id === component.id;
 	transformStoryIndexV3toV4 = (index) => {
 		const countByTitle = countBy(Object.values(index.stories), (item) => item.title);
 		return {
@@ -478,7 +473,6 @@ var init_stories$1 = __esmMin((() => {
 		});
 		const { sidebar = {} } = provider.getConfig();
 		const { showRoots, collapsedRoots = [], renderAriaLabel, renderLabel } = sidebar;
-		const setShowRoots = typeof showRoots !== "undefined";
 		const includedIds = new Set(entryValues.map((entry) => entry.id));
 		const entriesById = /* @__PURE__ */ new Map();
 		const titleNodes = /* @__PURE__ */ new Map();
@@ -490,42 +484,28 @@ var init_stories$1 = __esmMin((() => {
 				testIdsByStoryId.set(item.parent, [...testIdsByStoryId.get(item.parent) ?? [], item.id]);
 				return;
 			}
-			const { title } = item;
-			const groups = title.trim().split(TITLE_PATH_SEPARATOR);
-			const root = (!setShowRoots || showRoots) && groups.length > 1 ? [groups.shift()] : [];
-			const names = [...root, ...groups];
-			const paths = names.reduce((list, name, idx) => {
-				const parent = idx > 0 && list[idx - 1];
-				const id = sanitize(parent ? `${parent}-${name}` : name);
-				if (name.trim() === "") throw new Error(dedent`Invalid title ${title} ending in slash.`);
-				if (parent === id) throw new Error(dedent`
-          Invalid part '${name}', leading to id === parentId ('${id}'), inside title '${title}'
-
-          Did you create a path that uses the separator char accidentally, such as 'Vue <docs/>' where '/' is a separator char? See https://github.com/storybookjs/storybook/issues/6128
-          `);
-				list.push(id);
-				return list;
-			}, []);
-			paths.forEach((id, idx) => {
+			const paths = titleToPath(item.title);
+			const hasRoot = showRoots !== false && paths.length > 1;
+			paths.forEach(({ id, name }, idx) => {
 				const node = titleNodes.get(id) ?? {
 					id,
 					name: "",
-					parent: paths[idx - 1],
+					parent: paths[idx - 1]?.id,
 					depth: idx,
 					isRoot: false,
 					children: []
 				};
 				titleNodes.set(id, node);
-				node.name = names[idx];
-				node.isRoot ||= root.length > 0 && idx === 0;
-				const childId = paths[idx + 1] ?? item.id;
+				node.name = name;
+				node.isRoot ||= hasRoot && idx === 0;
+				const childId = paths[idx + 1]?.id ?? item.id;
 				if (!node.children.includes(childId)) node.children.push(childId);
 			});
 		});
 		const typeOf = (node) => {
 			if (node.isRoot) return "root";
+			if (node.children.some((id) => entriesById.get(id)?.type === "story")) return "component";
 			if (node.children.some((id) => titleNodes.has(id))) return "group";
-			if (node.children.some((id) => entriesById.get(id).type === "story")) return "component";
 			return node.children.length === 1 ? "docs" : "group";
 		};
 		const isIncluded = (id) => {
@@ -584,7 +564,11 @@ var init_stories$1 = __esmMin((() => {
 				const child = storiesHash[id];
 				return child.type === "story" && "children" in child && child.children ? [id, ...child.children] : [id];
 			}).map((id) => storiesHash[id].tags).reduce(intersect_default);
-			if (entry.type === "component") entry.importPath = storiesHash[children[0]].importPath;
+			if (entry.type === "component") {
+				const isOwnEntry = (id) => entriesById.has(id);
+				const childId = includedChildren.find(isOwnEntry) ?? node.children.find(isOwnEntry);
+				entry.importPath = entriesById.get(childId).importPath;
+			}
 		};
 		const topLevelNodes = [...titleNodes.values()].filter((node) => node.depth === 0 && isIncluded(node.id));
 		topLevelNodes.filter((node) => !node.isRoot).forEach(addNode);
@@ -607,12 +591,28 @@ var init_stories$1 = __esmMin((() => {
 		}));
 	};
 	getComponentLookupList = (0, import_memoizerific$2.default)(1)((hash) => {
-		return Object.entries(hash).reduce((acc, i) => {
-			const value = i[1];
-			if (value.type === "component") acc.push([...value.children]);
-			else if (value.type === "docs" && (!value.parent || hash[value.parent].type !== "component")) acc.push([value.id]);
-			return acc;
-		}, []);
+		const lists = [];
+		const visit = (id) => {
+			const entry = hash[id];
+			if (entry.type === "component") {
+				let ownEntries = [];
+				entry.children.forEach((childId) => {
+					if (isOwnEntry(entry, hash[childId])) {
+						ownEntries.push(childId);
+						return;
+					}
+					if (ownEntries.length) {
+						lists.push(ownEntries);
+						ownEntries = [];
+					}
+					visit(childId);
+				});
+				if (ownEntries.length) lists.push(ownEntries);
+			} else if (entry.type === "docs") lists.push([entry.id]);
+			else if (entry.type === "root" || entry.type === "group") entry.children.forEach(visit);
+		};
+		Object.values(hash).filter((entry) => !("parent" in entry && entry.parent)).forEach((entry) => visit(entry.id));
+		return lists;
 	});
 	getStoriesLookupList = (0, import_memoizerific$2.default)(1)((hash) => {
 		return Object.keys(hash).filter((k) => ["story", "docs"].includes(hash[k].type));
@@ -1327,7 +1327,7 @@ var init_open_in_editor = __esmMin((() => {
 			} },
 			state: { notifications: [] },
 			init: async () => {
-				const { color } = await import("./_manager-chunks/globals-runtime-CZdu4wVH.js").then((n) => (n.G(), n.U));
+				const { color } = await import("./_manager-chunks/globals-runtime-C9zyVjBa.js").then((n) => (n.G(), n.U));
 				provider.channel?.on(OPEN_IN_EDITOR_RESPONSE, (payload) => {
 					if (payload.error !== null) fullAPI.addNotification({
 						id: "open-in-editor-error",
@@ -2078,6 +2078,12 @@ var init_stories = __esmMin((() => {
 				storyCounts
 			});
 		};
+		const findSubtreeJumpTarget = (direction) => {
+			const { filteredIndex, storyId, refs, refId } = store.getState();
+			const hash = refId ? refs[refId]?.filteredIndex : filteredIndex;
+			if (!hash || !api.getData(storyId, refId)) return;
+			return api.findSiblingStoryId(storyId, hash, direction, true);
+		};
 		const api = {
 			storyId: toId,
 			getData: (storyId, refId) => {
@@ -2094,6 +2100,13 @@ var init_stories = __esmMin((() => {
 				if (refId && !refs[refId]) return;
 				if (refId) return refs?.[refId]?.index?.[storyId] ?? void 0;
 				return index ? index[storyId] : void 0;
+			},
+			resolveLeafEntry: (entryId, refId) => {
+				const { refs, index, filteredIndex } = store.getState();
+				const entry = (refId ? refs[refId]?.index : index)?.[entryId];
+				if (entry?.type === "docs" || entry?.type === "story") return entry;
+				const filteredHash = refId ? refs[refId]?.filteredIndex : filteredIndex;
+				return entry && filteredHash ? api.findLeafEntry(filteredHash, entryId) : void 0;
 			},
 			getCurrentStoryData: () => {
 				const { storyId, refId } = store.getState();
@@ -2123,12 +2136,8 @@ var init_stories = __esmMin((() => {
 				}, parameterName) || void 0;
 			},
 			jumpToSubtree: (direction) => {
-				const { filteredIndex, storyId, refs, refId } = store.getState();
-				if (!api.getData(storyId, refId)) return;
-				const hash = refId ? refs[refId].filteredIndex || {} : filteredIndex;
-				if (!hash) return;
-				const result = api.findSiblingStoryId(storyId, hash, direction, true);
-				if (result) api.selectStory(result, void 0, { ref: refId });
+				const result = findSubtreeJumpTarget(direction);
+				if (result) api.selectStory(result, void 0, { ref: store.getState().refId });
 			},
 			jumpToStory: (direction) => {
 				const { filteredIndex, storyId, refs, refId } = store.getState();
@@ -2177,7 +2186,7 @@ var init_stories = __esmMin((() => {
 				if (!name) {
 					const entry = titleOrId ? hash[titleOrId] || hash[sanitize(titleOrId)] || Object.values(hash).find((e) => e.type === "docs" && sanitize(e.title) === sanitize(titleOrId)) : hash[kindSlug];
 					if (!entry) throw new Error(`Unknown id or title: '${titleOrId}'`);
-					if (!gotoStory(entry)) gotoStory(api.findLeafEntry(filteredHash, entry.id));
+					gotoStory(api.resolveLeafEntry(entry.id, ref));
 				} else if (!titleOrId) gotoStory(hash[toId(kindSlug, name)]);
 				else {
 					const id = ref ? `${ref}_${toId(titleOrId, name)}` : toId(titleOrId, name);
@@ -2195,8 +2204,8 @@ var init_stories = __esmMin((() => {
 				const entry = index[storyId];
 				if (!entry) return;
 				if (entry.type === "docs" || entry.type === "story") return entry;
-				const childStoryId = entry.children.find((childId) => index[childId]);
-				return childStoryId ? api.findLeafEntry(index, childStoryId) : void 0;
+				const childId = (entry.type === "component" ? entry.children.find((childId) => isOwnEntry(entry, index[childId])) : void 0) ?? entry.children.find((childId) => index[childId]);
+				return childId ? api.findLeafEntry(index, childId) : void 0;
 			},
 			findLeafStoryId(index, storyId) {
 				return api.findLeafEntry(index, storyId)?.id;
@@ -2570,16 +2579,18 @@ var init_stories = __esmMin((() => {
 		provider.channel?.on(STORY_FINISHED, function handler({ storyId: finishedStoryId }) {
 			const { sourceType } = getEventMetadata(this, fullAPI);
 			if (sourceType !== "local") return;
-			scope.requestIdleCallback(() => {
-				const { storyId, index, refId } = store.getState();
-				if (!index || storyId !== finishedStoryId) return;
-				const toBePreloaded = Array.from(/* @__PURE__ */ new Set([api.findSiblingStoryId(storyId, index, 1, true), api.findSiblingStoryId(storyId, index, -1, true)])).filter(Boolean);
+			const preloadSiblings = () => {
+				const { storyId, refId } = store.getState();
+				if (storyId !== finishedStoryId) return;
+				const toBePreloaded = Array.from(/* @__PURE__ */ new Set([findSubtreeJumpTarget(1), findSubtreeJumpTarget(-1)])).filter(Boolean);
 				if (toBePreloaded.length > 0) provider.channel?.emit(PRELOAD_ENTRIES, {
 					ids: toBePreloaded,
 					source: "sibling",
 					options: { target: refId }
 				});
-			});
+			};
+			if (typeof scope.requestIdleCallback === "function") scope.requestIdleCallback(preloadSiblings);
+			else setTimeout(preloadSiblings, 1);
 		});
 		provider.channel?.on(DOCS_PREPARED, function handler({ id, ...update }) {
 			const { ref } = getEventMetadata(this, fullAPI);
@@ -2916,7 +2927,7 @@ var init_url = __esmMin((() => {
 //#region src/manager-api/version.ts
 var version;
 var init_version = __esmMin((() => {
-	version = "11.0.0-beta.3";
+	version = "11.0.0-rc.0";
 }));
 //#endregion
 //#region src/manager-api/modules/versions.ts
